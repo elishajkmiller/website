@@ -1,415 +1,113 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C0392B;--red-light:#e74c3c;--red-dim:#7b1f16;--red-faint:#1a0503;
+  --bg:#0a0806;--bg2:#100d0b;--bg3:#181210;
+  --border:#2a1f1c;--border2:#3d2a25;
+  --text:#e8ddd8;--text-dim:#8a6f68;--text-muted:#4a3330;
+  --off:#1e1512;
+}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:3.5rem 2rem 6rem}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:4rem}
+.nav-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--red-light);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem}
+.nav-link{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;cursor:pointer;transition:color 0.15s}
+.nav-link:hover{color:var(--text)}
 
-  :root {
-    --green: #39ff14;
-    --green-dim: #1a7a06;
-    --green-muted: #0d3d03;
-    --bg: #080c07;
-    --bg2: #0e130d;
-    --bg3: #141a12;
-    --border: #1e2e1a;
-    --text: #c8d9c3;
-    --text-dim: #607a5a;
-    --text-muted: #3a4d36;
-    --red: #ff3333;
-    --amber: #ffaa00;
-  }
+.hero{margin-bottom:5rem}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.eyebrow-line{width:32px;height:2px;background:var(--red)}
+.eyebrow-text{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);font-family:'Syne',sans-serif;font-weight:600}
+.hero-name{font-family:'Syne',sans-serif;font-size:64px;font-weight:800;color:var(--text);line-height:0.92;letter-spacing:-0.04em;margin-bottom:2rem}
+.hero-name span{color:var(--red-light)}
+.hero-bio{font-size:16px;color:var(--text-dim);line-height:1.8;max-width:480px;font-weight:300;border-left:2px solid var(--red-dim);padding-left:1.25rem;margin-bottom:2rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:5px 12px;border:1px solid var(--border2);color:var(--text-muted);letter-spacing:0.06em;border-radius:2px;font-family:'Syne',sans-serif}
+.tag.on{border-color:var(--red-dim);color:var(--red-light);background:var(--red-faint)}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+.sec{margin-bottom:4rem}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:1.75rem}
+.sec-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em}
+.sec-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text)}
+.sec-line{flex:1;height:1px;background:var(--border)}
 
-  .scanline {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
-    );
-    pointer-events: none;
-    z-index: 999;
-  }
+.project{padding:1.5rem;border:1px solid var(--border);background:var(--bg2);margin-bottom:3px;cursor:pointer;transition:border-color 0.15s,background 0.15s;display:flex;gap:1.5rem;align-items:flex-start}
+.project:hover{border-color:var(--red-dim);background:var(--bg3)}
+.project-left{flex:1}
+.project-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em}
+.project-desc{font-size:13px;color:var(--text-dim);line-height:1.65;margin-bottom:10px;font-weight:300}
+.project-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.badge{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Syne',sans-serif;font-weight:600}
+.badge.active{color:var(--red-light)}
+.badge.live{color:#4fc3f7}
+.badge.parked{color:#f4a261}
+.badge.disclosed{color:#c084fc}
+.badge.meta{color:var(--text-muted);font-weight:400;font-family:'Instrument Sans',sans-serif;font-size:11px;text-transform:none;letter-spacing:0}
+.project-arr{color:var(--border2);font-size:18px;flex-shrink:0;transition:color 0.15s,transform 0.15s;margin-top:2px;font-family:'Syne',sans-serif}
+.project:hover .project-arr{color:var(--red-light);transform:translateX(4px)}
 
-  .site {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 3rem 2rem 6rem;
-  }
+.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.now-card{background:var(--bg2);border:1px solid var(--border);padding:1.25rem 1.5rem}
+.now-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:6px}
+.now-val{font-size:14px;color:var(--text);font-weight:400}
 
-  /* TOPBAR */
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1rem;
-    margin-bottom: 3rem;
-  }
+.blog-empty{border:1px solid var(--border);background:var(--bg2);padding:3rem 2rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
+.blog-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)}
+.blog-msg{font-size:22px;font-family:'Syne',sans-serif;font-weight:800;color:var(--text);letter-spacing:-0.02em}
+.blog-msg span{color:var(--red-light)}
+.blog-sub{font-size:13px;color:var(--text-muted);font-weight:300}
 
-  .topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+.links-row{display:flex;flex-wrap:wrap;gap:3px}
+.lnk{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:10px 18px;border:1px solid var(--border);color:var(--text-dim);text-decoration:none;cursor:pointer;letter-spacing:0.04em;transition:border-color 0.15s,color 0.15s;font-family:'Syne',sans-serif;font-weight:500}
+.lnk:hover{border-color:var(--red-dim);color:var(--red-light)}
+.lnk-dot{width:5px;height:5px;border-radius:50%;background:var(--red-dim);flex-shrink:0}
+.lnk:hover .lnk-dot{background:var(--red-light)}
 
-  .prompt-indicator {
-    color: var(--green);
-    font-size: 16px;
-    font-weight: 600;
-    animation: blink 1.2s step-end infinite;
-  }
+.footer{border-top:1px solid var(--border);padding-top:2rem;margin-top:4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-id{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:0.06em}
+.footer-note{font-size:11px;color:var(--text-muted);letter-spacing:0.05em}
+.pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);vertical-align:middle;margin-right:6px;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .site-name {
-    color: var(--green);
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  .topbar-right {
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.08em;
-  }
-
-  /* HERO */
-  .hero {
-    margin-bottom: 4rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-prefix {
-    color: var(--text-dim);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .hero-name {
-    font-size: 42px;
-    font-weight: 600;
-    color: var(--green);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 1.25rem;
-    text-shadow: 0 0 40px rgba(57, 255, 20, 0.15);
-  }
-
-  .hero-bio {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.8;
-    max-width: 540px;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 1.5rem;
-  }
-
-  .tag {
-    font-size: 11px;
-    padding: 3px 10px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .tag.active {
-    border-color: var(--green-dim);
-    color: var(--green);
-    background: rgba(57, 255, 20, 0.04);
-  }
-
-  /* SECTION */
-  .section {
-    margin-bottom: 3.5rem;
-  }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* PROJECTS */
-  .project {
-    border: 1px solid var(--border);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 2px;
-    background: var(--bg2);
-    cursor: pointer;
-    transition: border-color 0.1s, background 0.1s;
-    position: relative;
-  }
-
-  .project:hover {
-    border-color: var(--green-dim);
-    background: var(--bg3);
-  }
-
-  .project:hover .project-arrow {
-    color: var(--green);
-    transform: translateX(3px);
-  }
-
-  .project-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .project-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--green);
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-
-  .project-desc {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-
-  .project-meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .project-badge {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  .project-badge.status-active { color: var(--green); }
-  .project-badge.status-parked { color: var(--amber); }
-  .project-badge.status-live { color: #00cfff; }
-  .project-badge.status-disclosed { color: var(--red); }
-
-  .project-arrow {
-    color: var(--text-muted);
-    font-size: 16px;
-    flex-shrink: 0;
-    transition: transform 0.15s, color 0.1s;
-    margin-top: 2px;
-  }
-
-  /* NOW */
-  .now-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .now-item {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 1rem 1.25rem;
-  }
-
-  .now-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-
-  .now-value {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* BLOG */
-  .blog-placeholder {
-    border: 1px dashed var(--border);
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    background: var(--bg2);
-  }
-
-  .blog-placeholder-title {
-    color: var(--text-muted);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .blog-placeholder-sub {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-
-  .blog-placeholder-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 14px;
-    background: var(--green-muted);
-    vertical-align: middle;
-    margin-left: 4px;
-    animation: blink 1s step-end infinite;
-  }
-
-  /* LINKS */
-  .links-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 0.5rem;
-  }
-
-  .link-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    transition: border-color 0.1s, color 0.1s;
-    cursor: pointer;
-  }
-
-  .link-item:hover {
-    border-color: var(--green-dim);
-    color: var(--green);
-  }
-
-  .link-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--green-dim);
-  }
-
-  /* FOOTER */
-  .footer {
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-    margin-top: 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-  }
-
-  .footer-loc {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeUp 0.4s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-in:nth-child(1) { animation-delay: 0.05s; }
-  .fade-in:nth-child(2) { animation-delay: 0.1s; }
-  .fade-in:nth-child(3) { animation-delay: 0.15s; }
-  .fade-in:nth-child(4) { animation-delay: 0.2s; }
-  .fade-in:nth-child(5) { animation-delay: 0.25s; }
-  .fade-in:nth-child(6) { animation-delay: 0.3s; }
+.fade{opacity:0;transform:translateY(16px);animation:up 0.5s ease forwards}
+@keyframes up{to{opacity:1;transform:translateY(0)}}
+.fade:nth-child(1){animation-delay:0.05s}
+.fade:nth-child(2){animation-delay:0.12s}
+.fade:nth-child(3){animation-delay:0.2s}
+.fade:nth-child(4){animation-delay:0.28s}
+.fade:nth-child(5){animation-delay:0.36s}
+.fade:nth-child(6){animation-delay:0.44s}
+.fade:nth-child(7){animation-delay:0.52s}
 </style>
-</head>
-<body>
-<div class="scanline"></div>
-<div class="site">
 
-  <div class="topbar fade-in">
-    <div class="topbar-left">
-      <span class="prompt-indicator">_</span>
-      <span class="site-name">eliam.net</span>
+<div class="wrap">
+
+  <nav class="nav fade">
+    <div class="nav-logo">eliam</div>
+    <div class="nav-links">
+      <span class="nav-link">work</span>
+      <span class="nav-link">now</span>
+      <span class="nav-link">writing</span>
+      <span class="nav-link">contact</span>
     </div>
-    <div class="topbar-right">SW Missouri</div>
-  </div>
+  </nav>
 
-  <div class="hero fade-in">
-    <div class="hero-prefix">whoami</div>
-    <div class="hero-name">eliam</div>
+  <div class="hero fade">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">Joplin, MO</div>
+    </div>
+    <div class="hero-name">Builder.<br><span>Human</span>-first.</div>
     <div class="hero-bio">
-      DSP turned builder. I work with people with intellectual and developmental disabilities by day and build the software they deserve by night. Open source, decentralized, human-first.
+      DSP turned developer. I work with people with intellectual and developmental disabilities and build the software they deserve. Open source, decentralized, no shortcuts.
     </div>
     <div class="hero-tags">
-      <span class="tag active">open source</span>
-      <span class="tag active">fediverse</span>
-      <span class="tag active">privacy</span>
+      <span class="tag on">open source</span>
+      <span class="tag on">fediverse</span>
+      <span class="tag on">privacy</span>
       <span class="tag">linux</span>
       <span class="tag">self-hosted</span>
       <span class="tag">EV</span>
@@ -418,139 +116,131 @@
     </div>
   </div>
 
-  <div class="section fade-in">
-    <div class="section-label">projects</div>
-
-    <div class="project">
-      <div class="project-header">
-        <div>
-          <div class="project-name">robin</div>
-          <div class="project-desc">Open-source EHR for human services nonprofits. Built because existing software is bad and the people using it deserve better.</div>
-          <div class="project-meta">
-            <span class="project-badge status-active">● active</span>
-            <span class="project-badge">node / postgres / vanilla js</span>
-          </div>
-        </div>
-        <span class="project-arrow">→</span>
-      </div>
+  <div class="sec fade">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Projects</span>
+      <div class="sec-line"></div>
     </div>
 
     <div class="project">
-      <div class="project-header">
-        <div>
-          <div class="project-name">pow417</div>
-          <div class="project-desc">48-hour community filmmaking competition in Springfield, MO. Human-only. No AI-generated content. The work comes first.</div>
-          <div class="project-meta">
-            <span class="project-badge status-live">● live</span>
-            <span class="project-badge">pow417.com</span>
-          </div>
+      <div class="project-left">
+        <div class="project-name">Robin</div>
+        <div class="project-desc">Open-source EHR for human services nonprofits. Built because existing software is bad and the people using it deserve better.</div>
+        <div class="project-foot">
+          <span class="badge active">● active</span>
+          <span class="badge meta">node / postgres / vanilla js</span>
         </div>
-        <span class="project-arrow">→</span>
       </div>
+      <div class="project-arr">→</div>
     </div>
 
     <div class="project">
-      <div class="project-header">
-        <div>
-          <div class="project-name">kei truck EV</div>
-          <div class="project-desc">DC51T conversion using a QS hub motor and FarDriver controller. Solar-charged iron flow battery as the traction pack. Unprecedented at DIY scale.</div>
-          <div class="project-meta">
-            <span class="project-badge status-active">● in progress</span>
-            <span class="project-badge">FBRC open source stack</span>
-          </div>
+      <div class="project-left">
+        <div class="project-name">POW417</div>
+        <div class="project-desc">48-hour community filmmaking competition, Springfield MO. Human-only. No AI-generated content. The work comes first.</div>
+        <div class="project-foot">
+          <span class="badge live">● live</span>
+          <span class="badge meta">pow417.com</span>
         </div>
-        <span class="project-arrow">→</span>
       </div>
+      <div class="project-arr">→</div>
     </div>
 
     <div class="project">
-      <div class="project-header">
-        <div>
-          <div class="project-name">whitehouse.gov recon</div>
-          <div class="project-desc">Passive security reconnaissance uncovering Intuit event collectors and undisclosed third-party trackers on federal infrastructure. Submitted through CISA VDP.</div>
-          <div class="project-meta">
-            <span class="project-badge status-disclosed">● disclosed</span>
-            <span class="project-badge">VU#622727 · public 2026-07-16</span>
-          </div>
+      <div class="project-left">
+        <div class="project-name">Kei truck EV</div>
+        <div class="project-desc">DC51T conversion. QS hub motor, FarDriver controller. Solar-charged iron flow battery as the traction pack. Unprecedented at DIY scale.</div>
+        <div class="project-foot">
+          <span class="badge active">● in progress</span>
+          <span class="badge meta">FBRC open source stack</span>
         </div>
-        <span class="project-arrow">→</span>
       </div>
+      <div class="project-arr">→</div>
     </div>
 
     <div class="project">
-      <div class="project-header">
-        <div>
-          <div class="project-name">creds</div>
-          <div class="project-desc">ActivityPub-native creator credit system. No blockchain. Fediverse-first. Parked for now.</div>
-          <div class="project-meta">
-            <span class="project-badge status-parked">◌ parked</span>
-            <span class="project-badge">concept / readme</span>
-          </div>
+      <div class="project-left">
+        <div class="project-name">whitehouse.gov recon</div>
+        <div class="project-desc">Passive security recon uncovering undisclosed Intuit trackers on federal infrastructure. Submitted through CISA's VDP.</div>
+        <div class="project-foot">
+          <span class="badge disclosed">● disclosed</span>
+          <span class="badge meta">VU#622727 · public 2026-07-16</span>
         </div>
-        <span class="project-arrow">→</span>
       </div>
+      <div class="project-arr">→</div>
+    </div>
+
+    <div class="project">
+      <div class="project-left">
+        <div class="project-name">Creds</div>
+        <div class="project-desc">ActivityPub-native creator credit system. No blockchain. Fediverse-first. Parked for now.</div>
+        <div class="project-foot">
+          <span class="badge parked">◌ parked</span>
+          <span class="badge meta">concept / readme on GitHub</span>
+        </div>
+      </div>
+      <div class="project-arr">→</div>
     </div>
   </div>
 
-  <div class="section fade-in">
-    <div class="section-label">now</div>
+  <div class="sec fade">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Now</span>
+      <div class="sec-line"></div>
+    </div>
     <div class="now-grid">
-      <div class="now-item">
+      <div class="now-card">
         <div class="now-label">building</div>
-        <div class="now-value">Robin v2 backend</div>
+        <div class="now-val">Robin v2 backend</div>
       </div>
-      <div class="now-item">
+      <div class="now-card">
         <div class="now-label">learning</div>
-        <div class="now-value">flow battery electrochemistry</div>
+        <div class="now-val">flow battery electrochemistry</div>
       </div>
-      <div class="now-item">
+      <div class="now-card">
         <div class="now-label">hosting</div>
-        <div class="now-value">Framework 13 · Tor hidden services</div>
+        <div class="now-val">Framework 13, Tor hidden services</div>
       </div>
-      <div class="now-item">
-        <div class="now-label">listening to</div>
-        <div class="now-value">REAPER sessions, SW Missouri wind</div>
+      <div class="now-card">
+        <div class="now-label">producing</div>
+        <div class="now-val">REAPER on Linux Mint</div>
       </div>
     </div>
   </div>
 
-  <div class="section fade-in">
-    <div class="section-label">writing</div>
-    <div class="blog-placeholder">
-      <div class="blog-placeholder-title">no posts yet</div>
-      <div class="blog-placeholder-sub">something is coming<span class="blog-placeholder-cursor"></span></div>
+  <div class="sec fade">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Writing</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="blog-empty">
+      <div class="blog-label">blog</div>
+      <div class="blog-msg">Nothing yet.<br><span>Soon.</span></div>
+      <div class="blog-sub">Thinking out loud on open source, civic tech, and building things that matter.</div>
     </div>
   </div>
 
-  <div class="section fade-in">
-    <div class="section-label">find me</div>
+  <div class="sec fade">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Find me</span>
+      <div class="sec-line"></div>
+    </div>
     <div class="links-row">
-      <a class="link-item" href="https://github.com/elishajkmiller">
-        <span class="link-dot"></span>github
-      </a>
-      <a class="link-item" href="#">
-        <span class="link-dot"></span>@elishathecreator@hachyderm.io
-      </a>
-      <a class="link-item" href="#">
-        <span class="link-dot"></span>bluesky
-      </a>
-      <a class="link-item" href="#">
-        <span class="link-dot"></span>peertube
-      </a>
-      <a class="link-item" href="mailto:emiller2@cssmo.org">
-        <span class="link-dot"></span>email
-      </a>
+      <a class="lnk" href="https://github.com/elishajkmiller"><span class="lnk-dot"></span>GitHub</a>
+      <a class="lnk" href="#"><span class="lnk-dot"></span>Mastodon</a>
+      <a class="lnk" href="#"><span class="lnk-dot"></span>Bluesky</a>
+      <a class="lnk" href="#"><span class="lnk-dot"></span>PeerTube</a>
+      <a class="lnk" href="mailto:emiller2@cssmo.org"><span class="lnk-dot"></span>Email</a>
     </div>
   </div>
 
-  <div class="footer fade-in">
-    <div class="footer-loc">
-      <div class="status-dot"></div>
-      Joplin, MO
-    </div>
-    <div>no trackers · no analytics · no ads</div>
-  </div>
+  <footer class="footer fade">
+    <div class="footer-id"><span class="pulse"></span>eliam.net</div>
+    <div class="footer-note">no trackers &middot; no analytics &middot; no ads</div>
+  </footer>
 
 </div>
-</body>
-</html>
