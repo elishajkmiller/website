@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhiteHouse Recon / eliam</title>
+  <meta name="description" content="">
+  <link rel="alternate" type="application/rss+xml" title="eliam" href="/blog/rss.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <main class="main">
+    <div class="post-meta-block">
+      <div class="post-meta-date">June 8, 2026</div>
+      <h1 class="post-meta-title">WhiteHouse Recon</h1>
+      <div class="post-meta-desc"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="post-body">
+<p>While my friends were sharing all these insane .gov pages that our government have been creating. I kept getting this bad feeling in my stomach. And a rule that I have been thinking about is. If it makes you anxious, you are likely the product. </p>
+<p>So I started wondering. Why does this website exist? And what&#39;s actually going on in the background?</p>
+<p>So I opened DevTools.</p>
+<p>For anyone who doesn&#39;t know what DevTools is, it&#39;s a tool built into your browser that lets you see everything happening behind the scenes when you load a webpage. I remember editing the text on the pages; convincing people I got higher grades that what I acutally had. Devtools can actually show you a lot of cool stuff. And one of those is the things the webiste requests, and what the website sends out.</p>
+<h2>Peering in</h2>
+<p>There was the Google Analytics which no one can currently escape from.</p>
+<p>Parsely, a content tracker. But i&#39;ll let it slide.</p>
+<p>But then I saw something quite interesting.</p>
+<p>A request going out to eventcollector.mcf-prod.a.intuit.com.</p>
+<p>Intuit.</p>
+<p>As in TurboTax. </p>
+<p>Now, this could be great fear mongering bait. But lets actually look at what information TurboTax is getting from us.</p>
+<p>Here&#39;s what actually got sent.</p>
+<p>Your browser. </p>
+<p>Your operating system.</p>
+<p>The exact page you visited.</p>
+<p>Your screen size. </p>
+<p>A persistent ID tied to your session. </p>
+<p>A timestamp down to the millisecond.</p>
+<p>As any other curious person would. I looked around at other .gov websites to see if I could find anything else like this.</p>
+<p>I checked irs.gov, Treasury.gov, Congress.gov, etc. and none of them had the same tracker.</p>
+<p>Just the White House.</p>
+<h2>Is this a conspiracy?</h2>
+<p>No. The White House uses Mailchimp for their newsletter signup. Mailchimp is owned by Intuit. Somewhere in that chain a tag got added and nobody checked what came with it. That&#39;s probably the whole story.</p>
+<p>But it&#39;s worth knowing. The Office of Management and Budget has guidance called M-10-23 that requires federal agencies to carefully review any third party tools before putting them on government websites. The intent is to make sure those tools serve a legitimate government purpose and protect visitor privacy.</p>
+<p>Intuit is a company with active lobbying interests in government tax policy. Their event collector is on the most visited government website in the country. That&#39;s probably an accident of sloppy tag management. But accidents still have consequences.</p>
+<p>These pages aren&#39;t jokes. They&#39;re designed to make you feel something. Outrage, amusement, anxiety. And if you are feeling strong emotions I encourage you to find someone open and talk about it. The reaction is the product. </p>
+<p>I just wanted to show you what that actually looks like under the hood. And understand that this data is for the purpose to profit off you. And has no place being in a .gov website.</p>
+    </div>
+
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← all posts</a>
+      <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a>
+    </div>
+  </main>
+</div>
+<script src="/components/sidebar.js"></script>
+</body>
+</html>
