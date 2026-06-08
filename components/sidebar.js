@@ -24,7 +24,7 @@
         <div class="nav-label">pages</div>
         ${link('/', 'home')}
         ${link('/blog', 'writing')}
-        ${link('/about', 'about')}
+        ${link('/about', 'about me')}
       </div>
 
       <div class="nav-section">
