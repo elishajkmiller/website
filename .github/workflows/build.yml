@@ -26,6 +26,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/posts/ blog/index.html blog/rss.xml
+          git add blog/posts/ blog/index.html index.html blog/rss.xml
           git diff --staged --quiet || git commit -m "build: generate post HTML"
           git push
