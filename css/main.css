@@ -68,10 +68,10 @@ a { color: inherit; text-decoration: none; }
 .nav-section { margin-bottom: 1.75rem; }
 
 .nav-label {
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg4);
+  color: var(--fg3);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
