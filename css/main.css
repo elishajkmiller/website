@@ -124,6 +124,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--fg);
   letter-spacing: -0.02em;
   margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .page-desc {
@@ -256,8 +259,8 @@ a { color: inherit; text-decoration: none; }
 .rss-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
+  gap: 4px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -265,7 +268,7 @@ a { color: inherit; text-decoration: none; }
   text-decoration: none;
   border: 1px solid var(--red-dim);
   background: var(--red-faint);
-  padding: 3px 9px;
+  padding: 2px 7px;
   border-radius: 3px;
 }
 
