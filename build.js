@@ -149,7 +149,7 @@ function updateMainIndex(posts) {
   }
 
   html = html.replace(
-    /(<a href="\/blog\/rss\.xml"[^>]*>[\s\S]*?<\/a>)\s*[\s\S]*?(\s*<div class="section-head">projects<\/div>)/,
+    /(<div class="section-head">writing[\s\S]*?<\/div>)\s*[\s\S]*?(\s*<div class="section-head">videos<\/div>)/,
     `$1\n    ${postsBlock}\n$2`
   );
 
