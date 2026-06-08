@@ -8,17 +8,7 @@
     <atom:link href="https://eliam.net/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>Mon, 08 Jun 2026 00:00:00 +0000</lastBuildDate>
 
-    <!--
-      ADD NEW POSTS AT THE TOP. Copy this block each time:
 
-      <item>
-        <title>Post title here</title>
-        <link>https://eliam.net/blog/posts/YYYY-MM-DD-slug.html</link>
-        <guid>https://eliam.net/blog/posts/YYYY-MM-DD-slug.html</guid>
-        <pubDate>Day, DD Mon YYYY 00:00:00 +0000</pubDate>
-        <description>One or two sentence summary.</description>
-      </item>
-    -->
 
   </channel>
 </rss>
