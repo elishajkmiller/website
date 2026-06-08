@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #39ff14;
+    --green-dim: #1a7a06;
+    --green-muted: #0d3d03;
+    --bg: #080c07;
+    --bg2: #0e130d;
+    --bg3: #141a12;
+    --border: #1e2e1a;
+    --text: #c8d9c3;
+    --text-dim: #607a5a;
+    --text-muted: #3a4d36;
+    --red: #ff3333;
+    --amber: #ffaa00;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .site {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .prompt-indicator {
+    color: var(--green);
+    font-size: 16px;
+    font-weight: 600;
+    animation: blink 1.2s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .site-name {
+    color: var(--green);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .topbar-right {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* HERO */
+  .hero {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-prefix {
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-name {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0 40px rgba(57, 255, 20, 0.15);
+  }
+
+  .hero-bio {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 540px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tag.active {
+    border-color: var(--green-dim);
+    color: var(--green);
+    background: rgba(57, 255, 20, 0.04);
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PROJECTS */
+  .project {
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2px;
+    background: var(--bg2);
+    cursor: pointer;
+    transition: border-color 0.1s, background 0.1s;
+    position: relative;
+  }
+
+  .project:hover {
+    border-color: var(--green-dim);
+    background: var(--bg3);
+  }
+
+  .project:hover .project-arrow {
+    color: var(--green);
+    transform: translateX(3px);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .project-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .project-desc {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .project-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .project-badge {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .project-badge.status-active { color: var(--green); }
+  .project-badge.status-parked { color: var(--amber); }
+  .project-badge.status-live { color: #00cfff; }
+  .project-badge.status-disclosed { color: var(--red); }
+
+  .project-arrow {
+    color: var(--text-muted);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: transform 0.15s, color 0.1s;
+    margin-top: 2px;
+  }
+
+  /* NOW */
+  .now-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .now-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+  }
+
+  .now-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .now-value {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* BLOG */
+  .blog-placeholder {
+    border: 1px dashed var(--border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    background: var(--bg2);
+  }
+
+  .blog-placeholder-title {
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .blog-placeholder-sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .blog-placeholder-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--green-muted);
+    vertical-align: middle;
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* LINKS */
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .link-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: border-color 0.1s, color 0.1s;
+    cursor: pointer;
+  }
+
+  .link-item:hover {
+    border-color: var(--green-dim);
+    color: var(--green);
+  }
+
+  .link-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green-dim);
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-loc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.15s; }
+  .fade-in:nth-child(4) { animation-delay: 0.2s; }
+  .fade-in:nth-child(5) { animation-delay: 0.25s; }
+  .fade-in:nth-child(6) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+<div class="scanline"></div>
+<div class="site">
+
+  <div class="topbar fade-in">
+    <div class="topbar-left">
+      <span class="prompt-indicator">_</span>
+      <span class="site-name">eliam.net</span>
+    </div>
+    <div class="topbar-right">SW Missouri</div>
+  </div>
+
+  <div class="hero fade-in">
+    <div class="hero-prefix">whoami</div>
+    <div class="hero-name">eliam</div>
+    <div class="hero-bio">
+      DSP turned builder. I work with people with intellectual and developmental disabilities by day and build the software they deserve by night. Open source, decentralized, human-first.
+    </div>
+    <div class="hero-tags">
+      <span class="tag active">open source</span>
+      <span class="tag active">fediverse</span>
+      <span class="tag active">privacy</span>
+      <span class="tag">linux</span>
+      <span class="tag">self-hosted</span>
+      <span class="tag">EV</span>
+      <span class="tag">filmmaking</span>
+      <span class="tag">civic tech</span>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="section-label">projects</div>
+
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <div class="project-name">robin</div>
+          <div class="project-desc">Open-source EHR for human services nonprofits. Built because existing software is bad and the people using it deserve better.</div>
+          <div class="project-meta">
+            <span class="project-badge status-active">● active</span>
+            <span class="project-badge">node / postgres / vanilla js</span>
+          </div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <div class="project-name">pow417</div>
+          <div class="project-desc">48-hour community filmmaking competition in Springfield, MO. Human-only. No AI-generated content. The work comes first.</div>
+          <div class="project-meta">
+            <span class="project-badge status-live">● live</span>
+            <span class="project-badge">pow417.com</span>
+          </div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <div class="project-name">kei truck EV</div>
+          <div class="project-desc">DC51T conversion using a QS hub motor and FarDriver controller. Solar-charged iron flow battery as the traction pack. Unprecedented at DIY scale.</div>
+          <div class="project-meta">
+            <span class="project-badge status-active">● in progress</span>
+            <span class="project-badge">FBRC open source stack</span>
+          </div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <div class="project-name">whitehouse.gov recon</div>
+          <div class="project-desc">Passive security reconnaissance uncovering Intuit event collectors and undisclosed third-party trackers on federal infrastructure. Submitted through CISA VDP.</div>
+          <div class="project-meta">
+            <span class="project-badge status-disclosed">● disclosed</span>
+            <span class="project-badge">VU#622727 · public 2026-07-16</span>
+          </div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <div class="project-name">creds</div>
+          <div class="project-desc">ActivityPub-native creator credit system. No blockchain. Fediverse-first. Parked for now.</div>
+          <div class="project-meta">
+            <span class="project-badge status-parked">◌ parked</span>
+            <span class="project-badge">concept / readme</span>
+          </div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="section-label">now</div>
+    <div class="now-grid">
+      <div class="now-item">
+        <div class="now-label">building</div>
+        <div class="now-value">Robin v2 backend</div>
+      </div>
+      <div class="now-item">
+        <div class="now-label">learning</div>
+        <div class="now-value">flow battery electrochemistry</div>
+      </div>
+      <div class="now-item">
+        <div class="now-label">hosting</div>
+        <div class="now-value">Framework 13 · Tor hidden services</div>
+      </div>
+      <div class="now-item">
+        <div class="now-label">listening to</div>
+        <div class="now-value">REAPER sessions, SW Missouri wind</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="section-label">writing</div>
+    <div class="blog-placeholder">
+      <div class="blog-placeholder-title">no posts yet</div>
+      <div class="blog-placeholder-sub">something is coming<span class="blog-placeholder-cursor"></span></div>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="section-label">find me</div>
+    <div class="links-row">
+      <a class="link-item" href="https://github.com/elishajkmiller">
+        <span class="link-dot"></span>github
+      </a>
+      <a class="link-item" href="#">
+        <span class="link-dot"></span>@elishathecreator@hachyderm.io
+      </a>
+      <a class="link-item" href="#">
+        <span class="link-dot"></span>bluesky
+      </a>
+      <a class="link-item" href="#">
+        <span class="link-dot"></span>peertube
+      </a>
+      <a class="link-item" href="mailto:emiller2@cssmo.org">
+        <span class="link-dot"></span>email
+      </a>
+    </div>
+  </div>
+
+  <div class="footer fade-in">
+    <div class="footer-loc">
+      <div class="status-dot"></div>
+      Joplin, MO
+    </div>
+    <div>no trackers · no analytics · no ads</div>
+  </div>
+
+</div>
+</body>
+</html>
