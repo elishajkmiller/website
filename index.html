@@ -1,115 +1,24 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --red:#e53e3e;
-  --red-soft:#fc8181;
-  --red-dim:#742a2a;
-  --red-faint:#1a0a0a;
-  --fg:#e8e6e3;
-  --fg2:#b0ada8;
-  --fg3:#6b6763;
-  --fg4:#3d3a37;
-  --bg:#111110;
-  --bg2:#1a1917;
-  --bg3:#222120;
-  --border:#2c2a28;
-  --border2:#3a3835;
-}
-body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif;font-size:15px;line-height:1.65;min-height:100vh}
-.layout{display:grid;grid-template-columns:200px 1fr;min-height:100vh;max-width:860px;margin:0 auto;padding:0 1.5rem}
-
-.sidebar{padding:2.5rem 2rem 2.5rem 0;border-right:1px solid var(--border);min-height:100vh}
-.site-title{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--fg);letter-spacing:-0.02em;margin-bottom:0.2rem;line-height:1.2}
-.site-sub{font-size:12px;color:var(--fg3);margin-bottom:2rem;font-weight:300}
-
-.nav-section{margin-bottom:1.75rem}
-.nav-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg4);font-weight:600;margin-bottom:0.5rem}
-.nav-link{display:block;font-size:13px;color:var(--fg2);text-decoration:none;padding:3px 0;transition:color 0.12s;line-height:1.5}
-.nav-link:hover,.nav-link.active{color:var(--red)}
-.nav-link.active{font-weight:600}
-
-.social-links{display:flex;flex-direction:column;gap:4px}
-.social-link{font-size:12px;color:var(--fg3);text-decoration:none;transition:color 0.12s;display:flex;align-items:center;gap:6px}
-.social-link:hover{color:var(--red)}
-.social-link i{font-size:13px}
-
-.sidebar-note{font-size:11px;color:var(--fg4);line-height:1.6;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-
-.main{padding:2.5rem 0 4rem 2.5rem}
-
-.page-title{font-family:'Source Serif 4',serif;font-size:28px;font-weight:600;color:var(--fg);letter-spacing:-0.02em;margin-bottom:0.25rem}
-.page-desc{font-size:14px;color:var(--fg3);font-weight:300;margin-bottom:1rem}
-.hero-intro{font-family:'Source Serif 4',serif;font-size:17px;font-weight:300;font-style:italic;color:var(--fg2);line-height:1.75;border-left:2px solid var(--red-dim);padding-left:1rem;margin-bottom:1rem}
-.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0}
-.hero-tag{font-size:11px;color:var(--fg3);border:1px solid var(--border2);padding:2px 8px;border-radius:2px}
-.hero-tag.on{color:var(--red-soft);border-color:var(--red-dim);background:var(--red-faint)}
-
-.divider{height:1px;background:var(--border);margin:1.75rem 0}
-
-.section-head{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--fg4);font-weight:600;margin:2rem 0 1rem}
-
-.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
-.now-cell{background:var(--bg2);padding:0.75rem 1rem}
-.now-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg4);font-weight:600;margin-bottom:3px}
-.now-val{font-size:13px;color:var(--fg2)}
-
-.rss-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-soft);text-decoration:none;border:1px solid var(--red-dim);background:var(--red-faint);padding:3px 9px;border-radius:3px}
-.rss-dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
-
-.empty-block{border:1px solid var(--border);padding:2rem;text-align:center;background:var(--bg2);margin-top:1rem}
-.empty-title{font-family:'Source Serif 4',serif;font-size:17px;color:var(--fg3);font-style:italic;margin-bottom:5px}
-.empty-sub{font-size:12px;color:var(--fg4)}
-
-.post-item{display:grid;grid-template-columns:90px 1fr;gap:0 1.25rem;padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit}
-.post-item:first-child{border-top:1px solid var(--border)}
-.post-date{font-size:12px;color:var(--fg3);padding-top:3px;font-weight:300;line-height:1.4}
-.post-cats{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
-.post-cat{font-size:10px;color:var(--red);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
-.post-cat+.post-cat::before{content:"·";margin-right:4px;color:var(--fg4)}
-.post-title{font-family:'Source Serif 4',serif;font-size:16px;font-weight:400;color:var(--fg);line-height:1.4;margin-bottom:5px;transition:color 0.12s}
-.post-item:hover .post-title{color:var(--red-soft)}
-.post-excerpt{font-size:13px;color:var(--fg3);font-weight:300;line-height:1.55}
-</style>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eliam</title>
+  <meta name="description" content="DSP turned builder. Open source, decentralized, human-first.">
+  <link rel="alternate" type="application/rss+xml" title="eliam" href="/blog/rss.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
 <div class="layout">
-  <aside class="sidebar">
-    <div class="site-title">eliam</div>
-    <div class="site-sub">eliam.net</div>
-
-    <div class="nav-section">
-      <div class="nav-label">pages</div>
-      <a href="/" class="nav-link active">home</a>
-      <a href="/blog" class="nav-link">writing</a>
-      <a href="/about" class="nav-link">about</a>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">projects</div>
-      <a href="#" class="nav-link">Robin</a>
-      <a href="https://pow417.com" class="nav-link">POW417</a>
-      <a href="#" class="nav-link">kei truck EV</a>
-      <a href="#" class="nav-link">Creds</a>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">links</div>
-      <div class="social-links">
-        <a href="https://github.com/elishajkmiller" class="social-link"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
-        <a href="https://mastodon.social/@Eli_M" class="social-link"><i class="ti ti-brand-mastodon" aria-hidden="true"></i>Mastodon</a>
-        <a href="#" class="social-link"><i class="ti ti-brand-bluesky" aria-hidden="true"></i>Bluesky</a>
-        <a href="#" class="social-link"><i class="ti ti-video" aria-hidden="true"></i>MakerTube</a>
-        <a href="mailto:emiller2@cssmo.org" class="social-link"><i class="ti ti-mail" aria-hidden="true"></i>email</a>
-      </div>
-    </div>
-
-    <div class="sidebar-note">Joplin, MO<br>no trackers · no ads</div>
-  </aside>
+  <aside id="sidebar"></aside>
 
   <main class="main">
     <div class="page-title">eliam</div>
     <div class="page-desc">DSP turned builder. Open source, decentralized, human-first.</div>
-    <div class="hero-intro">I work with people with intellectual and developmental disabilities and build the software they deserve.</div>
+    <div class="hero-intro">
+      I work with people with intellectual and developmental disabilities and build the software they deserve.
+    </div>
     <div class="hero-tags">
       <span class="hero-tag on">open source</span>
       <span class="hero-tag on">fediverse</span>
@@ -125,10 +34,22 @@ body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif
 
     <div class="section-head">now</div>
     <div class="now-grid">
-      <div class="now-cell"><div class="now-label">building</div><div class="now-val">Robin v2 backend</div></div>
-      <div class="now-cell"><div class="now-label">learning</div><div class="now-val">flow battery electrochemistry</div></div>
-      <div class="now-cell"><div class="now-label">hosting</div><div class="now-val">Framework 13, Tor hidden services</div></div>
-      <div class="now-cell"><div class="now-label">producing</div><div class="now-val">REAPER on Linux Mint</div></div>
+      <div class="now-cell">
+        <div class="now-label">building</div>
+        <div class="now-val">Robin v2 backend</div>
+      </div>
+      <div class="now-cell">
+        <div class="now-label">learning</div>
+        <div class="now-val">flow battery electrochemistry</div>
+      </div>
+      <div class="now-cell">
+        <div class="now-label">hosting</div>
+        <div class="now-val">Framework 13, Tor hidden services</div>
+      </div>
+      <div class="now-cell">
+        <div class="now-label">producing</div>
+        <div class="now-val">REAPER on Linux Mint</div>
+      </div>
     </div>
 
     <div class="section-head">writing</div>
@@ -140,7 +61,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif
 
     <div class="section-head">projects</div>
 
-    <a href="#" class="post-item">
+    <a href="https://github.com/elishajkmiller/ROBIN" class="post-item" target="_blank">
       <div class="post-date">active</div>
       <div class="post-right">
         <div class="post-cats"><span class="post-cat">open source</span><span class="post-cat">civic tech</span></div>
@@ -149,7 +70,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif
       </div>
     </a>
 
-    <a href="https://pow417.com" class="post-item">
+    <a href="https://pow417.com" class="post-item" target="_blank">
       <div class="post-date">live</div>
       <div class="post-right">
         <div class="post-cats"><span class="post-cat">community</span><span class="post-cat">filmmaking</span></div>
@@ -158,7 +79,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif
       </div>
     </a>
 
-    <a href="#" class="post-item">
+    <a href="/projects/kei-truck" class="post-item">
       <div class="post-date">in progress</div>
       <div class="post-right">
         <div class="post-cats"><span class="post-cat">EV</span><span class="post-cat">hardware</span></div>
@@ -178,3 +99,6 @@ body{background:var(--bg);color:var(--fg);font-family:'Source Sans 3',sans-serif
 
   </main>
 </div>
+<script src="/components/sidebar.js"></script>
+</body>
+</html>
