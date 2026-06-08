@@ -88,6 +88,33 @@ ${bodyHTML}    </div>
 </html>`;
 }
 
+function buildPostItem({ slug, fm, date }) {
+  const cats = (fm.categories || [])
+    .map(c => `<span class="post-cat">${esc(c)}</span>`)
+    .join('\n          ');
+  const catsAttr = esc((fm.categories || []).join(','));
+  return `    <a href="/blog/posts/${slug}.html" class="post-item" data-cats="${catsAttr}">
+      <div class="post-date">${fmtShort(date)}</div>
+      <div class="post-right">
+        <div class="post-cats">${cats}</div>
+        <div class="post-title">${esc(fm.title)}</div>
+        <div class="post-excerpt">${esc(fm.description || '')}</div>
+      </div>
+    </a>`;
+}
+
+function buildCatFilters(posts) {
+  const allCats = [...new Set(posts.flatMap(p => p.fm.categories || []))];
+  if (allCats.length === 0) return '';
+  const buttons = allCats
+    .map(c => `    <button class="cat-filter" data-cat="${esc(c)}">${esc(c)}</button>`)
+    .join('\n');
+  return `    <div class="cat-filters">
+    <button class="cat-filter active" data-cat="all">all</button>
+${buttons}
+    </div>\n`;
+}
+
 function updateIndex(posts) {
   let html = fs.readFileSync(BLOG_INDEX, 'utf8');
 
@@ -102,20 +129,9 @@ function updateIndex(posts) {
 
   </main>`;
   } else {
-    const items = posts.map(({ slug, fm, date }) => {
-      const cats = (fm.categories || [])
-        .map(c => `<span class="post-cat">${esc(c)}</span>`)
-        .join('\n          ');
-      return `    <a href="/blog/posts/${slug}.html" class="post-item">
-      <div class="post-date">${fmtShort(date)}</div>
-      <div class="post-right">
-        <div class="post-cats">${cats}</div>
-        <div class="post-title">${esc(fm.title)}</div>
-        <div class="post-excerpt">${esc(fm.description || '')}</div>
-      </div>
-    </a>`;
-    }).join('\n');
-    replacement = `<div class="divider"></div>\n\n${items}\n\n  </main>`;
+    const filters = buildCatFilters(posts);
+    const items = posts.map(buildPostItem).join('\n');
+    replacement = `<div class="divider"></div>\n\n${filters}\n${items}\n\n  </main>`;
   }
 
   html = html.replace(/<div class="divider"><\/div>[\s\S]*<\/main>/, replacement);
@@ -133,19 +149,9 @@ function updateMainIndex(posts) {
       <div class="empty-sub">Subscribe to the RSS feed to get notified when something drops.</div>
     </div>`;
   } else {
-    postsBlock = posts.slice(0, 3).map(({ slug, fm, date }) => {
-      const cats = (fm.categories || [])
-        .map(c => `<span class="post-cat">${esc(c)}</span>`)
-        .join('\n          ');
-      return `    <a href="/blog/posts/${slug}.html" class="post-item">
-      <div class="post-date">${fmtShort(date)}</div>
-      <div class="post-right">
-        <div class="post-cats">${cats}</div>
-        <div class="post-title">${esc(fm.title)}</div>
-        <div class="post-excerpt">${esc(fm.description || '')}</div>
-      </div>
-    </a>`;
-    }).join('\n');
+    const subset = posts.slice(0, 3);
+    const filters = buildCatFilters(subset);
+    postsBlock = filters + subset.map(buildPostItem).join('\n');
   }
 
   html = html.replace(
