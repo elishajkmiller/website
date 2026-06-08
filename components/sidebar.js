@@ -16,8 +16,9 @@
 
   const html = `
     <div class="sidebar-inner">
-      <a href="/" class="site-title">eliam</a>
-      <div class="site-sub">eliam.net</div>
+      <a href="/" class="sidebar-avatar-link">
+        <img src="https://github.com/elishajkmiller.png" alt="eliam" class="sidebar-avatar">
+      </a>
 
       <div class="nav-section">
         <div class="nav-label">pages</div>
