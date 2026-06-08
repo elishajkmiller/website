@@ -8,6 +8,7 @@ const matter = require('gray-matter');
 const ROOT = path.resolve(__dirname);
 const POSTS_DIR = path.join(ROOT, 'blog', 'posts');
 const BLOG_INDEX = path.join(ROOT, 'blog', 'index.html');
+const MAIN_INDEX = path.join(ROOT, 'index.html');
 const RSS_FILE = path.join(ROOT, 'blog', 'rss.xml');
 
 const MONTHS_LONG  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -122,6 +123,40 @@ function updateIndex(posts) {
   console.log('  updated blog/index.html');
 }
 
+function updateMainIndex(posts) {
+  let html = fs.readFileSync(MAIN_INDEX, 'utf8');
+
+  let postsBlock;
+  if (posts.length === 0) {
+    postsBlock = `<div class="empty-block">
+      <div class="empty-title">Nothing yet.</div>
+      <div class="empty-sub">Subscribe to the RSS feed to get notified when something drops.</div>
+    </div>`;
+  } else {
+    postsBlock = posts.slice(0, 3).map(({ slug, fm, date }) => {
+      const cats = (fm.categories || [])
+        .map(c => `<span class="post-cat">${esc(c)}</span>`)
+        .join('\n          ');
+      return `    <a href="/blog/posts/${slug}.html" class="post-item">
+      <div class="post-date">${fmtShort(date)}</div>
+      <div class="post-right">
+        <div class="post-cats">${cats}</div>
+        <div class="post-title">${esc(fm.title)}</div>
+        <div class="post-excerpt">${esc(fm.description || '')}</div>
+      </div>
+    </a>`;
+    }).join('\n');
+  }
+
+  html = html.replace(
+    /(<a href="\/blog\/rss\.xml"[^>]*>[\s\S]*?<\/a>)\s*[\s\S]*?(\s*<div class="section-head">projects<\/div>)/,
+    `$1\n    ${postsBlock}\n$2`
+  );
+
+  fs.writeFileSync(MAIN_INDEX, html);
+  console.log('  updated index.html');
+}
+
 function updateRSS(posts) {
   let xml = fs.readFileSync(RSS_FILE, 'utf8');
 
@@ -146,6 +181,18 @@ function updateRSS(posts) {
 
   fs.writeFileSync(RSS_FILE, xml);
   console.log('  updated blog/rss.xml');
+}
+
+function cleanOrphans(slugs) {
+  const known = new Set(slugs);
+  const htmlFiles = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith('.html'));
+  for (const f of htmlFiles) {
+    const slug = f.slice(0, -5);
+    if (!known.has(slug)) {
+      fs.unlinkSync(path.join(POSTS_DIR, f));
+      console.log(`  removed blog/posts/${f}`);
+    }
+  }
 }
 
 function main() {
@@ -184,7 +231,9 @@ function main() {
   }
 
   posts.sort((a, b) => b.date - a.date);
+  cleanOrphans(posts.map(p => p.slug));
   updateIndex(posts);
+  updateMainIndex(posts);
   updateRSS(posts);
 }
 
