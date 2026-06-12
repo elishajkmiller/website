@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inbox Recon / eliam</title>
+  <meta name="description" content="">
+  <link rel="alternate" type="application/rss+xml" title="eliam" href="/blog/rss.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <main class="main">
+    <div class="post-meta-block">
+      <div class="post-meta-date">June 12, 2026</div>
+      <h1 class="post-meta-title">Inbox Recon</h1>
+      <div class="post-meta-desc"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="post-body">
+<h2>Preface</h2>
+<p>Work sent out an email this week. Phishing attempts were up. Fake emails with weird reference numbers, PDF attachments, links to &quot;secure files.&quot; The usual stuff. Don&#39;t click, call to verify, forward to IT.</p>
+<p>I read it, nodded, moved on.</p>
+<p>But one line stuck with me. It said if an account gets compromised, attackers could use our real email address to target other companies. Not just us. Other people too, using our name.</p>
+<p>So I started wondering. If someone wanted to send an email pretending to be us, could they?</p>
+<p>Turns out there&#39;s a way to check. And you don&#39;t need any special access to do it.</p>
+<h2>Show Original</h2>
+<p>Every email you get has a hidden layer underneath it. Click the three dots on any message in Gmail, hit &quot;Show Original,&quot; and you get a wall of technical text. Most people never see this. It&#39;s the stuff mail servers say to each other behind the scenes, basically a paper trail proving where an email actually came from.</p>
+<p>I opened one of our normal work emails and looked.</p>
+<p>Three things matter here. SPF, DKIM, and DMARC. Think of them as three different ways of proving &quot;yes, this email really came from who it says it did.&quot;</p>
+<p>SPF passed. DKIM passed. Good signs.</p>
+<p>Then DMARC. Also passed. But next to it, in parentheses, sat this:</p>
+<pre><code>p=NONE
+</code></pre>
+<h2>What That Actually Means</h2>
+<p>DMARC isn&#39;t just a pass or fail check on one email. It&#39;s also a policy, a standing instruction telling other mail servers what to do if an email <em>fails</em> the check. Something like &quot;if this fails, reject it&quot; or &quot;if this fails, send it to spam.&quot;</p>
+<p><code>p=none</code> means the instruction is: do nothing. Log it, maybe, but deliver it anyway.</p>
+<p>So if someone sends an email that fails every check, an email that is clearly not from us, pretending to be from us, the policy currently says let it through.</p>
+<p>That&#39;s the gap. Not &quot;someone is doing this right now.&quot; Just, the door is unlocked.</p>
+<h2>Following the Trail</h2>
+<p>I wanted to know more. Where does our domain&#39;s setup actually live? Who controls it?</p>
+<pre><code>$ dig SOA ourdomain.org
+;; ANSWER SECTION:
+ourdomain.org.  2560  IN  SOA  ns1.somehost.example. hostmaster.ourdomain.org.
+</code></pre>
+<p>One command, and there it is. A hosting provider I&#39;d never heard of. Something left over from years ago, probably whoever built the original website, long before email moved to its current home.</p>
+<p>A couple more lookups confirmed the rest:</p>
+<pre><code>$ dig TXT ourdomain.org
+;; ANSWER SECTION:
+ourdomain.org. 14400 IN TXT &quot;v=spf1 include:_spf.google.com ~all&quot;
+</code></pre>
+<pre><code>$ dig TXT _dmarc.ourdomain.org
+;; ANSWER SECTION:
+_dmarc.ourdomain.org. 14400 IN TXT &quot;v=DMARC1; p=none;&quot;
+</code></pre>
+<p>The first one is correctly pointed at the right servers. The records prove we are who we say we are. Everything checks out, except that second one, still sitting on &quot;do nothing.&quot;</p>
+<h2>Is This a Big Deal?</h2>
+<p>Not really. Nobody got hacked. Nothing is actively broken. This isn&#39;t the phishing emails landing in everyone&#39;s inbox, that&#39;s a separate problem, solved by the usual stuff, don&#39;t click links, verify by phone, report it.</p>
+<p>This is just a setting. One that&#39;s been sitting on the default &quot;off&quot; position, probably since whoever set it up years ago never came back to finish the job. That happens. A lot of orgs have this exact gap and never know it.</p>
+<p>But &quot;not a big deal&quot; and &quot;not worth fixing&quot; aren&#39;t the same thing. The fix is free. It&#39;s one line in a settings panel. And it closes a door that, right now, is just sitting open.</p>
+<h2>Why I&#39;m Writing This Down</h2>
+<p>I didn&#39;t find this because I have special access or some security tool. I found it because I was curious, and curiosity plus a terminal will get you pretty far.</p>
+<p>That&#39;s kind of the whole point. Most people assume the technical stuff behind email is some locked box only IT can see into. It&#39;s not. It&#39;s mostly just text, sitting right there, if you know where to look.</p>
+<p>Sometimes that&#39;s all curiosity is for. Not to fix everything yourself. Just to notice the thing, write it down clearly, and hand it to someone who can.</p>
+    </div>
+
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← all posts</a>
+      <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a>
+    </div>
+  </main>
+</div>
+<script src="/components/sidebar.js"></script>
+</body>
+</html>
