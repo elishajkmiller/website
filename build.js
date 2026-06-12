@@ -155,7 +155,7 @@ function updateMainIndex(posts) {
   }
 
   html = html.replace(
-    /(<div class="section-head">writing[\s\S]*?<\/div>)\s*[\s\S]*?(\s*<div class="section-head">videos<\/div>)/,
+    /(<div class="section-head">writing[\s\S]*?<\/div>)\s*[\s\S]*?(\s*<div class="section-head">videos[\s\S]*?<\/div>)/,
     `$1\n    ${postsBlock}\n$2`
   );
 
