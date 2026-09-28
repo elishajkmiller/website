@@ -31,8 +31,6 @@
         <div class="nav-label">projects</div>
         <a href="https://github.com/elishajkmiller/ROBIN" class="nav-link" target="_blank">Robin</a>
         <a href="https://pow417.com" class="nav-link" target="_blank">POW417</a>
-        <a href="/projects/kei-truck" class="nav-link">kei truck EV</a>
-        <a href="https://github.com/elishajkmiller" class="nav-link" target="_blank">Creds</a>
       </div>
 
       <div class="nav-section">
