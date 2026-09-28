@@ -55,9 +55,9 @@ function buildPostHTML(fm, bodyHTML) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${esc(fm.title)} / eliam</title>
+  <title>${esc(fm.title)} / Elisha JK Miller</title>
   <meta name="description" content="${esc(fm.description || '')}">
-  <link rel="alternate" type="application/rss+xml" title="eliam" href="/blog/rss.xml">
+  <link rel="alternate" type="application/rss+xml" title="Elisha JK Miller" href="/blog/rss.xml">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
@@ -169,7 +169,7 @@ function updateRSS(posts) {
   const now = fmtRFC822(new Date());
 
   const items = posts.map(({ slug, fm, date }) => {
-    const url = `https://eliam.net/blog/posts/${slug}.html`;
+    const url = `https://elishajkmiller.com/blog/posts/${slug}.html`;
     return `    <item>
       <title>${escXML(fm.title)}</title>
       <link>${url}</link>

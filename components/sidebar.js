@@ -1,4 +1,4 @@
-// eliam.net — shared sidebar
+// elishajkmiller.com — shared sidebar
 // Edit this file once and all pages update automatically.
 
 (function () {
@@ -17,7 +17,7 @@
   const html = `
     <div class="sidebar-inner">
       <a href="/" class="sidebar-avatar-link">
-        <img src="https://github.com/elishajkmiller.png" alt="eliam" class="sidebar-avatar">
+        <img src="https://github.com/elishajkmiller.png" alt="Elisha JK Miller" class="sidebar-avatar">
       </a>
 
       <div class="nav-section">
