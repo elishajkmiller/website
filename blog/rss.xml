@@ -9,6 +9,20 @@
     <lastBuildDate>Tue, 29 Sep 2026 00:00:00 +0000</lastBuildDate>
 
     <item>
+      <title>T-Deck Pro UI on Meshtastic</title>
+      <link>https://elishajkmiller.com/blog/posts/2026-09-29-tdeck-pro-ui.html</link>
+      <guid>https://elishajkmiller.com/blog/posts/2026-09-29-tdeck-pro-ui.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      <description>My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.</description>
+    </item>
+    <item>
+      <title>Watchy firmware with a T-Deck link</title>
+      <link>https://elishajkmiller.com/blog/posts/2026-09-29-watchy-firmware.html</link>
+      <guid>https://elishajkmiller.com/blog/posts/2026-09-29-watchy-firmware.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      <description>A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.</description>
+    </item>
+    <item>
       <title>Inbox Recon</title>
       <link>https://elishajkmiller.com/blog/posts/2026-06-12.html</link>
       <guid>https://elishajkmiller.com/blog/posts/2026-06-12.html</guid>

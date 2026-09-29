@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchy firmware with a T-Deck link / Elisha JK Miller</title>
+  <meta name="description" content="A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.">
+  <link rel="alternate" type="application/rss+xml" title="Elisha JK Miller" href="/blog/rss.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <main class="main">
+    <div class="post-meta-block">
+      <div class="post-meta-date">September 29, 2026</div>
+      <h1 class="post-meta-title">Watchy firmware with a T-Deck link</h1>
+      <div class="post-meta-desc">A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="post-body">
+<p>Source: <a href="https://github.com/elishajkmiller/watchy-firmware">github.com/elishajkmiller/watchy-firmware</a>. The other half is the <a href="/blog/posts/2026-09-29-tdeck-pro-ui.html">T-Deck Pro UI</a>.</p>
+<p>Custom firmware for a Watchy v3 (ESP32-S3). It starts from SQFMI&#39;s 7_SEG face and reworks it into a solar ring face: 12-hour clock, Fahrenheit, sunrise and sunset, and light-mode menus. Saved Wi-Fi and the clock survive resets, there is a USB Flash Mode in the menu, and an encrypted ESP-NOW link receives texts from a T-Deck Pro (see the T-Deck post).</p>
+<h2>Setup</h2>
+<p>Put your weather key in <code>src/settings.h</code> (<code>OPENWEATHERMAP_APIKEY</code>) and your location. Copy <code>lib/Watchy/src/WatchyLinkSecret.h.example</code> to <code>WatchyLinkSecret.h</code> and fill in random keys; the T-Deck needs the same file. Build with <code>pio run</code> and flash with <code>flash.sh</code>.</p>
+<p>The Watchy library in <code>lib/Watchy</code> is SQFMI&#39;s, with my edits, under its own license.</p>
+    </div>
+
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← all posts</a>
+      <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a>
+    </div>
+  </main>
+</div>
+<script src="/components/sidebar.js"></script>
+</body>
+</html>

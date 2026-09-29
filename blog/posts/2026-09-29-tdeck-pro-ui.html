@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-Deck Pro UI on Meshtastic / Elisha JK Miller</title>
+  <meta name="description" content="My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.">
+  <link rel="alternate" type="application/rss+xml" title="Elisha JK Miller" href="/blog/rss.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <main class="main">
+    <div class="post-meta-block">
+      <div class="post-meta-date">September 29, 2026</div>
+      <h1 class="post-meta-title">T-Deck Pro UI on Meshtastic</h1>
+      <div class="post-meta-desc">My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="post-body">
+<p>Source: <a href="https://github.com/elishajkmiller/tdeck-pro-nav">github.com/elishajkmiller/tdeck-pro-nav</a>. It pairs with my <a href="/blog/posts/2026-09-29-watchy-firmware.html">Watchy firmware</a>.</p>
+<p>Official Meshtastic firmware + my own UI layer. Nothing in Meshtastic&#39;s core is hand-edited.
+Currently built on Meshtastic 2.7.26 (<code>v2.7.26.54e0d8d</code>) for the LilyGO T-Deck Pro V1.0
+(ESP32-S3, 240x320 e-paper, keyboard, touch).</p>
+<h2>Building and flashing</h2>
+<ul>
+<li><code>overlay/</code>  new files copied into a fresh checkout of a release</li>
+<li><code>patches/</code>  small hooks into Meshtastic&#39;s code, applied in order with <code>git apply</code></li>
+<li><code>build.sh &lt;tag&gt;</code>  fetch that release, reset it to pristine, add the overlay and patches, build with PlatformIO
+(environment <code>t-deck-pro</code>; result in <code>out/&lt;tag&gt;/app-t-deck-pro.bin</code>)</li>
+<li><code>flash.sh &lt;tag&gt;</code>  write the app partition (0x10000 only) to the T-Deck Pro; settings, channels and Wi-Fi are kept</li>
+<li><code>shared/</code>  files the watch firmware (<code>~/watchy-build</code>) and this build both use (the Watchy link protocol)</li>
+<li><code>tools/</code>  a mock message server for testing the Inbox</li>
+</ul>
+<p>On a new Meshtastic release: <code>./build.sh &lt;new-tag&gt;</code>. If a patch fails to apply, the release changed the code
+it hooks into and that one hook needs adjusting; everything else keeps working.
+Backup of the original 16 MB flash: ~/tdeck-backup/tdeck-pro-flash-16MB.bin</p>
+<h2>The patches</h2>
+<p>Four patches, grouped by what they touch. Each starts with a plain-text list of what is in it (<code>git apply</code> ignores it).
+They are written straight from <code>git diff</code> against the release, so after <code>build.sh</code> the tree is exactly the release plus these.</p>
+<table>
+<thead>
+<tr>
+<th>Patch</th>
+<th>Files</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0001-ui-hooks</code></td>
+<td>Screen.cpp/.h, Modules.cpp, UIRenderer.cpp, CannedMessageModule.cpp, TDeckProKeyboard.cpp</td>
+<td>my screens (Home, Watchy, Navigate, Inbox) in the frame list, Home first, every key and tap to <code>Launcher::handleInput</code> first; the text message frame draws <code>Messages::drawFrame</code>; my screens kept when Meshtastic rebuilds its frames; W A S D become arrows (not while typing); Delete or a tap closes a plain notice; short boot logo; WatchyLink started; bottom nav bar hidden; typing no longer starts a message; Alt gives numbers</td>
+</tr>
+<tr>
+<td><code>0002-messages</code></td>
+<td>MessageRenderer.cpp/.h, MessageStore.cpp</td>
+<td>chat scrolls on e-ink, oldest at top and newest at the bottom, clock times (<code>formatMessageTime</code>, also used by the list), no time shown when it is not known, untrustworthy stored times dropped on load, line cache stops when full</td>
+</tr>
+<tr>
+<td><code>0003-boot-and-debug</code></td>
+<td>GPS.cpp, OSThread.cpp</td>
+<td>u-blox M10 GPS setup runs once (NVS <code>gpscfg</code> / <code>m10v1</code>); <code>Slow job: NAME ran for N ms</code> log</td>
+</tr>
+<tr>
+<td><code>0004-build-config</code></td>
+<td>t-deck-pro/platformio.ini</td>
+<td>ArduinoJson and SensorLib, <code>MESSAGE_HISTORY_LIMIT=60</code>, leaves out ATAK, detection sensor, people counter, store-and-forward and range test (the app partition is full)</td>
+</tr>
+</tbody></table>
+<p>Adding a hook: edit the file in <code>~/meshtastic-firmware</code> (a build leaves it patched), then regenerate that group&#39;s patch with
+<code>git diff -- &lt;its files&gt;</code> (keep the text header). Check with <code>./build.sh</code> and <code>git diff | sha256sum</code> before and after.</p>
+<h2>Where things live (<code>overlay/src/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>graphics/launcher/Launcher.*</code></td>
+<td>Home screen (tiles: Messages, Contacts, Map, Settings, Watchy, Radios, Inbox, Finder), the Watchy screen, first look at all input. Home has no highlight: only a tap or long press on a tile opens it</td>
+</tr>
+<tr>
+<td><code>graphics/launcher/Navigate.*</code></td>
+<td>one frame that serves Map (turn-by-turn), Settings (Wi-Fi, Inbox setup), Radios (the Radio Finder map) and Finder, by mode. Also the background worker task, radio-hold flag, CPU speed control, internet clock sync, and the &quot;main loop stalled&quot; watcher</td>
+</tr>
+<tr>
+<td><code>graphics/launcher/Finder.*</code></td>
+<td>the Finder: list with All / Wi-Fi / Bluetooth / Mesh tabs, then the live hot/cold screen with the steering arrow and sweep strip</td>
+</tr>
+<tr>
+<td><code>graphics/launcher/Gyro.*</code></td>
+<td>the gyro chip (BHI260AP): loads its firmware and keeps the newest orientation. It is a main-loop job (<code>GyroThread</code>): the chip is on the shared I2C wires, so it must never be talked to from another task</td>
+</tr>
+<tr>
+<td><code>graphics/launcher/Messages.*</code></td>
+<td>Messages like a texting app: one row per conversation (each person with direct messages, each channel), newest first, unread dot and count on the Home tile. Tap or Enter opens the conversation in Meshtastic&#39;s own chat screen (bubbles, scrolls up/down, Enter = Reply menu) filtered to it; Delete goes back to the list, swipe left/right moves to the next chat</td>
+</tr>
+<tr>
+<td><code>graphics/launcher/Inbox.*</code></td>
+<td>message inbox fetched from a server over your saved Wi-Fi (settings in <code>InboxDefaults.h</code>)</td>
+</tr>
+<tr>
+<td><code>modules/WatchyLink*</code></td>
+<td>messages to the watch over ESP-NOW</td>
+</tr>
+</tbody></table>
+<h2>How it works</h2>
+<p><strong>Screens and input.</strong> Meshtastic&#39;s UI is a list of frames. I add Home (frame 0), Watchy, Navigate and Inbox.
+<code>Screen::handleInputEvent</code> calls <code>Launcher::handleInput</code> first; if it uses the event, Meshtastic never sees it.
+Touch events carry x/y coordinates; keyboard events have 0,0, which is how they are told apart. Delete on any
+screen but Home goes Home; on Home it does nothing (Meshtastic&#39;s own handler would step to the previous frame,
+which wraps round to the Inbox).</p>
+<p><strong>Threads.</strong> Meshtastic&#39;s main loop runs everything (screen, input, radio, modules) one small job at a time, so
+anything slow there freezes the whole device. Slow work runs in separate FreeRTOS tasks: the Navigate worker
+(scans, Inbox checks, clock sync) and the Finder&#39;s list-scan and live tasks. Tasks never draw; they call
+<code>screen-&gt;runNow()</code> and the main task draws. Shared data uses a lock the drawing side only waits on briefly.
+<strong>Exception: anything on the I2C wires (the gyro chip, like touch, keyboard and battery gauge) is only touched
+from the main loop.</strong> The wire library is not safe for two tasks at once. Running the gyro from its own task made
+its update call hang, kept that task permanently runnable, and starved the screen (every character drawn cost a
+10 ms time slice, so redraws took 4-6 s and Delete lagged).</p>
+<p><strong>Hardware limits that shaped the design</strong></p>
+<ul>
+<li>E-paper: about 1 s per redraw. Redraw only when something on screen would look different.</li>
+<li>One I2C bus is shared by touch (CST328), keyboard (TCA8418), gyro (BHI260AP), fuel gauge (BQ27220) and
+charger. Long transfers slow all of them, so the gyro&#39;s firmware load (about 3 s at 400 kHz) is done once,
+a while after boot, when the device is idle.</li>
+<li>One 2.4 GHz radio for Wi-Fi, Bluetooth and the Watchy link. <code>Navigate::wifiInUse()</code> tells the Watchy link to
+stay off while a scan or Inbox check is running.</li>
+<li>No battery-backed clock: time comes from GPS, or from the internet (NTP) over the saved Wi-Fi. Timezone is the
+device setting <code>device.tzdef</code> (Central: <code>CST6CDT,M3.2.0,M11.1.0</code>).</li>
+<li>No magnetometer: the gyro only knows how far you have turned. Heading needs an anchor (<code>q</code> / <code>e</code>, GPS
+movement, or a known direction). Chip X axis holds steady when the device is tilted, and turning clockwise
+lowers the chip&#39;s X angle.</li>
+<li>CPU idles at 80 MHz (Meshtastic&#39;s choice) and runs at 240 MHz while you use it, then drops back after 20 s.</li>
+</ul>
+<p><strong>Radio Finder (Radios tile).</strong> One map of mesh nodes (from their GPS), Wi-Fi networks and Bluetooth devices
+(placed by fitting several signal-strength readings from spread-out spots; a Wi-Fi and Bluetooth address that
+belong to one device are merged). Placing needs 3 or more scans spread in two directions, and indoor GPS is too
+rough, so indoors most things stay in the list (<code>l</code>) with a distance only. Keys: Enter scan, <code>l</code> list/map,
+<code>w a s d</code> pan, <code>b</code> <code>v</code> zoom, <code>z</code> recenter, <code>n</code> north-up, <code>q</code> <code>e</code> turn &quot;up&quot; 15 degrees, space pause turning.</p>
+<p><strong>Finder (Finder tile).</strong> Pick one Wi-Fi network, Bluetooth device or mesh node. Wi-Fi is read about 3 times a
+second on the network&#39;s own channel, Bluetooth once a second, a mesh node whenever it transmits. The screen
+shows the signal (dBm, or dB for mesh), HOT / WARM / COOL / COLD, a warmer/colder arrow, a rough distance, and:
+a steering arrow toward the strongest direction found so far, and a sweep strip (a flat panorama of every
+reading by where the device pointed). Keys: <code>q</code> <code>e</code> set/nudge north, <code>i</code> flip up/down (chip axis sign not
+verified), <code>c</code> clear, space pause, Delete back.</p>
+<h2>Route parsing (Navigate)</h2>
+<p>The OSRM reply is filtered while it is read (ArduinoJson 6). Two traps, both hit once: build the filter as one full
+expression (<code>filter[&quot;routes&quot;][0][&quot;legs&quot;][0][&quot;steps&quot;][0][&quot;name&quot;] = true</code>), because taking a <code>JsonObject</code> of the steps
+element gives a null object and the filter then drops every step (&quot;No route found&quot; for every route); and raise the
+nesting limit to 20 (the reply nests deeper than the default 10, error <code>TooDeep</code>). A copy of the parsing lives in the
+session scratch as a small C++ test; real responses for Joplin routes gave 5, 18 and 26 steps.</p>
+<h2>Navigation map (Navigate, S_NAV)</h2>
+<p>While navigating, the screen shows the turn arrow, distance and road on top and a map that follows you below: you are
+the arrow near the bottom, &quot;up&quot; is the way you are moving (worked out from where you were 8+ m ago; until you move it is
+the route direction), the real road shape ahead is thick, where you have been is thin, the circle is the next turn, the
+square the destination. The dashed arrow from you is the direction the route wants you to go (about 40 m ahead along
+it). Small compass in the corner shows north. Up/Down (or W/S) zoom, Enter switches to the whole route north-up.
+Route shape comes from the per-step <code>geometry</code> of the OSRM reply (polyline, thinned to 2000 points).</p>
+<p><strong>App partition is full</strong> (2368 KB; about 30 KB free with the tile code in). More features (e.g. map tiles with a PNG decoder) need
+more room: either trim more modules, or resize the partition table (there are ~12 MB of unused flash after 0x400000,
+but settings and messages live in the 1 MB spiffs at 0x300000, so that partition must not move).</p>
+<h2>Map tiles (Tiles.*, TileCodec.h)</h2>
+<p>Street tiles from OpenStreetMap, kept on the SD card (must be <strong>FAT32</strong>: run <code>sudo tools/prepare_sd.sh /dev/sdX</code> with
+the card in the laptop; it backs the card up first). When a route is made (on the saved Wi-Fi) the T-Deck downloads
+the tiles for zoom 14, 15 and 16 around the start, around the destination and along the route (at most 150), one HTTPS
+connection, named in the User-Agent, stopping at the first refusal (403/429). <code>TileCodec.h</code> turns each PNG into a 1-bit
+256x256 tile (dark pixels stay ink, near-white stays paper, greys become a light dot pattern) using the chip&#39;s built-in
+inflate (ROM <code>tinfl_decompress</code>, no library): 8 KB per tile at <code>/maps/&lt;z&gt;/&lt;x&gt;/&lt;y&gt;.t1</code>. <code>TileCodec.h</code> is portable and was
+checked bit for bit against an independent Python version on real tiles (palette, RGB, RGBA, grey, grey+alpha).
+While navigating, <code>Tiles::drawMap</code> samples the tiles for every map pixel (rotated to your heading) and the route is
+drawn over them with a paper outline. Up to 6 tiles are held in RAM (48 KB) while the map is on screen and freed after.
+Street names are part of the picture, so they turn with the map. Nothing is fetched while navigating.
+OpenStreetMap&#39;s tile policy forbids bulk downloading, so keep the area small. The server blocks made-up or generic
+User-Agents (a test one containing &quot;test&quot; got a 403 image): keep <code>TDeckProNavigator/1.0 (personal use)</code>.</p>
+<h2>Debugging</h2>
+<ul>
+<li>USB log: <code>~/watchy-build/capture_log.py OUT SECONDS [USB_SERIAL]</code>, run with <code>~/tdeck-tools/bin/python</code>. Read it
+with <code>sed &#39;s/\x1b\[[0-9;]*m//g; s/\r//&#39; OUT | grep -a ...</code>. Serial for this device: 28:37:2F:91:20:98.</li>
+<li><code>Main loop stalled N ms (was doing: ...)</code> and <code>Slow job: NAME ran for N ms</code> in the log mean the main loop was held
+up; the second names the job, the first says what my background tasks were doing. Also <code>Finder: drawing ... took</code>.</li>
+<li>Finding a task that never sleeps: sample <code>eTaskGetState(xTaskGetHandle(&quot;name&quot;))</code> 20 times; a task that is
+<code>eReady</code> every time is spinning (<code>vTaskList</code> is not compiled into this build).</li>
+<li>Settings: <code>~/tdeck-tools/bin/meshtastic --port /dev/ttyACM0 --get/--set ...</code> (retry: it times out sometimes
+right after a reboot).</li>
+<li>Flashing: <code>esptool ... hard-reset</code> restarts the device without changing anything.</li>
+<li>After flashing, the e-paper may show the old screen until something redraws it.</li>
+</ul>
+<h2>Known issues / not done</h2>
+<ul>
+<li>Boot: Home is usable at about 8 s. Remaining blocking steps: PMU 1.9 s at 7 s, GPS chip detection two 1 s steps at 10-11 s, and
+the gyro firmware load (3.3 s, main loop) once at 30 s uptime and 8 s idle. (The 10 s GPS setup is now skipped, in <code>0003-boot-and-debug</code>.)</li>
+<li>A Wi-Fi scan in the Finder&#39;s live view stalls the main loop for about 2 s per reading.</li>
+<li>Finder up/down direction (<code>i</code>) and gyro drift have not been measured on the hardware.</li>
+<li>4G modem: fitted, a SIMCom A7682E (Europe/Asia variant: LTE 1/3/5/7/8/20 + 2G 900/1800), so it sees few or no US towers. No SIM tested. The test screen is parked in <code>parked/modem/</code> (not built); AT commands answered fine on RX 11 / TX 10 after a PWRKEY pulse. Its GNSS was not compared with the main u-blox GPS.</li>
+</ul>
+    </div>
+
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← all posts</a>
+      <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a>
+    </div>
+  </main>
+</div>
+<script src="/components/sidebar.js"></script>
+</body>
+</html>

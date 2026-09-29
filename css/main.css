@@ -543,3 +543,8 @@ a { color: inherit; text-decoration: none; }
 
   .post-item { grid-template-columns: 70px 1fr; gap: 0 0.75rem; }
 }
+
+.post-body table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9em; }
+.post-body th, .post-body td { text-align: left; vertical-align: top; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border, #333); }
+.post-body th { font-weight: 600; }
+.post-body { overflow-wrap: anywhere; }
