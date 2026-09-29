@@ -31,6 +31,8 @@
         <div class="nav-label">projects</div>
         <a href="https://github.com/elishajkmiller/ROBIN" class="nav-link" target="_blank">Robin</a>
         <a href="https://pow417.com" class="nav-link" target="_blank">POW417</a>
+        <a href="https://github.com/elishajkmiller/tdeck-pro-nav" class="nav-link" target="_blank">T-Deck Pro</a>
+        <a href="https://github.com/elishajkmiller/watchy-firmware" class="nav-link" target="_blank">Watchy</a>
       </div>
 
       <div class="nav-section">
