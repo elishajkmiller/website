@@ -43,15 +43,22 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
+      <!-- 1. PHOTO: paste the photo link between the quotes. -->
+      <!--    To move the picture in its frame, optionally add --x:50%;--y:30%; just before --p (0% to 100%). -->
+      <!--    If you leave --x and --y out, the picture stays centred (50%). -->
+      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
-        <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>   <!-- 2. TITLE: type the artwork title -->
+      <!-- 2. TITLE: type the artwork title. -->
+        <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>
 
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or leave it empty or delete the span, and no circle shows -->
+      <!-- 3. ARTIST: type the name after "by". -->
+      <!--    The round headshot is optional: paste its link, or leave it empty or delete the span, and no circle shows. -->
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>
 
-        <a class="dja-site" href="WEBSITE-LINK-HERE"></a>   <!-- 4. WEBSITE: optional. Paste the link, or leave href="" empty or delete this line, and no link shows -->
+      <!-- 4. WEBSITE: optional. Paste the link, or leave href="" empty or delete this line, and no link shows. -->
+        <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
 
   <!-- ================= For this artwork edit above this line ================= -->
 
