@@ -34,6 +34,12 @@
     .track div{flex:none;width:227px;height:100%;box-sizing:border-box;border:3px solid #2a2a2a;background-size:cover;background-position:center}
     @keyframes run{to{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
+    [data-i]{cursor:zoom-in}
+    .lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100000;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+    .lb[hidden]{display:none}
+    .lb img{display:block;max-width:94vw;max-height:80vh;object-fit:contain}
+    .lb p{color:#fff;margin:14px 0 0;font-weight:600;text-align:center}
+    .lb b{position:absolute;top:10px;right:18px;color:#fff;font-size:34px;line-height:1;font-weight:400}
     .gallery{position:relative;overflow:hidden;padding-top:28px}
     .gallery::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
     .gallery .wrap{position:relative;z-index:1}
@@ -131,6 +137,7 @@
     <div><img class="mmsc" src="img/mmsc.png" alt="Missouri Main Street Accredited Program logo"><p class="small">As a <a class="inl" href="/downtown-joplin-art/#">Missouri Main Street</a> Accredited program, Downtown Joplin Alliance is a recognized, leading program among the state network of more than 48 districts and communities who share both a commitment to creating high-quality places and to building stronger communities through preservation-based economic development.</p></div>
   </div>
 </footer>
+<div class="lb" id="lb" hidden><b>&times;</b><img alt=""><p></p></div>
 <script>
   document.getElementById('menubtn').onclick=function(){document.getElementById('nav').classList.toggle('open')};
   var art=[
@@ -173,13 +180,20 @@
   function render(){
     grid.innerHTML=art.map(function(a){
       var c=a[4].split(',');
-      return '<article class="card"><div class="art" style="background:'+bg(a)+'"></div>'+
+      return '<article class="card"><div class="art" data-i="'+art.indexOf(a)+'" style="background:'+bg(a)+'"></div>'+
         '<div class="body"><h3>'+a[1]+'</h3>'+by(a)+'</div></article>';
     }).join('');
   }
   render();
-  var tr=art.map(function(a){var c=a[4].split(',');return '<div style="background:'+bg(a)+'"></div>'}).join('');
+  var tr=art.map(function(a){var c=a[4].split(',');return '<div data-i="'+art.indexOf(a)+'" style="background:'+bg(a)+'"></div>'}).join('');
   document.getElementById('track').innerHTML=tr+tr;
+  var lb=document.getElementById('lb');
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-i]');
+    if(t){var a=art[+t.dataset.i];lb.querySelector('img').src='img/art/art-'+a[0].slice(-2)+'.jpg';lb.querySelector('p').textContent=a[1]+', by '+a[2];lb.hidden=false;return;}
+    if(!lb.hidden){lb.hidden=true;}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.hidden=true;}});
   var show=document.getElementById('bgshow'), si=0;
   var step=Math.ceil(art.length/8);
   show.innerHTML=art.filter(function(a,i){return i%step===0}).map(function(a){var c=a[4].split(',');return '<div class="s" style="background:'+bg(a)+'"></div>'}).join('');
