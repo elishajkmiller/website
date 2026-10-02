@@ -19,21 +19,22 @@
     .msg{margin-left:4px;color:#fcd145;font-weight:600;align-self:center}
     ol{color:#a9a6a2;font-weight:500;padding-left:20px;margin:14px 0 0}
     .sheet{background:#fff;margin-top:12px}
-    .cbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;background:#000;color:#bdbab6;padding:8px 16px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
-    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap}
+    .cbar{display:flex;flex-direction:column;gap:6px;background:#000;color:#bdbab6;padding:8px 16px 10px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
+    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .cbar .cl{color:#fff;font-weight:600}
     .cbar a{font:600 13px/1.6 "Open Sans",Arial,sans-serif;padding:0 12px;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;text-decoration:none;transition:all .2s}
     .cbar a:hover{background:#fff;border-color:#fff;color:#111}
     .cbar a.on{background:#62c8c9;color:#111}
+    .cbar a.sp{margin-left:10px}
   </style>
 </head>
 <body>
-<div class="cbar"><span>Concept preview. Artwork, names and links are placeholders.</span><div class="cb"><a href="/qr-slate/">Slate</a><a href="/downtown-joplin-art/">Landing page</a><a href="/divi-export/" class="on">Divi export</a></div></div>
+<div class="cbar"><span>Concept preview. Artwork, names and links are placeholders.</span><div class="cb"><span class="cl">Concept slate: Art: Outside the Box</span><a href="/qr-slate/?v=1" data-v="1">Version 1</a><a href="/qr-slate/?v=2" data-v="2">Version 2</a><a href="/qr-slate/?v=3" data-v="3">Version 3</a><a class="sp" href="/downtown-joplin-art/">Landing page</a><a class="on" href="/divi-export/">Divi export</a><a href="/divi-export/dja-art-page.html" download>Download .html</a></div></div>
 <div class="bar">
   <h1>Divi export: Art: Outside the Box</h1>
   <p>This is the consolidated page below, exactly as it would be pasted into Divi. Placeholder photos, names and links are samples.</p>
   <div class="btns">
     <button class="b" id="copy">Copy code</button>
-    <a class="b alt" href="dja-art-page.html" download>Download .html</a>
     <span class="msg" id="msg"></span>
   </div>
   <ol>

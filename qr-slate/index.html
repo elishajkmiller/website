@@ -31,22 +31,18 @@
     .sec a{color:#62c8c9;text-decoration:underline}
     .open{border-left:3px solid #62c8c9;padding:2px 0 2px 14px;margin:30px 0 0}
     .open p{margin:0;color:#e8e6e3}
-    .cbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;background:#000;color:#bdbab6;padding:8px 16px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
-    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap}
+    .cbar{display:flex;flex-direction:column;gap:6px;background:#000;color:#bdbab6;padding:8px 16px 10px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
+    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .cbar .cl{color:#fff;font-weight:600}
     .cbar a{font:600 13px/1.6 "Open Sans",Arial,sans-serif;padding:0 12px;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;text-decoration:none;transition:all .2s}
     .cbar a:hover{background:#fff;border-color:#fff;color:#111}
     .cbar a.on{background:#62c8c9;color:#111}
+    .cbar a.sp{margin-left:10px}
   </style>
 </head>
 <body>
-<div class="cbar"><span>Concept preview. Artwork, names and links are placeholders.</span><div class="cb"><a href="/qr-slate/" class="on">Slate</a><a href="/downtown-joplin-art/">Landing page</a><a href="/divi-export/">Divi export</a></div></div>
+<div class="cbar"><span>Concept preview. Artwork, names and links are placeholders.</span><div class="cb"><span class="cl">Concept slate: Art: Outside the Box</span><a href="/qr-slate/?v=1" data-v="1">Version 1</a><a href="/qr-slate/?v=2" data-v="2">Version 2</a><a href="/qr-slate/?v=3" data-v="3">Version 3</a><a class="sp" href="/downtown-joplin-art/">Landing page</a><a href="/divi-export/">Divi export</a><a href="/divi-export/dja-art-page.html" download>Download .html</a></div></div>
 <main>
-  <p class="tag">Concept slate: Art: Outside the Box</p>
-  <div class="tabs" id="tabs">
-    <button class="tab on" data-src="label.png">Version 1</button>
-    <button class="tab" data-src="label-v2.png">Version 2</button>
-    <button class="tab" data-src="label-v3.png">Version 3</button>
-  </div>
   <img class="slate" id="slate" src="label.png" alt="Rectangular QR slate with the Downtown Joplin Alliance logo, a QR code, and sponsor logos for Allo, Sparklight, KODE and KSN">
   <p>About the landing page: every code on every box leads to this one page. It opens on a slow loop of the artwork, then shows every piece with its title and artist. Tap any piece to see it full screen at its own shape, and tap the artist link to learn more about them. Because it is one page, the QR never has to change. Adding or fixing an artwork is just an edit to the page.</p>
   <p>6 × 3 inches here as a sample.</p>
@@ -73,16 +69,15 @@
   </div>
 </main>
 <script>
-  document.getElementById('tabs').addEventListener('click',function(e){
-    var b=e.target.closest('.tab'); if(!b)return;
-    document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===b)});
-    document.getElementById('slate').src=b.dataset.src;
-  });
-  (function(){
-    var v=new URLSearchParams(location.search).get('v');
-    var tabs=document.querySelectorAll('.tab');
-    if(v&&tabs[v-1])tabs[v-1].click();
-  })();
+  var slate=document.getElementById('slate'), vs=document.querySelectorAll('.cbar [data-v]');
+  var files=['label.png','label-v2.png','label-v3.png'];
+  function setV(n){
+    slate.src=files[n-1];
+    vs.forEach(function(a){a.classList.toggle('on',+a.dataset.v===n)});
+  }
+  vs.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();setV(+a.dataset.v)})});
+  var q=new URLSearchParams(location.search).get('v');
+  setV(files[q-1]?+q:1);
 </script>
 </body>
 </html>
