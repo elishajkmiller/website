@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>ART: Outside the Box (Concept)</title>
+  <title>ART: Outside the Box (Concept v3)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap">
   <style>
     :root{--teal:#62c8c9;--blue:#2ea3f2;--dark:#2a2a2a;--orange:#ef6944}
@@ -56,14 +56,35 @@
     .vb{font:500 14px/1.7em 'Open Sans',Arial,sans-serif;text-transform:none;padding:0 .8em;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;transition:all .2s}
     .vb:hover{background:#2a2a2a;border-color:#2a2a2a;color:#fff}
     .vb.on{background:#62c8c9;color:#fff}
+      .vbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;background:#f7f7f7;border-bottom:1px solid #eee;padding:8px 12px;font-size:12px;font-weight:700;text-transform:uppercase;color:#666}
+    .vb{font:500 14px/1.7em 'Open Sans',Arial,sans-serif;text-transform:none;padding:0 .8em;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;transition:all .2s}
+    .vb:hover{background:#2a2a2a;border-color:#2a2a2a;color:#fff}
+    .vb.on{background:#62c8c9;color:#fff}
+  
+    .pp{max-width:560px;margin:0 auto;padding:30px 20px 40px}
+    .pp h1{text-align:center}
+    .pp .lead{text-align:center;margin:0 0 20px}
+    .prog{background:#f7f7f7;border-radius:3px;padding:16px 18px;margin-bottom:22px;text-align:center}
+    .prog b{display:block;font-size:30px;color:#333;line-height:1.1}
+    .bar{height:10px;background:#e6e6e6;border-radius:5px;margin-top:10px;overflow:hidden}
+    .bar i{display:block;height:100%;width:0;background:var(--teal);transition:width .3s}
+    .pc{display:flex;gap:14px;align-items:center;padding:12px;margin-bottom:12px;box-shadow:0 2px 18px rgba(0,0,0,.1);background:#fff}
+    .pc .th{flex:none;width:76px;height:76px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px}
+    .pc h3{font-size:16px;padding:0 0 2px}
+    .pc p{margin:0;font-size:13px}
+    .pc button{margin-left:auto;flex:none;font:500 14px/1.7em 'Open Sans',Arial,sans-serif;padding:0 .8em;background:transparent;border:2px solid var(--teal);border-radius:3px;color:var(--teal);cursor:pointer;transition:all .2s}
+    .pc button:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+    .pc.found{outline:2px solid var(--teal)}
+    .pc.found button{background:var(--teal);color:#fff}
+    .reset{display:block;margin:14px auto 0;background:none;border:0;color:#999;font:500 13px 'Open Sans',Arial,sans-serif;cursor:pointer;text-decoration:underline}
   </style>
 </head>
 <body>
 <div class="preview">Concept preview. Artwork and artists below are placeholders.</div>
-<div class="vbar"><span>Concept version:</span><a class="vb on" href="/downtown-joplin-art/">Version 1</a><a class="vb" href="/downtown-joplin-art-2/">Version 2</a><a class="vb" href="/downtown-joplin-art-3/">Version 3</a></div>
+<div class="vbar"><span>Concept version:</span><a class="vb" href="/downtown-joplin-art/">Version 1</a><a class="vb" href="/downtown-joplin-art-2/">Version 2</a><a class="vb on" href="/downtown-joplin-art-3/">Version 3</a></div>
 <header>
   <div class="hwrap">
-    <a href="#"><img src="img/dja-logo.png" alt="Downtown Joplin Alliance"></a>
+    <a href="#"><img src="/downtown-joplin-art/img/dja-logo.png" alt="Downtown Joplin Alliance"></a>
     <button class="menubtn" id="menubtn" aria-label="Menu">&#9776;</button>
     <nav id="nav"><ul>
       <li><a href="#" class="cur">Events</a></li>
@@ -74,61 +95,52 @@
     </ul></nav>
   </div>
 </header>
-<div class="wrap">
-  <section class="hero">
-    <h1>ART: Outside the Box</h1>
-    <p>Downtown's utility boxes are now canvases. Browse the artwork, meet the artists, and find your next box to visit. This is the page every box's QR code leads to.</p>
-  </section>
-  <div class="chips" id="chips">
-    <button class="chip on" data-f="all">All</button>
-    <button class="chip" data-f="Adult">Adult</button>
-    <button class="chip" data-f="Youth">Youth</button>
-  </div>
+<div class="pp">
+  <h1>ART: Outside the Box</h1>
+  <p class="lead">Find every box downtown. Tap "Found it" as you go and this page remembers on your phone.</p>
+  <div class="prog"><b id="count">0 of 6 found</b><div class="bar"><i id="fill"></i></div></div>
+  <div id="cards"></div>
+  <button class="reset" id="reset">Start over</button>
 </div>
-<div class="wrap"><section class="grid" id="grid"></section></div>
-
 <section class="sponsors">
   <h4>Sponsored by</h4>
   <div class="logos">
-    <img src="img/Allo.webp" alt="Allo Fiber">
-    <img src="img/sparklight.webp" alt="Sparklight">
-    <img src="img/KODE_Spotter.webp" alt="KODE 12">
-    <img src="img/KSNF_Spotter.webp" alt="KSN">
+    <img src="/downtown-joplin-art/img/Allo.webp" alt="Allo Fiber">
+    <img src="/downtown-joplin-art/img/sparklight.webp" alt="Sparklight">
+    <img src="/downtown-joplin-art/img/KODE_Spotter.webp" alt="KODE 12">
+    <img src="/downtown-joplin-art/img/KSNF_Spotter.webp" alt="KSN">
   </div>
 </section>
 <footer>
   <div class="fcols">
-    <div><img src="img/dja-logo.png" alt="DJA Branding"><p>Downtown Joplin Alliance is a not-for-profit organization dedicated to the revitalization of the downtown community as a thriving, safe and attractive center of art, history, enterprise, commerce, culture, residence, and entertainment.</p></div>
+    <div><img src="/downtown-joplin-art/img/dja-logo.png" alt="DJA Branding"><p>Downtown Joplin Alliance is a not-for-profit organization dedicated to the revitalization of the downtown community as a thriving, safe and attractive center of art, history, enterprise, commerce, culture, residence, and entertainment.</p></div>
     <div><h5>Events</h5><a href="#">Third Thursday</a><a href="#">First Friday WineShare</a><a href="#">Joplin Empire Market</a><a href="#">Downtown Calendar</a></div>
     <div><h5>Downtown Joplin Alliance</h5><a href="#">About DJA</a><a href="#">Meet the Board</a><a href="#">Donate</a><a href="#">Contact Us</a></div>
     <div><h5>Resources</h5><a href="#">Parking Map</a><a href="#">Do Business Downtown</a><a href="#">Endangered Properties Program</a></div>
   </div>
   <div class="copy">Presented by Downtown Joplin Alliance, the City of Joplin, Spiva Center for the Arts and the Joplin Arts District. Concept preview.</div>
 </footer>
+
 <script>
   document.getElementById('menubtn').onclick=function(){document.getElementById('nav').classList.toggle('open')};
-  var art=[
-    ['Box 01','Sample Artwork One','Sample Artist A','Adult','#2a2a2a,#62c8c9'],
-    ['Box 02','Sample Artwork Two','Sample Artist B','Youth','#ef6944,#fcd145'],
-    ['Box 03','Sample Artwork Three','Sample Artist C','Adult','#2ea3f2,#62c8c9'],
-    ['Box 04','Sample Artwork Four','Sample Artist D','Adult','#62c8c9,#fcd145'],
-    ['Box 05','Sample Artwork Five','Sample Artist E','Youth','#ef6944,#2a2a2a'],
-    ['Box 06','Sample Artwork Six','Sample Artist F','Adult','#62c8c9,#ef6944']
-  ];
-  var grid=document.getElementById('grid');
-  function render(f){
-    grid.innerHTML=art.filter(function(a){return f==='all'||a[3]===f}).map(function(a){
-      var c=a[4].split(',');
-      return '<article class="card"><div class="art" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">ARTWORK PHOTO</div>'+
-        '<div class="body"><div class="box">'+a[0]+'</div><h3>'+a[1]+'</h3><p>by '+a[2]+'</p><span class="cat">'+a[3]+'</span></div></article>';
+  var art=[["01", "Sample Artwork One", "Sample Artist A", "Adult", "#2a2a2a,#62c8c9"], ["02", "Sample Artwork Two", "Sample Artist B", "Youth", "#ef6944,#fcd145"], ["03", "Sample Artwork Three", "Sample Artist C", "Adult", "#2ea3f2,#62c8c9"], ["04", "Sample Artwork Four", "Sample Artist D", "Adult", "#62c8c9,#fcd145"], ["05", "Sample Artwork Five", "Sample Artist E", "Youth", "#ef6944,#2a2a2a"], ["06", "Sample Artwork Six", "Sample Artist F", "Adult", "#62c8c9,#ef6944"]], KEY='dja-art-found-concept', found={};
+  try{found=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(found))}catch(e){}}
+  function render(){
+    var n=0;
+    document.getElementById('cards').innerHTML=art.map(function(a){
+      var f=!!found[a[0]]; if(f)n++; var c=a[4].split(',');
+      return '<div class="pc'+(f?' found':'')+'"><div class="th" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">BOX '+a[0]+'</div><div><h3>'+a[1]+'</h3><p>by '+a[2]+' &middot; '+a[3]+'</p></div><button data-id="'+a[0]+'">'+(f?'Found &#10003;':'Found it')+'</button></div>';
     }).join('');
+    document.getElementById('count').textContent=n+' of '+art.length+' found';
+    document.getElementById('fill').style.width=(100*n/art.length)+'%';
   }
-  document.getElementById('chips').addEventListener('click',function(e){
-    var b=e.target.closest('.chip'); if(!b)return;
-    document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===b)});
-    render(b.dataset.f);
+  document.getElementById('cards').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    var id=b.dataset.id; if(found[id])delete found[id]; else found[id]=1; save(); render();
   });
-  render('all');
+  document.getElementById('reset').onclick=function(){found={};save();render()};
+  render();
 </script>
 </body>
 </html>
