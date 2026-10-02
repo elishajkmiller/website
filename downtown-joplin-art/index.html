@@ -38,7 +38,7 @@
     .gallery::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
     .gallery .wrap{position:relative;z-index:1}
     .bgshow{position:absolute;inset:-70px;z-index:0}
-    .bgshow .s{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease;filter:blur(38px) saturate(1.15)}
+    .bgshow .s{position:absolute;inset:0;opacity:0;transition:opacity 4s ease;filter:blur(38px) saturate(1.15)}
     .bgshow .s.on{opacity:1}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:40px}
     .card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column}
@@ -185,7 +185,7 @@
   show.innerHTML=art.filter(function(a,i){return i%step===0}).map(function(a){var c=a[4].split(',');return '<div class="s" style="background:'+bg(a)+'"></div>'}).join('');
   var slides=show.children; slides[0].classList.add('on');
   if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
-    setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on')},4000);
+    setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on')},10000);
   }
 </script>
 </body>

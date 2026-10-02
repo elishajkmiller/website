@@ -69,7 +69,7 @@
 #dja-art .dja-gallery{position:relative;overflow:hidden;padding:28px 0 40px}
 #dja-art .dja-gallery::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
 #dja-art .dja-bg{position:absolute;top:-70px;right:-70px;bottom:-70px;left:-70px;z-index:0}
-#dja-art .dja-s{position:absolute;top:0;right:0;bottom:0;left:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;filter:blur(38px) saturate(1.15)}
+#dja-art .dja-s{position:absolute;top:0;right:0;bottom:0;left:0;background-size:cover;background-position:center;opacity:0;transition:opacity 4s ease;filter:blur(38px) saturate(1.15)}
 #dja-art .dja-s.dja-on{opacity:1}
 #dja-art .dja-grid{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
 #dja-art .dja-card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column}
@@ -182,7 +182,7 @@
     slides[n].className='dja-s';
     n=(n+1)%slides.length;
     slides[n].className='dja-s dja-on';
-  },4000);
+  },10000);
 })();
 </script>
 </div>
