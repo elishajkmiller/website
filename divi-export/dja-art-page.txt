@@ -3,26 +3,24 @@
   Paste ALL of this into ONE Divi "Fullwidth Code" module (not a Text module).
 
   HOW TO EDIT
-  1. Each artwork is one block. It starts with an "ARTWORK" comment and ends with the closing article tag.
-  2. Only edit between the two lines inside each block that say "edit below this line" and "edit above this line". Change just the words in capitals and the text between the tags:
+  1. Each artwork is one block of a few lines. Only edit between its two lines that say "edit below this line" and "edit above this line". Nothing else in the block needs touching.
+  2. Change the words in capitals and the text between the tags:
        PHOTO-LINK-HERE     the artwork photo (Media Library, open the photo, copy "File URL")
        the title           the words inside the h3 tags
-       the artist          the words after "by"
-       HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
-       WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
-     The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
-  TO MOVE A PICTURE inside its frame: on its photo line, change the --x (left/right) and --y (up/down) numbers, 0% to 100%. 50% is centred.
+       the artist          the name between the p tags (the page adds the word "by")
+       HEADSHOT-LINK-HERE  optional round headshot link. None? Leave it empty ("") and no circle shows
+       WEBSITE-LINK-HERE   optional artist website link. None? Leave it empty ("") and no link shows
+  3. TO MOVE A PICTURE inside its frame: on its photo line, change --x (left/right) and --y (up/down), 0% to 100%. 50% is centred.
 
   EXAMPLE, filled in:
-       PHOTO-LINK-HERE     becomes  https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg
-       the title           becomes  Water Lilies
-       the artist          becomes  Claude Monet
-       HEADSHOT-LINK-HERE  becomes  https://www.downtownjoplin.com/wp-content/uploads/2026/10/monet.jpg   (or empty: url(''))
-       WEBSITE-LINK-HERE   becomes  https://example.com   (or empty: href="")
+       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg')"></div>
+       <h3>Water Lilies</h3>
+       <p class="dja-artist" data-headshot="https://www.downtownjoplin.com/wp-content/uploads/2026/10/monet.jpg" data-site="https://example.com">Claude Monet</p>
 
-  3. TO ADD AN ARTWORK: copy one whole block, from its "ARTWORK" comment to its closing article tag, and paste it after the last block.
-  4. TO REMOVE ONE: delete its whole block.
-  5. NEVER edit anything below the line that says DO NOT EDIT BELOW.
+  4. TO ADD AN ARTWORK: copy one whole block, from its article tag to its closing article tag, and paste it after the last block.
+  5. TO REMOVE ONE: delete its whole block.
+  6. SPONSORS are near the bottom, under their own "edit below this line" label.
+  7. NEVER edit anything below the line that says DO NOT EDIT BELOW.
 
   The big carousel and the blurred background build themselves from the photos.
 -->
@@ -38,603 +36,374 @@
     <div class="dja-bg" aria-hidden="true"></div>
     <div class="dja-grid">
 
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
-  <!-- ================= For this artwork edit below this line ================= -->
-
-      <!-- 1. PHOTO: paste the photo link between the quotes. -->
-      <!--    To move the picture in its frame, change --x (left/right) and --y (up/down), from 0% to 100%. -->
-      <!--    50% is centred, so leave them at 50% if the picture looks right. -->
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
-      <!-- 2. TITLE: type the artwork title. -->
       <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>
 
-      <!-- 3. ARTIST: type the name after "by". -->
-      <!--    The round headshot is optional: paste its link, or leave it empty or delete the span, and no circle shows. -->
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Piet Mondrian</p>
 
-      <!-- 4. WEBSITE: optional. Paste the link, or leave href="" empty or delete this line, and no link shows. -->
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Water Lilies</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Improvisation No. 30 (Cannons)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vasily Kandinsky</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Branch of the Seine near Giverny (Mist)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Grapes, Lemons, Pears, and Apples</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Stacks of Wheat (Sunset, Snow Effect)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Stacks of Wheat (End of Summer)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Poppy Field (Giverny)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Irises</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Movement</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Marsden Hartley</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Marsden Hartley</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Arlésiennes (Mistral)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Paul Gauguin</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Paul Gauguin</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Bordighera</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Still Life with Geranium</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri Matisse</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Henri Matisse</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Composition (No. 1) Gray-Red</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Piet Mondrian</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>The Bedroom</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Magnolias on Light Blue Velvet Cloth</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Martin Johnson Heade</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Martin Johnson Heade</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Ballet Dancers</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri de Toulouse-Lautrec</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Henri de Toulouse-Lautrec</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Chrysanthemums</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Pierre-Auguste Renoir</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Pierre-Auguste Renoir</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Houses of Parliament, London</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Boats on the Beach at Étretat</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Flowers: Poppies and Daisies</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Odilon Redon</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Odilon Redon</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Painting with Green Center</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vasily Kandinsky</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Still Life with Flowers</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Odilon Redon</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Odilon Redon</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>The Poet&#x27;s Garden</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Rocks at Port-Goulphar, Belle-Île</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Venice, Palazzo Dario</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
 
-
-    <!-- ====================================================================== -->
-    <!-- ARTWORK -->
-    <!-- ====================================================================== -->
     <article class="dja-card">
-
-  <!-- ================= For this artwork edit below this line ================= -->
+  <!-- ================= ARTWORK: edit below this line ================= -->
 
       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <h3>Sandvika, Norway</h3>
 
-      <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
 
-      <a class="dja-site" href="WEBSITE-LINK-HERE"></a>
-
-  <!-- ================= For this artwork edit above this line ================= -->
-
+  <!-- ================= ARTWORK: edit above this line ================= -->
     </article>
 
     </div>
   </section>
 
-  <!-- SPONSORS: change each logo's src link and alt name. Delete a whole img line to remove a sponsor. -->
+  <!-- ================= SPONSORS: edit below this line ================= -->
+  <!-- Change each logo's src link and alt name. Delete a whole img line to remove a sponsor. -->
   <section class="dja-sponsors">
     <h4>Sponsored by</h4>
     <div class="dja-logos">
@@ -644,8 +413,7 @@
       <img class="dja-l-ksn" src="/wp-content/uploads/2026/10/KSNF_Spotter.webp" alt="KSN">
     </div>
   </section>
-
-  <div class="dja-lb" hidden><b>&times;</b><img alt=""><p></p></div>
+  <!-- ================= SPONSORS: edit above this line ================= -->
 
   <!-- ================= DO NOT EDIT BELOW THIS LINE (the design and the moving parts) ================= -->
 <style>
@@ -699,41 +467,55 @@
 (function(){
   var root=document.getElementById('dja-art');
   if(!root){return;}
+  function good(v){
+    if(!v){return false;}
+    if(v.indexOf('HERE')>-1){return false;}
+    return true;
+  }
   var cardEls=root.querySelectorAll('.dja-card');
   var w;
   for(w=0;w<cardEls.length;w++){
+    var card=cardEls[w];
+    var ttl=card.querySelector('h3');
+    var pic=card.querySelector('.dja-photo');
+    var who=card.querySelector('.dja-artist');
+    if(pic){
+      pic.setAttribute('role','img');
+      if(ttl){pic.setAttribute('aria-label',ttl.textContent);}
+    }
+    if(who){
+      var hs=who.getAttribute('data-headshot');
+      var site=who.getAttribute('data-site');
+      var by=document.createElement('div');
+      by.className='dja-by';
+      if(good(hs)){
+        var av=document.createElement('span');
+        av.className='dja-av';
+        av.style.setProperty('--a',"url('"+hs+"')");
+        by.appendChild(av);
+      }
+      var nm=document.createElement('span');
+      nm.textContent='by '+who.textContent;
+      by.appendChild(nm);
+      card.replaceChild(by,who);
+      if(good(site)){
+        var lnk=document.createElement('a');
+        lnk.className='dja-site';
+        lnk.href=site;
+        lnk.textContent='Artist website \u2197';
+        lnk.setAttribute('target','_blank');
+        lnk.setAttribute('rel','noopener');
+        card.appendChild(lnk);
+      }
+    }
     var bodyEl=document.createElement('div');
     bodyEl.className='dja-body';
-    var kids=Array.prototype.slice.call(cardEls[w].children);
+    var kids=Array.prototype.slice.call(card.children);
     var q;
     for(q=0;q<kids.length;q++){
-      if(kids[q].className!=='dja-photo'){bodyEl.appendChild(kids[q]);}
+      if(kids[q]!==pic){bodyEl.appendChild(kids[q]);}
     }
-    cardEls[w].appendChild(bodyEl);
-  }
-  var pics=root.querySelectorAll('.dja-photo');
-  var y;
-  for(y=0;y<pics.length;y++){
-    var ttl=pics[y].parentNode.querySelector('h3');
-    pics[y].setAttribute('role','img');
-    if(ttl){pics[y].setAttribute('aria-label',ttl.textContent);}
-  }
-  var links=root.querySelectorAll('.dja-site');
-  var heads=root.querySelectorAll('.dja-av');
-  var z;
-  for(z=0;z<links.length;z++){
-    var h=links[z].getAttribute('href')||'';
-    if(h===''||h.indexOf('HERE')>-1){
-      links[z].parentNode.removeChild(links[z]);
-    }else{
-      links[z].textContent='Artist website \u2197';
-      links[z].setAttribute('target','_blank');
-      links[z].setAttribute('rel','noopener');
-    }
-  }
-  for(z=0;z<heads.length;z++){
-    var st=heads[z].getAttribute('style')||'';
-    if(st.indexOf("url('')")>-1||st.indexOf('HERE')>-1){heads[z].parentNode.removeChild(heads[z]);}
+    card.appendChild(bodyEl);
   }
   var bg=root.querySelector('.dja-bg');
   var photos=root.querySelectorAll('.dja-photo');
@@ -758,7 +540,11 @@
       track.appendChild(d);
     }
   }
-  var lb=root.querySelector('.dja-lb');
+  var lb=document.createElement('div');
+  lb.className='dja-lb';
+  lb.hidden=true;
+  lb.innerHTML='<b>&times;</b><img alt=""><p></p>';
+  root.appendChild(lb);
   var lbi=lb.querySelector('img');
   var lbp=lb.querySelector('p');
   function openLb(n){
