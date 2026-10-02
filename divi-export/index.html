@@ -100,11 +100,18 @@
 #dja-art .dja-s.dja-on{opacity:1}
 #dja-art .dja-grid{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
 #dja-art .dja-card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column}
-#dja-art .dja-photo{flex:none;aspect-ratio:4/3;background-size:cover;background-position:center}
+#dja-art .dja-card:nth-child(7n+1){--g:linear-gradient(135deg,#2a2a2a,#62c8c9)}
+#dja-art .dja-card:nth-child(7n+2){--g:linear-gradient(135deg,#ef6944,#fcd145)}
+#dja-art .dja-card:nth-child(7n+3){--g:linear-gradient(135deg,#2ea3f2,#62c8c9)}
+#dja-art .dja-card:nth-child(7n+4){--g:linear-gradient(135deg,#62c8c9,#fcd145)}
+#dja-art .dja-card:nth-child(7n+5){--g:linear-gradient(135deg,#ef6944,#2a2a2a)}
+#dja-art .dja-card:nth-child(7n+6){--g:linear-gradient(135deg,#62c8c9,#ef6944)}
+#dja-art .dja-card:nth-child(7n+7){--g:linear-gradient(135deg,#fcd145,#2ea3f2)}
+#dja-art .dja-photo{flex:none;aspect-ratio:4/3;background-size:cover;background-position:center;background-image:var(--p,none),var(--g)}
 #dja-art .dja-body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 #dja-art .dja-body h3{font:700 18px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 6px}
 #dja-art .dja-by{display:flex;align-items:center;gap:8px;margin:0}
-#dja-art .dja-av{width:30px;height:30px;border-radius:50%;flex:none;border:2px solid #62c8c9;background-color:#cfd8dc;background-size:cover;background-position:center}
+#dja-art .dja-av{width:30px;height:30px;border-radius:50%;flex:none;border:2px solid #62c8c9;background-color:#cfd8dc;background-size:cover;background-position:center;background-image:var(--a,none)}
 #dja-art .dja-site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:#62c8c9;transition:opacity .2s}
 #dja-art .dja-site:hover{opacity:.7}
 @media(max-width:560px){#dja-art .dja-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px}#dja-art .dja-body{padding:10px 12px;min-height:88px}#dja-art .dja-body h3{font-size:15px;padding-bottom:4px}#dja-art .dja-by{font-size:12px;gap:6px}#dja-art .dja-av{width:24px;height:24px}#dja-art .dja-site{font-size:12px;margin-top:6px}}
@@ -123,212 +130,34 @@
   <section class="dja-gallery">
     <div class="dja-bg" aria-hidden="true"></div>
     <div class="dja-grid">
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 1 by Sample Artist 1" style="background-image:url('ARTWORK_URL_1'),linear-gradient(135deg,#2a2a2a,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 1</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 1</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 2 by Sample Artist 2" style="background-image:url('ARTWORK_URL_2'),linear-gradient(135deg,#ef6944,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 2</h3>
-        <div class="dja-by"><span>by Sample Artist 2</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 3 by Sample Artist 3" style="background-image:url('ARTWORK_URL_3'),linear-gradient(135deg,#2ea3f2,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 3</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 3</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 4 by Sample Artist 4" style="background-image:url('ARTWORK_URL_4'),linear-gradient(135deg,#62c8c9,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 4</h3>
-        <div class="dja-by"><span>by Sample Artist 4</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 5 by Sample Artist 5" style="background-image:url('ARTWORK_URL_5'),linear-gradient(135deg,#ef6944,#2a2a2a)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 5</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 5</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 6 by Sample Artist 6" style="background-image:url('ARTWORK_URL_6'),linear-gradient(135deg,#62c8c9,#ef6944)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 6</h3>
-        <div class="dja-by"><span>by Sample Artist 6</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 7 by Sample Artist 7" style="background-image:url('ARTWORK_URL_7'),linear-gradient(135deg,#fcd145,#2ea3f2)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 7</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 7</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 8 by Sample Artist 8" style="background-image:url('ARTWORK_URL_8'),linear-gradient(135deg,#2a2a2a,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 8</h3>
-        <div class="dja-by"><span>by Sample Artist 8</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 9 by Sample Artist 9" style="background-image:url('ARTWORK_URL_9'),linear-gradient(135deg,#ef6944,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 9</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 9</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 10 by Sample Artist 10" style="background-image:url('ARTWORK_URL_10'),linear-gradient(135deg,#2ea3f2,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 10</h3>
-        <div class="dja-by"><span>by Sample Artist 10</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 11 by Sample Artist 11" style="background-image:url('ARTWORK_URL_11'),linear-gradient(135deg,#62c8c9,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 11</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 11</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 12 by Sample Artist 12" style="background-image:url('ARTWORK_URL_12'),linear-gradient(135deg,#ef6944,#2a2a2a)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 12</h3>
-        <div class="dja-by"><span>by Sample Artist 12</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 13 by Sample Artist 13" style="background-image:url('ARTWORK_URL_13'),linear-gradient(135deg,#62c8c9,#ef6944)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 13</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 13</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 14 by Sample Artist 14" style="background-image:url('ARTWORK_URL_14'),linear-gradient(135deg,#fcd145,#2ea3f2)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 14</h3>
-        <div class="dja-by"><span>by Sample Artist 14</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 15 by Sample Artist 15" style="background-image:url('ARTWORK_URL_15'),linear-gradient(135deg,#2a2a2a,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 15</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 15</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 16 by Sample Artist 16" style="background-image:url('ARTWORK_URL_16'),linear-gradient(135deg,#ef6944,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 16</h3>
-        <div class="dja-by"><span>by Sample Artist 16</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 17 by Sample Artist 17" style="background-image:url('ARTWORK_URL_17'),linear-gradient(135deg,#2ea3f2,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 17</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 17</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 18 by Sample Artist 18" style="background-image:url('ARTWORK_URL_18'),linear-gradient(135deg,#62c8c9,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 18</h3>
-        <div class="dja-by"><span>by Sample Artist 18</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 19 by Sample Artist 19" style="background-image:url('ARTWORK_URL_19'),linear-gradient(135deg,#ef6944,#2a2a2a)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 19</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 19</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 20 by Sample Artist 20" style="background-image:url('ARTWORK_URL_20'),linear-gradient(135deg,#62c8c9,#ef6944)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 20</h3>
-        <div class="dja-by"><span>by Sample Artist 20</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 21 by Sample Artist 21" style="background-image:url('ARTWORK_URL_21'),linear-gradient(135deg,#fcd145,#2ea3f2)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 21</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 21</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 22 by Sample Artist 22" style="background-image:url('ARTWORK_URL_22'),linear-gradient(135deg,#2a2a2a,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 22</h3>
-        <div class="dja-by"><span>by Sample Artist 22</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 23 by Sample Artist 23" style="background-image:url('ARTWORK_URL_23'),linear-gradient(135deg,#ef6944,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 23</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 23</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 24 by Sample Artist 24" style="background-image:url('ARTWORK_URL_24'),linear-gradient(135deg,#2ea3f2,#62c8c9)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 24</h3>
-        <div class="dja-by"><span>by Sample Artist 24</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 25 by Sample Artist 25" style="background-image:url('ARTWORK_URL_25'),linear-gradient(135deg,#62c8c9,#fcd145)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 25</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 25</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 26 by Sample Artist 26" style="background-image:url('ARTWORK_URL_26'),linear-gradient(135deg,#ef6944,#2a2a2a)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 26</h3>
-        <div class="dja-by"><span>by Sample Artist 26</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 27 by Sample Artist 27" style="background-image:url('ARTWORK_URL_27'),linear-gradient(135deg,#62c8c9,#ef6944)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 27</h3>
-        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist 27</span></div>
-      </div>
-    </article>
-    <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sample Artwork 28 by Sample Artist 28" style="background-image:url('ARTWORK_URL_28'),linear-gradient(135deg,#fcd145,#2ea3f2)"></div>
-      <div class="dja-body">
-        <h3>Sample Artwork 28</h3>
-        <div class="dja-by"><span>by Sample Artist 28</span></div>
-        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
-      </div>
-    </article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 1" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 1</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 1</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 2" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 2</h3><div class="dja-by"><span>by Sample Artist 2</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 3" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 3</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 3</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 4" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 4</h3><div class="dja-by"><span>by Sample Artist 4</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 5" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 5</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 5</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 6" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 6</h3><div class="dja-by"><span>by Sample Artist 6</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 7" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 7</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 7</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 8" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 8</h3><div class="dja-by"><span>by Sample Artist 8</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 9" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 9</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 9</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 10" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 10</h3><div class="dja-by"><span>by Sample Artist 10</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 11" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 11</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 11</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 12" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 12</h3><div class="dja-by"><span>by Sample Artist 12</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 13" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 13</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 13</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 14" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 14</h3><div class="dja-by"><span>by Sample Artist 14</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 15" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 15</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 15</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 16" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 16</h3><div class="dja-by"><span>by Sample Artist 16</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 17" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 17</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 17</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 18" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 18</h3><div class="dja-by"><span>by Sample Artist 18</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 19" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 19</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 19</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 20" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 20</h3><div class="dja-by"><span>by Sample Artist 20</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 21" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 21</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 21</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 22" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 22</h3><div class="dja-by"><span>by Sample Artist 22</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 23" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 23</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 23</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 24" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 24</h3><div class="dja-by"><span>by Sample Artist 24</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 25" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 25</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 25</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 26" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 26</h3><div class="dja-by"><span>by Sample Artist 26</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 27" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 27</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Sample Artist 27</span></div></div></article>
+    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sample Artwork 28" style="--p:url('ARTWORK_URL')"></div><div class="dja-body"><h3>Sample Artwork 28</h3><div class="dja-by"><span>by Sample Artist 28</span></div><a class="dja-site" href="https://WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
     </div>
   </section>
 
@@ -355,7 +184,7 @@
   for(i=0;i<photos.length;i+=step){
     var s=document.createElement('div');
     s.className='dja-s';
-    s.setAttribute('style',photos[i].getAttribute('style')||'');
+    s.style.backgroundImage=window.getComputedStyle(photos[i]).backgroundImage;
     bg.appendChild(s);
   }
   var slides=bg.children;
