@@ -45,17 +45,17 @@
   </ol>
   <h2>Example: filling in one artwork</h2>
   <p class="ex">What you paste, with the placeholders still in:</p>
-  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--p:url(&#x27;PHOTO-LINK-HERE&#x27;)&quot;&gt;&lt;/div&gt;
+  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--x:50%;--y:50%;--p:url(&#x27;PHOTO-LINK-HERE&#x27;)&quot;&gt;&lt;/div&gt;
 &lt;h3&gt;Water Lilies&lt;/h3&gt;
 &lt;div class=&quot;dja-by&quot;&gt;&lt;span class=&quot;dja-av&quot; style=&quot;--a:url(&#x27;HEADSHOT-LINK-HERE&#x27;)&quot;&gt;&lt;/span&gt;&lt;span&gt;by Claude Monet&lt;/span&gt;&lt;/div&gt;
 &lt;a class=&quot;dja-site&quot; href=&quot;WEBSITE-LINK-HERE&quot;&gt;&lt;/a&gt;</pre>
   <p class="ex">The same artwork, filled in:</p>
-  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--p:url(&#x27;https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg&#x27;)&quot;&gt;&lt;/div&gt;
+  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--x:50%;--y:50%;--p:url(&#x27;https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg&#x27;)&quot;&gt;&lt;/div&gt;
 &lt;h3&gt;Water Lilies&lt;/h3&gt;
 &lt;div class=&quot;dja-by&quot;&gt;&lt;span class=&quot;dja-av&quot; style=&quot;--a:url(&#x27;https://www.downtownjoplin.com/wp-content/uploads/2026/10/monet.jpg&#x27;)&quot;&gt;&lt;/span&gt;&lt;span&gt;by Claude Monet&lt;/span&gt;&lt;/div&gt;
 &lt;a class=&quot;dja-site&quot; href=&quot;https://example.com&quot;&gt;&lt;/a&gt;</pre>
   <p class="ex">The same artwork when the artist has no headshot and no website. Leave those two empty and they don't show:</p>
-  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--p:url(&#x27;https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg&#x27;)&quot;&gt;&lt;/div&gt;
+  <pre>&lt;div class=&quot;dja-photo&quot; style=&quot;--x:50%;--y:50%;--p:url(&#x27;https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg&#x27;)&quot;&gt;&lt;/div&gt;
 &lt;h3&gt;Water Lilies&lt;/h3&gt;
 &lt;div class=&quot;dja-by&quot;&gt;&lt;span class=&quot;dja-av&quot; style=&quot;--a:url(&#x27;&#x27;)&quot;&gt;&lt;/span&gt;&lt;span&gt;by Claude Monet&lt;/span&gt;&lt;/div&gt;
 &lt;a class=&quot;dja-site&quot; href=&quot;&quot;&gt;&lt;/a&gt;</pre>
@@ -74,6 +74,8 @@
        HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
        WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
      The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
+  TO MOVE A PICTURE inside its frame: on its photo line, change the --x (left/right) and --y (up/down) numbers, 0% to 100%. 50% is centred.
+
   EXAMPLE, filled in:
        PHOTO-LINK-HERE     becomes  https://www.downtownjoplin.com/art-outside-the-box/img/water-lilies.jpg
        the title           becomes  Water Lilies
@@ -107,9 +109,9 @@
   <!-- ================= For this artwork edit below this line ================= -->
 
       <!-- 1. PHOTO: paste the photo link between the quotes. -->
-      <!--    To move the picture in its frame, optionally add --x:50%;--y:30%; just before --p (0% to 100%). -->
-      <!--    If you leave --x and --y out, the picture stays centred (50%). -->
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-01.jpg')"></div>
+      <!--    To move the picture in its frame, change --x (left/right) and --y (up/down), from 0% to 100%. -->
+      <!--    50% is centred, so leave them at 50% if the picture looks right. -->
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-01.jpg')"></div>
 
       <div class="dja-body">
 
@@ -137,7 +139,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--y:35%;--p:url('/art-outside-the-box/img/art/art-02.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('/art-outside-the-box/img/art/art-02.jpg')"></div>
 
       <div class="dja-body">
 
@@ -161,7 +163,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-03.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-03.jpg')"></div>
 
       <div class="dja-body">
 
@@ -185,7 +187,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-04.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-04.jpg')"></div>
 
       <div class="dja-body">
 
@@ -209,7 +211,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-05.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-05.jpg')"></div>
 
       <div class="dja-body">
 
@@ -233,7 +235,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-06.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-06.jpg')"></div>
 
       <div class="dja-body">
 
@@ -257,7 +259,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-07.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-07.jpg')"></div>
 
       <div class="dja-body">
 
@@ -281,7 +283,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-08.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-08.jpg')"></div>
 
       <div class="dja-body">
 
@@ -305,7 +307,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--y:35%;--p:url('/art-outside-the-box/img/art/art-09.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('/art-outside-the-box/img/art/art-09.jpg')"></div>
 
       <div class="dja-body">
 
@@ -329,7 +331,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-10.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-10.jpg')"></div>
 
       <div class="dja-body">
 
@@ -353,7 +355,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-11.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-11.jpg')"></div>
 
       <div class="dja-body">
 
@@ -377,7 +379,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-12.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-12.jpg')"></div>
 
       <div class="dja-body">
 
@@ -401,7 +403,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-13.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-13.jpg')"></div>
 
       <div class="dja-body">
 
@@ -425,7 +427,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-14.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-14.jpg')"></div>
 
       <div class="dja-body">
 
@@ -449,7 +451,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-15.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-15.jpg')"></div>
 
       <div class="dja-body">
 
@@ -473,7 +475,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-16.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-16.jpg')"></div>
 
       <div class="dja-body">
 
@@ -497,7 +499,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-17.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-17.jpg')"></div>
 
       <div class="dja-body">
 
@@ -521,7 +523,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-18.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-18.jpg')"></div>
 
       <div class="dja-body">
 
@@ -545,7 +547,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-19.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-19.jpg')"></div>
 
       <div class="dja-body">
 
@@ -569,7 +571,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-20.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-20.jpg')"></div>
 
       <div class="dja-body">
 
@@ -593,7 +595,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-21.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-21.jpg')"></div>
 
       <div class="dja-body">
 
@@ -617,7 +619,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-22.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-22.jpg')"></div>
 
       <div class="dja-body">
 
@@ -641,7 +643,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-23.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-23.jpg')"></div>
 
       <div class="dja-body">
 
@@ -665,7 +667,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-24.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-24.jpg')"></div>
 
       <div class="dja-body">
 
@@ -689,7 +691,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-25.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-25.jpg')"></div>
 
       <div class="dja-body">
 
@@ -713,7 +715,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-26.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-26.jpg')"></div>
 
       <div class="dja-body">
 
@@ -737,7 +739,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-27.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-27.jpg')"></div>
 
       <div class="dja-body">
 
@@ -761,7 +763,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('/art-outside-the-box/img/art/art-28.jpg')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('/art-outside-the-box/img/art/art-28.jpg')"></div>
 
       <div class="dja-body">
 

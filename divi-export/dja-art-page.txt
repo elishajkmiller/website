@@ -11,6 +11,8 @@
        HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
        WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
      The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
+  TO MOVE A PICTURE inside its frame: on its photo line, change the --x (left/right) and --y (up/down) numbers, 0% to 100%. 50% is centred.
+
   EXAMPLE, filled in:
        PHOTO-LINK-HERE     becomes  https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg
        the title           becomes  Water Lilies
@@ -44,9 +46,9 @@
   <!-- ================= For this artwork edit below this line ================= -->
 
       <!-- 1. PHOTO: paste the photo link between the quotes. -->
-      <!--    To move the picture in its frame, optionally add --x:50%;--y:30%; just before --p (0% to 100%). -->
-      <!--    If you leave --x and --y out, the picture stays centred (50%). -->
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <!--    To move the picture in its frame, change --x (left/right) and --y (up/down), from 0% to 100%. -->
+      <!--    50% is centred, so leave them at 50% if the picture looks right. -->
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -74,7 +76,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -98,7 +100,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -122,7 +124,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -146,7 +148,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -170,7 +172,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -194,7 +196,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -218,7 +220,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -242,7 +244,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -266,7 +268,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -290,7 +292,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -314,7 +316,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -338,7 +340,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -362,7 +364,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -386,7 +388,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -410,7 +412,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -434,7 +436,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -458,7 +460,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -482,7 +484,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -506,7 +508,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -530,7 +532,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -554,7 +556,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -578,7 +580,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -602,7 +604,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -626,7 +628,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -650,7 +652,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -674,7 +676,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
@@ -698,7 +700,7 @@
 
   <!-- ================= For this artwork edit below this line ================= -->
 
-      <div class="dja-photo" style="--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
 
       <div class="dja-body">
 
