@@ -28,6 +28,11 @@
     h1{font-size:32px;padding-bottom:12px}
     .sub{font-size:18px;font-weight:700;color:var(--orange);padding-bottom:12px}
     .hero p{max-width:640px;margin:0;font-size:14px}
+    .reel{overflow:hidden;padding-bottom:30px}
+    .track{display:flex;width:max-content;animation:run 70s linear infinite}
+    .track div{flex:none;width:187px;height:140px;margin-right:10px;background-size:cover;background-position:center}
+    @keyframes run{to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){.track{animation:none}}
     .gallery{position:relative;overflow:hidden;padding-top:28px}
     .gallery::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
     .gallery .wrap{position:relative;z-index:1}
@@ -98,6 +103,7 @@
     <h1>ART: Outside the Box</h1>
   </section>
 </div>
+<div class="reel"><div class="track" id="track"></div></div>
 <div class="gallery">
   <div class="bgshow" id="bgshow" aria-hidden="true"></div>
   <div class="wrap">
@@ -172,6 +178,8 @@
     }).join('');
   }
   render();
+  var tr=art.map(function(a){var c=a[4].split(',');return '<div style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')"></div>'}).join('');
+  document.getElementById('track').innerHTML=tr+tr;
   var show=document.getElementById('bgshow'), si=0;
   var step=Math.ceil(art.length/8);
   show.innerHTML=art.filter(function(a,i){return i%step===0}).map(function(a){var c=a[4].split(',');return '<div class="s" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')"></div>'}).join('');

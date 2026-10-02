@@ -60,6 +60,11 @@
 #dja-art a{text-decoration:none}
 #dja-art .dja-hero{max-width:1080px;margin:0 auto;padding:34px 20px}
 #dja-art .dja-hero h1{font:700 32px/1.1 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0}
+#dja-art .dja-reel{overflow:hidden;padding-bottom:30px}
+#dja-art .dja-track{display:flex;width:max-content;animation:dja-run 70s linear infinite}
+#dja-art .dja-t{flex:none;width:187px;height:140px;margin-right:10px;background-size:cover;background-position:center}
+@keyframes dja-run{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){#dja-art .dja-track{animation:none}}
 #dja-art .dja-gallery{position:relative;overflow:hidden;padding:28px 0 40px}
 #dja-art .dja-gallery::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
 #dja-art .dja-bg{position:absolute;top:-70px;right:-70px;bottom:-70px;left:-70px;z-index:0}
@@ -93,6 +98,8 @@
   <section class="dja-hero">
     <h1>ART: Outside the Box</h1>
   </section>
+
+  <div class="dja-reel"><div class="dja-track"></div></div>
 
   <section class="dja-gallery">
     <div class="dja-bg" aria-hidden="true"></div>
@@ -153,6 +160,16 @@
     s.className='dja-s';
     s.style.backgroundImage=window.getComputedStyle(photos[i]).backgroundImage;
     bg.appendChild(s);
+  }
+  var track=root.querySelector('.dja-track');
+  var k,r;
+  for(r=0;r<2;r++){
+    for(k=0;k<photos.length;k++){
+      var d=document.createElement('div');
+      d.className='dja-t';
+      d.style.backgroundImage=window.getComputedStyle(photos[k]).backgroundImage;
+      track.appendChild(d);
+    }
   }
   var slides=bg.children;
   var n=0;
