@@ -1,47 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="dark">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Art: Outside the Box Divi Export</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap">
-  <style>
-    body{margin:0;background:#111110;color:#e8e6e3;font-family:"Open Sans",Arial,sans-serif;line-height:1.6}
-    .bar{max-width:1080px;margin:0 auto;padding:22px 20px}
-    .bar h1{margin:0 0 4px;font-size:1.4rem;color:#fff}
-    .bar p{margin:6px 0 14px;color:#a9a6a2;font-weight:500}
-    .btns{display:flex;gap:10px;flex-wrap:wrap}
-    .b{font:700 15px/1.7em "Open Sans",Arial,sans-serif;padding:.2em 1em;background:#62c8c9;color:#111110;border:2px solid #62c8c9;border-radius:3px;cursor:pointer;text-decoration:none;transition:opacity .2s}
-    .b.alt{background:transparent;color:#62c8c9}
-    .b:hover{opacity:.8}
-    .msg{margin-left:4px;color:#fcd145;font-weight:600;align-self:center}
-    ol{color:#a9a6a2;font-weight:500;padding-left:20px;margin:14px 0 0}
-    .sheet{background:#fff;margin-top:12px}
-    .cbar{display:flex;flex-direction:column;gap:6px;background:#000;color:#bdbab6;padding:8px 16px 10px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
-    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .cbar .cl{color:#fff;font-weight:600}
-    .cbar a{font:600 13px/1.6 "Open Sans",Arial,sans-serif;padding:0 12px;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;text-decoration:none;transition:all .2s}
-    .cbar a:hover{background:#fff;border-color:#fff;color:#111}
-    .cbar a.on{background:#62c8c9;color:#111}
-    .cbar a.sp{margin-left:10px}
-    .cbar button{font:600 13px/1.6 "Open Sans",Arial,sans-serif;padding:0 12px;border:2px solid #62c8c9;border-radius:3px;background:transparent;color:#62c8c9;cursor:pointer;transition:all .2s}
-    .cbar button:hover{background:#fff;border-color:#fff;color:#111}
-  </style>
-</head>
-<body>
-<div class="cbar"><div class="cb"><span class="cl">Concept Project: Art: Outside the Box</span><a href="/qr-slate/?v=1" data-v="1">Version 1</a><a href="/qr-slate/?v=2" data-v="2">Version 2</a><a href="/qr-slate/?v=3" data-v="3">Version 3</a><a class="sp" href="/downtown-joplin-art/">Landing page</a><a class="on" href="/divi-export/">Divi export</a><button id="cc" type="button">Copy code</button><a href="/divi-export/dja-art-page.txt" download>Download .txt</a></div></div>
-<div class="bar">
-  <h1>Divi export: Art: Outside the Box</h1>
-  <p>This is the consolidated page below, exactly as it would be pasted into Divi. Placeholder photos, names and links are samples.</p>
-  <ol>
-    <li>In Divi, add a Fullwidth Section, then a Fullwidth Code module.</li>
-    <li>Click Copy code in the top bar and paste it into the module.</li>
-    <li>Replace the sample photos, names and links. The top comment in the code explains how.</li>
-  </ol>
-</div>
-<div class="sheet">
 <!--
   ART: OUTSIDE THE BOX PAGE
   Paste ALL of this into ONE Divi "Fullwidth Code" module (not a Text module).
@@ -75,281 +31,281 @@
 
     <!-- ARTWORK 1 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--p:url('/downtown-joplin-art/img/art/art-01.jpg')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
+      <div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--p:url('PHOTO-LINK-HERE')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
       <div class="dja-body">
         <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>   <!-- 2. TITLE: type the artwork title -->
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or delete the <span class="dja-av"></span> part -->
-        <a class="dja-site" href="https://www.artic.edu/artworks/109819" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or delete this whole line if the artist has none -->
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or delete this whole line if the artist has none -->
       </div>
     </article>
 
     <!-- ARTWORK 2 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Water Lilies" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-02.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Water Lilies" style="--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Water Lilies</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/16568" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 3 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Improvisation No. 30 (Cannons)" style="--p:url('/downtown-joplin-art/img/art/art-03.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Improvisation No. 30 (Cannons)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Improvisation No. 30 (Cannons)</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/8991" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 4 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Branch of the Seine near Giverny (Mist)" style="--p:url('/downtown-joplin-art/img/art/art-04.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Branch of the Seine near Giverny (Mist)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Branch of the Seine near Giverny (Mist)</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/16564" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 5 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Grapes, Lemons, Pears, and Apples" style="--p:url('/downtown-joplin-art/img/art/art-05.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Grapes, Lemons, Pears, and Apples" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Grapes, Lemons, Pears, and Apples</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/64957" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 6 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (Sunset, Snow Effect)" style="--p:url('/downtown-joplin-art/img/art/art-06.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (Sunset, Snow Effect)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Stacks of Wheat (Sunset, Snow Effect)</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/81545" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 7 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (End of Summer)" style="--p:url('/downtown-joplin-art/img/art/art-07.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (End of Summer)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Stacks of Wheat (End of Summer)</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/64818" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 8 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Poppy Field (Giverny)" style="--p:url('/downtown-joplin-art/img/art/art-08.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Poppy Field (Giverny)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Poppy Field (Giverny)</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/4783" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 9 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Irises" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-09.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Irises" style="--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Irises</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/4887" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 10 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Movement" style="--p:url('/downtown-joplin-art/img/art/art-10.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Movement" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Movement</h3>
         <div class="dja-by"><span>by Marsden Hartley</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/65916" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 11 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Arlésiennes (Mistral)" style="--p:url('/downtown-joplin-art/img/art/art-11.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Arlésiennes (Mistral)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Arlésiennes (Mistral)</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Paul Gauguin</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/19339" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 12 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Bordighera" style="--p:url('/downtown-joplin-art/img/art/art-12.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Bordighera" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Bordighera</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/81537" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 13 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Still Life with Geranium" style="--p:url('/downtown-joplin-art/img/art/art-13.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Still Life with Geranium" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Still Life with Geranium</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri Matisse</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/87045" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 14 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Composition (No. 1) Gray-Red" style="--p:url('/downtown-joplin-art/img/art/art-14.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Composition (No. 1) Gray-Red" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Composition (No. 1) Gray-Red</h3>
         <div class="dja-by"><span>by Piet Mondrian</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/65821" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 15 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="The Bedroom" style="--p:url('/downtown-joplin-art/img/art/art-15.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="The Bedroom" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>The Bedroom</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/28560" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 16 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Fishing in Spring, the Pont de Clichy (Asnières)" style="--p:url('/downtown-joplin-art/img/art/art-16.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Fishing in Spring, the Pont de Clichy (Asnières)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3>
         <div class="dja-by"><span>by Vincent van Gogh</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/109314" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 17 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Magnolias on Light Blue Velvet Cloth" style="--p:url('/downtown-joplin-art/img/art/art-17.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Magnolias on Light Blue Velvet Cloth" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Magnolias on Light Blue Velvet Cloth</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Martin Johnson Heade</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/100829" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 18 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Ballet Dancers" style="--p:url('/downtown-joplin-art/img/art/art-18.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Ballet Dancers" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Ballet Dancers</h3>
         <div class="dja-by"><span>by Henri de Toulouse-Lautrec</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/9148" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 19 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Chrysanthemums" style="--p:url('/downtown-joplin-art/img/art/art-19.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Chrysanthemums" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Chrysanthemums</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Pierre-Auguste Renoir</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/16617" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 20 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Houses of Parliament, London" style="--p:url('/downtown-joplin-art/img/art/art-20.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Houses of Parliament, London" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Houses of Parliament, London</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/16584" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 21 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Boats on the Beach at Étretat" style="--p:url('/downtown-joplin-art/img/art/art-21.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Boats on the Beach at Étretat" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Boats on the Beach at Étretat</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/59927" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 22 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Flowers: Poppies and Daisies" style="--p:url('/downtown-joplin-art/img/art/art-22.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Flowers: Poppies and Daisies" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Flowers: Poppies and Daisies</h3>
         <div class="dja-by"><span>by Odilon Redon</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/94240" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 23 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Painting with Green Center" style="--p:url('/downtown-joplin-art/img/art/art-23.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Painting with Green Center" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Painting with Green Center</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/8987" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 24 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Still Life with Flowers" style="--p:url('/downtown-joplin-art/img/art/art-24.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Still Life with Flowers" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Still Life with Flowers</h3>
         <div class="dja-by"><span>by Odilon Redon</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/110982" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 25 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="The Poet&#x27;s Garden" style="--p:url('/downtown-joplin-art/img/art/art-25.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="The Poet&#x27;s Garden" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>The Poet&#x27;s Garden</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/14586" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 26 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Rocks at Port-Goulphar, Belle-Île" style="--p:url('/downtown-joplin-art/img/art/art-26.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Rocks at Port-Goulphar, Belle-Île" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Rocks at Port-Goulphar, Belle-Île</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/20545" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 27 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Venice, Palazzo Dario" style="--p:url('/downtown-joplin-art/img/art/art-27.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Venice, Palazzo Dario" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Venice, Palazzo Dario</h3>
         <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/14630" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
     <!-- ARTWORK 28 -->
     <article class="dja-card">
-      <div class="dja-photo" role="img" aria-label="Sandvika, Norway" style="--p:url('/downtown-joplin-art/img/art/art-28.jpg')"></div>
+      <div class="dja-photo" role="img" aria-label="Sandvika, Norway" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Sandvika, Norway</h3>
         <div class="dja-by"><span>by Claude Monet</span></div>
-        <a class="dja-site" href="https://www.artic.edu/artworks/86998" target="_blank" rel="noopener">Artist website &#8599;</a>
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
 
@@ -360,10 +316,10 @@
   <section class="dja-sponsors">
     <h4>Sponsored by</h4>
     <div class="dja-logos">
-      <img src="/downtown-joplin-art/img/Allo.webp" alt="Allo Fiber">
-      <img src="/downtown-joplin-art/img/sparklight.webp" alt="Sparklight">
-      <img class="dja-l-kode" src="/downtown-joplin-art/img/KODE_Spotter.webp" alt="KODE 12">
-      <img class="dja-l-ksn" src="/downtown-joplin-art/img/KSNF_Spotter.webp" alt="KSN">
+      <img src="/wp-content/uploads/2026/10/Allo.webp" alt="Allo Fiber">
+      <img src="/wp-content/uploads/2026/10/sparklight.webp" alt="Sparklight">
+      <img class="dja-l-kode" src="/wp-content/uploads/2026/10/KODE_Spotter.webp" alt="KODE 12">
+      <img class="dja-l-ksn" src="/wp-content/uploads/2026/10/KSNF_Spotter.webp" alt="KSN">
     </div>
   </section>
 
@@ -477,21 +433,3 @@
 })();
 </script>
 </div>
-
-</div>
-<script>
-</script>
-<script>
-  (function(){
-    var b=document.getElementById('cc');
-    if(!b){return;}
-    b.onclick=function(){
-      fetch('/divi-export/dja-art-page.html').then(function(r){return r.text()}).then(function(t){return navigator.clipboard.writeText(t)}).then(function(){
-        b.textContent='Copied!';
-        setTimeout(function(){b.textContent='Copy code'},2000);
-      }).catch(function(){b.textContent='Copy failed, use Download';});
-    };
-  })();
-</script>
-</body>
-</html>
