@@ -26,12 +26,12 @@
 <main>
   <p class="tag">Concept slate: ART: Outside the Box</p>
   <div class="tabs" id="tabs">
-    <button class="tab on" data-src="label.png" data-lp="/downtown-joplin-art/">Version 1</button>
-    <button class="tab" data-src="label-v2.png" data-lp="/downtown-joplin-art-2/">Version 2</button>
-    <button class="tab" data-src="label-v3.png" data-lp="/downtown-joplin-art-3/">Version 3</button>
+    <button class="tab on" data-src="label.png" data-lp="/downtown-joplin-art/" data-n="1">Version 1</button>
+    <button class="tab" data-src="label-v2.png" data-lp="/downtown-joplin-art-2/" data-n="2">Version 2</button>
+    <button class="tab" data-src="label-v3.png" data-lp="/downtown-joplin-art-3/" data-n="3">Version 3</button>
   </div>
   <img class="slate" id="slate" src="label.png" alt="Rectangular QR slate with the Downtown Joplin Alliance logo, a QR code, and sponsor logos for Allo, Sparklight, KODE and KSN">
-  <p><a class="btn" id="lp" href="/downtown-joplin-art/">See the landing page</a></p>
+  <p><a class="btn" id="lp" href="/downtown-joplin-art/">See version 1</a></p>
   <p>6 × 3 inches here as a sample.</p>
   <p class="note">Concept preview only, not final artwork.</p>
 </main>
@@ -41,6 +41,7 @@
     document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===b)});
     document.getElementById('slate').src=b.dataset.src;
     document.getElementById('lp').href=b.dataset.lp;
+    document.getElementById('lp').textContent='See version '+b.dataset.n;
   });
 </script>
 </body>
