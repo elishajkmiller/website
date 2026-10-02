@@ -31,9 +31,15 @@
     .sec a{color:#62c8c9;text-decoration:underline}
     .open{border-left:3px solid #62c8c9;padding:2px 0 2px 14px;margin:30px 0 0}
     .open p{margin:0;color:#e8e6e3}
+    .cbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;background:#000;color:#bdbab6;padding:8px 16px;font:500 12px/1.4 "Open Sans",Arial,sans-serif}
+    .cbar .cb{display:flex;gap:8px;flex-wrap:wrap}
+    .cbar a{font:600 13px/1.6 "Open Sans",Arial,sans-serif;padding:0 12px;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;text-decoration:none;transition:all .2s}
+    .cbar a:hover{background:#fff;border-color:#fff;color:#111}
+    .cbar a.on{background:#62c8c9;color:#111}
   </style>
 </head>
 <body>
+<div class="cbar"><span>Concept preview. Artwork, names and links are placeholders.</span><div class="cb"><a href="/qr-slate/" class="on">Slate</a><a href="/downtown-joplin-art/">Landing page</a><a href="/divi-export/">Divi export</a></div></div>
 <main>
   <p class="tag">Concept slate: Art: Outside the Box</p>
   <div class="tabs" id="tabs">
@@ -42,7 +48,7 @@
     <button class="tab" data-src="label-v3.png">Version 3</button>
   </div>
   <img class="slate" id="slate" src="label.png" alt="Rectangular QR slate with the Downtown Joplin Alliance logo, a QR code, and sponsor logos for Allo, Sparklight, KODE and KSN">
-  <p class="btns"><a class="btn" href="/downtown-joplin-art/">See the landing page</a></p>
+  <p>About the landing page: every code on every box leads to this one page. It opens on a slow loop of the artwork, then shows every piece with its title and artist. Tap any piece to see it full screen at its own shape, and tap the artist link to learn more about them. Because it is one page, the QR never has to change. Adding or fixing an artwork is just an edit to the page.</p>
   <p>6 × 3 inches here as a sample.</p>
   <div class="open"><p>I'm very open to changing the look, size and format of the slate. Everything here is a starting point, so tell me what you'd like different.</p></div>
   <p>The sponsor logos shown were pulled from the Downtown Joplin website. I still need the correct sponsors and their logo files for this project.</p>
