@@ -44,7 +44,7 @@
       <div class="dja-photo" role="img" aria-label="Water Lilies" style="--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Water Lilies</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -64,7 +64,7 @@
       <div class="dja-photo" role="img" aria-label="Branch of the Seine near Giverny (Mist)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Branch of the Seine near Giverny (Mist)</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -84,7 +84,7 @@
       <div class="dja-photo" role="img" aria-label="Stacks of Wheat (Sunset, Snow Effect)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Stacks of Wheat (Sunset, Snow Effect)</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -104,7 +104,7 @@
       <div class="dja-photo" role="img" aria-label="Poppy Field (Giverny)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Poppy Field (Giverny)</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -124,7 +124,7 @@
       <div class="dja-photo" role="img" aria-label="Movement" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Movement</h3>
-        <div class="dja-by"><span>by Marsden Hartley</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Marsden Hartley</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -144,7 +144,7 @@
       <div class="dja-photo" role="img" aria-label="Bordighera" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Bordighera</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -164,7 +164,7 @@
       <div class="dja-photo" role="img" aria-label="Composition (No. 1) Gray-Red" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Composition (No. 1) Gray-Red</h3>
-        <div class="dja-by"><span>by Piet Mondrian</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -184,7 +184,7 @@
       <div class="dja-photo" role="img" aria-label="Fishing in Spring, the Pont de Clichy (Asnières)" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3>
-        <div class="dja-by"><span>by Vincent van Gogh</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -204,7 +204,7 @@
       <div class="dja-photo" role="img" aria-label="Ballet Dancers" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Ballet Dancers</h3>
-        <div class="dja-by"><span>by Henri de Toulouse-Lautrec</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri de Toulouse-Lautrec</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -224,7 +224,7 @@
       <div class="dja-photo" role="img" aria-label="Houses of Parliament, London" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Houses of Parliament, London</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -244,7 +244,7 @@
       <div class="dja-photo" role="img" aria-label="Flowers: Poppies and Daisies" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Flowers: Poppies and Daisies</h3>
-        <div class="dja-by"><span>by Odilon Redon</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Odilon Redon</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -264,7 +264,7 @@
       <div class="dja-photo" role="img" aria-label="Still Life with Flowers" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Still Life with Flowers</h3>
-        <div class="dja-by"><span>by Odilon Redon</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Odilon Redon</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -284,7 +284,7 @@
       <div class="dja-photo" role="img" aria-label="Rocks at Port-Goulphar, Belle-Île" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Rocks at Port-Goulphar, Belle-Île</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -304,7 +304,7 @@
       <div class="dja-photo" role="img" aria-label="Sandvika, Norway" style="--p:url('PHOTO-LINK-HERE')"></div>
       <div class="dja-body">
         <h3>Sandvika, Norway</h3>
-        <div class="dja-by"><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
