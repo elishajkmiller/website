@@ -45,20 +45,333 @@
 </div>
 <div class="sheet">
 <!--
-  Art: Outside the Box page, for a Divi "Fullwidth Code" module.
-  Paste everything from here down into ONE Fullwidth Code module (not a Text module).
+  ART: OUTSIDE THE BOX PAGE
+  Paste ALL of this into ONE Divi "Fullwidth Code" module (not a Text module).
 
-  TO EDIT AN ARTWORK
-    1. Upload the photo to Media, copy its "File URL".
-    2. Replace ARTWORK_URL_n in that card's style="..." with the URL. (The colour behind it is the fallback.)
-    3. Replace the title and artist name.
-    4. Artist headshot: replace ARTIST_PHOTO_URL, or delete the whole <span class="dja-av"> line if they have none.
-    5. Artist website: replace the href, or delete the whole <a class="dja-site"> line if they have none.
-  TO ADD ONE: copy a whole <article class="dja-card"> ... </article> block and paste it after the last one.
-  TO REMOVE ONE: delete its <article> block.
-  The blurred background slideshow builds itself from the artwork photos. Nothing to edit there.
+  HOW TO EDIT
+  1. Each artwork is one block. It starts with "ARTWORK 5" in a comment and ends with the closing article tag.
+  2. Inside a block, only change the words in capitals and the text between the tags:
+       PHOTO-LINK-HERE     the artwork photo (Media Library, open the photo, copy "File URL")
+       the title           the words inside the h3 tags
+       the artist          the words after "by"
+       HEADSHOT-LINK-HERE  optional round headshot; delete that whole span if there is none
+       WEBSITE-LINK-HERE   optional artist website; delete that whole line if there is none
+     The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
+  3. TO ADD AN ARTWORK: copy one whole block, from its "ARTWORK" comment to its closing article tag, and paste it after the last block.
+  4. TO REMOVE ONE: delete its whole block.
+  5. NEVER edit anything below the line that says DO NOT EDIT BELOW.
+
+  The big carousel and the blurred background build themselves from the photos.
 -->
 <div id="dja-art">
+
+  <!-- PAGE TITLE: the big words at the top. Change the words inside the h1 tags if you ever need to. -->
+  <section class="dja-hero">
+    <div class="dja-reel"><div class="dja-track"></div></div>
+    <div class="dja-title"><h1>Art: Outside the Box</h1></div>
+  </section>
+
+  <section class="dja-gallery">
+    <div class="dja-bg" aria-hidden="true"></div>
+    <div class="dja-grid">
+
+    <!-- ARTWORK 1 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--p:url('/downtown-joplin-art/img/art/art-01.jpg')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
+      <div class="dja-body">
+        <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>   <!-- 2. TITLE: type the artwork title -->
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or delete the <span class="dja-av"></span> part -->
+        <a class="dja-site" href="https://www.artic.edu/artworks/109819" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or delete this whole line if the artist has none -->
+      </div>
+    </article>
+
+    <!-- ARTWORK 2 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Water Lilies" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-02.jpg')"></div>
+      <div class="dja-body">
+        <h3>Water Lilies</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/16568" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 3 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Improvisation No. 30 (Cannons)" style="--p:url('/downtown-joplin-art/img/art/art-03.jpg')"></div>
+      <div class="dja-body">
+        <h3>Improvisation No. 30 (Cannons)</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/8991" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 4 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Branch of the Seine near Giverny (Mist)" style="--p:url('/downtown-joplin-art/img/art/art-04.jpg')"></div>
+      <div class="dja-body">
+        <h3>Branch of the Seine near Giverny (Mist)</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/16564" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 5 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Grapes, Lemons, Pears, and Apples" style="--p:url('/downtown-joplin-art/img/art/art-05.jpg')"></div>
+      <div class="dja-body">
+        <h3>Grapes, Lemons, Pears, and Apples</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/64957" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 6 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (Sunset, Snow Effect)" style="--p:url('/downtown-joplin-art/img/art/art-06.jpg')"></div>
+      <div class="dja-body">
+        <h3>Stacks of Wheat (Sunset, Snow Effect)</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/81545" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 7 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Stacks of Wheat (End of Summer)" style="--p:url('/downtown-joplin-art/img/art/art-07.jpg')"></div>
+      <div class="dja-body">
+        <h3>Stacks of Wheat (End of Summer)</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/64818" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 8 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Poppy Field (Giverny)" style="--p:url('/downtown-joplin-art/img/art/art-08.jpg')"></div>
+      <div class="dja-body">
+        <h3>Poppy Field (Giverny)</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/4783" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 9 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Irises" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-09.jpg')"></div>
+      <div class="dja-body">
+        <h3>Irises</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/4887" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 10 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Movement" style="--p:url('/downtown-joplin-art/img/art/art-10.jpg')"></div>
+      <div class="dja-body">
+        <h3>Movement</h3>
+        <div class="dja-by"><span>by Marsden Hartley</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/65916" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 11 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Arlésiennes (Mistral)" style="--p:url('/downtown-joplin-art/img/art/art-11.jpg')"></div>
+      <div class="dja-body">
+        <h3>Arlésiennes (Mistral)</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Paul Gauguin</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/19339" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 12 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Bordighera" style="--p:url('/downtown-joplin-art/img/art/art-12.jpg')"></div>
+      <div class="dja-body">
+        <h3>Bordighera</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/81537" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 13 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Still Life with Geranium" style="--p:url('/downtown-joplin-art/img/art/art-13.jpg')"></div>
+      <div class="dja-body">
+        <h3>Still Life with Geranium</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri Matisse</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/87045" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 14 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Composition (No. 1) Gray-Red" style="--p:url('/downtown-joplin-art/img/art/art-14.jpg')"></div>
+      <div class="dja-body">
+        <h3>Composition (No. 1) Gray-Red</h3>
+        <div class="dja-by"><span>by Piet Mondrian</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/65821" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 15 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="The Bedroom" style="--p:url('/downtown-joplin-art/img/art/art-15.jpg')"></div>
+      <div class="dja-body">
+        <h3>The Bedroom</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/28560" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 16 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Fishing in Spring, the Pont de Clichy (Asnières)" style="--p:url('/downtown-joplin-art/img/art/art-16.jpg')"></div>
+      <div class="dja-body">
+        <h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3>
+        <div class="dja-by"><span>by Vincent van Gogh</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/109314" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 17 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Magnolias on Light Blue Velvet Cloth" style="--p:url('/downtown-joplin-art/img/art/art-17.jpg')"></div>
+      <div class="dja-body">
+        <h3>Magnolias on Light Blue Velvet Cloth</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Martin Johnson Heade</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/100829" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 18 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Ballet Dancers" style="--p:url('/downtown-joplin-art/img/art/art-18.jpg')"></div>
+      <div class="dja-body">
+        <h3>Ballet Dancers</h3>
+        <div class="dja-by"><span>by Henri de Toulouse-Lautrec</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/9148" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 19 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Chrysanthemums" style="--p:url('/downtown-joplin-art/img/art/art-19.jpg')"></div>
+      <div class="dja-body">
+        <h3>Chrysanthemums</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Pierre-Auguste Renoir</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/16617" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 20 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Houses of Parliament, London" style="--p:url('/downtown-joplin-art/img/art/art-20.jpg')"></div>
+      <div class="dja-body">
+        <h3>Houses of Parliament, London</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/16584" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 21 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Boats on the Beach at Étretat" style="--p:url('/downtown-joplin-art/img/art/art-21.jpg')"></div>
+      <div class="dja-body">
+        <h3>Boats on the Beach at Étretat</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/59927" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 22 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Flowers: Poppies and Daisies" style="--p:url('/downtown-joplin-art/img/art/art-22.jpg')"></div>
+      <div class="dja-body">
+        <h3>Flowers: Poppies and Daisies</h3>
+        <div class="dja-by"><span>by Odilon Redon</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/94240" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 23 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Painting with Green Center" style="--p:url('/downtown-joplin-art/img/art/art-23.jpg')"></div>
+      <div class="dja-body">
+        <h3>Painting with Green Center</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/8987" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 24 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Still Life with Flowers" style="--p:url('/downtown-joplin-art/img/art/art-24.jpg')"></div>
+      <div class="dja-body">
+        <h3>Still Life with Flowers</h3>
+        <div class="dja-by"><span>by Odilon Redon</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/110982" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 25 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="The Poet&#x27;s Garden" style="--p:url('/downtown-joplin-art/img/art/art-25.jpg')"></div>
+      <div class="dja-body">
+        <h3>The Poet&#x27;s Garden</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/14586" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 26 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Rocks at Port-Goulphar, Belle-Île" style="--p:url('/downtown-joplin-art/img/art/art-26.jpg')"></div>
+      <div class="dja-body">
+        <h3>Rocks at Port-Goulphar, Belle-Île</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/20545" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 27 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Venice, Palazzo Dario" style="--p:url('/downtown-joplin-art/img/art/art-27.jpg')"></div>
+      <div class="dja-body">
+        <h3>Venice, Palazzo Dario</h3>
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/14630" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    <!-- ARTWORK 28 -->
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sandvika, Norway" style="--p:url('/downtown-joplin-art/img/art/art-28.jpg')"></div>
+      <div class="dja-body">
+        <h3>Sandvika, Norway</h3>
+        <div class="dja-by"><span>by Claude Monet</span></div>
+        <a class="dja-site" href="https://www.artic.edu/artworks/86998" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+
+    </div>
+  </section>
+
+  <!-- SPONSORS: change each logo's src link and alt name. Delete a whole img line to remove a sponsor. -->
+  <section class="dja-sponsors">
+    <h4>Sponsored by</h4>
+    <div class="dja-logos">
+      <img src="/downtown-joplin-art/img/Allo.webp" alt="Allo Fiber">
+      <img src="/downtown-joplin-art/img/sparklight.webp" alt="Sparklight">
+      <img class="dja-l-kode" src="/downtown-joplin-art/img/KODE_Spotter.webp" alt="KODE 12">
+      <img class="dja-l-ksn" src="/downtown-joplin-art/img/KSNF_Spotter.webp" alt="KSN">
+    </div>
+  </section>
+
+  <div class="dja-lb" hidden><b>&times;</b><img alt=""><p></p></div>
+
+  <!-- ================= DO NOT EDIT BELOW THIS LINE (the design and the moving parts) ================= -->
 <style>
 #dja-art{font-family:'Open Sans',Arial,sans-serif;font-size:14px;line-height:1.7em;font-weight:500;color:#666}
 #dja-art *{box-sizing:border-box}
@@ -106,59 +419,6 @@
 #dja-art .dja-logos img.dja-l-kode{height:84px;max-width:260px}
 #dja-art .dja-logos img.dja-l-ksn{height:72px;max-width:260px}
 </style>
-
-  <section class="dja-hero">
-    <div class="dja-reel"><div class="dja-track"></div></div>
-    <div class="dja-title"><h1>Art: Outside the Box</h1></div>
-  </section>
-
-  <section class="dja-gallery">
-    <div class="dja-bg" aria-hidden="true"></div>
-    <div class="dja-grid">
-    <!-- NUDGE EXAMPLE: the next card is centred. Cards 2 and 9 below add --y:35% to move the picture up inside its frame. Put --x (left/right) and --y (up/down), 0% to 100%, at the start of a photo's style="..." -->
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-01.jpg')"></div><div class="dja-body"><h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Piet Mondrian</span></div><a class="dja-site" href="https://www.artic.edu/artworks/109819" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Water Lilies" style="--p:url('/downtown-joplin-art/img/art/art-02.jpg')"></div><div class="dja-body"><h3>Water Lilies</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/16568" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Improvisation No. 30 (Cannons)" style="--p:url('/downtown-joplin-art/img/art/art-03.jpg')"></div><div class="dja-body"><h3>Improvisation No. 30 (Cannons)</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Vasily Kandinsky</span></div><a class="dja-site" href="https://www.artic.edu/artworks/8991" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Branch of the Seine near Giverny (Mist)" style="--p:url('/downtown-joplin-art/img/art/art-04.jpg')"></div><div class="dja-body"><h3>Branch of the Seine near Giverny (Mist)</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/16564" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Grapes, Lemons, Pears, and Apples" style="--p:url('/downtown-joplin-art/img/art/art-05.jpg')"></div><div class="dja-body"><h3>Grapes, Lemons, Pears, and Apples</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Vincent van Gogh</span></div><a class="dja-site" href="https://www.artic.edu/artworks/64957" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Stacks of Wheat (Sunset, Snow Effect)" style="--p:url('/downtown-joplin-art/img/art/art-06.jpg')"></div><div class="dja-body"><h3>Stacks of Wheat (Sunset, Snow Effect)</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/81545" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Stacks of Wheat (End of Summer)" style="--p:url('/downtown-joplin-art/img/art/art-07.jpg')"></div><div class="dja-body"><h3>Stacks of Wheat (End of Summer)</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/64818" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Poppy Field (Giverny)" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-08.jpg')"></div><div class="dja-body"><h3>Poppy Field (Giverny)</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/4783" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Irises" style="--p:url('/downtown-joplin-art/img/art/art-09.jpg')"></div><div class="dja-body"><h3>Irises</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/4887" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Movement" style="--p:url('/downtown-joplin-art/img/art/art-10.jpg')"></div><div class="dja-body"><h3>Movement</h3><div class="dja-by"><span>by Marsden Hartley</span></div><a class="dja-site" href="https://www.artic.edu/artworks/65916" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Arlésiennes (Mistral)" style="--p:url('/downtown-joplin-art/img/art/art-11.jpg')"></div><div class="dja-body"><h3>Arlésiennes (Mistral)</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Paul Gauguin</span></div><a class="dja-site" href="https://www.artic.edu/artworks/19339" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Bordighera" style="--p:url('/downtown-joplin-art/img/art/art-12.jpg')"></div><div class="dja-body"><h3>Bordighera</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/81537" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Still Life with Geranium" style="--p:url('/downtown-joplin-art/img/art/art-13.jpg')"></div><div class="dja-body"><h3>Still Life with Geranium</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Henri Matisse</span></div><a class="dja-site" href="https://www.artic.edu/artworks/87045" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Composition (No. 1) Gray-Red" style="--p:url('/downtown-joplin-art/img/art/art-14.jpg')"></div><div class="dja-body"><h3>Composition (No. 1) Gray-Red</h3><div class="dja-by"><span>by Piet Mondrian</span></div><a class="dja-site" href="https://www.artic.edu/artworks/65821" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="The Bedroom" style="--p:url('/downtown-joplin-art/img/art/art-15.jpg')"></div><div class="dja-body"><h3>The Bedroom</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Vincent van Gogh</span></div><a class="dja-site" href="https://www.artic.edu/artworks/28560" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Fishing in Spring, the Pont de Clichy (Asnières)" style="--p:url('/downtown-joplin-art/img/art/art-16.jpg')"></div><div class="dja-body"><h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3><div class="dja-by"><span>by Vincent van Gogh</span></div><a class="dja-site" href="https://www.artic.edu/artworks/109314" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Magnolias on Light Blue Velvet Cloth" style="--p:url('/downtown-joplin-art/img/art/art-17.jpg')"></div><div class="dja-body"><h3>Magnolias on Light Blue Velvet Cloth</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Martin Johnson Heade</span></div><a class="dja-site" href="https://www.artic.edu/artworks/100829" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Ballet Dancers" style="--p:url('/downtown-joplin-art/img/art/art-18.jpg')"></div><div class="dja-body"><h3>Ballet Dancers</h3><div class="dja-by"><span>by Henri de Toulouse-Lautrec</span></div><a class="dja-site" href="https://www.artic.edu/artworks/9148" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Chrysanthemums" style="--p:url('/downtown-joplin-art/img/art/art-19.jpg')"></div><div class="dja-body"><h3>Chrysanthemums</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Pierre-Auguste Renoir</span></div><a class="dja-site" href="https://www.artic.edu/artworks/16617" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Houses of Parliament, London" style="--p:url('/downtown-joplin-art/img/art/art-20.jpg')"></div><div class="dja-body"><h3>Houses of Parliament, London</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/16584" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Boats on the Beach at Étretat" style="--p:url('/downtown-joplin-art/img/art/art-21.jpg')"></div><div class="dja-body"><h3>Boats on the Beach at Étretat</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/59927" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Flowers: Poppies and Daisies" style="--p:url('/downtown-joplin-art/img/art/art-22.jpg')"></div><div class="dja-body"><h3>Flowers: Poppies and Daisies</h3><div class="dja-by"><span>by Odilon Redon</span></div><a class="dja-site" href="https://www.artic.edu/artworks/94240" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Painting with Green Center" style="--p:url('/downtown-joplin-art/img/art/art-23.jpg')"></div><div class="dja-body"><h3>Painting with Green Center</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Vasily Kandinsky</span></div><a class="dja-site" href="https://www.artic.edu/artworks/8987" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Still Life with Flowers" style="--p:url('/downtown-joplin-art/img/art/art-24.jpg')"></div><div class="dja-body"><h3>Still Life with Flowers</h3><div class="dja-by"><span>by Odilon Redon</span></div><a class="dja-site" href="https://www.artic.edu/artworks/110982" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="The Poet&#x27;s Garden" style="--p:url('/downtown-joplin-art/img/art/art-25.jpg')"></div><div class="dja-body"><h3>The Poet&#x27;s Garden</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Vincent van Gogh</span></div><a class="dja-site" href="https://www.artic.edu/artworks/14586" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Rocks at Port-Goulphar, Belle-Île" style="--p:url('/downtown-joplin-art/img/art/art-26.jpg')"></div><div class="dja-body"><h3>Rocks at Port-Goulphar, Belle-Île</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/20545" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Venice, Palazzo Dario" style="--p:url('/downtown-joplin-art/img/art/art-27.jpg')"></div><div class="dja-body"><h3>Venice, Palazzo Dario</h3><div class="dja-by"><span class="dja-av" style="--a:url('PHOTO')"></span><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/14630" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    <article class="dja-card"><div class="dja-photo" role="img" aria-label="Sandvika, Norway" style="--p:url('/downtown-joplin-art/img/art/art-28.jpg')"></div><div class="dja-body"><h3>Sandvika, Norway</h3><div class="dja-by"><span>by Claude Monet</span></div><a class="dja-site" href="https://www.artic.edu/artworks/86998" target="_blank" rel="noopener">Artist website &#8599;</a></div></article>
-    </div>
-  </section>
-
-  <section class="dja-sponsors">
-    <h4>Sponsored by</h4>
-    <div class="dja-logos">
-      <img src="/downtown-joplin-art/img/Allo.webp" alt="Allo Fiber">
-      <img src="/downtown-joplin-art/img/sparklight.webp" alt="Sparklight">
-      <img class="dja-l-kode" src="/downtown-joplin-art/img/KODE_Spotter.webp" alt="KODE 12">
-      <img class="dja-l-ksn" src="/downtown-joplin-art/img/KSNF_Spotter.webp" alt="KSN">
-    </div>
-  </section>
-
-  <div class="dja-lb" hidden><b>&times;</b><img alt=""><p></p></div>
-
 <script>
 (function(){
   var root=document.getElementById('dja-art');
