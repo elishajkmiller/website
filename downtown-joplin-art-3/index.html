@@ -144,9 +144,7 @@
 
 <script>
   document.getElementById('menubtn').onclick=function(){document.getElementById('nav').classList.toggle('open')};
-  var art=[["01", "Sample Artwork One", "Sample Artist A", "Adult", "#2a2a2a,#62c8c9"], ["02", "Sample Artwork Two", "Sample Artist B", "Youth", "#ef6944,#fcd145"], ["03", "Sample Artwork Three", "Sample Artist C", "Adult", "#2ea3f2,#62c8c9"], ["04", "Sample Artwork Four", "Sample Artist D", "Adult", "#62c8c9,#fcd145"], ["05", "Sample Artwork Five", "Sample Artist E", "Youth", "#ef6944,#2a2a2a"], ["06", "Sample Artwork Six", "Sample Artist F", "Adult", "#62c8c9,#ef6944"]], KEY='dja-art-found-concept', found={}, cur=0;
-  try{found=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(found))}catch(e){}}
+  var art=[["01", "Sample Artwork One", "Sample Artist A", "Adult", "#2a2a2a,#62c8c9"], ["02", "Sample Artwork Two", "Sample Artist B", "Youth", "#ef6944,#fcd145"], ["03", "Sample Artwork Three", "Sample Artist C", "Adult", "#2ea3f2,#62c8c9"], ["04", "Sample Artwork Four", "Sample Artist D", "Adult", "#62c8c9,#fcd145"], ["05", "Sample Artwork Five", "Sample Artist E", "Youth", "#ef6944,#2a2a2a"], ["06", "Sample Artwork Six", "Sample Artist F", "Adult", "#62c8c9,#ef6944"]], found={}, cur=0;
   var snap=document.getElementById('snap'), pills=document.getElementById('pills');
   function build(){
     snap.innerHTML=art.map(function(a,i){
@@ -174,12 +172,12 @@
   });
   snap.addEventListener('click',function(e){
     var b=e.target.closest('button.found'); if(!b)return;
-    var id=art[b.dataset.i][0]; if(found[id])delete found[id]; else found[id]=1; save(); paint();
+    var id=art[b.dataset.i][0]; if(found[id])delete found[id]; else found[id]=1; paint();
   });
   pills.addEventListener('click',function(e){var b=e.target.closest('.pill'); if(b)go(+b.dataset.i)});
   document.getElementById('prev').onclick=function(){go(cur-1)};
   document.getElementById('next').onclick=function(){go(cur+1)};
-  document.getElementById('reset').onclick=function(){found={};save();paint()};
+  document.getElementById('reset').onclick=function(){found={};paint()};
   build(); paint();
 </script>
 </body>
