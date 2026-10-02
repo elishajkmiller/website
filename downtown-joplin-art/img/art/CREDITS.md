@@ -21,7 +21,7 @@ These are public-domain images from the Art Institute of Chicago open-access API
 - art-17.jpg: Magnolias on Light Blue Velvet Cloth, Martin Johnson Heade (Art Institute of Chicago, id 100829)
 - art-18.jpg: Ballet Dancers, Henri de Toulouse-Lautrec (Art Institute of Chicago, id 9148)
 - art-19.jpg: Chrysanthemums, Pierre-Auguste Renoir (Art Institute of Chicago, id 16617)
-- art-20.jpg: Mahana no atua (Day of the God), Paul Gauguin (Art Institute of Chicago, id 27943)
+- art-20.jpg: Houses of Parliament, London, Claude Monet (Art Institute of Chicago, id 16584)
 - art-21.jpg: Boats on the Beach at Étretat, Claude Monet (Art Institute of Chicago, id 59927)
 - art-22.jpg: Flowers: Poppies and Daisies, Odilon Redon (Art Institute of Chicago, id 94240)
 - art-23.jpg: Painting with Green Center, Vasily Kandinsky (Art Institute of Chicago, id 8987)
