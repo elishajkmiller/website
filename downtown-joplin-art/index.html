@@ -52,14 +52,20 @@
     .logos img.big{max-width:260px}
     .logos img{height:52px;width:auto;max-width:190px;object-fit:contain;display:block}
     footer{background:var(--dark);color:#fff;padding:40px 20px 24px}
-    .fcols{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+    .fcols{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px}
     footer img{width:180px;height:auto;display:block;margin-bottom:14px}
     footer p{margin:0 0 10px;color:#fff}
+    footer h5:not(:first-child){margin-top:14px}
+    footer img.msa{width:100%;max-width:200px}
+    footer img.mmsc{width:100%;max-width:150px;background:#fff;border-radius:3px}
+    footer p.small{font-size:12px;font-weight:600}
+    footer a.inl{display:inline;text-decoration:underline}
+    footer a.logo{display:block}
     footer h5{font-size:14px;font-weight:700;text-transform:uppercase;color:#fff;margin:0 0 8px}
     footer a{display:block;color:var(--teal)}
     footer a:hover{opacity:.7}
     .copy{max-width:1080px;margin:26px auto 0;font-size:12px;font-weight:600;color:#aaa}
-    @media(max-width:760px){.fcols{grid-template-columns:1fr}}
+    @media(max-width:980px){.fcols{grid-template-columns:1fr 1fr}}@media(max-width:560px){.fcols{grid-template-columns:1fr}}
       .vbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;background:#f7f7f7;border-bottom:1px solid #eee;padding:8px 12px;font-size:12px;font-weight:700;text-transform:uppercase;color:#666}
     .vbar{background:#fff8d6;border-bottom:1px solid #eee3a8;color:#5a4a00;justify-content:space-between;text-align:left;text-transform:none;font-weight:500;font-size:12px}
     .vbar .note{flex:1 1 260px}
@@ -110,10 +116,14 @@
 </section>
 <footer>
   <div class="fcols">
-    <div><img src="img/dja-logo.png" alt="DJA Branding"><p>Downtown Joplin Alliance is a not-for-profit organization dedicated to the revitalization of the downtown community as a thriving, safe and attractive center of art, history, enterprise, commerce, culture, residence, and entertainment.</p></div>
-    <div><h5>Events</h5><a href="#">Third Thursday</a><a href="#">First Friday WineShare</a><a href="#">Joplin Empire Market</a><a href="#">Downtown Calendar</a></div>
-    <div><h5>Downtown Joplin Alliance</h5><a href="#">About DJA</a><a href="#">Meet the Board</a><a href="#">Donate</a><a href="#">Contact Us</a></div>
-    <div><h5>Resources</h5><a href="#">Parking Map</a><a href="#">Do Business Downtown</a><a href="#">Endangered Properties Program</a></div>
+    <div><img src="img/dja-logo.png" alt="DJA Branding"><p>Downtown Joplin Alliance is a not-for-profit organization dedicated to the revitalization of the downtown community as a thriving, safe and attractive center of art, history, enterprise, commerce, culture, residence, and entertainment.</p><p>Downtown Joplin is host to many monthly, seasonal, and annual events designed to encourage community involvement and stimulate the local economy.</p><p>EIN 43-1561015</p></div>
+    <div>
+      <h5>Events</h5><a href="#">Third Thursday</a><a href="#">First Friday WineShare</a><a href="#">Joplin Empire Market</a><a href="#">Downtown Calendar</a>
+      <h5>Downtown Joplin Alliance</h5><a href="#">About DJA</a><a href="#">Meet the Board</a><a href="#">Donate</a><a href="#">Contact Us</a><a href="#">Get Involved</a>
+      <h5>Resources</h5><a href="#">Parking Map</a><a href="#">Do Business Downtown</a><a href="#">Endangered Properties Program</a>
+    </div>
+    <div><a class="logo" href="#"><img class="msa" src="img/msa.png" alt="Main Street America Accredited"></a><p class="small">As a <a class="inl" href="#">Main Street America&trade;</a> Accredited program, Downtown Joplin Alliance is a recognized leading program among the national network of more than 1,200 neighborhoods and communities who share both a commitment to creating high-quality places and to building stronger communities through preservation-based economic development. All Main Street America&trade; Accredited programs meet a set of National Accreditation Standards of Performance as outlined by Main Street America.</p></div>
+    <div><img class="mmsc" src="img/mmsc.png" alt="Missouri Main Street Accredited Program logo"><p class="small">As a <a class="inl" href="#">Missouri Main Street</a> Accredited program, Downtown Joplin Alliance is a recognized, leading program among the state network of more than 48 districts and communities who share both a commitment to creating high-quality places and to building stronger communities through preservation-based economic development.</p></div>
   </div>
 </footer>
 <script>
