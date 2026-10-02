@@ -26,17 +26,12 @@
 <main>
   <p class="tag">Concept slate: ART: Outside the Box</p>
   <div class="tabs" id="tabs">
-    <button class="tab on" data-src="label.png">Version 1</button>
-    <button class="tab" data-src="label-v2.png">Version 2</button>
-    <button class="tab" data-src="label-v3.png">Version 3</button>
+    <button class="tab on" data-src="label.png" data-lp="/downtown-joplin-art/">Version 1</button>
+    <button class="tab" data-src="label-v2.png" data-lp="/downtown-joplin-art-2/">Version 2</button>
+    <button class="tab" data-src="label-v3.png" data-lp="/downtown-joplin-art-3/">Version 3</button>
   </div>
   <img class="slate" id="slate" src="label.png" alt="Rectangular QR slate with the Downtown Joplin Alliance logo, a QR code, and sponsor logos for Allo, Sparklight, KODE and KSN">
-  <p><a class="btn" href="/downtown-joplin-art/">See the landing page</a></p>
-  <ul>
-    <li>6 × 3 inches here as a sample. Final size and material are up to you.</li>
-    <li>Sponsor logos shown are the ones I have so far. Liberty and Visit Joplin can be added.</li>
-    <li>The code here points to the sample page above. The real one would point to a page on downtownjoplin.com, so the QR never has to change.</li>
-  </ul>
+  <p><a class="btn" id="lp" href="/downtown-joplin-art/">See the landing page</a></p>
   <p class="note">Concept preview only, not final artwork.</p>
 </main>
 <script>
@@ -44,6 +39,7 @@
     var b=e.target.closest('.tab'); if(!b)return;
     document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===b)});
     document.getElementById('slate').src=b.dataset.src;
+    document.getElementById('lp').href=b.dataset.lp;
   });
 </script>
 </body>
