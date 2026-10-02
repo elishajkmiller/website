@@ -7,52 +7,82 @@
   <title>ART: Outside the Box (Concept)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap">
   <style>
-    :root{--teal:#62c8c9;--navy:#00466e;--blue:#006799;--orange:#ef6944;--ink:#333}
+    :root{--teal:#62c8c9;--blue:#2ea3f2;--dark:#2a2a2a;--orange:#ef6944}
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Open Sans',sans-serif;color:var(--ink);line-height:1.6;background:#fff}
-    header{background:var(--navy);padding:14px 16px}
-    header img{height:48px;display:block;max-width:100%}
-    .banner{background:#fff3;display:none}
-    .preview{background:#fff8d6;color:#5a4a00;text-align:center;font-size:.8rem;padding:6px 12px}
-    .hero{padding:32px 16px 20px;max-width:960px;margin:0 auto}
-    .hero h1{font-size:2rem;line-height:1.15;margin:0;color:var(--navy);font-weight:800}
-    .hero h2{font-size:1.05rem;color:var(--orange);margin:6px 0 14px;font-weight:700}
-    .hero p{max-width:640px;margin:0}
-    .bar{height:6px;background:linear-gradient(90deg,#97d5ee 25%,var(--teal) 25% 50%,#fcd145 50% 75%,var(--orange) 75%)}
-    .chips{max-width:960px;margin:0 auto;padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap}
-    .chip{border:2px solid var(--teal);background:#fff;color:var(--navy);font:600 .9rem 'Open Sans';padding:6px 14px;border-radius:999px;cursor:pointer}
-    .chip.on{background:var(--teal);color:#00334d}
-    .grid{max-width:960px;margin:0 auto;padding:4px 16px 32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-    .card{border:1px solid #dde4e7;border-radius:6px;overflow:hidden;background:#fff}
-    .art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;letter-spacing:.04em}
-    .body{padding:12px 14px 14px}
-    .box{font-size:.75rem;font-weight:700;text-transform:uppercase;color:var(--blue);letter-spacing:.06em}
-    .body h3{margin:2px 0 2px;font-size:1.05rem;color:var(--navy)}
-    .body p{margin:0;font-size:.88rem;color:#555}
-    .cat{display:inline-block;margin-top:8px;font-size:.72rem;font-weight:700;background:#eef7f7;color:var(--blue);padding:2px 8px;border-radius:3px}
-    .sponsors{background:#f4f7f8;padding:28px 16px;text-align:center}
-    .sponsors h4{margin:0 0 16px;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem}
-    .logos{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 36px;justify-content:center;align-items:center}
+    body{margin:0;font-family:'Open Sans',Arial,sans-serif;font-size:14px;line-height:1.7em;font-weight:500;color:#666;background:#fff;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .preview{background:#fff8d6;color:#5a4a00;text-align:center;font-size:12px;padding:6px 12px}
+    header{background:var(--dark);box-shadow:0 1px 0 rgba(0,0,0,.1)}
+    .hwrap{max-width:1080px;margin:0 auto;height:80px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+    header img{height:56px;width:auto;display:block}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px}
+    nav a{color:var(--teal);font-weight:700;font-size:14px;transition:opacity .4s}
+    nav a:hover{opacity:.7}
+    nav a.cur{color:var(--teal)}
+    .menubtn{display:none;background:none;border:0;color:var(--blue);font-size:30px;cursor:pointer;line-height:1}
+    @media(max-width:900px){nav{display:none;position:absolute;left:0;right:0;top:80px;background:var(--dark);padding:8px 20px 16px;z-index:5}nav.open{display:block}nav ul{flex-direction:column;gap:10px}.menubtn{display:block}header{position:relative}}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+    .hero{padding:40px 0 14px}
+    h1,h2,h3,h4{color:#333;font-weight:700;line-height:1em;margin:0}
+    h1{font-size:32px;padding-bottom:10px}
+    .sub{font-size:18px;font-weight:700;color:var(--orange);padding-bottom:12px}
+    .hero p{max-width:640px;margin:0;font-size:14px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;padding:14px 0 18px}
+    .chip{font:500 16px/1.7em 'Open Sans',Arial,sans-serif;padding:.1em .9em;background:transparent;border:2px solid var(--teal);border-radius:3px;color:var(--teal);cursor:pointer;transition:all .2s}
+    .chip:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+    .chip.on{background:var(--teal);color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:40px}
+    .card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1)}
+    .art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;letter-spacing:.06em}
+    .body{padding:14px 16px 16px}
+    .box{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:.06em}
+    .body h3{font-size:18px;padding:2px 0 4px}
+    .body p{margin:0}
+    .cat{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;text-transform:uppercase;color:#666;border:1px solid #ddd;padding:0 8px;border-radius:3px}
+    .sponsors{background:#f7f7f7;padding:30px 20px;text-align:center}
+    .sponsors h4{font-size:14px;text-transform:uppercase;padding-bottom:16px}
+    .logos{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:center;align-items:center}
     .logos img{height:48px;width:auto;max-width:150px;object-fit:contain}
-    footer{background:var(--navy);color:#cfe3ee;text-align:center;font-size:.8rem;padding:16px}
-    @media(min-width:700px){.hero h1{font-size:2.6rem}header img{height:56px}}
+    footer{background:var(--dark);color:#fff;padding:40px 20px 24px}
+    .fcols{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+    footer img{width:180px;height:auto;display:block;margin-bottom:14px}
+    footer p{margin:0 0 10px;color:#fff}
+    footer h5{font-size:14px;font-weight:700;text-transform:uppercase;color:#fff;margin:0 0 8px}
+    footer a{display:block;color:var(--teal)}
+    footer a:hover{opacity:.7}
+    .copy{max-width:1080px;margin:26px auto 0;font-size:12px;font-weight:600;color:#aaa}
+    @media(max-width:760px){.fcols{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <div class="preview">Concept preview. Artwork and artists below are placeholders.</div>
-<header><img src="img/dja-logo.png" alt="Downtown Joplin Alliance"></header>
-<div class="bar"></div>
-<section class="hero">
-  <h1>ART: Outside the Box</h1>
-  <h2>A Downtown Joplin Utility Box Wrap Project</h2>
-  <p>Downtown's utility boxes are now canvases. Browse the artwork, meet the artists, and find your next box to visit. This is the page every box's QR code leads to.</p>
-</section>
-<div class="chips" id="chips">
-  <button class="chip on" data-f="all">All</button>
-  <button class="chip" data-f="Adult">Adult</button>
-  <button class="chip" data-f="Youth">Youth</button>
+<header>
+  <div class="hwrap">
+    <a href="#"><img src="img/dja-logo.png" alt="Downtown Joplin Alliance"></a>
+    <button class="menubtn" id="menubtn" aria-label="Menu">&#9776;</button>
+    <nav id="nav"><ul>
+      <li><a href="#" class="cur">Events</a></li>
+      <li><a href="#">Do Business Downtown</a></li>
+      <li><a href="#">Visit Downtown</a></li>
+      <li><a href="#">About DJA</a></li>
+      <li><a href="#">Empire Market</a></li>
+    </ul></nav>
+  </div>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <h1>ART: Outside the Box</h1>
+    <div class="sub">A Downtown Joplin Utility Box Wrap Project</div>
+    <p>Downtown's utility boxes are now canvases. Browse the artwork, meet the artists, and find your next box to visit. This is the page every box's QR code leads to.</p>
+  </section>
+  <div class="chips" id="chips">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="Adult">Adult</button>
+    <button class="chip" data-f="Youth">Youth</button>
+  </div>
 </div>
-<section class="grid" id="grid"></section>
+<div class="wrap"><section class="grid" id="grid"></section></div>
+
 <section class="sponsors">
   <h4>Sponsored by</h4>
   <div class="logos">
@@ -62,15 +92,24 @@
     <img src="img/KSNF_Spotter.webp" alt="KSN">
   </div>
 </section>
-<footer>Presented by Downtown Joplin Alliance, the City of Joplin, Spiva Center for the Arts and the Joplin Arts District</footer>
+<footer>
+  <div class="fcols">
+    <div><img src="img/dja-logo.png" alt="DJA Branding"><p>Downtown Joplin Alliance is a not-for-profit organization dedicated to the revitalization of the downtown community as a thriving, safe and attractive center of art, history, enterprise, commerce, culture, residence, and entertainment.</p></div>
+    <div><h5>Events</h5><a href="#">Third Thursday</a><a href="#">First Friday WineShare</a><a href="#">Joplin Empire Market</a><a href="#">Downtown Calendar</a></div>
+    <div><h5>Downtown Joplin Alliance</h5><a href="#">About DJA</a><a href="#">Meet the Board</a><a href="#">Donate</a><a href="#">Contact Us</a></div>
+    <div><h5>Resources</h5><a href="#">Parking Map</a><a href="#">Do Business Downtown</a><a href="#">Endangered Properties Program</a></div>
+  </div>
+  <div class="copy">Presented by Downtown Joplin Alliance, the City of Joplin, Spiva Center for the Arts and the Joplin Arts District. Concept preview.</div>
+</footer>
 <script>
+  document.getElementById('menubtn').onclick=function(){document.getElementById('nav').classList.toggle('open')};
   var art=[
-    ['Box 01','Sample Artwork One','Sample Artist A','Adult','#00466e,#62c8c9'],
+    ['Box 01','Sample Artwork One','Sample Artist A','Adult','#2a2a2a,#62c8c9'],
     ['Box 02','Sample Artwork Two','Sample Artist B','Youth','#ef6944,#fcd145'],
-    ['Box 03','Sample Artwork Three','Sample Artist C','Adult','#006799,#97d5ee'],
+    ['Box 03','Sample Artwork Three','Sample Artist C','Adult','#2ea3f2,#62c8c9'],
     ['Box 04','Sample Artwork Four','Sample Artist D','Adult','#62c8c9,#fcd145'],
-    ['Box 05','Sample Artwork Five','Sample Artist E','Youth','#ef6944,#00466e'],
-    ['Box 06','Sample Artwork Six','Sample Artist F','Adult','#97d5ee,#ef6944']
+    ['Box 05','Sample Artwork Five','Sample Artist E','Youth','#ef6944,#2a2a2a'],
+    ['Box 06','Sample Artwork Six','Sample Artist F','Adult','#62c8c9,#ef6944']
   ];
   var grid=document.getElementById('grid');
   function render(f){
