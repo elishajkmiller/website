@@ -140,7 +140,7 @@
     grid.innerHTML=art.filter(function(a){return f==='all'||a[3]===f}).map(function(a){
       var c=a[4].split(',');
       return '<article class="card"><div class="art" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">ARTWORK PHOTO</div>'+
-        '<div class="body"><div class="box">'+a[0]+'</div><h3>'+a[1]+'</h3>'+by(a)+'<span class="cat">'+a[3]+'</span></div></article>';
+        '<div class="body"><h3>'+a[1]+'</h3>'+by(a)+'<span class="cat">'+a[3]+'</span></div></article>';
     }).join('');
   }
   document.getElementById('chips').addEventListener('click',function(e){
