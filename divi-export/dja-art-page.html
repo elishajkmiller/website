@@ -1,0 +1,138 @@
+<!--
+  ART: Outside the Box page, for a Divi "Fullwidth Code" module.
+  Paste everything from here down into ONE Fullwidth Code module (not a Text module).
+
+  TO EDIT AN ARTWORK
+    1. Upload the photo to Media, copy its "File URL".
+    2. Replace ARTWORK_URL_n in that card's style="..." with the URL. (The colour behind it is the fallback.)
+    3. Replace the title and artist name.
+    4. Artist headshot: replace ARTIST_PHOTO_URL, or delete the whole <span class="dja-av"> line if they have none.
+    5. Artist website: replace the href, or delete the whole <a class="dja-site"> line if they have none.
+  TO ADD ONE: copy a whole <article class="dja-card"> ... </article> block and paste it after the last one.
+  TO REMOVE ONE: delete its <article> block.
+  The blurred background slideshow builds itself from the artwork photos. Nothing to edit there.
+-->
+<div id="dja-art">
+<style>
+#dja-art{font-family:'Open Sans',Arial,sans-serif;font-size:14px;line-height:1.7em;font-weight:500;color:#666}
+#dja-art *{box-sizing:border-box}
+#dja-art a{text-decoration:none}
+#dja-art .dja-hero{max-width:1080px;margin:0 auto;padding:34px 20px}
+#dja-art .dja-hero h1{font:700 32px/1.1 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0}
+#dja-art .dja-gallery{position:relative;overflow:hidden;padding:28px 0 40px}
+#dja-art .dja-gallery::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.18);z-index:0;pointer-events:none}
+#dja-art .dja-bg{position:absolute;top:-70px;right:-70px;bottom:-70px;left:-70px;z-index:0}
+#dja-art .dja-s{position:absolute;top:0;right:0;bottom:0;left:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;filter:blur(38px) saturate(1.15)}
+#dja-art .dja-s.dja-on{opacity:1}
+#dja-art .dja-grid{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+#dja-art .dja-card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1)}
+#dja-art .dja-photo{aspect-ratio:4/3;background-size:cover;background-position:center}
+#dja-art .dja-body{padding:14px 16px 16px}
+#dja-art .dja-body h3{font:700 18px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 6px}
+#dja-art .dja-by{display:flex;align-items:center;gap:8px;margin:0}
+#dja-art .dja-av{width:30px;height:30px;border-radius:50%;flex:none;border:2px solid #62c8c9;background-color:#cfd8dc;background-size:cover;background-position:center}
+#dja-art .dja-site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:#62c8c9;transition:opacity .2s}
+#dja-art .dja-site:hover{opacity:.7}
+#dja-art .dja-sponsors{background:#fff;padding:30px 20px;text-align:center}
+#dja-art .dja-sponsors h4{font:700 14px/1.2 'Open Sans',Arial,sans-serif;color:#333;text-transform:uppercase;margin:0;padding:0 0 16px}
+#dja-art .dja-logos{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:center;align-items:center}
+#dja-art .dja-logos img{display:block;height:52px;width:auto;max-width:190px;object-fit:contain}
+#dja-art .dja-logos img.dja-l-kode{height:84px;max-width:260px}
+#dja-art .dja-logos img.dja-l-ksn{height:72px;max-width:260px}
+</style>
+
+  <section class="dja-hero">
+    <h1>ART: Outside the Box</h1>
+  </section>
+
+  <section class="dja-gallery">
+    <div class="dja-bg" aria-hidden="true"></div>
+    <div class="dja-grid">
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork One by Sample Artist A" style="background-image:url('ARTWORK_URL_1'),linear-gradient(135deg,#2a2a2a,#62c8c9)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork One</h3>
+        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist A</span></div>
+        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork Two by Sample Artist B" style="background-image:url('ARTWORK_URL_2'),linear-gradient(135deg,#ef6944,#fcd145)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork Two</h3>
+        <div class="dja-by"><span>by Sample Artist B</span></div>
+        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork Three by Sample Artist C" style="background-image:url('ARTWORK_URL_3'),linear-gradient(135deg,#2ea3f2,#62c8c9)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork Three</h3>
+        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist C</span></div>
+      </div>
+    </article>
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork Four by Sample Artist D" style="background-image:url('ARTWORK_URL_4'),linear-gradient(135deg,#62c8c9,#fcd145)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork Four</h3>
+        <div class="dja-by"><span>by Sample Artist D</span></div>
+      </div>
+    </article>
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork Five by Sample Artist E" style="background-image:url('ARTWORK_URL_5'),linear-gradient(135deg,#ef6944,#2a2a2a)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork Five</h3>
+        <div class="dja-by"><span class="dja-av" style="background-image:url('ARTIST_PHOTO_URL')"></span><span>by Sample Artist E</span></div>
+      </div>
+    </article>
+    <article class="dja-card">
+      <div class="dja-photo" role="img" aria-label="Sample Artwork Six by Sample Artist F" style="background-image:url('ARTWORK_URL_6'),linear-gradient(135deg,#62c8c9,#ef6944)"></div>
+      <div class="dja-body">
+        <h3>Sample Artwork Six</h3>
+        <div class="dja-by"><span>by Sample Artist F</span></div>
+        <a class="dja-site" href="https://ARTIST-WEBSITE" target="_blank" rel="noopener">Artist website &#8599;</a>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section class="dja-sponsors">
+    <h4>Sponsored by</h4>
+    <div class="dja-logos">
+      <img src="/wp-content/uploads/2026/10/Allo.webp" alt="Allo Fiber">
+      <img src="/wp-content/uploads/2026/10/sparklight.webp" alt="Sparklight">
+      <img class="dja-l-kode" src="/wp-content/uploads/2026/10/KODE_Spotter.webp" alt="KODE 12">
+      <img class="dja-l-ksn" src="/wp-content/uploads/2026/10/KSNF_Spotter.webp" alt="KSN">
+    </div>
+  </section>
+
+<script>
+(function(){
+  var root=document.getElementById('dja-art');
+  if(!root){return;}
+  var bg=root.querySelector('.dja-bg');
+  var photos=root.querySelectorAll('.dja-photo');
+  if(!bg){return;}
+  if(photos.length===0){return;}
+  var i;
+  for(i=0;i<photos.length;i++){
+    var s=document.createElement('div');
+    s.className='dja-s';
+    s.setAttribute('style',photos[i].getAttribute('style')||'');
+    bg.appendChild(s);
+  }
+  var slides=bg.children;
+  var n=0;
+  slides[0].className='dja-s dja-on';
+  var calm=false;
+  try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(calm){return;}
+  if(slides.length<2){return;}
+  setInterval(function(){
+    slides[n].className='dja-s';
+    n=(n+1)%slides.length;
+    slides[n].className='dja-s dja-on';
+  },4000);
+})();
+</script>
+</div>
