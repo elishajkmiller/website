@@ -31,7 +31,7 @@
     .hero p{max-width:640px;margin:0;font-size:14px}
     .reel{position:absolute;top:0;right:0;bottom:0;left:0}
     .track{display:flex;height:100%;width:max-content;animation:run 240s linear infinite}
-    .track div{flex:none;width:227px;height:100%;background-size:cover;background-position:center}
+    .track div{flex:none;width:227px;height:100%;box-sizing:border-box;border:3px solid #2a2a2a;background-size:cover;background-position:center}
     @keyframes run{to{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
     .gallery{position:relative;overflow:hidden;padding-top:28px}
