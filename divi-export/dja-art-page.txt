@@ -11,6 +11,13 @@
        HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
        WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
      The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
+  EXAMPLE, filled in:
+       PHOTO-LINK-HERE     becomes  https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg
+       the title           becomes  Water Lilies
+       the artist          becomes  Claude Monet
+       HEADSHOT-LINK-HERE  becomes  https://www.downtownjoplin.com/wp-content/uploads/2026/10/monet.jpg   (or empty: url(''))
+       WEBSITE-LINK-HERE   becomes  https://example.com   (or empty: href="")
+
   3. TO ADD AN ARTWORK: copy one whole block, from its "ARTWORK" comment to its closing article tag, and paste it after the last block.
   4. TO REMOVE ONE: delete its whole block.
   5. NEVER edit anything below the line that says DO NOT EDIT BELOW.
