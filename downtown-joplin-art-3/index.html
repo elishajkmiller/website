@@ -53,6 +53,10 @@
     .copy{max-width:1080px;margin:26px auto 0;font-size:12px;font-weight:600;color:#aaa}
     @media(max-width:760px){.fcols{grid-template-columns:1fr}}
       .vbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;background:#f7f7f7;border-bottom:1px solid #eee;padding:8px 12px;font-size:12px;font-weight:700;text-transform:uppercase;color:#666}
+    .vbar{background:#fff8d6;border-bottom:1px solid #eee3a8;color:#5a4a00;justify-content:space-between;text-align:left;text-transform:none;font-weight:500;font-size:12px}
+    .vbar .note{flex:1 1 260px}
+    .vbar .vlinks{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .vb{background:#fff}
     .vb{font:500 14px/1.7em 'Open Sans',Arial,sans-serif;text-transform:none;padding:0 .8em;border:2px solid #62c8c9;border-radius:3px;color:#62c8c9;transition:all .2s}
     .vb:hover{background:#2a2a2a;border-color:#2a2a2a;color:#fff}
     .vb.slate{background:#2a2a2a;border-color:#2a2a2a;color:#fff;margin-left:6px}
@@ -82,8 +86,7 @@
   </style>
 </head>
 <body>
-<div class="preview">Concept preview. Artwork and artists below are placeholders.</div>
-<div class="vbar"><span>Concept version:</span><a class="vb" href="/downtown-joplin-art/">Version 1</a><a class="vb" href="/downtown-joplin-art-2/">Version 2</a><a class="vb on" href="/downtown-joplin-art-3/">Version 3</a><a class="vb slate" href="/qr-slate/?v=3">See slate version 3</a></div>
+<div class="vbar"><span class="note">Concept preview. Artwork and artists below are placeholders.</span><span class="vlinks"><a class="vb" href="/downtown-joplin-art/">Version 1</a><a class="vb" href="/downtown-joplin-art-2/">Version 2</a><a class="vb on" href="/downtown-joplin-art-3/">Version 3</a><a class="vb slate" href="/qr-slate/?v=3">See slate version 3</a></span></div>
 <header>
   <div class="hwrap">
     <a href="#"><img src="/downtown-joplin-art/img/dja-logo.png" alt="Downtown Joplin Alliance"></a>
