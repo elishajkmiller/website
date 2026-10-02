@@ -42,6 +42,11 @@
     document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===b)});
     document.getElementById('slate').src=b.dataset.src;
   });
+  (function(){
+    var v=new URLSearchParams(location.search).get('v');
+    var tabs=document.querySelectorAll('.tab');
+    if(v&&tabs[v-1])tabs[v-1].click();
+  })();
 </script>
 </body>
 </html>
