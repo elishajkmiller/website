@@ -8,8 +8,8 @@
        PHOTO-LINK-HERE     the artwork photo (Media Library, open the photo, copy "File URL")
        the title           the words inside the h3 tags
        the artist          the words after "by"
-       HEADSHOT-LINK-HERE  optional round headshot; delete that whole span if there is none
-       WEBSITE-LINK-HERE   optional artist website; delete that whole line if there is none
+       HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
+       WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
      The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
   3. TO ADD AN ARTWORK: copy one whole block, from its "ARTWORK" comment to its closing article tag, and paste it after the last block.
   4. TO REMOVE ONE: delete its whole block.
@@ -34,8 +34,8 @@
       <div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--p:url('PHOTO-LINK-HERE')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
       <div class="dja-body">
         <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>   <!-- 2. TITLE: type the artwork title -->
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or delete the <span class="dja-av"></span> part -->
-        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or delete this whole line if the artist has none -->
+        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or leave it empty or delete the span, and no circle shows -->
+        <a class="dja-site" href="WEBSITE-LINK-HERE" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or leave href="" empty or delete this line, and no link shows -->
       </div>
     </article>
 
@@ -377,6 +377,17 @@
 (function(){
   var root=document.getElementById('dja-art');
   if(!root){return;}
+  var links=root.querySelectorAll('.dja-site');
+  var heads=root.querySelectorAll('.dja-av');
+  var z;
+  for(z=0;z<links.length;z++){
+    var h=links[z].getAttribute('href')||'';
+    if(h===''||h.indexOf('HERE')>-1){links[z].parentNode.removeChild(links[z]);}
+  }
+  for(z=0;z<heads.length;z++){
+    var st=heads[z].getAttribute('style')||'';
+    if(st.indexOf("url('')")>-1||st.indexOf('HERE')>-1){heads[z].parentNode.removeChild(heads[z]);}
+  }
   var bg=root.querySelector('.dja-bg');
   var photos=root.querySelectorAll('.dja-photo');
   if(!bg){return;}

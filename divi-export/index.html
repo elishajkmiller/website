@@ -52,8 +52,8 @@
        PHOTO-LINK-HERE     the artwork photo (Media Library, open the photo, copy "File URL")
        the title           the words inside the h3 tags
        the artist          the words after "by"
-       HEADSHOT-LINK-HERE  optional round headshot; delete that whole span if there is none
-       WEBSITE-LINK-HERE   optional artist website; delete that whole line if there is none
+       HEADSHOT-LINK-HERE  optional round headshot. No headshot? Leave the link empty (url('')) or delete that span, and no circle shows
+       WEBSITE-LINK-HERE   optional artist website. No website? Leave the link empty (href="") or delete that line, and no link shows
      The first artwork has numbered notes (1 to 4) showing exactly where each one goes.
   3. TO ADD AN ARTWORK: copy one whole block, from its "ARTWORK" comment to its closing article tag, and paste it after the last block.
   4. TO REMOVE ONE: delete its whole block.
@@ -78,8 +78,8 @@
       <div class="dja-photo" role="img" aria-label="Lozenge Composition with Yellow, Black, Blue, Red, and Gray" style="--p:url('/downtown-joplin-art/img/art/art-01.jpg')"></div>   <!-- 1. PHOTO: paste the photo link between the quotes. To move the picture in its frame, put --x:50%;--y:30%; just before --p (0% to 100%) -->
       <div class="dja-body">
         <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>   <!-- 2. TITLE: type the artwork title -->
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or delete the <span class="dja-av"></span> part -->
-        <a class="dja-site" href="https://www.artic.edu/artworks/109819" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or delete this whole line if the artist has none -->
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Piet Mondrian</span></div>   <!-- 3. ARTIST: type the name after "by". The round headshot is optional: paste its link, or leave it empty or delete the span, and no circle shows -->
+        <a class="dja-site" href="https://www.artic.edu/artworks/109819" target="_blank" rel="noopener">Artist website &#8599;</a>   <!-- 4. WEBSITE: optional. Paste the link, or leave href="" empty or delete this line, and no link shows -->
       </div>
     </article>
 
@@ -98,7 +98,7 @@
       <div class="dja-photo" role="img" aria-label="Improvisation No. 30 (Cannons)" style="--p:url('/downtown-joplin-art/img/art/art-03.jpg')"></div>
       <div class="dja-body">
         <h3>Improvisation No. 30 (Cannons)</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Vasily Kandinsky</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/8991" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -118,7 +118,7 @@
       <div class="dja-photo" role="img" aria-label="Grapes, Lemons, Pears, and Apples" style="--p:url('/downtown-joplin-art/img/art/art-05.jpg')"></div>
       <div class="dja-body">
         <h3>Grapes, Lemons, Pears, and Apples</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Vincent van Gogh</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/64957" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -138,7 +138,7 @@
       <div class="dja-photo" role="img" aria-label="Stacks of Wheat (End of Summer)" style="--p:url('/downtown-joplin-art/img/art/art-07.jpg')"></div>
       <div class="dja-body">
         <h3>Stacks of Wheat (End of Summer)</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/64818" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -158,7 +158,7 @@
       <div class="dja-photo" role="img" aria-label="Irises" style="--y:35%;--p:url('/downtown-joplin-art/img/art/art-09.jpg')"></div>
       <div class="dja-body">
         <h3>Irises</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/4887" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -178,7 +178,7 @@
       <div class="dja-photo" role="img" aria-label="Arlésiennes (Mistral)" style="--p:url('/downtown-joplin-art/img/art/art-11.jpg')"></div>
       <div class="dja-body">
         <h3>Arlésiennes (Mistral)</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Paul Gauguin</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Paul Gauguin</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/19339" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -198,7 +198,7 @@
       <div class="dja-photo" role="img" aria-label="Still Life with Geranium" style="--p:url('/downtown-joplin-art/img/art/art-13.jpg')"></div>
       <div class="dja-body">
         <h3>Still Life with Geranium</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Henri Matisse</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Henri Matisse</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/87045" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -218,7 +218,7 @@
       <div class="dja-photo" role="img" aria-label="The Bedroom" style="--p:url('/downtown-joplin-art/img/art/art-15.jpg')"></div>
       <div class="dja-body">
         <h3>The Bedroom</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Vincent van Gogh</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/28560" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -238,7 +238,7 @@
       <div class="dja-photo" role="img" aria-label="Magnolias on Light Blue Velvet Cloth" style="--p:url('/downtown-joplin-art/img/art/art-17.jpg')"></div>
       <div class="dja-body">
         <h3>Magnolias on Light Blue Velvet Cloth</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Martin Johnson Heade</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Martin Johnson Heade</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/100829" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -258,7 +258,7 @@
       <div class="dja-photo" role="img" aria-label="Chrysanthemums" style="--p:url('/downtown-joplin-art/img/art/art-19.jpg')"></div>
       <div class="dja-body">
         <h3>Chrysanthemums</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Pierre-Auguste Renoir</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Pierre-Auguste Renoir</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/16617" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -278,7 +278,7 @@
       <div class="dja-photo" role="img" aria-label="Boats on the Beach at Étretat" style="--p:url('/downtown-joplin-art/img/art/art-21.jpg')"></div>
       <div class="dja-body">
         <h3>Boats on the Beach at Étretat</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/59927" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -298,7 +298,7 @@
       <div class="dja-photo" role="img" aria-label="Painting with Green Center" style="--p:url('/downtown-joplin-art/img/art/art-23.jpg')"></div>
       <div class="dja-body">
         <h3>Painting with Green Center</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vasily Kandinsky</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Vasily Kandinsky</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/8987" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -318,7 +318,7 @@
       <div class="dja-photo" role="img" aria-label="The Poet&#x27;s Garden" style="--p:url('/downtown-joplin-art/img/art/art-25.jpg')"></div>
       <div class="dja-body">
         <h3>The Poet&#x27;s Garden</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Vincent van Gogh</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Vincent van Gogh</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/14586" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -338,7 +338,7 @@
       <div class="dja-photo" role="img" aria-label="Venice, Palazzo Dario" style="--p:url('/downtown-joplin-art/img/art/art-27.jpg')"></div>
       <div class="dja-body">
         <h3>Venice, Palazzo Dario</h3>
-        <div class="dja-by"><span class="dja-av" style="--a:url('HEADSHOT-LINK-HERE')"></span><span>by Claude Monet</span></div>
+        <div class="dja-by"><span class="dja-av" style="--a:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23cfd8dc%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22%2390a4ae%22/%3E%3Cpath%20d%3D%22M6%2040c0-9%206-14%2014-14s14%205%2014%2014z%22%20fill%3D%22%2390a4ae%22/%3E%3C/svg%3E')"></span><span>by Claude Monet</span></div>
         <a class="dja-site" href="https://www.artic.edu/artworks/14630" target="_blank" rel="noopener">Artist website &#8599;</a>
       </div>
     </article>
@@ -421,6 +421,17 @@
 (function(){
   var root=document.getElementById('dja-art');
   if(!root){return;}
+  var links=root.querySelectorAll('.dja-site');
+  var heads=root.querySelectorAll('.dja-av');
+  var z;
+  for(z=0;z<links.length;z++){
+    var h=links[z].getAttribute('href')||'';
+    if(h===''||h.indexOf('HERE')>-1){links[z].parentNode.removeChild(links[z]);}
+  }
+  for(z=0;z<heads.length;z++){
+    var st=heads[z].getAttribute('style')||'';
+    if(st.indexOf("url('')")>-1||st.indexOf('HERE')>-1){heads[z].parentNode.removeChild(heads[z]);}
+  }
   var bg=root.querySelector('.dja-bg');
   var photos=root.querySelectorAll('.dja-photo');
   if(!bg){return;}
