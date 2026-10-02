@@ -22,15 +22,17 @@
     .menubtn{display:none;background:none;border:0;color:var(--blue);font-size:30px;cursor:pointer;line-height:1}
     @media(max-width:900px){nav{display:none;position:absolute;left:0;right:0;top:80px;background:var(--dark);padding:8px 20px 16px;z-index:5}nav.open{display:block}nav ul{flex-direction:column;gap:10px}.menubtn{display:block}header{position:relative}}
     .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-    .hero{padding:34px 0}
-    .hero h1{padding-bottom:0;line-height:1.1}
+    .hero{position:relative;overflow:hidden;height:220px;display:flex;align-items:center}
+    .hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.45)}
+    .hero .wrap{position:relative;z-index:1;width:100%}
+    .hero h1{color:#fff;padding-bottom:0;line-height:1.1;text-shadow:0 2px 12px rgba(0,0,0,.5)}
     h1,h2,h3,h4{color:#333;font-weight:700;line-height:1em;margin:0}
     h1{font-size:32px;padding-bottom:12px}
     .sub{font-size:18px;font-weight:700;color:var(--orange);padding-bottom:12px}
     .hero p{max-width:640px;margin:0;font-size:14px}
-    .reel{overflow:hidden;padding-bottom:30px}
-    .track{display:flex;width:max-content;animation:run 70s linear infinite}
-    .track div{flex:none;width:187px;height:140px;margin-right:10px;background-size:cover;background-position:center}
+    .reel{position:absolute;top:0;right:0;bottom:0;left:0}
+    .track{display:flex;height:100%;width:max-content;animation:run 70s linear infinite}
+    .track div{flex:none;width:293px;height:100%;background-size:cover;background-position:center}
     @keyframes run{to{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
     .gallery{position:relative;overflow:hidden;padding-top:28px}
@@ -98,12 +100,10 @@
     </ul></nav>
   </div>
 </header>
-<div class="wrap">
-  <section class="hero">
-    <h1>ART: Outside the Box</h1>
-  </section>
-</div>
-<div class="reel"><div class="track" id="track"></div></div>
+<section class="hero">
+  <div class="reel"><div class="track" id="track"></div></div>
+  <div class="wrap"><h1>ART: Outside the Box</h1></div>
+</section>
 <div class="gallery">
   <div class="bgshow" id="bgshow" aria-hidden="true"></div>
   <div class="wrap">
