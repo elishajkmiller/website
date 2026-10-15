@@ -56,6 +56,10 @@
         </div>
       </div>
 
+      <div class="nav-section">
+        <a href="https://code.elishajkmiller.com" class="nav-link">log in</a>
+      </div>
+
       <div class="sidebar-note">
         Joplin, MO<br>
         no trackers &middot; no ads
