@@ -42,7 +42,7 @@
 
       <p class="dja-street">4th &amp; Main</p>
       <div class="dja-photo" data-photo="batcheller-andrew-1.jpg" data-title="Antoinette with Poppies"></div>
-      <div class="dja-photo" data-photo="batcheller-andrew-2.jpg" data-title=""></div>
+      <div class="dja-photo" data-photo="batcheller-andrew-2.jpg" data-title="Hummingbird"></div>
       <p class="dja-artist" data-headshot="andrew-batcheller.jpg">Andrew Batcheller</p>
       <div class="dja-bio">Kansas City native and professional oil painter who lives and operates a studio in Joplin, Missouri. Batcheller&#x27;s distinct, ultra-surrealist and sometimes macabre artwork focuses heavily on “portraiture” that uses birds as proxies or analogies for the human condition, inviting deep contemplation regarding human drama, social consciousness, climate change, and the urge to persevere. Known for his incredible attention to detail, smooth gradients, and turbulent ocean backdrops, his work has been acquired by both national and international art collectors. “The World owes us nothing. We owe each other the World.”</div>
       <p class="dja-links"><a href="https://andrewbatcheller.com">Website</a> <a href="https://www.instagram.com/rteest3">Instagram</a></p>
@@ -196,7 +196,6 @@
 
       <p class="dja-street">3rd &amp; Main</p>
       <div class="dja-photo" data-photo="claiborne-daria-1.jpg" data-title=""></div>
-      <div class="dja-photo" data-photo="claiborne-daria-2.jpg" data-title=""></div>
       <p class="dja-artist" data-headshot="daria-claiborne.jpg">Daria Claiborne</p>
       <div class="dja-bio">Daria Claiborne is a local potter who also works with watercolors, and much of her current work is available at the Joplin Empire Market. She loves vivid colors and tends to gravitate toward whimsical ideas.</div>
       <p class="dja-links"><a href="https://www.instagram.com/dariaclaibornepottery">Instagram</a></p>
