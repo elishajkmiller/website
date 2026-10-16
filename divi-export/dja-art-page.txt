@@ -524,10 +524,10 @@
 #dja-art .dja-dots{position:absolute;left:0;right:0;bottom:8px;z-index:2;display:flex;gap:6px;justify-content:center}
 #dja-art .dja-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 3px rgba(0,0,0,.6)}
 #dja-art .dja-dots i.dja-on{background:#fff}
-#dja-art .dja-body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-#dja-art .dja-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;align-self:stretch;margin-bottom:6px}
-#dja-art .dja-box{font:700 12px/1.2 'Open Sans',Arial,sans-serif;text-transform:uppercase;color:#62c8c9;letter-spacing:.06em}
-#dja-art .dja-more{margin-left:auto;flex:none;padding:3px 10px;border-radius:3px;background:#62c8c9;color:#111;font:700 12px/1.5 'Open Sans',Arial,sans-serif;transition:all .2s}
+#dja-art .dja-body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+#dja-art .dja-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:6px 10px;align-self:stretch;margin-bottom:6px}
+#dja-art .dja-box{margin-left:auto;font:700 12px/1.2 'Open Sans',Arial,sans-serif;text-transform:uppercase;color:#62c8c9;letter-spacing:.06em}
+#dja-art .dja-more{margin-right:auto;flex:none;padding:3px 10px;border-radius:3px;background:#62c8c9;color:#111;font:700 12px/1.5 'Open Sans',Arial,sans-serif;transition:all .2s}
 #dja-art .dja-card:hover .dja-more,#dja-art .dja-card:focus-visible .dja-more{background:#2a2a2a;color:#fff}
 #dja-art .dja-body h3{font:700 18px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:2px 0 4px}
 #dja-art .dja-by{margin:0;font-size:14px}
@@ -611,7 +611,7 @@
     c.setAttribute('tabindex','0');
     c.setAttribute('role','button');
     c.setAttribute('aria-label',d.name+', open artist details');
-    c.innerHTML=media+'<div class="dja-body"><div class="dja-top">'+(d.street?'<div class="dja-box">'+esc(d.street)+'</div>':'')+'<span class="dja-more">'+more+' &rsaquo;</span></div>'+
+    c.innerHTML=media+'<div class="dja-body"><div class="dja-top"><span class="dja-more">'+more+' &rsaquo;</span>'+(d.street?'<div class="dja-box">'+esc(d.street)+'</div>':'')+'</div>'+
       (one?'<h3>'+esc(one)+'</h3>':'')+'<p class="dja-by">by <b>'+esc(d.name)+'</b></p>'+lk+'</div>';
   }
   var pool=[];

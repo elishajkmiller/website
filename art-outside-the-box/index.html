@@ -71,16 +71,16 @@
     .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 3px rgba(0,0,0,.6)}
     .dots i.on{background:#fff}
     .art.soon{text-align:center;padding:0 12px;text-transform:uppercase;font-size:12px;cursor:default}
-    .body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-    .box{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:.06em}
+    .body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+    .box{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:.06em;margin-left:auto}
     .body h3{font-size:18px;padding:2px 0 4px}
     .body p{margin:0}
     .by{margin:0;font-size:14px}
     .by b{font-weight:700}
     .site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--teal);transition:opacity .2s}
     .site:hover{opacity:.7}
-    .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;align-self:stretch;margin-bottom:6px}
-    .more{margin-left:auto;flex:none;padding:3px 10px;border-radius:3px;background:var(--teal);color:#111;font-size:12px;font-weight:700;transition:all .2s}
+    .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:6px 10px;align-self:stretch;margin-bottom:6px}
+    .more{margin-right:auto;flex:none;padding:3px 10px;border-radius:3px;background:var(--teal);color:#111;font-size:12px;font-weight:700;transition:all .2s}
     .card:hover .more,.card:focus-visible .more{background:#2a2a2a;color:#fff}
     .card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
     .cl{margin-top:6px}
@@ -238,7 +238,7 @@
         ?'<div class="art'+(w.length>1?' multi':'')+'" style="--u:url('+src(w[0].f)+')">'+w.map(function(p,k){return '<img loading="lazy"'+(k?'':' class="on"')+' data-u="'+src(p.f)+'" alt="'+esc((p.t||'Artwork')+' by '+g.n)+'" src="'+src(p.f)+'">'}).join('')+
           (w.length>1?'<button type="button" class="nav prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="nav next" aria-label="Next piece">&rsaquo;</button><span class="dots">'+w.map(function(p,k){return '<i'+(k?'':' class="on"')+'></i>'}).join('')+'</span>':'')+'</div>'
         :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
-      return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(g.n)+', open artist details">'+pic+'<div class="body"><div class="top">'+(st?'<div class="box">'+esc(st)+'</div>':'')+more+'</div>'+
+      return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(g.n)+', open artist details">'+pic+'<div class="body"><div class="top">'+more+(st?'<div class="box">'+esc(st)+'</div>':'')+'</div>'+
         (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">by <b>'+esc(g.n)+'</b></p>'+links(g.n)+'</div></article>';
     }).join('');
   }
