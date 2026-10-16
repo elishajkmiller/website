@@ -48,12 +48,16 @@
     .bgshow .s.on{opacity:1}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:40px}
     .card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column}
-    .art{flex:none;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;letter-spacing:.06em}
+    .art{flex:none;aspect-ratio:1/1;position:relative;overflow:hidden;background:#2a2a2a;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;letter-spacing:.06em}
+    .art::before{content:"";position:absolute;inset:-20px;background:var(--u) center/cover;filter:blur(22px) brightness(.85)}
+    .art img{position:relative;width:100%;height:100%;object-fit:contain;display:block}
+    .art.soon{text-align:center;padding:0 12px;text-transform:uppercase;font-size:12px;cursor:default}
     .body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
     .box{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:.06em}
     .body h3{font-size:18px;padding:2px 0 4px}
     .body p{margin:0}
-    .by{display:flex;align-items:center;gap:8px}
+    .by{margin:0;font-size:14px}
+    .by b{font-weight:700}
     .site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--teal);transition:opacity .2s}
     .site:hover{opacity:.7}
     .av{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--teal)}
@@ -139,63 +143,76 @@
 <div class="lb" id="lb" hidden><b>&times;</b><img alt=""><p></p></div>
 <script>
   document.getElementById('menubtn').onclick=function(){document.getElementById('nav').classList.toggle('open')};
+  /* [image file in img/real/ or '', artist, title or '', street corner, fallback colors] */
   var art=[
-    ['Box 01','Lozenge Composition with Yellow, Black, Blue, Red, and Gray','Piet Mondrian','Adult','#2a2a2a,#62c8c9',1,'https://www.artic.edu/artworks/109819'],
-    ['Box 02','Water Lilies','Claude Monet','Adult','#ef6944,#fcd145',0,'https://www.artic.edu/artworks/16568','50% 35%'],
-    ['Box 03','Improvisation No. 30 (Cannons)','Vasily Kandinsky','Adult','#2ea3f2,#62c8c9',1,'https://www.artic.edu/artworks/8991'],
-    ['Box 04','Branch of the Seine near Giverny (Mist)','Claude Monet','Adult','#62c8c9,#fcd145',0,'https://www.artic.edu/artworks/16564'],
-    ['Box 05','Grapes, Lemons, Pears, and Apples','Vincent van Gogh','Adult','#ef6944,#2a2a2a',1,'https://www.artic.edu/artworks/64957'],
-    ['Box 06','Stacks of Wheat (Sunset, Snow Effect)','Claude Monet','Adult','#62c8c9,#ef6944',0,'https://www.artic.edu/artworks/81545'],
-    ['Box 07','Stacks of Wheat (End of Summer)','Claude Monet','Adult','#fcd145,#2ea3f2',1,'https://www.artic.edu/artworks/64818'],
-    ['Box 08','Poppy Field (Giverny)','Claude Monet','Adult','#2a2a2a,#62c8c9',0,'https://www.artic.edu/artworks/4783'],
-    ['Box 09','Irises','Claude Monet','Adult','#ef6944,#fcd145',1,'https://www.artic.edu/artworks/4887','50% 35%'],
-    ['Box 10','Movement','Marsden Hartley','Adult','#2ea3f2,#62c8c9',0,'https://www.artic.edu/artworks/65916'],
-    ['Box 11','Arlésiennes (Mistral)','Paul Gauguin','Adult','#62c8c9,#fcd145',1,'https://www.artic.edu/artworks/19339'],
-    ['Box 12','Bordighera','Claude Monet','Adult','#ef6944,#2a2a2a',0,'https://www.artic.edu/artworks/81537'],
-    ['Box 13','Still Life with Geranium','Henri Matisse','Adult','#62c8c9,#ef6944',1,'https://www.artic.edu/artworks/87045'],
-    ['Box 14','Composition (No. 1) Gray-Red','Piet Mondrian','Adult','#fcd145,#2ea3f2',0,'https://www.artic.edu/artworks/65821'],
-    ['Box 15','The Bedroom','Vincent van Gogh','Adult','#2a2a2a,#62c8c9',1,'https://www.artic.edu/artworks/28560'],
-    ['Box 16','Fishing in Spring, the Pont de Clichy (Asnières)','Vincent van Gogh','Adult','#ef6944,#fcd145',0,'https://www.artic.edu/artworks/109314'],
-    ['Box 17','Magnolias on Light Blue Velvet Cloth','Martin Johnson Heade','Adult','#2ea3f2,#62c8c9',1,'https://www.artic.edu/artworks/100829'],
-    ['Box 18','Ballet Dancers','Henri de Toulouse-Lautrec','Adult','#62c8c9,#fcd145',0,'https://www.artic.edu/artworks/9148'],
-    ['Box 19','Chrysanthemums','Pierre-Auguste Renoir','Adult','#ef6944,#2a2a2a',1,'https://www.artic.edu/artworks/16617'],
-    ['Box 20','Houses of Parliament, London','Claude Monet','Adult','#62c8c9,#ef6944',0,'https://www.artic.edu/artworks/16584'],
-    ['Box 21','Boats on the Beach at Étretat','Claude Monet','Adult','#fcd145,#2ea3f2',1,'https://www.artic.edu/artworks/59927'],
-    ['Box 22','Flowers: Poppies and Daisies','Odilon Redon','Adult','#2a2a2a,#62c8c9',0,'https://www.artic.edu/artworks/94240'],
-    ['Box 23','Painting with Green Center','Vasily Kandinsky','Adult','#ef6944,#fcd145',1,'https://www.artic.edu/artworks/8987'],
-    ['Box 24','Still Life with Flowers','Odilon Redon','Adult','#2ea3f2,#62c8c9',0,'https://www.artic.edu/artworks/110982'],
-    ['Box 25','The Poet\'s Garden','Vincent van Gogh','Adult','#62c8c9,#fcd145',1,'https://www.artic.edu/artworks/14586'],
-    ['Box 26','Rocks at Port-Goulphar, Belle-Île','Claude Monet','Adult','#ef6944,#2a2a2a',0,'https://www.artic.edu/artworks/20545'],
-    ['Box 27','Venice, Palazzo Dario','Claude Monet','Adult','#62c8c9,#ef6944',1,'https://www.artic.edu/artworks/14630'],
-    ['Box 28','Sandvika, Norway','Claude Monet','Adult','#fcd145,#2ea3f2',0,'https://www.artic.edu/artworks/86998']
+    ['batcheller-andrew-1','Andrew Batcheller','Antoinette with Poppies','4th & Main','#62c8c9,#2a2a2a'],
+    ['batcheller-andrew-2','Andrew Batcheller','','4th & Main','#2a2a2a,#62c8c9'],
+    ['beezley-eric','Eric Beezley','Reviews, Ravages and Praises Shrouded in Context','4th & Main','#2ea3f2,#ef6944'],
+    ['brower-robyn','Robyn Brower','','3rd & Main','#62c8c9,#fcd145'],
+    ['buttles-alexia','Alexia Buttles','Another Story','1st & Main','#2ea3f2,#ef6944'],
+    ['byrne-mike','Mike Byrne','Master Robot','4th & Joplin','#ef6944,#2ea3f2'],
+    ['cabral-rachel','Rachel Cabral','','2nd & Main','#fcd145,#62c8c9'],
+    ['calderon-kidston-amanda-1','Amanda Calderon-Kidston','','5th & Main','#62c8c9,#2a2a2a'],
+    ['calderon-kidston-amanda-2','Amanda Calderon-Kidston','','5th & Main','#2ea3f2,#62c8c9'],
+    ['cantrell-emaline','Emaline Cantrell','Rotten Peach','6th & Joplin','#ef6944,#fcd145'],
+    ['carlton-jack','Jack Carlton','Route 66 Lady in Shades','6th & Main','#ef6944,#2a2a2a'],
+    ['catlett-chuck','Chuck Catlett','Lith de Luna','2nd & Main','#2a2a2a,#fcd145'],
+    ['catlett-julie','Julie Catlett','Bumble Bee','6th & Main','#fcd145,#ef6944'],
+    ['churchwell-marta','Marta Churchwell','Humpty Dumpty','Blackthorne','#ef6944,#2ea3f2'],
+    ['claiborne-daria-1','Daria Claiborne','','3rd & Main','#fcd145,#ef6944'],
+    ['claiborne-daria-2','Daria Claiborne','','3rd & Main','#ef6944,#2a2a2a'],
+    ['degraff-bradshaw','Bradshaw DeGraff','','8th & Main','#62c8c9,#2ea3f2'],
+    ['degraff-richard','Richard DeGraff','','8th & Main','#2ea3f2,#2a2a2a'],
+    ['fauskee-kaytee','Kaytee Fauskee','Lunar Migration','2nd & Main','#2ea3f2,#62c8c9'],
+    ['grove-stella','Stella Grove','Crystal Cave','4th & Virginia','#2a2a2a,#62c8c9'],
+    ['haun-eric','Eric Haun','','4th & Virginia','#62c8c9,#ef6944'],
+    ['henning-jade','Jade Henning','Small World 1','4th & Joplin','#2a2a2a,#ef6944'],
+    ['howard-jean','Jean Howard','','5th & Main','#ef6944,#2a2a2a'],
+    ['lewis-sara-1','Sara Lewis','','6th & Joplin and Blackthorne','#ef6944,#2ea3f2'],
+    ['lewis-sara-2','Sara Lewis','','6th & Joplin and Blackthorne','#2ea3f2,#62c8c9'],
+    ['lowenstein-keren-1','Keren Lowenstein','Cyberpunk Woman No. 1 Wearing Sunglasses','3rd & Joplin','#62c8c9,#ef6944'],
+    ['lowenstein-keren-2','Keren Lowenstein','Cyberpunk Woman No. 2 Under a Maypole','3rd & Joplin','#ef6944,#2ea3f2'],
+    ['mitterer-jacqueline-1','Jacqueline Claudet Mitterer','Proteas by the Window','4th & Wall','#62c8c9,#fcd145'],
+    ['mitterer-jacqueline-2','Jacqueline Claudet Mitterer','The Gospel of Unbreakable Promises','4th & Wall','#2ea3f2,#fcd145'],
+    ['','Barrett Mooneyham','','6th & Joplin','#2a2a2a,#62c8c9'],
+    ['','Margie Moss','','8th & Main','#2a2a2a,#ef6944'],
+    ['','Parker Mudd','','1st & Main','#2a2a2a,#2ea3f2'],
+    ['','Linda Passeri','','5th & Joplin','#2a2a2a,#fcd145'],
+    ['','Rebecca Perry','','4th & Pennsylvania','#2a2a2a,#62c8c9'],
+    ['','Connie Sherman','','3rd & Main','#2a2a2a,#ef6944'],
+    ['','Linda Teeter','','10th & Joplin','#2a2a2a,#2ea3f2'],
+    ['','Cadence Wimsett','','6th & Main','#2a2a2a,#fcd145'],
+    ['','Cadence Wimsett','','6th & Main','#2a2a2a,#62c8c9'],
+    ['','Vlad Zadneprianski','','2nd & Virginia','#2a2a2a,#ef6944']
   ];
-  function bg(a){var c=a[4].split(','),o=a[7]||'50% 50%';return 'url(img/art/art-'+a[0].slice(-2)+'.jpg) '+o+'/cover,linear-gradient(135deg,'+c[0]+','+c[1]+')'}
+  function src(a){return 'img/real/'+a[0]+'.jpg'}
+  function bg(a){var c=a[4].split(',');return 'url('+src(a)+') center/cover,linear-gradient(135deg,'+c[0]+','+c[1]+')'}
   var grid=document.getElementById('grid');
-  function by(a){
-    var av=a[5]?'<img class="av" alt="" src="data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#cfd8dc"/><circle cx="20" cy="16" r="7" fill="#90a4ae"/><path d="M6 40c0-9 6-14 14-14s14 5 14 14z" fill="#90a4ae"/></svg>')+'">':'';
-    var site=a[6]?'<a class="site" href="'+a[6]+'" target="_blank" rel="noopener">Artist website &#8599;</a>':'';
-    return '<div class="by">'+av+'<span>by '+a[2]+'</span></div>'+site;
-  }
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
   function render(){
-    grid.innerHTML=art.map(function(a){
+    grid.innerHTML=art.map(function(a,i){
       var c=a[4].split(',');
-      return '<article class="card"><div class="art" data-i="'+art.indexOf(a)+'" style="background:'+bg(a)+'"></div>'+
-        '<div class="body"><h3>'+a[1]+'</h3>'+by(a)+'</div></article>';
+      var pic=a[0]
+        ?'<div class="art" data-i="'+i+'" style="--u:url('+src(a)+')"><img loading="lazy" alt="'+esc((a[2]||'Artwork')+' by '+a[1])+'" src="'+src(a)+'"></div>'
+        :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
+      return '<article class="card">'+pic+'<div class="body"><div class="box">'+esc(a[3])+'</div>'+
+        (a[2]?'<h3>'+esc(a[2])+'</h3>':'')+'<p class="by">'+(a[2]?'by ':'')+'<b>'+esc(a[1])+'</b></p></div></article>';
     }).join('');
   }
   render();
-  var tr=art.map(function(a){var c=a[4].split(',');return '<div data-i="'+art.indexOf(a)+'" style="background:'+bg(a)+'"></div>'}).join('');
+  var shown=art.map(function(a,i){return a[0]?i:-1}).filter(function(i){return i>=0});
+  var tr=shown.map(function(i){return '<div data-i="'+i+'" style="background:'+bg(art[i])+'"></div>'}).join('');
   document.getElementById('track').innerHTML=tr+tr;
   var lb=document.getElementById('lb');
   document.addEventListener('click',function(e){
     var t=e.target.closest('[data-i]');
-    if(t){var a=art[+t.dataset.i];lb.querySelector('img').src='img/art/art-'+a[0].slice(-2)+'.jpg';lb.querySelector('p').textContent=a[1]+', by '+a[2];lb.hidden=false;return;}
+    if(t){var a=art[+t.dataset.i];lb.querySelector('img').src=src(a);lb.querySelector('p').textContent=(a[2]?a[2]+', by ':'')+a[1];lb.hidden=false;return;}
     if(!lb.hidden){lb.hidden=true;}
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.hidden=true;}});
   var show=document.getElementById('bgshow'), si=0;
-  var step=Math.ceil(art.length/8);
-  show.innerHTML=art.filter(function(a,i){return i%step===0}).map(function(a){var c=a[4].split(',');return '<div class="s" style="background:'+bg(a)+'"></div>'}).join('');
+  var step=Math.ceil(shown.length/8);
+  show.innerHTML=shown.filter(function(i,k){return k%step===0}).map(function(i){return '<div class="s" style="background:'+bg(art[i])+'"></div>'}).join('');
   var slides=show.children; slides[0].classList.add('on');
   if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
     setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on')},10000);
