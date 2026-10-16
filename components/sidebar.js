@@ -43,15 +43,6 @@
           <a href="https://github.com/elishajkmiller" class="social-link" target="_blank">
             <i class="ti ti-brand-github" aria-hidden="true"></i>GitHub
           </a>
-          <a href="https://mastodon.social/@Eli_M" class="social-link" target="_blank">
-            <i class="ti ti-brand-mastodon" aria-hidden="true"></i>Mastodon
-          </a>
-          <a href="#" class="social-link">
-            <i class="ti ti-brand-bluesky" aria-hidden="true"></i>Bluesky
-          </a>
-          <a href="#" class="social-link">
-            <i class="ti ti-video" aria-hidden="true"></i>MakerTube
-          </a>
           <a href="mailto:elishajkmiller@proton.me" class="social-link">
             <i class="ti ti-mail" aria-hidden="true"></i>email
           </a>
