@@ -58,4 +58,13 @@
 
   const el = document.getElementById('sidebar');
   if (el) el.innerHTML = html;
+
+  // site-wide disclaimer at the bottom of every page's main column
+  const main = document.querySelector('.main');
+  if (main) {
+    const note = document.createElement('p');
+    note.className = 'disclaimer';
+    note.textContent = 'My opinions are my own and do not reflect those of my current employer.';
+    main.appendChild(note);
+  }
 })();
