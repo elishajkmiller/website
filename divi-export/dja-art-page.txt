@@ -2,29 +2,30 @@
   ART: OUTSIDE THE BOX PAGE
   Paste ALL of this into ONE Divi "Fullwidth Code" module (not a Text module).
 
+  BEFORE YOU START: upload every photo in the "upload-these-photos" folder to the Media Library in one go.
+  Then open any one of them and copy its "File URL". It ends with the file name. Paste everything BEFORE
+  the file name (it ends with a slash) into the data-base line just below, replacing the one there.
+  After that, every photo in this page is found by its file name alone.
+
   HOW TO EDIT
-  1. Each artwork is one block of a few lines. Only edit between its two lines that say "edit below this line" and "edit above this line". Nothing else in the block needs touching.
-  2. Change the words in capitals and the text between the tags:
-       PHOTO-LINK-HERE     the artwork photo (Media Library, open the photo, copy "File URL")
-       the title           the words inside the h3 tags
-       the artist          the name between the p tags (the page adds the word "by")
-       HEADSHOT-LINK-HERE  optional round headshot link. None? Leave it empty ("") and no circle shows
-       WEBSITE-LINK-HERE   optional artist website link. None? Leave it empty ("") and no link shows
-  3. TO MOVE A PICTURE inside its frame: on its photo line, change --x (left/right) and --y (up/down), 0% to 100%. 50% is centred.
+  1. Each artist is one block. Only edit between its two lines that say "edit below this line" and "edit above this line".
+  2. Inside a block:
+       dja-street     the street corner (optional, delete the line for none)
+       dja-photo      one line per artwork: data-photo is the photo's file name, data-title is the artwork title
+                      (empty "" for no title). Two artworks? Two photo lines. No artwork yet? Delete the photo lines
+                      and the card says "Artwork coming soon".
+       dja-artist     the artist's name. data-headshot is the file name of their photo ("" for none)
+       dja-bio        the artist's bio
+       dja-links      their website and social links (optional, delete the line for none)
+  3. TO ADD AN ARTIST: copy one whole block, from its article tag to its closing article tag, and paste it after the last block.
+  4. TO REMOVE ONE: delete its whole block.
+  5. SPONSORS are near the bottom, under their own "edit below this line" label.
+  6. NEVER edit anything below the line that says DO NOT EDIT BELOW.
 
-  EXAMPLE, filled in:
-       <div class="dja-photo" style="--x:50%;--y:50%;--p:url('https://www.downtownjoplin.com/wp-content/uploads/2026/10/water-lilies.jpg')"></div>
-       <h3>Water Lilies</h3>
-       <p class="dja-artist" data-headshot="https://www.downtownjoplin.com/wp-content/uploads/2026/10/monet.jpg" data-site="https://example.com">Claude Monet</p>
-
-  4. TO ADD AN ARTWORK: copy one whole block, from its article tag to its closing article tag, and paste it after the last block.
-  5. TO REMOVE ONE: delete its whole block.
-  6. SPONSORS are near the bottom, under their own "edit below this line" label.
-  7. NEVER edit anything below the line that says DO NOT EDIT BELOW.
-
-  The big carousel and the blurred background build themselves from the photos.
+  The big carousel and the blurred background build themselves from the photos. Clicking a card opens the
+  artwork and the artist's bio. Cards with two artworks flip between them.
 -->
-<div id="dja-art">
+<div id="dja-art" data-base="https://www.downtownjoplin.com/wp-content/uploads/2026/10/">
 
   <!-- PAGE TITLE: the big words at the top. Change the words inside the h1 tags if you ever need to. -->
   <section class="dja-hero">
@@ -37,366 +38,411 @@
     <div class="dja-grid">
 
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Main</p>
+      <div class="dja-photo" data-photo="batcheller-andrew-1.jpg" data-title="Antoinette with Poppies"></div>
+      <div class="dja-photo" data-photo="batcheller-andrew-2.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="andrew-batcheller.jpg">Andrew Batcheller</p>
+      <div class="dja-bio">Kansas City native and professional oil painter who lives and operates a studio in Joplin, Missouri. Batcheller&#x27;s distinct, ultra-surrealist and sometimes macabre artwork focuses heavily on “portraiture” that uses birds as proxies or analogies for the human condition, inviting deep contemplation regarding human drama, social consciousness, climate change, and the urge to persevere. Known for his incredible attention to detail, smooth gradients, and turbulent ocean backdrops, his work has been acquired by both national and international art collectors. “The World owes us nothing. We owe each other the World.”</div>
+      <p class="dja-links"><a href="https://andrewbatcheller.com">Website</a> <a href="https://www.instagram.com/rteest3">Instagram</a></p>
 
-      <h3>Lozenge Composition with Yellow, Black, Blue, Red, and Gray</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Piet Mondrian</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Main</p>
+      <div class="dja-photo" data-photo="beezley-eric.jpg" data-title="Reviews, Ravages and Praises Shrouded in Context"></div>
+      <p class="dja-artist" data-headshot="eric-beezley.jpg">Eric Beezley</p>
+      <div class="dja-bio">Eric Beezley is an abstract painter whose works showcase a creative spirit and spontaneous style. He combines geometric shapes, fluid movement and mixed media components to create unique compositions.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/ebeezart">Instagram</a></p>
 
-      <h3>Water Lilies</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <div class="dja-photo" data-photo="brand-john.jpg" data-title="Dust to Dust"></div>
+      <p class="dja-artist" data-headshot="john-brand.jpg">John Brand</p>
+      <div class="dja-bio">John Brand is a nature and wildlife photographer based in the Lake of the Ozarks area of Missouri. His work spans landscapes, botanicals, and wildlife, drawn to subjects that reveal unexpected detail and color in the natural world. His image Dust to Dust was captured during a summer morning in his backyard, where a bumblebee covered in pollen works the center of a Gaillardia in full bloom.</div>
+      <p class="dja-links"><a href="https://pictorem.com/gallery/OlosPhotos">Gallery</a></p>
 
-      <h3>Improvisation No. 30 (Cannons)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vasily Kandinsky</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">3rd &amp; Main</p>
+      <div class="dja-photo" data-photo="brower-robyn.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="robyn-brower.jpg">Robyn Brower</p>
+      <div class="dja-bio">Minnesota artist Robyn Brower works in chalk pastel, creating detailed drawings inspired by close observation of the natural world. Her work explores landscapes, gardens, and the intricate relationships between plants and insects. Through close-up perspectives and unusual vantage points, she draws attention to the vibrant colors, varied textures, and fleeting details that might otherwise go unnoticed.</div>
+      <p class="dja-links"><a href="https://robynbrower.com">Website</a> <a href="https://www.instagram.com/walked_here">Instagram</a></p>
 
-      <h3>Branch of the Seine near Giverny (Mist)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">1st &amp; Main</p>
+      <div class="dja-photo" data-photo="buttles-alexia.jpg" data-title="Another Story"></div>
+      <p class="dja-artist" data-headshot="alexia-buttles.jpg">Alexia Buttles</p>
+      <div class="dja-bio">Local artist Alexia Buttles brings a dreamlike quality to her work, blending nostalgia, mystery, and a touch of the unexpected. With a passion for exploring new artistic mediums, she creates pieces that spark curiosity and invite viewers to look a little closer, question what they see, and find their own meaning in the mystery.</div>
 
-      <h3>Grapes, Lemons, Pears, and Apples</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Joplin</p>
+      <div class="dja-photo" data-photo="byrne-mike.jpg" data-title="Master Robot"></div>
+      <p class="dja-artist" data-headshot="mike-byrne.jpg">Mike Byrne</p>
+      <div class="dja-bio">Artist Mike Byrne takes a minimalist approach, using everyday objects in unexpected ways to celebrate the often-overlooked artistry of industrial design. While preserving each object&#x27;s original purpose, he adds intellectually playful titles that invite viewers to make new connections. His goal is to spark an emotional response, especially that amusing “aha!” moment when a viewer sees something familiar in a whole new way.</div>
+      <p class="dja-links"><a href="https://www.mikebyrneart.com">Website</a> <a href="https://www.facebook.com/profile.php?id=61557890062687">Facebook</a></p>
 
-      <h3>Stacks of Wheat (Sunset, Snow Effect)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">2nd &amp; Main</p>
+      <div class="dja-photo" data-photo="cabral-rachel.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="rachel-cabral.jpg">Rachel Cabral</p>
+      <div class="dja-bio">Rachel Cabral is an award-winning watercolor artist who specializes in portraits, both realistic and cartoon. Rachel has been creating art her whole life, and finds no greater joy, especially when she creates artwork with her daughters. Rachel displays her artwork in several galleries in the Midwest and teaching art classes to all ages. Rachel also paints whimsical live caricatures at events and parties.</div>
+      <p class="dja-links"><a href="https://www.facebook.com/Rachelsshoebox">Facebook</a> <a href="https://www.instagram.com/rachelsshoebox">Instagram</a></p>
 
-      <h3>Stacks of Wheat (End of Summer)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">5th &amp; Main</p>
+      <div class="dja-photo" data-photo="calderon-kidston-amanda-1.jpg" data-title=""></div>
+      <div class="dja-photo" data-photo="calderon-kidston-amanda-2.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="amanda-calderon-kidston.jpg">Amanda Calderon-Kidston</p>
+      <div class="dja-bio">Amanda lives in Joplin with her husband, daughter, three dogs and cat. She has been embroidering since 2018, and has shown her work in various galleries across southwest Missouri. Amanda is a proud member of Spiva Center for the Arts, the Joplin Regional Artists Coalition, the Springfield Regional Arts Council, and ArtCentral; she has won several awards for her fiber work throughout the last few years. Her work focuses on themes of nature, symbolism, and texture and has a goal to give embroidery/fiber art a contemporary twist.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/la_coyota_embroidery">Instagram</a></p>
 
-      <h3>Poppy Field (Giverny)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:35%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">6th &amp; Joplin</p>
+      <div class="dja-photo" data-photo="cantrell-emaline.jpg" data-title="Rotten Peach"></div>
+      <p class="dja-artist" data-headshot="emaline-cantrell.jpg">Emaline Cantrell</p>
+      <div class="dja-bio">Emaline is a young artist who attends children&#x27;s classes at Spiva Center for the Arts in Joplin. She loves painting, beading, rock collecting and tumbling, and general messy art mediums.</div>
 
-      <h3>Irises</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">6th &amp; Main</p>
+      <div class="dja-photo" data-photo="carlton-jack.jpg" data-title="Route 66 Lady in Shades"></div>
+      <p class="dja-artist" data-headshot="">Jack Carlton</p>
+      <div class="dja-bio">Jack Carlton is a 19 year old freshman at the University of Missouri pursuing a career in sports media. Jack has multimedia experience doing graphic design for Carthage High School Athletics, as well as working with Mizzou Men&#x27;s Basketball as a creative media intern.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/jack_carlton_">Instagram</a></p>
 
-      <h3>Movement</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Marsden Hartley</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">2nd &amp; Main</p>
+      <div class="dja-photo" data-photo="catlett-chuck.jpg" data-title="Lith de Luna"></div>
+      <p class="dja-artist" data-headshot="chuck-catlett.jpg">Chuck Catlett</p>
+      <div class="dja-bio">Chuck Catlett is a self-taught Four States artist whose watercolor-and-ink work is inspired by local landmarks, forgotten places, Ozark heritage, nature, and the character of everyday surroundings. His loose, expressive style blends architectural detail with a sense of nostalgia and whimsy. He shares his creative journey alongside his wife, Julie through Green Hearts Studio and enjoys creating art that celebrates the places and stories that help give a community its identity, through projects such as “The Little Art Boxes.”</div>
+      <p class="dja-links"><a href="https://www.greenheartsart.com">Website</a> <a href="https://www.instagram.com/greenheartsstudio">Instagram</a></p>
 
-      <h3>Arlésiennes (Mistral)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Paul Gauguin</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">6th &amp; Main</p>
+      <div class="dja-photo" data-photo="catlett-julie.jpg" data-title="Bumble Bee"></div>
+      <p class="dja-artist" data-headshot="julie-catlett.jpg">Julie Catlett</p>
+      <div class="dja-bio">Julie Catlett is a Joplin-area artist and Carthage native whose colorful work is inspired by butterflies, bees, flowers, nature, and the beauty found in the world around her. Working in a variety of mediums, including her distinctive reverse-painted glass pieces, Julie creates vibrant, uplifting artwork filled with movement and personality. She shares her creative journey alongside her husband, Chuck through Green Hearts Studio and enjoys making art that brings a little more color and joy into the community, through projects such as “The Little Art Boxes.”</div>
+      <p class="dja-links"><a href="https://www.greenheartsart.com">Website</a> <a href="https://www.instagram.com/greenheartsstudio">Instagram</a></p>
 
-      <h3>Bordighera</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">Blackthorne</p>
+      <div class="dja-photo" data-photo="churchwell-marta.jpg" data-title="Humpty Dumpty"></div>
+      <p class="dja-artist" data-headshot="marta-churchwell.jpg">Marta Churchwell</p>
+      <div class="dja-bio">Marta Churchwell is an award-winning photographer whose work has been in group exhibits at Spiva Center for the Arts, Post Art Library, Carthage’s artCentral, the Joplin Area Chamber of Commerce, and Maple Uncommon Gallery at Columbus, Kan. She is also jewelry maker. She is a founding board member and past vice president and secretary of the Joplin Regional Artists Coalition, a member of The Tank Public Art, a former member of the Joplin Arts Fest Planning Committee, and a member of Best of Missouri Hands. A retired news reporter and former development coordinator for Spiva, she is now an arts columnist for The Joplin Globe.</div>
 
-      <h3>Still Life with Geranium</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Henri Matisse</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">3rd &amp; Main</p>
+      <div class="dja-photo" data-photo="claiborne-daria-1.jpg" data-title=""></div>
+      <div class="dja-photo" data-photo="claiborne-daria-2.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="daria-claiborne.jpg">Daria Claiborne</p>
+      <div class="dja-bio">Daria Claiborne is a local potter who also works with watercolors, and much of her current work is available at the Joplin Empire Market. She loves vivid colors and tends to gravitate toward whimsical ideas.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/dariaclaibornepottery">Instagram</a></p>
 
-      <h3>Composition (No. 1) Gray-Red</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Piet Mondrian</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">8th &amp; Main</p>
+      <div class="dja-photo" data-photo="degraff-bradshaw.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="bradshaw-degraff.jpg">Bradshaw DeGraff</p>
+      <div class="dja-bio">Bradshaw is 10 years old, and has been a lover of art since a very young age. His Grandmother, Margie Moss, is a well-known local artist. She has helped him over the years really explore his artistic and comedic personality.</div>
 
-      <h3>The Bedroom</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">8th &amp; Main</p>
+      <div class="dja-photo" data-photo="degraff-richard.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="richard-degraff.jpg">Richard DeGraff</p>
+      <div class="dja-bio">Richard is 8 years old, and has been a lover of art since a very young age. His Grandmother, Margie Moss, is a well-known local artist. She has helped him over the years really explore his artistic and fun personality. Richard loves to paint funny cats, and really loves when he sells one to someone; it makes him smile!</div>
 
-      <h3>Fishing in Spring, the Pont de Clichy (Asnières)</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">2nd &amp; Main</p>
+      <div class="dja-photo" data-photo="fauskee-kaytee.jpg" data-title="Lunar Migration"></div>
+      <p class="dja-artist" data-headshot="kaytee-fauskee.jpg">Kaytee Fauskee</p>
+      <div class="dja-bio">Colorado-based artist Kaytee Fauskee transforms the wonders of nature into imaginative, dreamlike worlds. Inspired by rugged mountains, wildlife, and star-filled skies, she weaves bold hues, intricate patterns, and playful geometry into her work. Whether creating in traditional or digital media, Kaytee brings a sense of curiosity, whimsy, and wonder to everyday spaces.</div>
+      <p class="dja-links"><a href="https://ktfauskee.com">Website</a> <a href="https://www.instagram.com/ktfauskee">Instagram</a></p>
 
-      <h3>Magnolias on Light Blue Velvet Cloth</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Martin Johnson Heade</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Virginia</p>
+      <div class="dja-photo" data-photo="grove-stella.jpg" data-title="Crystal Cave"></div>
+      <p class="dja-artist" data-headshot="stella-grove.jpg">Stella Grove</p>
+      <div class="dja-bio">Stella Grove is a Kansas City-based artist specializing in whimsical community art. When she&#x27;s not creating watercolor paintings of pets and loved ones, she is working on public art in the community. Her focus is to bring joy and familiarity to the places we see everyday. Her mural works explore themes of nature, community, hope, and connection through vibrant imagery and storytelling.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/stellagrovestudios">Instagram</a></p>
 
-      <h3>Ballet Dancers</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Henri de Toulouse-Lautrec</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Virginia</p>
+      <div class="dja-photo" data-photo="haun-eric.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="eric-haun.jpg">Eric Haun</p>
+      <div class="dja-bio">Joplin-based artist Eric Haun has created more than 65 public artworks for the community to enjoy. His work includes 34 Heart Joplin murals, two tornado memorial murals, and 23 pieces along the Jasper County Route 66 Barn Quilt Trail. Through his art, Eric celebrates local history, community pride, and the spirit of the region.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/erichaun">Instagram</a> <a href="https://www.instagram.com/heartjoplin">Heart Joplin</a></p>
 
-      <h3>Chrysanthemums</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Pierre-Auguste Renoir</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Joplin</p>
+      <div class="dja-photo" data-photo="henning-jade.jpg" data-title="Small World 1"></div>
+      <p class="dja-artist" data-headshot="jade-henning.jpg">Jade Henning</p>
+      <div class="dja-bio">Jade Henning is a mixed media artist and educator based in Joplin, Missouri. Her main focus in mediums are printmaking, painting, and drawing with a love for concept portraiture. As a pet project, she enjoys working with jewelry and metalsmithing mediums. Having been a lifelong student of visual arts, Jade has her Bachelor of Fine Arts Degree, and a Certification in Arts Administration Management and Leadership from Missouri Southern State University. She is a children&#x27;s art educator at Spiva Center for the Arts in Joplin. When she isn&#x27;t drawing, Jade enjoys reading, traveling, watching bad sitcoms and spending time with her family.</div>
 
-      <h3>Houses of Parliament, London</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">5th &amp; Main</p>
+      <div class="dja-photo" data-photo="howard-jean.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="jean-howard.jpg">Jean Howard</p>
+      <div class="dja-bio">Jean Howard grew up in a small farming community in Central Missouri, where quilting was a familiar and treasured part of everyday life. Inspired by those roots and her lifelong connection to nature, she blends traditional quilting techniques with original, improvisational designs. Through vibrant fabrics, organic shapes, and unexpected colors, her work celebrates the beauty, wonder, and occasional whimsy of the natural world.</div>
+      <p class="dja-links"><a href="https://www.jeanhowardquilts.com">Website</a></p>
 
-      <h3>Boats on the Beach at Étretat</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">6th &amp; Joplin and Blackthorne</p>
+      <div class="dja-photo" data-photo="lewis-sara-1.jpg" data-title=""></div>
+      <div class="dja-photo" data-photo="lewis-sara-2.jpg" data-title=""></div>
+      <p class="dja-artist" data-headshot="sara-lewis.jpg">Sara Lewis</p>
+      <div class="dja-bio">Sara Lewis is a multidisciplinary artist whose work blends texture, color, and storytelling. Her pieces evoke tranquility, nostalgia, and the beauty of everyday life. Working with cardboard, canvas, wood, drywall, and resin, she transforms simple materials into immersive worlds that feel both familiar and dreamlike.</div>
+      <p class="dja-links"><a href="https://www.saralewisarts.com">Website</a> <a href="https://www.instagram.com/thewindowgourmet">Instagram</a></p>
 
-      <h3>Flowers: Poppies and Daisies</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Odilon Redon</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">3rd &amp; Joplin</p>
+      <div class="dja-photo" data-photo="lowenstein-keren-1.jpg" data-title="Cyberpunk Woman No. 1 Wearing Sunglasses"></div>
+      <div class="dja-photo" data-photo="lowenstein-keren-2.jpg" data-title="Cyberpunk Woman No. 2 Under a Maypole"></div>
+      <p class="dja-artist" data-headshot="">Keren Lowenstein</p>
 
-      <h3>Painting with Green Center</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vasily Kandinsky</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Wall</p>
+      <div class="dja-photo" data-photo="mitterer-jacqueline-1.jpg" data-title="Proteas by the Window"></div>
+      <div class="dja-photo" data-photo="mitterer-jacqueline-2.jpg" data-title="The Gospel of Unbreakable Promises"></div>
+      <p class="dja-artist" data-headshot="jacqueline-claudet-mitterer.jpg">Jacqueline Claudet Mitterer</p>
+      <div class="dja-bio">Born in Lima, Peru in 1971, Jackie C. Mitterer pioneers a distinctive “Modern 3DMosaic” technique, infusing traditional methods with a painter&#x27;s perspective. Intuitively layering sea glass, ceramics, and stone, her textured, three-dimensional works transcend flat compositions. This innovative approach redefines the medium, inviting dynamic viewer engagement and establishing her as a trailblazer in mosaic art.</div>
+      <p class="dja-links"><a href="https://www.jacquelineclaudetmitterer.com">Website</a> <a href="https://www.instagram.com/jacquelineclaudetmittererart">Instagram</a></p>
 
-      <h3>Still Life with Flowers</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Odilon Redon</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">6th &amp; Joplin</p>
+      <p class="dja-artist" data-headshot="barrett-mooneyham.jpg">Barrett Mooneyham</p>
+      <div class="dja-bio">Barrett Mooneyham is a fourth grader at Hickory Hills Elementary. He enjoys creating artwork at home, school and especially with his mentor and grandma Pickles Jane Mooneyham. His favorite media to paint with is watercolor and recently added spray paint! The subjects he currently enjoys painting are outdoor landscapes and animals.</div>
 
-      <h3>The Poet&#x27;s Garden</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Vincent van Gogh</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">8th &amp; Main</p>
+      <p class="dja-artist" data-headshot="margie-moss.jpg">Margie Moss</p>
+      <div class="dja-bio">Margie Moss loves God, country, family, painting, and tennis! She majored in art and started playing tennis at the University of Arkansas. She&#x27;s an artist on and off the court, making strokes with a brush and a racquet! She enjoys plein air painting outdoors with friends and is often caught cloud-gazing while playing tennis. She is a co-founder of Local Color Art Gallery &amp; Studio. She says, “I guess you could say Art is my Life!”</div>
+      <p class="dja-links"><a href="https://margiemoss.com">Website</a></p>
 
-      <h3>Rocks at Port-Goulphar, Belle-Île</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
-
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">1st &amp; Main</p>
+      <p class="dja-artist" data-headshot="parker-mudd.jpg">Parker Mudd</p>
+      <div class="dja-bio">Parker Mudd is a 1st grade student in Carl Junction. He enjoys hanging out with his family, playing with friends, soccer, drawing, creating and using his imagination.</div>
 
-      <h3>Venice, Palazzo Dario</h3>
-
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
-
-  <!-- ================= ARTWORK: edit above this line ================= -->
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-street">5th &amp; Joplin</p>
+      <p class="dja-artist" data-headshot="linda-passeri.jpg">Linda Passeri</p>
+      <div class="dja-bio">I am a career professional artist, specializing as both a painter and a sculptor, with a passion for producing public art. My studio is based in Springfield, close enough to Joplin to frequently enjoy being a part of JRAC and Spiva events and exhibitions.</div>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
 
     <article class="dja-card">
-  <!-- ================= ARTWORK: edit below this line ================= -->
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-      <div class="dja-photo" style="--x:50%;--y:50%;--p:url('PHOTO-LINK-HERE')"></div>
+      <p class="dja-street">4th &amp; Pennsylvania</p>
+      <p class="dja-artist" data-headshot="rebecca-perry.jpg">Rebecca Perry</p>
+      <div class="dja-bio">Creativity knows no boundaries for Rebecca Perry, a self-taught artist who has carved her own artistic path without formal training. Often described as an “outsider” artist, Rebecca has developed a distinctive creative style that has earned international recognition and awards for her sculpture and jewelry. She is thrilled to share her creativity with the community through Spiva&#x27;s Art: Outside the Box project.</div>
 
-      <h3>Sandvika, Norway</h3>
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
 
-      <p class="dja-artist" data-headshot="HEADSHOT-LINK-HERE" data-site="WEBSITE-LINK-HERE">Claude Monet</p>
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
 
-  <!-- ================= ARTWORK: edit above this line ================= -->
+      <p class="dja-street">3rd &amp; Main</p>
+      <p class="dja-artist" data-headshot="connie-sherman.jpg">Connie Sherman</p>
+      <div class="dja-bio">Connie Sherman spent many years as a professional photographer. In 2018 she evolved into a Paper Marbling artist. Living in Iowa City, IA, her works can be seen in various galleries and art markets around the Mid-West.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/cjspaper">Instagram</a></p>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-street">10th &amp; Joplin</p>
+      <p class="dja-artist" data-headshot="linda-teeter.jpg">Linda Teeter</p>
+      <div class="dja-bio">Linda Teeter is a big city girl who graduated from PSU, grew into a wife, mother, homeowner in Carl Junction with an art teaching degree and a camera, evolved into an insurance license that led to 50 years of servicing clients while all along creating art! Owner of Photoscapes LLC, Urban Art Gallery, creator of Third then First Thursday ArtWalk, co founder of Joplin Regional Artists Coalition, co founder of Joplin Arts Fest, founder of Joplin Arts District.</div>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-street">6th &amp; Main</p>
+      <p class="dja-artist" data-headshot="cadence-wimsett.jpg">Cadence Wimsett</p>
+      <div class="dja-bio">Ten-year-old Cadence Wimsett is a fifth grader who loves art, reading, and a little friendly competition! Participating in Art: Outside the Box has been an exciting experience for this young artist, who hopes her work brings joy to the community. Cadence can&#x27;t wait for everyone to enjoy the colorful boxes brightening up her hometown!</div>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-street">2nd &amp; Virginia</p>
+      <p class="dja-artist" data-headshot="vlad-zadneprianski.jpg">Vlad Zadneprianski</p>
+      <div class="dja-bio">Vlad Zadneprianski was born and raised in Ukraine, moved to USA in the late 90s and is an architect living and working in New York City. For decades Vlad has experimented with what he calls “Compositionism” - semi-abstract art based on interaction and communication between simple geometric forms where composition plays a major role. Minimalist in nature and being closer to avant-garde side of art Vlad uses composition tools not only to illustrate, but rather to express. Vlad also has been drawing cartoons since he was a child illustrating life as he sees it, covering everything from everyday situations all the way to politics. Over the years Vlad published his work in newspapers worldwide, participated in exhibitions, art installations, and created numerous illustrations, greeting cards and murals.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/vladz.nyc/">Instagram</a></p>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-artist" data-headshot="mary-jane-mooneyham.jpg">Mary Jane Mooneyham</p>
+      <div class="dja-bio">Mary Jane Mooneyham is an award-winning multidisciplinary artist whose creative journey began with crayons and evolved through oils and acrylics, ultimately leading her to the expressive beauty of watercolor. Her work is inspired by the quiet poetry of everyday moments, fleeting experiences, and tender expressions that evoke a sense of shared emotion. Portraiture, landscapes, urbanscapes, flora, and fauna—along with her distinctive 3D watercolor paper sculptures—become subjects through which she explores light, color, atmosphere, and connection. Mooneyham’s work celebrates the beauty found in both the extraordinary and the seemingly ordinary world around us.</div>
+      <p class="dja-links"><a href="https://www.maryjanemooneyham.com">Website</a></p>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-artist" data-headshot="herb-young.jpg">Herb Young</p>
+      <div class="dja-bio">Herb Young is an award-winning artist inspired by the places, people, and memories that shape our lives. A Best of Show winner at the 2009 USSC National Design Competition, he was also awarded a scholarship to the Savannah College of Art and Design. Drawing inspiration from the landscapes and culture of his life in Florida, Missouri and Oklahoma, his paintings blend realism, warmth, and nostalgia to capture the beauty of ordinary moments.</div>
+      <p class="dja-links"><a href="https://www.facebook.com/herbyoungartist">Facebook</a></p>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
+    </article>
+
+    <article class="dja-card">
+  <!-- ================= ARTIST: edit below this line ================= -->
+
+      <p class="dja-artist" data-headshot="katie-rodick.jpg">Katie Rodick</p>
+      <div class="dja-bio">Katie Rodick is a multidisciplinary artist and illustrator drawn to whimsical details, intricate patterns, and the little things that make the world feel magical. Through vivid colors, intricate designs, and layered compositions, she explores the beauty of florals and animal scenes, weaving together playful elements and delicate details. Her work celebrates the wonder found in nature and the charm of the unexpected. Through her art, Katie hopes to spark curiosity, invite a sense of wonder, and remind others of the magic hidden in everyday life.</div>
+      <p class="dja-links"><a href="https://www.instagram.com/katyroseillustration">Instagram</a></p>
+
+  <!-- ================= ARTIST: edit above this line ================= -->
     </article>
 
     </div>
@@ -405,12 +451,17 @@
   <!-- ================= SPONSORS: edit below this line ================= -->
   <!-- Change each logo's src link and alt name. Delete a whole img line to remove a sponsor. -->
   <section class="dja-sponsors">
-    <h4>Sponsored by</h4>
+    <h4>Made possible by</h4>
     <div class="dja-logos">
-      <img src="/wp-content/uploads/2026/10/Allo.webp" alt="Allo Fiber">
-      <img src="/wp-content/uploads/2026/10/sparklight.webp" alt="Sparklight">
-      <img class="dja-l-kode" src="/wp-content/uploads/2026/10/KODE_Spotter.webp" alt="KODE 12">
-      <img class="dja-l-ksn" src="/wp-content/uploads/2026/10/KSNF_Spotter.webp" alt="KSN">
+      <img style="height:76px" src="/wp-content/uploads/2026/10/spiva.webp" alt="Spiva Center for the Arts">
+      <img src="/wp-content/uploads/2026/10/downtown-joplin-alliance.webp" alt="Downtown Joplin Alliance">
+      <img src="/wp-content/uploads/2026/10/joplin-arts-district.png" alt="Joplin Arts District">
+    </div>
+    <h4 class="dja-second">Sponsored by</h4>
+    <div class="dja-logos">
+      <img class="dja-tall" src="/wp-content/uploads/2026/10/city-of-joplin-downtown-j.png" alt="City of Joplin">
+      <img class="dja-tall" src="/wp-content/uploads/2026/10/liberty.png" alt="Liberty">
+      <img src="/wp-content/uploads/2026/10/visit-joplin.webp" alt="Visit Joplin">
     </div>
   </section>
   <!-- ================= SPONSORS: edit above this line ================= -->
@@ -421,11 +472,11 @@
 #dja-art *{box-sizing:border-box}
 #dja-art a{text-decoration:none}
 #dja-art .dja-hero{position:relative;overflow:hidden;height:170px;display:flex;align-items:center}
-#dja-art .dja-title{position:relative;z-index:1;width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
-#dja-art .dja-hero h1{display:inline-block;font:700 32px/1.1 'Open Sans',Arial,sans-serif;color:#333;background:#fff;margin:0;padding:12px 20px}
+#dja-art .dja-title{position:relative;z-index:1;width:100%;max-width:1080px;margin:0 auto;padding:0 20px;pointer-events:none}
+#dja-art .dja-hero h1{display:inline-block;font:700 32px/1.1 'Open Sans',Arial,sans-serif;color:#333;background:#fff;margin:0;padding:12px 20px;pointer-events:auto}
 #dja-art .dja-reel{position:absolute;top:0;right:0;bottom:0;left:0}
 #dja-art .dja-track{display:flex;height:100%;width:max-content;animation:dja-run 240s linear infinite}
-#dja-art .dja-t{flex:none;width:227px;height:100%;box-sizing:border-box;border:3px solid #2a2a2a;background-size:cover;background-position:center}
+#dja-art .dja-t{flex:none;width:227px;height:100%;box-sizing:border-box;border:3px solid #2a2a2a;background-size:cover;background-position:center;cursor:zoom-in}
 @keyframes dja-run{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){#dja-art .dja-track{animation:none}}
 #dja-art .dja-gallery{position:relative;overflow:hidden;padding:28px 0 40px}
@@ -434,146 +485,227 @@
 #dja-art .dja-s{position:absolute;top:0;right:0;bottom:0;left:0;background-size:cover;background-position:center;opacity:0;transition:opacity 4s ease;filter:blur(38px) saturate(1.15)}
 #dja-art .dja-s.dja-on{opacity:1}
 #dja-art .dja-grid{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
-#dja-art .dja-card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column}
+#dja-art .dja-card{background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.1);display:flex;flex-direction:column;cursor:pointer}
+#dja-art .dja-card:focus-visible{outline:3px solid #62c8c9;outline-offset:2px}
 #dja-art .dja-card:nth-child(7n+1){--g:linear-gradient(135deg,#2a2a2a,#62c8c9)}
-#dja-art .dja-card:nth-child(7n+2){--g:linear-gradient(135deg,#ef6944,#fcd145)}
-#dja-art .dja-card:nth-child(7n+3){--g:linear-gradient(135deg,#2ea3f2,#62c8c9)}
-#dja-art .dja-card:nth-child(7n+4){--g:linear-gradient(135deg,#62c8c9,#fcd145)}
-#dja-art .dja-card:nth-child(7n+5){--g:linear-gradient(135deg,#ef6944,#2a2a2a)}
-#dja-art .dja-card:nth-child(7n+6){--g:linear-gradient(135deg,#62c8c9,#ef6944)}
-#dja-art .dja-card:nth-child(7n+7){--g:linear-gradient(135deg,#fcd145,#2ea3f2)}
-#dja-art .dja-photo{flex:none;aspect-ratio:4/3;background-size:cover;background-position:var(--x,50%) var(--y,50%);background-image:var(--p,none),var(--g)}
+#dja-art .dja-card:nth-child(7n+2){--g:linear-gradient(135deg,#2a2a2a,#ef6944)}
+#dja-art .dja-card:nth-child(7n+3){--g:linear-gradient(135deg,#2a2a2a,#2ea3f2)}
+#dja-art .dja-card:nth-child(7n+4){--g:linear-gradient(135deg,#2a2a2a,#fcd145)}
+#dja-art .dja-card:nth-child(7n+5){--g:linear-gradient(135deg,#2a2a2a,#62c8c9)}
+#dja-art .dja-card:nth-child(7n+6){--g:linear-gradient(135deg,#2a2a2a,#ef6944)}
+#dja-art .dja-card:nth-child(7n+7){--g:linear-gradient(135deg,#2a2a2a,#2ea3f2)}
+#dja-art .dja-media{flex:none;aspect-ratio:1/1;position:relative;overflow:hidden;background:#2a2a2a;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px}
+#dja-art .dja-media::before{content:"";position:absolute;top:-20px;right:-20px;bottom:-20px;left:-20px;background:var(--u) center/cover;filter:blur(22px) brightness(.85)}
+#dja-art .dja-media img{position:relative;width:100%;height:100%;object-fit:contain;display:block}
+#dja-art .dja-media.dja-multi img{position:absolute;top:0;left:0;opacity:0;transition:opacity .6s}
+#dja-art .dja-media.dja-multi img.dja-on{opacity:1}
+#dja-art .dja-media.dja-soon{background:var(--g);text-align:center;padding:0 12px;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+#dja-art .dja-media.dja-soon::before{display:none}
+#dja-art .dja-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:24px;line-height:1;cursor:pointer;padding:0}
+#dja-art .dja-nav:hover{background:rgba(0,0,0,.8)}
+#dja-art .dja-prev{left:8px}
+#dja-art .dja-next{right:8px}
+#dja-art .dja-dots{position:absolute;left:0;right:0;bottom:8px;z-index:2;display:flex;gap:6px;justify-content:center}
+#dja-art .dja-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 3px rgba(0,0,0,.6)}
+#dja-art .dja-dots i.dja-on{background:#fff}
 #dja-art .dja-body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-#dja-art .dja-body h3{font:700 18px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 6px}
-#dja-art .dja-by{display:flex;align-items:center;gap:8px;margin:0}
-#dja-art .dja-av{width:30px;height:30px;border-radius:50%;flex:none;border:2px solid #62c8c9;background-color:#cfd8dc;background-size:cover;background-position:center;background-image:var(--a,none)}
-#dja-art .dja-site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:#62c8c9;transition:opacity .2s}
-#dja-art .dja-site:hover{opacity:.7}
-@media(max-width:560px){#dja-art .dja-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px}#dja-art .dja-body{padding:10px 12px;min-height:88px}#dja-art .dja-body h3{font-size:15px;padding-bottom:4px}#dja-art .dja-by{font-size:12px;gap:6px}#dja-art .dja-av{width:24px;height:24px}#dja-art .dja-site{font-size:12px;margin-top:6px}}
-#dja-art .dja-photo,#dja-art .dja-t{cursor:zoom-in}
-#dja-art .dja-lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000000;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+#dja-art .dja-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;align-self:stretch;margin-bottom:6px}
+#dja-art .dja-box{font:700 12px/1.2 'Open Sans',Arial,sans-serif;text-transform:uppercase;color:#62c8c9;letter-spacing:.06em}
+#dja-art .dja-more{margin-left:auto;flex:none;padding:3px 10px;border-radius:3px;background:#62c8c9;color:#111;font:700 12px/1.5 'Open Sans',Arial,sans-serif;transition:all .2s}
+#dja-art .dja-card:hover .dja-more,#dja-art .dja-card:focus-visible .dja-more{background:#2a2a2a;color:#fff}
+#dja-art .dja-body h3{font:700 18px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:2px 0 4px}
+#dja-art .dja-by{margin:0;font-size:14px}
+#dja-art .dja-by b{font-weight:700}
+#dja-art .dja-cl{margin-top:6px}
+#dja-art .dja-cl a,#dja-art .dja-lbbio .dja-lnks a{display:inline-block;margin:0 12px 2px 0;font-size:13px;font-weight:700;color:#62c8c9}
+#dja-art .dja-cl a:hover{opacity:.7}
+@media(max-width:560px){#dja-art .dja-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px}#dja-art .dja-body{padding:10px 12px;min-height:88px}#dja-art .dja-body h3{font-size:15px}#dja-art .dja-by{font-size:12px}#dja-art .dja-cl a{font-size:12px;margin-right:10px}}
+@media(hover:none){#dja-art .dja-more{background:#62c8c9;color:#111}}
+#dja-art .dja-lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000000;background:rgba(0,0,0,.92);overflow-y:auto;padding:24px 16px;cursor:zoom-out}
 #dja-art .dja-lb[hidden]{display:none}
-#dja-art .dja-lb img{display:block;max-width:94vw;max-height:80vh;object-fit:contain}
-#dja-art .dja-lb p{color:#fff;margin:14px 0 0;font-weight:600;text-align:center}
-#dja-art .dja-lb b{position:absolute;top:10px;right:18px;color:#fff;font-size:34px;line-height:1;font-weight:400}
+#dja-art .dja-lbp{max-width:860px;margin:0 auto;position:relative;cursor:default}
+#dja-art .dja-lbart{text-align:center}
+#dja-art .dja-lbart figure{margin:0 0 18px}
+#dja-art .dja-lbart img{display:block;max-width:100%;max-height:72vh;margin:0 auto;object-fit:contain}
+#dja-art .dja-lbart figcaption{display:table;color:#fff;margin:12px auto 0;font-weight:600}
+#dja-art .dja-lbbio{display:flex;gap:20px;align-items:flex-start;background:#fff;margin-top:18px;padding:20px}
+#dja-art .dja-lbbio img{flex:none;width:150px;height:190px;object-fit:cover;object-position:center 20%}
+#dja-art .dja-lbbio h3{font:700 20px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 8px}
+#dja-art .dja-lbbio p{margin:0 0 10px;line-height:1.5}
+@media(max-width:560px){#dja-art .dja-lbbio{flex-direction:column;padding:16px}#dja-art .dja-lbbio img{width:120px;height:150px}}
 #dja-art .dja-sponsors{background:#fff;padding:30px 20px;text-align:center}
 #dja-art .dja-sponsors h4{font:700 14px/1.2 'Open Sans',Arial,sans-serif;color:#333;text-transform:uppercase;margin:0;padding:0 0 16px}
+#dja-art .dja-sponsors h4.dja-second{padding-top:30px}
 #dja-art .dja-logos{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:center;align-items:center}
 #dja-art .dja-logos img{display:block;height:52px;width:auto;max-width:190px;object-fit:contain}
-#dja-art .dja-logos img.dja-l-kode{height:84px;max-width:260px}
-#dja-art .dja-logos img.dja-l-ksn{height:72px;max-width:260px}
+#dja-art .dja-logos img.dja-tall{height:84px}
 </style>
 <script>
 (function(){
   var root=document.getElementById('dja-art');
   if(!root){return;}
-  function good(v){
-    if(!v){return false;}
-    if(v.indexOf('HERE')>-1){return false;}
-    return true;
+  var base=root.getAttribute('data-base')||'';
+  function url(v){
+    if(!v||v.indexOf('HERE')>-1){return '';}
+    if(/^(https?:)?\/\//.test(v)||v.charAt(0)==='/'){return v;}
+    return base+v;
   }
-  var cardEls=root.querySelectorAll('.dja-card');
-  var w;
-  for(w=0;w<cardEls.length;w++){
-    var card=cardEls[w];
-    var ttl=card.querySelector('h3');
-    var pic=card.querySelector('.dja-photo');
-    var who=card.querySelector('.dja-artist');
-    if(pic){
-      pic.setAttribute('role','img');
-      if(ttl){pic.setAttribute('aria-label',ttl.textContent);}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function txt(el){return el?el.textContent.replace(/\s+/g,' ').replace(/^ | $/g,''):'';}
+  var cards=root.querySelectorAll('.dja-card');
+  var people=[];
+  var i,j;
+  for(i=0;i<cards.length;i++){
+    var c=cards[i];
+    var d={name:txt(c.querySelector('.dja-artist')),street:txt(c.querySelector('.dja-street')),bio:txt(c.querySelector('.dja-bio')),pieces:[],links:[]};
+    var who=c.querySelector('.dja-artist');
+    d.head=who?url(who.getAttribute('data-headshot')):'';
+    var ph=c.querySelectorAll('.dja-photo');
+    for(j=0;j<ph.length;j++){
+      var s=url(ph[j].getAttribute('data-photo'));
+      if(s){d.pieces.push({src:s,title:ph[j].getAttribute('data-title')||''});}
     }
-    if(who){
-      var hs=who.getAttribute('data-headshot');
-      var site=who.getAttribute('data-site');
-      var by=document.createElement('div');
-      by.className='dja-by';
-      if(good(hs)){
-        var av=document.createElement('span');
-        av.className='dja-av';
-        av.style.setProperty('--a',"url('"+hs+"')");
-        by.appendChild(av);
+    var ls=c.querySelectorAll('.dja-links a');
+    for(j=0;j<ls.length;j++){d.links.push({href:ls[j].getAttribute('href'),text:ls[j].textContent});}
+    people.push(d);
+    var one=d.pieces.length===1?d.pieces[0].title:'';
+    var media;
+    if(d.pieces.length){
+      media='<div class="dja-media'+(d.pieces.length>1?' dja-multi':'')+'" style="--u:url(\''+d.pieces[0].src+'\')">';
+      for(j=0;j<d.pieces.length;j++){
+        media+='<img loading="lazy" data-u="'+esc(d.pieces[j].src)+'"'+(j?'':' class="dja-on"')+' alt="'+esc((d.pieces[j].title||'Artwork')+' by '+d.name)+'" src="'+esc(d.pieces[j].src)+'">';
       }
-      var nm=document.createElement('span');
-      nm.textContent='by '+who.textContent;
-      by.appendChild(nm);
-      card.replaceChild(by,who);
-      if(good(site)){
-        var lnk=document.createElement('a');
-        lnk.className='dja-site';
-        lnk.href=site;
-        lnk.textContent='Artist website \u2197';
-        lnk.setAttribute('target','_blank');
-        lnk.setAttribute('rel','noopener');
-        card.appendChild(lnk);
+      if(d.pieces.length>1){
+        media+='<button type="button" class="dja-nav dja-prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="dja-nav dja-next" aria-label="Next piece">&rsaquo;</button><span class="dja-dots">';
+        for(j=0;j<d.pieces.length;j++){media+='<i'+(j?'':' class="dja-on"')+'></i>';}
+        media+='</span>';
       }
+      media+='</div>';
+    }else{
+      media='<div class="dja-media dja-soon">Artwork coming soon</div>';
     }
-    var bodyEl=document.createElement('div');
-    bodyEl.className='dja-body';
-    var kids=Array.prototype.slice.call(card.children);
-    var q;
-    for(q=0;q<kids.length;q++){
-      if(kids[q]!==pic){bodyEl.appendChild(kids[q]);}
+    var more=d.pieces.length?(d.bio?'View art &amp; bio':'View art'):'Read bio';
+    var lk='';
+    if(d.links.length){
+      lk='<div class="dja-cl">';
+      for(j=0;j<d.links.length;j++){lk+='<a href="'+esc(d.links[j].href)+'" target="_blank" rel="noopener">'+esc(d.links[j].text)+' &#8599;</a>';}
+      lk+='</div>';
     }
-    card.appendChild(bodyEl);
+    c.setAttribute('data-n',i);
+    c.setAttribute('tabindex','0');
+    c.setAttribute('role','button');
+    c.setAttribute('aria-label',d.name+', open artist details');
+    c.innerHTML=media+'<div class="dja-body"><div class="dja-top">'+(d.street?'<div class="dja-box">'+esc(d.street)+'</div>':'')+'<span class="dja-more">'+more+' &rsaquo;</span></div>'+
+      (one?'<h3>'+esc(one)+'</h3>':'')+'<p class="dja-by">'+(one?'by ':'')+'<b>'+esc(d.name)+'</b></p>'+lk+'</div>';
+  }
+  var pool=[];
+  for(i=0;i<people.length;i++){
+    for(j=0;j<people[i].pieces.length;j++){pool.push({n:i,src:people[i].pieces[j].src});}
+  }
+  for(i=pool.length-1;i>0;i--){
+    j=Math.floor(Math.random()*(i+1));
+    var tmp=pool[i];pool[i]=pool[j];pool[j]=tmp;
   }
   var bg=root.querySelector('.dja-bg');
-  var photos=root.querySelectorAll('.dja-photo');
-  if(!bg){return;}
-  if(photos.length===0){return;}
-  var i;
-  var step=Math.ceil(photos.length/8);
-  for(i=0;i<photos.length;i+=step){
-    var s=document.createElement('div');
-    s.className='dja-s';
-    s.style.backgroundImage=window.getComputedStyle(photos[i]).backgroundImage;
-    bg.appendChild(s);
-  }
   var track=root.querySelector('.dja-track');
   var k,r;
-  for(r=0;r<2;r++){
-    for(k=0;k<photos.length;k++){
-      var d=document.createElement('div');
-      d.className='dja-t';
-      d.style.backgroundImage=window.getComputedStyle(photos[k]).backgroundImage;
-      d.style.backgroundPosition=window.getComputedStyle(photos[k]).backgroundPosition;
-      track.appendChild(d);
+  if(bg){
+    for(k=0;k<pool.length;k++){
+      var sl=document.createElement('div');
+      sl.className='dja-s';
+      sl.style.backgroundImage='url("'+pool[k].src+'")';
+      bg.appendChild(sl);
+    }
+  }
+  if(track){
+    for(r=0;r<2;r++){
+      for(k=0;k<pool.length;k++){
+        var t=document.createElement('div');
+        t.className='dja-t';
+        t.setAttribute('data-n',pool[k].n);
+        t.style.backgroundImage='url("'+pool[k].src+'")';
+        track.appendChild(t);
+      }
     }
   }
   var lb=document.createElement('div');
   lb.className='dja-lb';
   lb.hidden=true;
-  lb.innerHTML='<b>&times;</b><img alt=""><p></p>';
+  lb.innerHTML='<div class="dja-lbp"><div class="dja-lbart"></div><div class="dja-lbbio"><img alt=""><div><h3></h3><p></p><div class="dja-lnks"></div></div></div></div>';
   root.appendChild(lb);
-  var lbi=lb.querySelector('img');
-  var lbp=lb.querySelector('p');
   function openLb(n){
-    var m=window.getComputedStyle(photos[n]).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
-    var card=photos[n].parentNode;
-    lbi.src=m?m[1]:'';
-    lbp.textContent=card.querySelector('h3').textContent+', '+card.querySelector('.dja-by span:last-child').textContent;
+    var d=people[n];
+    var art=lb.querySelector('.dja-lbart');
+    var h='';
+    var q;
+    for(q=0;q<d.pieces.length;q++){
+      h+='<figure><img alt="'+esc((d.pieces[q].title||'Artwork')+' by '+d.name)+'" src="'+esc(d.pieces[q].src)+'"><figcaption>'+esc((d.pieces[q].title?d.pieces[q].title+', by ':'')+d.name)+'</figcaption></figure>';
+    }
+    art.innerHTML=h;
+    art.hidden=!d.pieces.length;
+    var bb=lb.querySelector('.dja-lbbio');
+    if(d.bio){
+      var im=bb.querySelector('img');
+      if(d.head){im.src=d.head;im.alt=d.name;im.hidden=false;}else{im.hidden=true;}
+      bb.querySelector('h3').textContent=d.name;
+      bb.querySelector('p').textContent=d.bio;
+      var ln='';
+      for(q=0;q<d.links.length;q++){ln+='<a href="'+esc(d.links[q].href)+'" target="_blank" rel="noopener">'+esc(d.links[q].text)+' &#8599;</a>';}
+      bb.querySelector('.dja-lnks').innerHTML=ln;
+      bb.hidden=false;
+    }else{bb.hidden=true;}
     lb.hidden=false;
+    lb.scrollTop=0;
+  }
+  function flip(m,dir){
+    var ims=m.querySelectorAll('img');
+    var dots=m.querySelectorAll('.dja-dots i');
+    var a=0;
+    var z;
+    for(z=0;z<ims.length;z++){if(ims[z].className.indexOf('dja-on')>-1){a=z;}}
+    var b=(a+dir+ims.length)%ims.length;
+    ims[a].className='';
+    dots[a].className='';
+    ims[b].className='dja-on';
+    dots[b].className='dja-on';
+    m.style.setProperty('--u','url("'+ims[b].getAttribute('data-u')+'")');
   }
   root.addEventListener('click',function(e){
-    var t=e.target.closest('.dja-t');
-    var ph=e.target.closest('.dja-photo');
-    if(t){openLb(Array.prototype.indexOf.call(track.children,t)%photos.length);return;}
-    if(ph){openLb(Array.prototype.indexOf.call(photos,ph));return;}
-    if(!lb.hidden){lb.hidden=true;}
+    var nb=e.target.closest('.dja-nav');
+    if(nb){flip(nb.parentNode,nb.className.indexOf('dja-next')>-1?1:-1);return;}
+    if(e.target.closest('a')){return;}
+    if(!lb.hidden){
+      if(!e.target.closest('.dja-lbart img, .dja-lbart figcaption, .dja-lbbio')){lb.hidden=true;}
+      return;
+    }
+    var t=e.target.closest('[data-n]');
+    if(t){openLb(+t.getAttribute('data-n'));}
   });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.hidden=true;}});
-  var slides=bg.children;
-  var n=0;
-  slides[0].className='dja-s dja-on';
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){lb.hidden=true;}
+    else if((e.key==='Enter'||e.key===' ')&&lb.hidden&&e.target.className&&String(e.target.className).indexOf('dja-card')>-1){
+      e.preventDefault();
+      openLb(+e.target.getAttribute('data-n'));
+    }
+  });
   var calm=false;
-  try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(er){}
+  var slides=bg?bg.children:[];
+  if(slides.length){slides[0].className='dja-s dja-on';}
   if(calm){return;}
-  if(slides.length<2){return;}
+  var n=0;
+  if(slides.length>1){
+    setInterval(function(){
+      slides[n].className='dja-s';
+      n=(n+1)%slides.length;
+      slides[n].className='dja-s dja-on';
+    },10000);
+  }
   setInterval(function(){
-    slides[n].className='dja-s';
-    n=(n+1)%slides.length;
-    slides[n].className='dja-s dja-on';
-  },10000);
+    if(!lb.hidden){return;}
+    var ms=root.querySelectorAll('.dja-multi');
+    var x;
+    for(x=0;x<ms.length;x++){flip(ms[x],1);}
+  },5000);
 })();
 </script>
-</div>
