@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
-    body{display:flex;flex-direction:column;align-items:center;padding:28px 16px 48px}
+    .cardwrap{display:flex;flex-direction:column;align-items:center;padding-bottom:40px}
     .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
     .stage{width:100%;max-width:560px;perspective:1400px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
     .float{animation:bob 6s ease-in-out infinite}
@@ -48,7 +48,15 @@
   </style>
 </head>
 <body>
-<h1 class="sr">Elisha JK Miller, Technologist and Systems Builder, Joplin, MO</h1>
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <main class="main">
+    <div class="page-title">Card</div>
+
+    <div class="divider"></div>
+
+<div class="cardwrap">
 
 <div class="stage" id="stage">
   <div class="float">
@@ -85,7 +93,10 @@
   <a href="https://elishajkmiller.com"><i class="ti ti-world" aria-hidden="true"></i><span>elishajkmiller.com</span></a>
   <a href="https://github.com/elishajkmiller" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i><span>github.com/elishajkmiller</span></a>
 </nav>
-<div class="foot"><a href="/">elishajkmiller.com</a></div>
+</div>
+  </main>
+</div>
+<script src="/components/sidebar.js"></script>
 
 <script>
 (function(){

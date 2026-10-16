@@ -26,6 +26,7 @@
         ${link('/blog', 'writing')}
         ${link('/about', 'about me')}
         ${link('/ai', 'AI policy')}
+        ${link('/card', 'card')}
       </div>
 
       <div class="nav-section">
