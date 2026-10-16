@@ -70,8 +70,11 @@
     .by b{font-weight:700}
     .site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--teal);transition:opacity .2s}
     .site:hover{opacity:.7}
+    .cl{margin-top:6px}
+    .cl a{display:inline-block;margin-right:12px;font-size:13px;font-weight:700;color:var(--teal)}
+    .cl a:hover{opacity:.7}
     .av{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--teal)}
-    @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.body{padding:10px 12px;min-height:88px}.body h3{font-size:15px;padding-bottom:4px}.by{font-size:12px;gap:6px}.av{width:24px;height:24px}.site{font-size:12px;margin-top:6px}}
+    @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.body{padding:10px 12px;min-height:88px}.body h3{font-size:15px;padding-bottom:4px}.by{font-size:12px;gap:6px}.av{width:24px;height:24px}.site{font-size:12px;margin-top:6px}.cl a{font-size:12px;margin-right:10px}}
     .sponsors{background:#fff;padding:30px 20px;text-align:center}
     .sponsors h4{font-size:14px;text-transform:uppercase;padding-bottom:16px}
     .logos{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:center;align-items:center}
@@ -207,6 +210,7 @@
   function bg(a){var c=a[4].split(',');return 'url('+src(a)+') center/cover,linear-gradient(135deg,'+c[0]+','+c[1]+')'}
   var grid=document.getElementById('grid');
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function links(n){var l=(bios[n]||{}).l;return l?'<div class="cl">'+l.map(function(x){return '<a href="'+x[1]+'" target="_blank" rel="noopener">'+esc(x[0])+' &#8599;</a>'}).join('')+'</div>':''}
   function render(){
     grid.innerHTML=art.map(function(a,i){
       var c=a[4].split(',');
@@ -214,7 +218,7 @@
         ?'<div class="art" style="--u:url('+src(a)+')"><img loading="lazy" alt="'+esc((a[2]||'Artwork')+' by '+a[1])+'" src="'+src(a)+'"></div>'
         :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
       return '<article class="card" data-i="'+i+'">'+pic+'<div class="body">'+(a[3]?'<div class="box">'+esc(a[3])+'</div>':'')+
-        (a[2]?'<h3>'+esc(a[2])+'</h3>':'')+'<p class="by">'+(a[2]?'by ':'')+'<b>'+esc(a[1])+'</b></p></div></article>';
+        (a[2]?'<h3>'+esc(a[2])+'</h3>':'')+'<p class="by">'+(a[2]?'by ':'')+'<b>'+esc(a[1])+'</b></p>'+links(a[1])+'</div></article>';
     }).join('');
   }
   render();
@@ -239,6 +243,7 @@
     lb.hidden=false;lb.scrollTop=0;
   }
   document.addEventListener('click',function(e){
+    if(e.target.closest('a')){return}
     if(!lb.hidden){if(e.target.closest('.x')||!e.target.closest('.lbp')){lb.hidden=true}return;}
     var t=e.target.closest('[data-i]');
     if(t){openLb(art[+t.dataset.i])}
