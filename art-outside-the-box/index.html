@@ -207,6 +207,7 @@
   }
   render();
   var shown=art.map(function(a,i){return a[0]?i:-1}).filter(function(i){return i>=0});
+  for(var k=shown.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=shown[k];shown[k]=shown[j];shown[j]=t}
   var tr=shown.map(function(i){return '<div data-i="'+i+'" style="background:'+bg(art[i])+'"></div>'}).join('');
   document.getElementById('track').innerHTML=tr+tr;
   var lb=document.getElementById('lb');
@@ -217,8 +218,7 @@
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.hidden=true;}});
   var show=document.getElementById('bgshow'), si=0;
-  var step=Math.ceil(shown.length/8);
-  show.innerHTML=shown.filter(function(i,k){return k%step===0}).map(function(i){return '<div class="s" style="background:'+bg(art[i])+'"></div>'}).join('');
+  show.innerHTML=shown.map(function(i){return '<div class="s" style="background:'+bg(art[i])+'"></div>'}).join('');
   var slides=show.children; slides[0].classList.add('on');
   if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
     setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on')},10000);
