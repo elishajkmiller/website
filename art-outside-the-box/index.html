@@ -43,7 +43,7 @@
     .lbp .x{position:absolute;top:-6px;right:0;color:#fff;font-size:34px;line-height:1;font-weight:400;cursor:pointer;z-index:2;text-shadow:0 0 6px #000}
     .lbart{text-align:center}
     .lbart img{display:block;max-width:100%;max-height:72vh;margin:0 auto;object-fit:contain}
-    .lbart p{color:#fff;margin:12px 0 0;font-weight:600}
+    .lbart p{display:table;color:#fff;margin:12px auto 0;font-weight:600}
     .lbbio{display:flex;gap:20px;align-items:flex-start;background:#fff;margin-top:18px;padding:20px}
     .lbbio .ph{flex:none;width:150px;height:190px;object-fit:cover;object-position:center 20%}
     .lbbio h3{font-size:20px;padding-bottom:8px}
@@ -244,7 +244,7 @@
   }
   document.addEventListener('click',function(e){
     if(e.target.closest('a')){return}
-    if(!lb.hidden){if(e.target.closest('.x')||!e.target.closest('.lbp')){lb.hidden=true}return;}
+    if(!lb.hidden){if(!e.target.closest('.lbart img, .lbart p, .lbbio')){lb.hidden=true}return;}
     var t=e.target.closest('[data-i]');
     if(t){openLb(art[+t.dataset.i])}
   });
