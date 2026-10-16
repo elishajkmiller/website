@@ -336,6 +336,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .post-body p { margin-bottom: 1.5rem; }
+.post-body ul { margin: 0 0 1.5rem 1.25rem; list-style: disc; }
+.post-body li { margin-bottom: 0.75rem; }
+.post-body strong { color: var(--fg); font-weight: 600; }
 
 .post-body h2 {
   font-family: 'Source Sans 3', sans-serif;
