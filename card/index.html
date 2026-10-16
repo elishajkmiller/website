@@ -116,7 +116,7 @@
   var card=document.getElementById('card');
   var stage=document.getElementById('stage');
   var angle=0;            /* where the card rests, always a multiple of 180; it only counts up or down, never wraps */
-  var dragging=false,moved=false,sx=0,sy=0,startAngle=0,curY=0;
+  var dragging=false,moved=false,sx=0,sy=0,startAngle=0,curY=0,dirX=1,dirY=1;
   var calm=false;
   try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
 
@@ -139,6 +139,10 @@
 
   stage.addEventListener('pointerdown',function(e){
     dragging=true;moved=false;sx=e.clientX;sy=e.clientY;startAngle=angle;curY=angle;
+    /* which half you grabbed decides which way it turns: the right half turns the opposite way to the left half */
+    var gr=card.getBoundingClientRect();
+    dirX=(e.clientX-gr.left)>gr.width/2?1:-1;
+    dirY=(e.clientY-gr.top)>gr.height/2?-1:1;
     card.className='card3d drag live';
     try{stage.setPointerCapture(e.pointerId);}catch(er){}
   });
@@ -148,9 +152,8 @@
     if(dragging){
       var dx=e.clientX-sx,dy=e.clientY-sy;
       if(Math.abs(dx)>4||Math.abs(dy)>4){moved=true;}
-      /* pull a side toward the middle and it goes back; pull it outward and it comes forward */
-      curY=startAngle-dx*0.5;
-      apply(Math.max(-25,Math.min(25,dy*0.2)),curY);
+      curY=startAngle+dirX*dx*0.5;
+      apply(Math.max(-25,Math.min(25,dirY*dy*0.2)),curY);
     }else if(!calm&&e.pointerType==='mouse'){
       card.className='card3d drag live';
       var px=(e.clientX-r.left)/r.width-0.5,py=(e.clientY-r.top)/r.height-0.5;
