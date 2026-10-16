@@ -40,9 +40,17 @@
     .rows a:hover{border-color:var(--red);color:var(--red-soft)}
     .rows i{font-size:18px;color:var(--red);flex:none}
     .rows span{overflow-wrap:anywhere}
-    .dl{width:100%;max-width:440px;text-align:center;margin-bottom:22px}
-    .dl-title{color:#9d9a96;font-size:.85rem;margin:0 0 8px}
-    .dl .actions{margin-bottom:14px}
+    .copyrows{width:100%;max-width:440px;display:grid;gap:8px;margin-bottom:18px}
+    .crow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg2)}
+    .cval{overflow-wrap:anywhere;color:#e2dfdb}
+    .crow .btn{flex:none;white-space:nowrap}
+    .dl{width:100%;max-width:440px;margin-top:10px}
+    .dl-title{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.1rem;text-align:center;margin-bottom:12px}
+    .dl-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .dl-col{display:flex;flex-direction:column;gap:8px;align-items:stretch;border:1px solid var(--border);border-radius:8px;background:var(--bg2);padding:12px}
+    .dl-sub{text-align:center;font-weight:600;line-height:1.3;margin-bottom:2px}
+    .dl-sub small{color:#9d9a96;font-weight:400;font-size:.78rem}
+    .dl-col .btn{justify-content:center}
     .foot{margin-top:22px;color:#8d8a86;font-size:.8rem}
     .foot a{text-decoration:underline}
     @media(prefers-reduced-motion:reduce){.float{animation:none}.card3d{transition:none}}
@@ -73,21 +81,28 @@
   <button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
 </div>
 
+<div class="copyrows">
+  <div class="crow"><span class="cval">elishajkmiller@proton.me</span><button class="btn alt copy" type="button" data-copy="elishajkmiller@proton.me" data-label="Copy email"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button></div>
+  <div class="crow"><span class="cval">elishajkmiller.com</span><button class="btn alt copy" type="button" data-copy="https://elishajkmiller.com" data-label="Copy website"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy website</span></button></div>
+</div>
+
 <div class="actions">
   <a class="btn" href="/card/elisha-jk-miller.vcf" download><i class="ti ti-address-book" aria-hidden="true"></i>Save contact</a>
-  <button class="btn alt" type="button" id="cp"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button>
 </div>
 
 <div class="dl">
-  <div class="dl-title">Download the card (PNG, 3.5 x 2 in at 300 dpi)</div>
-  <div class="actions">
-    <a class="btn alt" href="/card/card-front.png" download="elisha-jk-miller-card-front.png"><i class="ti ti-download" aria-hidden="true"></i>Front</a>
-    <a class="btn alt" href="/card/card-back.png" download="elisha-jk-miller-card-back.png"><i class="ti ti-download" aria-hidden="true"></i>Back</a>
-  </div>
-  <div class="dl-title">For printing, with a 0.125 in bleed</div>
-  <div class="actions">
-    <a class="btn alt" href="/card/card-front-bleed.png" download="elisha-jk-miller-card-front-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Front</a>
-    <a class="btn alt" href="/card/card-back-bleed.png" download="elisha-jk-miller-card-back-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Back</a>
+  <div class="dl-title">Download card</div>
+  <div class="dl-cols">
+    <div class="dl-col">
+      <div class="dl-sub">Card<br><small>3.5 x 2 in, 300 dpi</small></div>
+      <a class="btn alt" href="/card/card-front.png" download="elisha-jk-miller-card-front.png"><i class="ti ti-download" aria-hidden="true"></i>Front</a>
+      <a class="btn alt" href="/card/card-back.png" download="elisha-jk-miller-card-back.png"><i class="ti ti-download" aria-hidden="true"></i>Back</a>
+    </div>
+    <div class="dl-col">
+      <div class="dl-sub">Printing<br><small>with 0.125 in bleed</small></div>
+      <a class="btn alt" href="/card/card-front-bleed.png" download="elisha-jk-miller-card-front-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Front</a>
+      <a class="btn alt" href="/card/card-back-bleed.png" download="elisha-jk-miller-card-back-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Back</a>
+    </div>
   </div>
 </div>
 
@@ -153,12 +168,17 @@
   card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
   document.getElementById('flip').onclick=flip;
 
-  var cp=document.getElementById('cp'),lab=cp.querySelector('span');
-  cp.onclick=function(){
-    var done=function(){lab.textContent='Copied!';setTimeout(function(){lab.textContent='Copy email';},1800);};
-    if(navigator.clipboard){navigator.clipboard.writeText('elishajkmiller@proton.me').then(done,function(){lab.textContent='Press and hold the address';});}
-    else{lab.textContent='Press and hold the address';}
-  };
+  var copies=document.querySelectorAll('.copy'),ci;
+  function wire(btn){
+    var lab=btn.querySelector('span');
+    btn.onclick=function(){
+      var text=btn.getAttribute('data-copy'),orig=btn.getAttribute('data-label');
+      var done=function(){lab.textContent='Copied!';setTimeout(function(){lab.textContent=orig;},1800);};
+      if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,function(){lab.textContent='Press and hold the text';});}
+      else{lab.textContent='Press and hold the text';}
+    };
+  }
+  for(ci=0;ci<copies.length;ci++){wire(copies[ci]);}
   settle();
 })();
 </script>
