@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elisha JK Miller, card</title>
+  <meta name="description" content="Elisha JK Miller, technologist and systems builder in Joplin, MO. Flip the card, save the contact.">
+  <meta property="og:title" content="Elisha JK Miller">
+  <meta property="og:description" content="Technologist and systems builder. Joplin, MO.">
+  <meta property="og:image" content="https://elishajkmiller.com/card/card-front.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    body{display:flex;flex-direction:column;align-items:center;padding:28px 16px 48px}
+    .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stage{width:100%;max-width:560px;perspective:1400px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+    .float{animation:bob 6s ease-in-out infinite}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .card3d{position:relative;width:100%;aspect-ratio:7/4;transform-style:preserve-3d;cursor:grab;outline:none;transition:transform .8s cubic-bezier(.2,.8,.2,1);border-radius:14px}
+    .card3d.drag{transition:none;cursor:grabbing}
+    .card3d:focus-visible{box-shadow:0 0 0 3px var(--red-soft)}
+    .face{position:absolute;inset:0;border-radius:14px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 18px 44px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5)}
+    .face img{width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
+    .face.back{transform:rotateY(180deg)}
+    .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.16),rgba(255,255,255,0) 55%);opacity:0;transition:opacity .3s}
+    .card3d.live .shine{opacity:1}
+    .hint{margin:22px 0 14px;color:#9d9a96;font-size:.9rem;text-align:center}
+    .flipbtn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:#d8d5d1;cursor:pointer;margin-bottom:22px;transition:border-color .2s,color .2s}
+    .flipbtn:hover{border-color:var(--red);color:var(--red-soft)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:9px 18px;border-radius:8px;border:1px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:opacity .2s}
+    .btn.alt{background:transparent;color:var(--red-soft)}
+    .btn:hover{opacity:.85}
+    .rows{width:100%;max-width:440px;display:grid;gap:6px}
+    .rows a{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg2);transition:border-color .2s,color .2s}
+    .rows a:hover{border-color:var(--red);color:var(--red-soft)}
+    .rows i{font-size:18px;color:var(--red);flex:none}
+    .rows span{overflow-wrap:anywhere}
+    .foot{margin-top:22px;color:#8d8a86;font-size:.8rem}
+    .foot a{text-decoration:underline}
+    @media(prefers-reduced-motion:reduce){.float{animation:none}.card3d{transition:none}}
+  </style>
+</head>
+<body>
+<h1 class="sr">Elisha JK Miller, technologist and systems builder, Joplin, MO</h1>
+
+<div class="stage" id="stage">
+  <div class="float">
+    <div class="card3d" id="card" tabindex="0" role="button" aria-pressed="false" aria-label="Business card. Press Enter to flip it.">
+      <div class="face front"><img src="/card/card-front.png" alt="Front of the card: Elisha JK Miller, Technologist, Systems builder, Joplin, MO"><div class="shine"></div></div>
+      <div class="face back"><img src="/card/card-back.png" alt="Back of the card: email elishajkmiller@proton.me, web elishajkmiller.com, GitHub elishajkmiller, and a QR code to this page"><div class="shine"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="hint">Drag the card, or tap it to flip.</div>
+<button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
+
+<div class="actions">
+  <a class="btn" href="/card/elisha-jk-miller.vcf" download><i class="ti ti-address-book" aria-hidden="true"></i>Save contact</a>
+  <button class="btn alt" type="button" id="cp"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button>
+</div>
+
+<nav class="rows" aria-label="Contact">
+  <a href="mailto:elishajkmiller@proton.me"><i class="ti ti-mail" aria-hidden="true"></i><span>elishajkmiller@proton.me</span></a>
+  <a href="https://elishajkmiller.com"><i class="ti ti-world" aria-hidden="true"></i><span>elishajkmiller.com</span></a>
+  <a href="https://github.com/elishajkmiller" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i><span>github.com/elishajkmiller</span></a>
+</nav>
+<div class="foot"><a href="/">elishajkmiller.com</a></div>
+
+<script>
+(function(){
+  var card=document.getElementById('card');
+  var stage=document.getElementById('stage');
+  var flipped=false;      /* which face is toward you */
+  var spin=0;             /* extra turns so the flip always continues the same way */
+  var dragging=false,moved=false,sx=0,sy=0,baseY=0,curY=0,curX=0;
+  var calm=false;
+  try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+
+  function rest(){return (flipped?180:0)+spin;}
+  function apply(rx,ry){card.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';}
+  function settle(){
+    card.className='card3d';
+    curX=0;curY=rest();
+    apply(0,curY);
+    card.setAttribute('aria-pressed',flipped?'true':'false');
+  }
+  function flip(){
+    flipped=!flipped;
+    if(!flipped){spin+=360;}
+    spin=spin%720;
+    settle();
+  }
+  function shine(e){
+    var r=card.getBoundingClientRect();
+    card.style.setProperty('--sx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--sy',((e.clientY-r.top)/r.height*100)+'%');
+  }
+
+  stage.addEventListener('pointerdown',function(e){
+    dragging=true;moved=false;sx=e.clientX;sy=e.clientY;baseY=curY;
+    card.className='card3d drag live';
+    try{stage.setPointerCapture(e.pointerId);}catch(er){}
+  });
+  stage.addEventListener('pointermove',function(e){
+    shine(e);
+    var r=card.getBoundingClientRect();
+    if(dragging){
+      var dx=e.clientX-sx,dy=e.clientY-sy;
+      if(Math.abs(dx)>4||Math.abs(dy)>4){moved=true;}
+      curY=baseY+dx*0.5;
+      curX=Math.max(-25,Math.min(25,-dy*0.2));
+      apply(curX,curY);
+    }else if(!calm&&e.pointerType==='mouse'){
+      card.className='card3d drag live';
+      var px=(e.clientX-r.left)/r.width-0.5,py=(e.clientY-r.top)/r.height-0.5;
+      apply(-py*14,rest()+px*18);
+    }
+  });
+  stage.addEventListener('pointerup',function(e){
+    if(!dragging){return;}
+    dragging=false;
+    if(!moved){flip();return;}
+    /* snap to the nearest face */
+    var turns=Math.round(curY/180);
+    flipped=(Math.abs(turns)%2)===1;
+    spin=(turns*180)-(flipped?180:0);
+    spin=((spin%720)+720)%720;
+    card.className='card3d';
+    curX=0;curY=turns*180;
+    apply(0,curY);
+    card.setAttribute('aria-pressed',flipped?'true':'false');
+  });
+  stage.addEventListener('pointercancel',function(){dragging=false;settle();});
+  stage.addEventListener('pointerleave',function(){if(!dragging){card.className='card3d';apply(0,rest());card.className='card3d';}});
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+  document.getElementById('flip').onclick=flip;
+
+  var cp=document.getElementById('cp'),lab=cp.querySelector('span');
+  cp.onclick=function(){
+    var done=function(){lab.textContent='Copied!';setTimeout(function(){lab.textContent='Copy email';},1800);};
+    if(navigator.clipboard){navigator.clipboard.writeText('elishajkmiller@proton.me').then(done,function(){lab.textContent='Press and hold the address';});}
+    else{lab.textContent='Press and hold the address';}
+  };
+  settle();
+})();
+</script>
+</body>
+</html>
