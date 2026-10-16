@@ -39,6 +39,9 @@
     .rows a:hover{border-color:var(--red);color:var(--red-soft)}
     .rows i{font-size:18px;color:var(--red);flex:none}
     .rows span{overflow-wrap:anywhere}
+    .dl{width:100%;max-width:440px;text-align:center;margin-bottom:22px}
+    .dl-title{color:#9d9a96;font-size:.85rem;margin:0 0 8px}
+    .dl .actions{margin-bottom:14px}
     .foot{margin-top:22px;color:#8d8a86;font-size:.8rem}
     .foot a{text-decoration:underline}
     @media(prefers-reduced-motion:reduce){.float{animation:none}.card3d{transition:none}}
@@ -62,6 +65,19 @@
 <div class="actions">
   <a class="btn" href="/card/elisha-jk-miller.vcf" download><i class="ti ti-address-book" aria-hidden="true"></i>Save contact</a>
   <button class="btn alt" type="button" id="cp"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button>
+</div>
+
+<div class="dl">
+  <div class="dl-title">Download the card (PNG, 3.5 x 2 in at 300 dpi)</div>
+  <div class="actions">
+    <a class="btn alt" href="/card/card-front.png" download="elisha-jk-miller-card-front.png"><i class="ti ti-download" aria-hidden="true"></i>Front</a>
+    <a class="btn alt" href="/card/card-back.png" download="elisha-jk-miller-card-back.png"><i class="ti ti-download" aria-hidden="true"></i>Back</a>
+  </div>
+  <div class="dl-title">For printing, with a 0.125 in bleed</div>
+  <div class="actions">
+    <a class="btn alt" href="/card/card-front-bleed.png" download="elisha-jk-miller-card-front-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Front</a>
+    <a class="btn alt" href="/card/card-back-bleed.png" download="elisha-jk-miller-card-back-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Back</a>
+  </div>
 </div>
 
 <nav class="rows" aria-label="Contact">
