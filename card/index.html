@@ -27,8 +27,9 @@
     .slab:nth-child(odd){background:#2a2826}
     .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.16),rgba(255,255,255,0) 55%);opacity:0;transition:opacity .3s}
     .card3d.live .shine{opacity:1}
-    .hint{margin:22px 0 14px;color:#9d9a96;font-size:.9rem;text-align:center}
-    .flipbtn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:#d8d5d1;cursor:pointer;margin-bottom:22px;transition:border-color .2s,color .2s}
+    .hintrow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;margin:22px 0 22px}
+    .hint{color:#9d9a96;font-size:.9rem;text-align:center;white-space:nowrap}
+    .flipbtn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:#d8d5d1;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s}
     .flipbtn:hover{border-color:var(--red);color:var(--red-soft)}
     .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
     .btn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:9px 18px;border-radius:8px;border:1px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:opacity .2s}
@@ -67,8 +68,10 @@
   </div>
 </div>
 
-<div class="hint">Drag the card, or tap it to flip.</div>
-<button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
+<div class="hintrow">
+  <span class="hint">Drag the card, or tap it to flip.</span>
+  <button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
+</div>
 
 <div class="actions">
   <a class="btn" href="/card/elisha-jk-miller.vcf" download><i class="ti ti-address-book" aria-hidden="true"></i>Save contact</a>
