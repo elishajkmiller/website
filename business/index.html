@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elisha JK Miller, contact card</title>
+  <meta name="description" content="Contact card for Elisha JK Miller: websites, automation and software for nonprofits and small teams. Joplin, MO.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    body{display:flex;align-items:center;justify-content:center;padding:24px 16px}
+    .card{width:100%;max-width:440px;background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:30px 26px 24px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+    .card img.av{width:104px;height:104px;border-radius:50%;display:block;margin:0 auto 14px;border:2px solid var(--red)}
+    .card h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.7rem;line-height:1.2;margin-bottom:4px}
+    .card .tag{color:#c9c6c2;font-size:.95rem;margin-bottom:18px}
+    .tabs{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
+    .tabs button{font:600 13px 'Source Sans 3',sans-serif;padding:4px 16px;border:1px solid var(--border2);border-radius:999px;background:transparent;color:#c9c6c2;cursor:pointer;transition:all .2s}
+    .tabs button.on{background:var(--red);border-color:var(--red);color:#fff}
+    .face{text-align:left;color:#d8d5d1;font-size:.95rem;margin-bottom:18px;min-height:96px}
+    .face[hidden]{display:none}
+    .face p{margin-bottom:8px}
+    .face ul{list-style:none;display:grid;gap:5px}
+    .face li:before{content:"\2022";color:var(--red);margin-right:8px}
+    .rows{display:grid;gap:6px;margin-bottom:18px;text-align:left}
+    .rows a{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);transition:border-color .2s,color .2s}
+    .rows a:hover{border-color:var(--red);color:var(--red-soft)}
+    .rows i{font-size:18px;color:var(--red);flex:none}
+    .rows span{overflow-wrap:anywhere}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .btn{font:600 14px 'Source Sans 3',sans-serif;padding:8px 16px;border-radius:8px;border:1px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:opacity .2s}
+    .btn.alt{background:transparent;color:var(--red-soft)}
+    .btn:hover{opacity:.85}
+    .foot{margin-top:16px;color:#8d8a86;font-size:.8rem}
+    .foot a{text-decoration:underline}
+  </style>
+</head>
+<body>
+<main class="card">
+  <img class="av" src="https://github.com/elishajkmiller.png" alt="Elisha JK Miller">
+  <h1>Elisha JK Miller</h1>
+  <div class="tag">Software and web builder &middot; Joplin, MO</div>
+
+  <div class="tabs" role="tablist">
+    <button type="button" class="on" data-f="biz" role="tab" aria-selected="true">Business</button>
+    <button type="button" data-f="me" role="tab" aria-selected="false">Personal</button>
+  </div>
+
+  <section class="face" id="biz">
+    <p>Websites, automation and software for nonprofits and small teams. I build the thing, then teach the people who will run it.</p>
+    <ul>
+      <li>WordPress and Divi pages, with edits anyone on your team can make</li>
+      <li>Google Apps Script systems and reports</li>
+      <li>QR codes, signage pages and event sites</li>
+    </ul>
+  </section>
+  <section class="face" id="me" hidden>
+    <p>DSP turned builder. Open source, decentralized, human-first.</p>
+    <ul>
+      <li>Hardware and firmware: T-Deck Pro, Watchy, Meshtastic</li>
+      <li>Fediverse, self-hosting, Linux and music in REAPER</li>
+      <li>Runs the website and operations for POW417, a 48-hour human-only film gathering</li>
+    </ul>
+  </section>
+
+  <nav class="rows" aria-label="Contact">
+    <a href="mailto:elishajkmiller@proton.me"><i class="ti ti-mail" aria-hidden="true"></i><span>elishajkmiller@proton.me</span></a>
+    <a href="https://elishajkmiller.com"><i class="ti ti-world" aria-hidden="true"></i><span>elishajkmiller.com</span></a>
+    <a href="https://github.com/elishajkmiller" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i><span>github.com/elishajkmiller</span></a>
+    <a href="https://mastodon.social/@Eli_M" target="_blank" rel="noopener"><i class="ti ti-brand-mastodon" aria-hidden="true"></i><span>@Eli_M@mastodon.social</span></a>
+  </nav>
+
+  <div class="actions">
+    <a class="btn" href="/business/elisha-jk-miller.vcf" download>Save contact</a>
+    <button class="btn alt" type="button" id="cp">Copy email</button>
+  </div>
+  <div class="foot"><a href="/">elishajkmiller.com</a></div>
+</main>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.tabs button'),i;
+  function show(id){
+    var k;
+    for(k=0;k<tabs.length;k++){
+      var on=tabs[k].getAttribute('data-f')===id;
+      tabs[k].className=on?'on':'';
+      tabs[k].setAttribute('aria-selected',on?'true':'false');
+      document.getElementById(tabs[k].getAttribute('data-f')).hidden=!on;
+    }
+  }
+  for(i=0;i<tabs.length;i++){tabs[i].onclick=function(){show(this.getAttribute('data-f'));};}
+  var cp=document.getElementById('cp');
+  cp.onclick=function(){
+    var done=function(){cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy email';},1800);};
+    if(navigator.clipboard){navigator.clipboard.writeText('elishajkmiller@proton.me').then(done,function(){cp.textContent='Press and hold the address';});}
+    else{cp.textContent='Press and hold the address';}
+  };
+})();
+</script>
+</body>
+</html>
