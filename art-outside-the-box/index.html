@@ -62,7 +62,14 @@
     .art{flex:none;aspect-ratio:1/1;position:relative;overflow:hidden;background:#2a2a2a;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;letter-spacing:.06em}
     .art::before{content:"";position:absolute;inset:-20px;background:var(--u) center/cover;filter:blur(22px) brightness(.85)}
     .art img{position:relative;width:100%;height:100%;object-fit:contain;display:block}
-    .cnt{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.7);color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:3px}
+    .art.multi img{position:absolute;top:0;left:0;opacity:0;transition:opacity .6s}
+    .art.multi img.on{opacity:1}
+    .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:24px;line-height:1;cursor:pointer;padding:0}
+    .nav:hover{background:rgba(0,0,0,.8)}
+    .nav.prev{left:8px}.nav.next{right:8px}
+    .dots{position:absolute;left:0;right:0;bottom:8px;z-index:2;display:flex;gap:6px;justify-content:center}
+    .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 3px rgba(0,0,0,.6)}
+    .dots i.on{background:#fff}
     .art.soon{text-align:center;padding:0 12px;text-transform:uppercase;font-size:12px;cursor:default}
     .body{padding:14px 16px;flex:1;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
     .box{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:.06em}
@@ -228,7 +235,8 @@
     grid.innerHTML=art.map(function(g,i){
       var w=withArt(g),c=g.c.split(','),t=g.ps.length===1?g.ps[0].t:'',st=streets(g);
       var pic=w.length
-        ?'<div class="art" style="--u:url('+src(w[0].f)+')"><img loading="lazy" alt="'+esc((w[0].t||'Artwork')+' by '+g.n)+'" src="'+src(w[0].f)+'">'+(w.length>1?'<span class="cnt">'+w.length+' pieces</span>':'')+'</div>'
+        ?'<div class="art'+(w.length>1?' multi':'')+'" style="--u:url('+src(w[0].f)+')">'+w.map(function(p,k){return '<img loading="lazy"'+(k?'':' class="on"')+' data-u="'+src(p.f)+'" alt="'+esc((p.t||'Artwork')+' by '+g.n)+'" src="'+src(p.f)+'">'}).join('')+
+          (w.length>1?'<button type="button" class="nav prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="nav next" aria-label="Next piece">&rsaquo;</button><span class="dots">'+w.map(function(p,k){return '<i'+(k?'':' class="on"')+'></i>'}).join('')+'</span>':'')+'</div>'
         :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
       return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(g.n)+', open artist details">'+pic+'<div class="body">'+(st?'<div class="box">'+esc(st)+'</div>':'')+
         (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">'+(t?'by ':'')+'<b>'+esc(g.n)+'</b></p>'+links(g.n)+'<span class="more">'+(w.length?(bios[g.n]?'View art &amp; bio':'View art'):'Read bio')+' &rsaquo;</span></div></article>';
@@ -240,6 +248,16 @@
   for(var k=shown.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=shown[k];shown[k]=shown[j];shown[j]=t}
   var tr=shown.map(function(x){return '<div data-i="'+x.i+'" style="background:'+bg(x.f,x.c)+'"></div>'}).join('');
   document.getElementById('track').innerHTML=tr+tr;
+  function step(a,d){
+    var im=a.querySelectorAll('img'),dt=a.querySelectorAll('.dots i'),k=0;
+    for(var q=0;q<im.length;q++){if(im[q].classList.contains('on'))k=q}
+    var n=(k+d+im.length)%im.length;
+    im[k].classList.remove('on');dt[k].classList.remove('on');im[n].classList.add('on');dt[n].classList.add('on');
+    a.style.setProperty('--u','url('+im[n].dataset.u+')');
+  }
+  if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    setInterval(function(){if(lb.hidden){document.querySelectorAll('.art.multi').forEach(function(a){step(a,1)})}},5000);
+  }
   var lb=document.getElementById('lb');
   function openLb(g){
     var box=lb.querySelector('.lbart'), w=withArt(g);
@@ -258,6 +276,8 @@
     lb.hidden=false;lb.scrollTop=0;
   }
   document.addEventListener('click',function(e){
+    var nb=e.target.closest('.nav');
+    if(nb){e.stopPropagation();step(nb.closest('.art'),nb.classList.contains('next')?1:-1);return}
     if(e.target.closest('a')){return}
     if(!lb.hidden){if(!e.target.closest('.lbart img, .lbart figcaption, .lbbio')){lb.hidden=true}return;}
     var t=e.target.closest('[data-i]');
