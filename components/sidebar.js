@@ -25,6 +25,7 @@
         ${link('/', 'home')}
         ${link('/blog', 'writing')}
         ${link('/about', 'about me')}
+        ${link('/ai', 'AI policy')}
       </div>
 
       <div class="nav-section">
