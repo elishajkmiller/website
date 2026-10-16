@@ -70,6 +70,9 @@
     .by b{font-weight:700}
     .site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--teal);transition:opacity .2s}
     .site:hover{opacity:.7}
+    .more{display:inline-block;margin-top:10px;padding:3px 12px;border:2px solid var(--teal);border-radius:3px;font-size:12px;font-weight:700;color:var(--teal);transition:all .2s}
+    .card:hover .more,.card:focus-visible .more{background:var(--teal);color:#111}
+    .card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
     .cl{margin-top:6px}
     .cl a{display:inline-block;margin-right:12px;font-size:13px;font-weight:700;color:var(--teal)}
     .cl a:hover{opacity:.7}
@@ -217,8 +220,8 @@
       var pic=a[0]
         ?'<div class="art" style="--u:url('+src(a)+')"><img loading="lazy" alt="'+esc((a[2]||'Artwork')+' by '+a[1])+'" src="'+src(a)+'"></div>'
         :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
-      return '<article class="card" data-i="'+i+'">'+pic+'<div class="body">'+(a[3]?'<div class="box">'+esc(a[3])+'</div>':'')+
-        (a[2]?'<h3>'+esc(a[2])+'</h3>':'')+'<p class="by">'+(a[2]?'by ':'')+'<b>'+esc(a[1])+'</b></p>'+links(a[1])+'</div></article>';
+      return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(a[1])+', open artist details">'+pic+'<div class="body">'+(a[3]?'<div class="box">'+esc(a[3])+'</div>':'')+
+        (a[2]?'<h3>'+esc(a[2])+'</h3>':'')+'<p class="by">'+(a[2]?'by ':'')+'<b>'+esc(a[1])+'</b></p>'+links(a[1])+'<span class="more">'+(a[0]?'View art &amp; bio':'Read bio')+' &rsaquo;</span></div></article>';
     }).join('');
   }
   render();
@@ -248,7 +251,10 @@
     var t=e.target.closest('[data-i]');
     if(t){openLb(art[+t.dataset.i])}
   });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.hidden=true;}});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){lb.hidden=true;}
+    else if((e.key==='Enter'||e.key===' ')&&lb.hidden&&e.target.classList&&e.target.classList.contains('card')){e.preventDefault();openLb(art[+e.target.dataset.i])}
+  });
   var show=document.getElementById('bgshow'), si=0;
   show.innerHTML=shown.map(function(i){return '<div class="s" style="background:'+bg(art[i])+'"></div>'}).join('');
   var slides=show.children; slides[0].classList.add('on');
