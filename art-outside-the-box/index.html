@@ -79,9 +79,8 @@
     .by b{font-weight:700}
     .site{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--teal);transition:opacity .2s}
     .site:hover{opacity:.7}
-    .more{display:inline-block;margin-top:10px;padding:3px 12px;border:2px solid var(--teal);border-radius:3px;font-size:12px;font-weight:700;color:var(--teal);transition:all .2s}
-    .card:hover .more,.card:focus-visible .more{background:var(--teal);color:#111}
-    @media(hover:none){.more{background:var(--teal);color:#111}}
+    .more{position:absolute;top:8px;left:8px;z-index:2;padding:3px 10px;border-radius:3px;background:var(--teal);color:#111;font-size:12px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.4);transition:background .2s}
+    .card:hover .more,.card:focus-visible .more{background:#fff}
     .card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
     .cl{margin-top:6px}
     .cl a{display:inline-block;margin-right:12px;font-size:13px;font-weight:700;color:var(--teal)}
@@ -234,12 +233,13 @@
   function render(){
     grid.innerHTML=art.map(function(g,i){
       var w=withArt(g),c=g.c.split(','),t=g.ps.length===1?g.ps[0].t:'',st=streets(g);
+      var more='<span class="more">'+(w.length?(bios[g.n]?'View art &amp; bio':'View art'):'Read bio')+' &rsaquo;</span>';
       var pic=w.length
         ?'<div class="art'+(w.length>1?' multi':'')+'" style="--u:url('+src(w[0].f)+')">'+w.map(function(p,k){return '<img loading="lazy"'+(k?'':' class="on"')+' data-u="'+src(p.f)+'" alt="'+esc((p.t||'Artwork')+' by '+g.n)+'" src="'+src(p.f)+'">'}).join('')+
-          (w.length>1?'<button type="button" class="nav prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="nav next" aria-label="Next piece">&rsaquo;</button><span class="dots">'+w.map(function(p,k){return '<i'+(k?'':' class="on"')+'></i>'}).join('')+'</span>':'')+'</div>'
-        :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
+          (w.length>1?'<button type="button" class="nav prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="nav next" aria-label="Next piece">&rsaquo;</button><span class="dots">'+w.map(function(p,k){return '<i'+(k?'':' class="on"')+'></i>'}).join('')+'</span>':'')+more+'</div>'
+        :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon'+more+'</div>';
       return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(g.n)+', open artist details">'+pic+'<div class="body">'+(st?'<div class="box">'+esc(st)+'</div>':'')+
-        (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">'+(t?'by ':'')+'<b>'+esc(g.n)+'</b></p>'+links(g.n)+'<span class="more">'+(w.length?(bios[g.n]?'View art &amp; bio':'View art'):'Read bio')+' &rsaquo;</span></div></article>';
+        (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">'+(t?'by ':'')+'<b>'+esc(g.n)+'</b></p>'+links(g.n)+'</div></article>';
     }).join('');
   }
   render();
