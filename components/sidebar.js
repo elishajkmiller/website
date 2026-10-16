@@ -52,7 +52,7 @@
           <a href="#" class="social-link">
             <i class="ti ti-video" aria-hidden="true"></i>MakerTube
           </a>
-          <a href="mailto:emiller2@cssmo.org" class="social-link">
+          <a href="mailto:elishajkmiller@proton.me" class="social-link">
             <i class="ti ti-mail" aria-hidden="true"></i>email
           </a>
         </div>
