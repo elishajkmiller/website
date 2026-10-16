@@ -239,7 +239,7 @@
           (w.length>1?'<button type="button" class="nav prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="nav next" aria-label="Next piece">&rsaquo;</button><span class="dots">'+w.map(function(p,k){return '<i'+(k?'':' class="on"')+'></i>'}).join('')+'</span>':'')+'</div>'
         :'<div class="art soon" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')">Artwork coming soon</div>';
       return '<article class="card" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(g.n)+', open artist details">'+pic+'<div class="body"><div class="top">'+(st?'<div class="box">'+esc(st)+'</div>':'')+more+'</div>'+
-        (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">'+(t?'by ':'')+'<b>'+esc(g.n)+'</b></p>'+links(g.n)+'</div></article>';
+        (t?'<h3>'+esc(t)+'</h3>':'')+'<p class="by">'+(t?'by ':'By ')+'<b>'+esc(g.n)+'</b></p>'+links(g.n)+'</div></article>';
     }).join('');
   }
   render();
@@ -261,7 +261,7 @@
   var lb=document.getElementById('lb');
   function openLb(g){
     var box=lb.querySelector('.lbart'), w=withArt(g);
-    box.innerHTML=w.map(function(p){return '<figure><img alt="'+esc((p.t||'Artwork')+' by '+g.n)+'" src="'+src(p.f)+'"><figcaption>'+esc((p.t?p.t+', by ':'')+g.n)+(p.s&&g.ps.length>1?' ('+esc(p.s)+')':'')+'</figcaption></figure>'}).join('');
+    box.innerHTML=w.map(function(p){return '<figure><img alt="'+esc((p.t||'Artwork')+' by '+g.n)+'" src="'+src(p.f)+'"><figcaption>'+esc((p.t?p.t+', by ':'By ')+g.n)+(p.s&&g.ps.length>1?' ('+esc(p.s)+')':'')+'</figcaption></figure>'}).join('');
     box.hidden=!w.length;
     var b=bios[g.n], bb=lb.querySelector('.lbbio');
     if(b){

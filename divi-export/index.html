@@ -660,7 +660,7 @@
     c.setAttribute('role','button');
     c.setAttribute('aria-label',d.name+', open artist details');
     c.innerHTML=media+'<div class="dja-body"><div class="dja-top">'+(d.street?'<div class="dja-box">'+esc(d.street)+'</div>':'')+'<span class="dja-more">'+more+' &rsaquo;</span></div>'+
-      (one?'<h3>'+esc(one)+'</h3>':'')+'<p class="dja-by">'+(one?'by ':'')+'<b>'+esc(d.name)+'</b></p>'+lk+'</div>';
+      (one?'<h3>'+esc(one)+'</h3>':'')+'<p class="dja-by">'+(one?'by ':'By ')+'<b>'+esc(d.name)+'</b></p>'+lk+'</div>';
   }
   var pool=[];
   for(i=0;i<people.length;i++){
@@ -703,7 +703,7 @@
     var h='';
     var q;
     for(q=0;q<d.pieces.length;q++){
-      h+='<figure><img alt="'+esc((d.pieces[q].title||'Artwork')+' by '+d.name)+'" src="'+esc(d.pieces[q].src)+'"><figcaption>'+esc((d.pieces[q].title?d.pieces[q].title+', by ':'')+d.name)+'</figcaption></figure>';
+      h+='<figure><img alt="'+esc((d.pieces[q].title||'Artwork')+' by '+d.name)+'" src="'+esc(d.pieces[q].src)+'"><figcaption>'+esc((d.pieces[q].title?d.pieces[q].title+', by ':'By ')+d.name)+'</figcaption></figure>';
     }
     art.innerHTML=h;
     art.hidden=!d.pieces.length;
