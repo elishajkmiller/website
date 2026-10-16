@@ -148,8 +148,9 @@
     if(dragging){
       var dx=e.clientX-sx,dy=e.clientY-sy;
       if(Math.abs(dx)>4||Math.abs(dy)>4){moved=true;}
-      curY=startAngle+dx*0.5;
-      apply(Math.max(-25,Math.min(25,-dy*0.2)),curY);
+      /* pull a side toward the middle and it goes back; pull it outward and it comes forward */
+      curY=startAngle-dx*0.5;
+      apply(Math.max(-25,Math.min(25,dy*0.2)),curY);
     }else if(!calm&&e.pointerType==='mouse'){
       card.className='card3d drag live';
       var px=(e.clientX-r.left)/r.width-0.5,py=(e.clientY-r.top)/r.height-0.5;
