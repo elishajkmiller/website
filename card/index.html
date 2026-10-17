@@ -143,29 +143,15 @@
     }
   })();
 
-  /* faint zeros and ones, visible only inside the white bloom that follows the pointer */
-  var bitEls=card.querySelectorAll('.bits'),bitGrid=[];
+  /* Hover turns the card into ASCII art inside the white bloom that follows the pointer.
+     Flat black becomes faint zeros and ones; text, the photo, the QR code and the stripe become
+     characters picked by brightness and tinted with the pixel's own color. The picture is read from
+     the card image itself, so it follows any change to the design. */
+  var bitEls=card.querySelectorAll('.bits'),faceImgs=card.querySelectorAll('.face img');
+  var COLS=112,ROWS=40,RAMP=' .:-=+*#%@';
+  var cellsOf=[],geo={w:560,h:320,cw:5,ch:8,dpr:1};
   function rnd(){return Math.random()<0.5?'0':'1';}
-  var bitGeo={fs:12,cw:14,ch:16};
-  function paintBits(i){
-    var cv=bitEls[i],cx=cv.getContext('2d'),g=bitGrid[i],j,k;
-    if(!cx||!g){return;}
-    cx.setTransform(bitGeo.dpr,0,0,bitGeo.dpr,0,0);
-    cx.clearRect(0,0,cv.width,cv.height);
-    cx.font=bitGeo.fs+'px monospace';
-    cx.textAlign='center';
-    cx.textBaseline='middle';
-    cx.fillStyle='rgba(255,255,255,0.34)';
-    for(j=0;j<g.length;j++){
-      for(k=0;k<g[j].length;k++){
-        if(g[j][k]!==' '){cx.fillText(g[j][k],k*bitGeo.cw+bitGeo.cw/2,j*bitGeo.ch+bitGeo.ch/2);}
-      }
-    }
-  }
-  /* the digits only appear where the card image is its flat black background: we read the image's own
-     pixels and leave out any cell that touches text, the photo, the QR code or the red stripe */
-  var faceImgs=card.querySelectorAll('.face img'),maskSrc=[];
-  function readMask(i){
+  function analyse(i){
     var im=faceImgs[i];
     function go(){
       try{
@@ -173,63 +159,73 @@
         c.width=im.naturalWidth;c.height=im.naturalHeight;
         var cx=c.getContext('2d');
         cx.drawImage(im,0,0);
-        maskSrc[i]={w:c.width,h:c.height,d:cx.getImageData(0,0,c.width,c.height).data};
-      }catch(er){maskSrc[i]=null;}
-      buildBits();
+        var W=c.width,H=c.height,d=cx.getImageData(0,0,W,H).data,cells=[],j,k,x,y;
+        for(j=0;j<ROWS;j++){
+          var y0=Math.floor(j*H/ROWS),y1=Math.max(y0+1,Math.floor((j+1)*H/ROWS)),row=[];
+          for(k=0;k<COLS;k++){
+            var x0=Math.floor(k*W/COLS),x1=Math.max(x0+1,Math.floor((k+1)*W/COLS)),r=0,g=0,b=0,n=0;
+            for(y=y0;y<y1;y++){for(x=x0;x<x1;x++){var o=(y*W+x)*4;r+=d[o];g+=d[o+1];b+=d[o+2];n++;}}
+            r/=n;g/=n;b/=n;
+            if(Math.abs(r-17)<=6&&Math.abs(g-17)<=6&&Math.abs(b-16)<=6){
+              row.push({black:true,ch:rnd()});
+            }else{
+              var L=0.2126*r+0.7152*g+0.0722*b,m=Math.max(r,g,b,1),sc=(110+(m/255)*145)/m;
+              row.push({black:false,ch:RAMP.charAt(Math.min(9,Math.max(1,Math.round(L/255*9)))),
+                col:'rgb('+Math.min(255,Math.round(r*sc))+','+Math.min(255,Math.round(g*sc))+','+Math.min(255,Math.round(b*sc))+')'});
+            }
+          }
+          cells.push(row);
+        }
+        cellsOf[i]=cells;
+      }catch(er){cellsOf[i]=null;}
+      layout();
     }
     if(im.complete&&im.naturalWidth){go();}else{im.addEventListener('load',go);}
   }
-  function onBlack(i,fx,fy,fw,fh){
-    var m=maskSrc[i];
-    if(!m){return false;}
-    var a,b;
-    for(a=-2;a<=2;a++){
-      for(b=-2;b<=2;b++){
-        var px=Math.round((fx+a*fw*0.8)*m.w),py=Math.round((fy+b*fh*0.8)*m.h);
-        if(px<0||py<0||px>=m.w||py>=m.h){return false;}
-        var o=(py*m.w+px)*4;
-        if(Math.abs(m.d[o]-17)>6||Math.abs(m.d[o+1]-17)>6||Math.abs(m.d[o+2]-16)>6){return false;}
-      }
+  function paintCell(i,j,k,clear){
+    var cx=bitEls[i].getContext('2d'),c=cellsOf[i][j][k],X=k*geo.cw,Y=j*geo.ch;
+    if(clear){cx.clearRect(X-0.5,Y-0.5,geo.cw+1,geo.ch+1);}
+    if(c.black){
+      cx.fillStyle='rgba(255,255,255,0.30)';
+    }else{
+      cx.fillStyle='rgb(17,17,16)';
+      cx.fillRect(X-0.5,Y-0.5,geo.cw+1,geo.ch+1);
+      cx.fillStyle=c.col;
     }
-    return true;
+    cx.fillText(c.ch,X+geo.cw/2,Y+geo.ch/2);
   }
-  function buildBits(){
+  function paintAll(i){
+    var cv=bitEls[i],cx=cv.getContext('2d'),cells=cellsOf[i],j,k;
+    if(!cx||!cells){return;}
+    cx.setTransform(geo.dpr,0,0,geo.dpr,0,0);
+    cx.clearRect(0,0,geo.w,geo.h);
+    cx.font=Math.round(geo.ch*0.95*10)/10+'px monospace';
+    cx.textAlign='center';
+    cx.textBaseline='middle';
+    for(j=0;j<ROWS;j++){for(k=0;k<COLS;k++){paintCell(i,j,k,false);}}
+  }
+  function layout(){
     /* offsetWidth is the card's real size, not skewed by the sway or a flip in progress */
-    var w=card.offsetWidth||560,h=card.offsetHeight||320;
-    var fs=Math.max(9,Math.round(w/38)),cw=fs*1.204,ch=fs*1.3;
-    var cols=Math.ceil(w/cw)+1,rows=Math.ceil(h/ch)+1;
-    var dpr=Math.min(2,window.devicePixelRatio||1);
-    bitGeo={fs:fs,cw:cw,ch:ch,dpr:dpr};
-    var i,j,k;
-    bitGrid=[];
+    var w=card.offsetWidth||560,h=card.offsetHeight||320,i;
+    geo={w:w,h:h,cw:w/COLS,ch:h/ROWS,dpr:Math.min(2,window.devicePixelRatio||1)};
     for(i=0;i<bitEls.length;i++){
-      bitEls[i].width=Math.round(w*dpr);
-      bitEls[i].height=Math.round(h*dpr);
-      var g=[];
-      for(j=0;j<rows;j++){
-        var row=[];
-        for(k=0;k<cols;k++){
-          row.push(onBlack(i,(k*cw+cw/2)/w,(j*ch+ch/2)/h,cw/w,ch/h)?rnd():' ');
-        }
-        g.push(row);
-      }
-      bitGrid.push(g);
-      paintBits(i);
+      bitEls[i].width=Math.round(w*geo.dpr);
+      bitEls[i].height=Math.round(h*geo.dpr);
+      paintAll(i);
     }
   }
-  readMask(0);readMask(1);
-  window.addEventListener('resize',buildBits);
+  analyse(0);analyse(1);
+  window.addEventListener('resize',layout);
   if(!calm){
     setInterval(function(){
       if(card.className.indexOf('live')<0){return;}
-      var i,n,g;
-      for(i=0;i<bitGrid.length;i++){
-        g=bitGrid[i];
-        for(n=0;n<40;n++){
-          var gy=Math.floor(Math.random()*g.length),gx=Math.floor(Math.random()*g[0].length);
-          if(g[gy][gx]!==' '){g[gy][gx]=rnd();}
+      var i,n;
+      for(i=0;i<bitEls.length;i++){
+        if(!cellsOf[i]){continue;}
+        for(n=0;n<50;n++){
+          var j=Math.floor(Math.random()*ROWS),k=Math.floor(Math.random()*COLS),c=cellsOf[i][j][k];
+          if(c.black){c.ch=rnd();paintCell(i,j,k,true);}
         }
-        paintBits(i);
       }
     },140);
   }
