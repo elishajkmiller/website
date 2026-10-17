@@ -155,11 +155,11 @@
   /* the text regions of each card image: [x, y, width, height, character width, character height].
      The ASCII is built from the image's own pixels, so it keeps the card's real fonts and positions. */
   var ELS=[
-    [[70,144,110,22,3.5,5],[70,185,620,140,4.2,7],[70,330,420,135,3.4,5.6],[70,485,190,55,2.8,4.6],[0,584,1050,16,3,5]],
-    [[690,408,285,30,2.1,3.4]]
+    [[70,144,110,22,3,4.5],[70,185,620,140,3.7,6.2],[70,330,420,135,3,5],[70,485,190,55,2.5,4.2],[0,584,1050,16,3,5]],
+    [[690,408,285,30,1.9,3.1]]
   ];
   var k0;
-  for(k0=0;k0<4;k0++){ELS[1].push([70,98+98*k0,200,29,2.1,3.4]);ELS[1].push([70,128+98*k0,470,50,3.2,5.4]);}
+  for(k0=0;k0<4;k0++){ELS[1].push([70,98+98*k0,200,29,1.9,3.1]);ELS[1].push([70,128+98*k0,470,50,2.8,4.8]);}
   var extra=[null,null],digs=[[],[]],geo={sc:1,dpr:1,w:560,h:320};
   function rnd(){return Math.random()<0.5?'0':'1';}
   function hit(i,x,y,w,h){
@@ -225,9 +225,9 @@
                   if(l2>bl){bl=l2;br=d[o2];bg=d[o2+1];bb=d[o2+2];}
                 }
               }
-              var cov=cnt?Math.max(sum/cnt,mxv*0.62):0;   /* the max term keeps thin strokes from vanishing */
-              if(cov<=0.15){
-                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:rnd(),col:'rgba(255,255,255,0.075)',fs:ech});
+              var cov=cnt?Math.max(sum/cnt,mxv*0.7):0;   /* the max term keeps thin strokes from vanishing */
+              if(cov<=0.12){
+                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:rnd(),col:'rgba(255,255,255,0.04)',fs:ech});
               }else{
                 var scl=Math.min(1.35,255/Math.max(br,bg,bb,1));
                 tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:RAMP.charAt(Math.min(9,Math.floor(cov*10))),col:'rgb('+Math.round(br*scl)+','+Math.round(bg*scl)+','+Math.round(bb*scl)+')',fs:ech});
