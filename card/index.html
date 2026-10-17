@@ -418,10 +418,9 @@
     vY=0;vX=0;
     dragging=true;moved=false;sx=e.clientX;sy=e.clientY;startAngle=curY;
     samples=[{t:now(),y:curY}];
-    /* which half you grabbed decides which way it turns: the right half turns the opposite way to the left half */
-    var gr=card.getBoundingClientRect();
-    dirX=(e.clientX-gr.left)>gr.width/2?1:-1;
-    dirY=(e.clientY-gr.top)>gr.height/2?-1:1;
+    /* pull the edge you grabbed toward the middle and it comes toward you; push it outward and it goes back.
+       That is the same on both halves, so grabbing the left half or the right half feels the same. */
+    dirX=1;dirY=-1;
     card.className='card3d drag live';
     kick();
     try{stage.setPointerCapture(e.pointerId);}catch(er){}
