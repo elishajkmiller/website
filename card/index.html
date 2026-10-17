@@ -149,19 +149,17 @@
   var bitEls=card.querySelectorAll('.bits'),faceImgs=card.querySelectorAll('.face img');
   var CW=1050,CH=600,BGC='#111110',MONO='monospace',RAMP=' .:-=+*#%@';
   var FACES=[
-    {boxes:[[66,140,610,175],[66,322,400,140],[66,482,240,60],[714,160,280,280],[0,574,1050,26]],
-     text:[['=====',78,152,26,'#e53e3e','bold'],['Elisha JK Miller',78,250,60,'#ffffff','bold'],
-           ['Technologist',78,358,40,'#fc8181','bold'],['Systems Builder',78,420,40,'#fc8181','bold'],
-           ['Joplin, MO',78,512,32,'#c9c6c2','normal'],['='.repeat(80),0,590,22,'#e53e3e','bold']]},
-    {boxes:[[66,92,460,400],[683,100,300,360]],text:[]}
+    {boxes:[[66,140,610,175],[66,322,400,140],[66,482,240,60],[714,160,280,280],[0,574,1050,26]]},
+    {boxes:[[66,92,460,400],[683,100,300,360]]}
   ];
-  var BACKROWS=[['EMAIL','elishajkmiller@proton.me'],['WEB','elishajkmiller.com'],['CODE','github.com/elishajkmiller'],['TEXT','417-317-3051']];
+  /* the text regions of each card image: [x, y, width, height, character width, character height].
+     The ASCII is built from the image's own pixels, so it keeps the card's real fonts and positions. */
+  var ELS=[
+    [[70,144,110,22,3.5,5],[70,185,620,140,4.2,7],[70,330,420,135,3.4,5.6],[70,485,190,55,2.8,4.6],[0,584,1050,16,3,5]],
+    [[690,408,285,30,2.1,3.4]]
+  ];
   var k0;
-  for(k0=0;k0<BACKROWS.length;k0++){
-    FACES[1].text.push([BACKROWS[k0][0],78,114+98*k0,22,'#e53e3e','bold']);
-    FACES[1].text.push([BACKROWS[k0][1],78,154+98*k0,29,'#ffffff','normal']);
-  }
-  FACES[1].text.push(['Scan to save my contact',832,430,19,'#c9c6c2','normal','center']);
+  for(k0=0;k0<4;k0++){ELS[1].push([70,98+98*k0,200,29,2.1,3.4]);ELS[1].push([70,128+98*k0,470,50,3.2,5.4]);}
   var extra=[null,null],digs=[[],[]],geo={sc:1,dpr:1,w:560,h:320};
   function rnd(){return Math.random()<0.5?'0':'1';}
   function hit(i,x,y,w,h){
@@ -190,6 +188,36 @@
           for(yy=y0;yy<y1;yy++){for(xx=x0;xx<x1;xx++){var o=(yy*W+xx)*4;a+=0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2];n++;}}
           return a/n;
         }
+        /* text and stripes: ink amount per cell, from the image's own pixels */
+        var tcs=[],ee,els=ELS[i];
+        for(ee=0;ee<els.length;ee++){
+          var ex0=els[ee][0],ey0=els[ee][1],ew=els[ee][2],eh=els[ee][3],ecw=els[ee][4],ech=els[ee][5],mxl=1,yy2,xx2,o2,l2;
+          for(yy2=Math.floor(ey0*sy);yy2<Math.min(H,Math.floor((ey0+eh)*sy));yy2++){
+            for(xx2=Math.floor(ex0*sx);xx2<Math.min(W,Math.floor((ex0+ew)*sx));xx2++){
+              o2=(yy2*W+xx2)*4;l2=0.2126*d[o2]+0.7152*d[o2+1]+0.0722*d[o2+2];if(l2>mxl){mxl=l2;}
+            }
+          }
+          var ej,ek;
+          for(ej=0;ej*ech<eh;ej++){
+            for(ek=0;ek*ecw<ew;ek++){
+              var bx0=Math.floor((ex0+ek*ecw)*sx),by0=Math.floor((ey0+ej*ech)*sy),bx1=Math.max(bx0+1,Math.floor((ex0+(ek+1)*ecw)*sx)),by1=Math.max(by0+1,Math.floor((ey0+(ej+1)*ech)*sy));
+              var sum=0,cnt=0,br=0,bg=0,bb=0,bl=-1,mxv=0,nv;
+              for(yy2=by0;yy2<by1&&yy2<H;yy2++){
+                for(xx2=bx0;xx2<bx1&&xx2<W;xx2++){
+                  o2=(yy2*W+xx2)*4;l2=0.2126*d[o2]+0.7152*d[o2+1]+0.0722*d[o2+2];
+                  nv=Math.max(0,(l2-17)/Math.max(1,mxl-17));sum+=nv;cnt++;if(nv>mxv){mxv=nv;}
+                  if(l2>bl){bl=l2;br=d[o2];bg=d[o2+1];bb=d[o2+2];}
+                }
+              }
+              var cov=cnt?Math.max(sum/cnt,mxv*0.62):0;   /* the max term keeps thin strokes from vanishing */
+              if(cov>0.15){
+                var scl=Math.min(1.35,255/Math.max(br,bg,bb,1));
+                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:RAMP.charAt(Math.min(9,Math.floor(cov*10))),col:'rgb('+Math.round(br*scl)+','+Math.round(bg*scl)+','+Math.round(bb*scl)+')',fs:ech});
+              }
+            }
+          }
+        }
+        textCells[i]=tcs;
         if(i===0){
           /* the photo: a circle centred at (854,300) with a red ring */
           var cells=[],pcx=854,pcy=300,R=118,RO=127,cw=5,ch=9,x,y,Ls=[];
@@ -222,35 +250,7 @@
     }
     if(im.complete&&im.naturalWidth){go();}else{im.addEventListener('load',go);}
   }
-  /* every line of text is rasterised, then rebuilt out of characters picked by how much ink each cell holds,
-     with the character size scaled to the text size so even the small lines stay readable */
   var textCells=[[],[]];
-  function buildText(i){
-    var tx=FACES[i].text,out=[],t;
-    for(t=0;t<tx.length;t++){
-      var txt=tx[t][0],x=tx[t][1],y=tx[t][2],sz=tx[t][3],col=tx[t][4],wt=tx[t][5]||'normal',al=tx[t][6]||'left';
-      var cv=document.createElement('canvas'),cx=cv.getContext('2d');
-      cx.font=wt+' '+sz+'px '+MONO;
-      var tw=Math.ceil(cx.measureText(txt).width),w=tw+8,h=Math.ceil(sz*1.5);
-      cv.width=w;cv.height=h;
-      cx.font=wt+' '+sz+'px '+MONO;
-      cx.fillStyle='#000';cx.fillRect(0,0,w,h);
-      cx.fillStyle='#fff';cx.textBaseline='middle';cx.textAlign='left';
-      cx.fillText(txt,4,h/2);
-      var d=cx.getImageData(0,0,w,h).data;
-      var ch=Math.max(3.2,sz*0.14),cw=ch*0.6;
-      var ox=(al==='center'?x-tw/2:x)-4,oy=y-h/2,j,k,yy,xx;
-      for(j=0;j*ch<h;j++){
-        for(k=0;k*cw<w;k++){
-          var a=0,n=0,ya=Math.floor(j*ch),yb=Math.min(h,Math.max(ya+1,Math.floor((j+1)*ch))),xa=Math.floor(k*cw),xb=Math.min(w,Math.max(xa+1,Math.floor((k+1)*cw)));
-          for(yy=ya;yy<yb;yy++){for(xx=xa;xx<xb;xx++){a+=d[(yy*w+xx)*4];n++;}}
-          var cov=a/(255*Math.max(1,n));
-          if(cov>0.15){out.push({x:ox+k*cw+cw/2,y:oy+j*ch+ch/2,ch:RAMP.charAt(Math.min(9,Math.floor(cov*10))),col:col,fs:ch});}
-        }
-      }
-    }
-    textCells[i]=out;
-  }
   function drawDigit(cx,c){
     cx.fillStyle=BGC;cx.fillRect(c.x,c.y,16,20);
     cx.fillStyle='rgba(255,255,255,0.28)';cx.font='15px '+MONO;cx.textAlign='center';cx.textBaseline='middle';
@@ -299,7 +299,6 @@
       paintAll(i);
     }
   }
-  try{buildText(0);buildText(1);}catch(er){}
   analyse(0);analyse(1);
   window.addEventListener('resize',layout);
 
