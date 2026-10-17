@@ -188,6 +188,22 @@
           for(yy=y0;yy<y1;yy++){for(xx=x0;xx<x1;xx++){var o=(yy*W+xx)*4;a+=0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2];n++;}}
           return a/n;
         }
+        /* zeros and ones everywhere the image is flat black, keeping one cell clear of any ink */
+        function isDark(x,y,w,h){
+          var a2,b2,px,py,o;
+          for(a2=0;a2<=4;a2++){
+            for(b2=0;b2<=4;b2++){
+              px=Math.floor((x+w*a2/4)*sx);py=Math.floor((y+h*b2/4)*sy);
+              if(px<0||py<0||px>=W||py>=H){continue;}
+              o=(py*W+px)*4;
+              if(Math.abs(d[o]-17)>6||Math.abs(d[o+1]-17)>6||Math.abs(d[o+2]-16)>6){return false;}
+            }
+          }
+          return true;
+        }
+        var dl=[],dx,dy;
+        for(dy=0;dy<CH;dy+=20){for(dx=0;dx<CW;dx+=16){if(isDark(dx-6,dy-6,28,32)){dl.push({x:dx,y:dy,ch:rnd()});}}}
+        digs[i]=dl;
         /* text and stripes: ink amount per cell, from the image's own pixels */
         var tcs=[],ee,els=ELS[i];
         for(ee=0;ee<els.length;ee++){
@@ -210,7 +226,9 @@
                 }
               }
               var cov=cnt?Math.max(sum/cnt,mxv*0.62):0;   /* the max term keeps thin strokes from vanishing */
-              if(cov>0.15){
+              if(cov<=0.15){
+                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:rnd(),col:'rgba(255,255,255,0.075)',fs:ech});
+              }else{
                 var scl=Math.min(1.35,255/Math.max(br,bg,bb,1));
                 tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:RAMP.charAt(Math.min(9,Math.floor(cov*10))),col:'rgb('+Math.round(br*scl)+','+Math.round(bg*scl)+','+Math.round(bb*scl)+')',fs:ech});
               }
@@ -236,6 +254,7 @@
             if(cells[t].ring){cells[t].ch='#';continue;}
             var v=Math.pow(Math.max(0,Math.min(1,(cells[t].L-lo)/Math.max(1,hi-lo))),0.7);
             cells[t].ch=RAMP.charAt(Math.round(v*9));
+            if(cells[t].ch===' '){cells[t].ch=rnd();cells[t].dim=true;}
           }
           extra[0]=cells;
         }else{
@@ -244,8 +263,8 @@
           for(r=0;r<31;r++){for(q2=0;q2<31;q2++){mods.push({x:693+q2*9+4.5,y:110+r*9+4.5,dark:lum(693+q2*9+3,110+r*9+3,3,3)<128});}}
           extra[1]=mods;
         }
-      }catch(er){extra[i]=null;}
-      makeDigits(i);
+      }catch(er){extra[i]=null;digs[i]=[];}
+      if(!digs[i].length){makeDigits(i);}
       layout();
     }
     if(im.complete&&im.naturalWidth){go();}else{im.addEventListener('load',go);}
@@ -276,8 +295,7 @@
       if(i===0){
         cx.font='bold 8.5px '+MONO;
         for(j=0;j<ex.length;j++){
-          if(ex[j].ch===' '){continue;}
-          cx.fillStyle=ex[j].ring?'#e53e3e':'#e8e6e3';
+          cx.fillStyle=ex[j].ring?'#e53e3e':(ex[j].dim?'rgba(255,255,255,0.13)':'#e8e6e3');
           cx.fillText(ex[j].ch,ex[j].x,ex[j].y);
         }
       }else{
