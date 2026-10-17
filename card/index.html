@@ -236,6 +236,11 @@
           }
         }
         textCells[i]=tcs;
+        function avgc(x,y,w,h){
+          var r=0,g=0,b=0,n=0,xx,yy,o,x0=Math.floor(x*sx),y0=Math.floor(y*sy),x1=Math.max(x0+1,Math.floor((x+w)*sx)),y1=Math.max(y0+1,Math.floor((y+h)*sy));
+          for(yy=y0;yy<y1&&yy<H;yy++){for(xx=x0;xx<x1&&xx<W;xx++){o=(yy*W+xx)*4;r+=d[o];g+=d[o+1];b+=d[o+2];n++;}}
+          return n?[r/n,g/n,b/n]:[0,0,0];
+        }
         if(i===0){
           /* the photo: a circle centred at (854,300) with a red ring */
           var cells=[],pcx=854,pcy=300,R=118,RO=127,cw=5,ch=9,x,y,Ls=[];
@@ -245,7 +250,7 @@
               if(dist>RO){continue;}
               if(dist>R){cells.push({x:mx,y:my,ring:true});continue;}
               var L=lum(x,y,cw,ch);
-              cells.push({x:mx,y:my,L:L});Ls.push(L);
+              cells.push({x:mx,y:my,L:L,rgb:avgc(x,y,cw,ch)});Ls.push(L);
             }
           }
           Ls.sort(function(p,q){return p-q;});
@@ -254,7 +259,11 @@
             if(cells[t].ring){cells[t].ch='#';continue;}
             var v=Math.pow(Math.max(0,Math.min(1,(cells[t].L-lo)/Math.max(1,hi-lo))),0.7);
             cells[t].ch=RAMP.charAt(Math.round(v*9));
-            if(cells[t].ch===' '){cells[t].ch=rnd();cells[t].dim=true;}
+            /* colour: the pixel's own hue, brightened so the characters stay visible on the dark card */
+            var cr=cells[t].rgb[0],cg=cells[t].rgb[1],cb=cells[t].rgb[2],cm=Math.max(cr,cg,cb,1),csc=Math.min(255/cm,(150+(cm/255)*105)/cm);
+            var cc=[Math.round(cr*csc),Math.round(cg*csc),Math.round(cb*csc)];
+            if(cells[t].ch===' '){cells[t].ch=rnd();cells[t].dim=true;cells[t].col='rgba('+cc[0]+','+cc[1]+','+cc[2]+',0.3)';}
+            else{cells[t].col='rgb('+cc[0]+','+cc[1]+','+cc[2]+')';}
           }
           extra[0]=cells;
         }else{
@@ -295,7 +304,7 @@
       if(i===0){
         cx.font='bold 8.5px '+MONO;
         for(j=0;j<ex.length;j++){
-          cx.fillStyle=ex[j].ring?'#e53e3e':(ex[j].dim?'rgba(255,255,255,0.13)':'#e8e6e3');
+          cx.fillStyle=ex[j].ring?'#e53e3e':(ex[j].col||'#e8e6e3');
           cx.fillText(ex[j].ch,ex[j].x,ex[j].y);
         }
       }else{
