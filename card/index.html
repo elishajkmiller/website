@@ -51,7 +51,9 @@
     .rows a:hover{border-color:var(--red);color:var(--red-soft)}
     .rows i{font-size:18px;color:var(--red);flex:none}
     .rows span{overflow-wrap:anywhere}
-    .help{width:100%;max-width:560px;text-align:left;margin:4px 0 26px;padding:16px 18px;background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:8px}
+    .twocol{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;width:100%;max-width:640px;align-items:start;margin:4px 0 26px}
+    .contacts{min-width:0}
+    .help{width:100%;text-align:left;margin:0;padding:16px 18px;background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:8px}
     .help h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.15rem;margin-bottom:8px}
     .help p{margin-bottom:10px;color:#e2dfdb}
     .help p:last-child{margin-bottom:0}
@@ -59,10 +61,13 @@
     .help ul{margin:0 0 12px 1.2rem;list-style:disc;color:#d8d5d1}
     .help li{margin-bottom:6px}
     .help strong{color:#fff;font-weight:600}
-    .copyrows{width:100%;max-width:440px;display:grid;gap:8px;margin-bottom:18px}
+    .copyrows{width:100%;display:grid;gap:8px;margin-bottom:0}
     .crow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg2)}
     .cval{overflow-wrap:anywhere;color:#e2dfdb}
     .crow .btn{flex:none;white-space:nowrap}
+    .twocol .crow{flex-direction:column;align-items:stretch;gap:8px;padding:10px 12px}
+    .twocol .crow .btn{justify-content:center}
+    @media(max-width:860px){.twocol{grid-template-columns:1fr;max-width:560px}.twocol .crow{flex-direction:row;align-items:center;justify-content:space-between;padding:8px 8px 8px 14px}}
     .dl{width:100%;max-width:440px;margin-top:10px}
     .dl-title{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.1rem;text-align:center;margin-bottom:12px}
     .dl-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -103,6 +108,7 @@
   <button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
 </div>
 
+<div class="twocol">
 <section class="help" aria-labelledby="help-title">
   <h2 id="help-title">Free help for Joplin-area nonprofits</h2>
   <p>I do a lot of free work for nonprofits in the Joplin area. If you are part of a nonprofit working on a project that needs organization, such as sorting and keeping track of hundreds of submissions, collecting information from forms, or getting everything into one clean place, I would be glad to help.</p>
@@ -118,10 +124,13 @@
   <p>Please don't hesitate to contact me by email or shoot me a text.</p>
 </section>
 
+<div class="contacts">
 <div class="copyrows">
   <div class="crow"><span class="cval">elishajkmiller@proton.me</span><button class="btn alt copy" type="button" data-copy="elishajkmiller@proton.me" data-label="Copy email"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button></div>
   <div class="crow"><span class="cval">elishajkmiller.com</span><button class="btn alt copy" type="button" data-copy="https://elishajkmiller.com" data-label="Copy website"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy website</span></button></div>
   <div class="crow"><span class="cval">417-317-3051</span><a class="btn alt" href="sms:+14173173051"><i class="ti ti-message" aria-hidden="true"></i><span>Message me</span></a></div>
+</div>
+</div>
 </div>
 
 <div class="dl">
