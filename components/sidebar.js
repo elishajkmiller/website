@@ -25,7 +25,7 @@
         ${link('/', 'home')}
         ${link('/blog', 'writing')}
         ${link('/about', 'about me')}
-        ${link('/ai', 'AI policy')}
+        ${link('/data-policy', 'data policy')}
         ${link('/card', 'card')}
       </div>
 
