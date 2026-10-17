@@ -30,7 +30,7 @@
     .slab:nth-child(odd){background:#2a2826}
     .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.16),rgba(255,255,255,0) 55%);opacity:0;transition:opacity .3s}
     .card3d.live .shine{opacity:1}
-    .bits{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .35s;-webkit-mask-image:radial-gradient(circle at var(--sx,50%) var(--sy,30%),#000 0,rgba(0,0,0,.55) 22%,transparent 52%);mask-image:radial-gradient(circle at var(--sx,50%) var(--sy,30%),#000 0,rgba(0,0,0,.55) 22%,transparent 52%)}
+    .bits{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .3s}
     .card3d.live .bits{opacity:1}
     .hintrow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;margin:22px 0 22px}
     .hint{color:#9d9a96;font-size:.9rem;text-align:center;white-space:nowrap}
@@ -143,7 +143,7 @@
     }
   })();
 
-  /* Hover turns the card into ASCII art inside the white bloom that follows the pointer.
+  /* Hover turns the whole card into ASCII art, photo included (the white bloom still follows the pointer on top).
      Flat black becomes faint zeros and ones; text, the photo, the QR code and the stripe become
      characters picked by brightness and tinted with the pixel's own color. The picture is read from
      the card image itself, so it follows any change to the design. */
