@@ -1,0 +1,55 @@
+[
+  {
+    "slug": "robin",
+    "title": "Robin",
+    "tagline": "Open-source EHR for human services nonprofits",
+    "desc": "Built because existing software is bad and the people using it deserve better. Node.js, PostgreSQL, vanilla JS.",
+    "status": "active",
+    "cats": ["open source", "civic tech"],
+    "url": "https://github.com/elishajkmiller/ROBIN",
+    "go": "View on GitHub",
+    "repo": "elishajkmiller/ROBIN"
+  },
+  {
+    "slug": "pow417",
+    "title": "POW417",
+    "tagline": "48-hour human-only filmmaking competition",
+    "desc": "Springfield, MO. No AI-generated content. The work comes first.",
+    "status": "live",
+    "cats": ["community", "filmmaking"],
+    "url": "https://pow417.com",
+    "go": "Visit pow417.com",
+    "repo": "elishajkmiller/pow417"
+  },
+  {
+    "slug": "tdeck-pro-ui",
+    "title": "T-Deck Pro UI",
+    "tagline": "My own launcher on Meshtastic",
+    "desc": "Home screen, texting app, turn-by-turn navigation with street maps, and a radio finder for a LilyGO T-Deck Pro. An overlay on official Meshtastic that survives updates.",
+    "status": "active",
+    "cats": ["open source", "hardware"],
+    "url": "https://github.com/elishajkmiller/tdeck-pro-nav",
+    "go": "View on GitHub",
+    "repo": "elishajkmiller/tdeck-pro-nav"
+  },
+  {
+    "slug": "watchy-firmware",
+    "title": "Watchy firmware",
+    "tagline": "Solar ring face and T-Deck link",
+    "desc": "Custom e-paper watch face for the Watchy v3 showing the day as a sun ring, with texts forwarded from the T-Deck over encrypted ESP-NOW.",
+    "status": "active",
+    "cats": ["open source", "hardware"],
+    "url": "https://github.com/elishajkmiller/watchy-firmware",
+    "go": "View on GitHub",
+    "repo": "elishajkmiller/watchy-firmware"
+  },
+  {
+    "slug": "whitehouse-recon",
+    "title": "whitehouse.gov passive recon",
+    "tagline": "CISA VDP submission",
+    "desc": "Undisclosed Intuit trackers on federal infrastructure. VU#622727, public 2026-07-16.",
+    "status": "disclosed",
+    "warn": true,
+    "cats": ["security", "civic"]
+  }
+]

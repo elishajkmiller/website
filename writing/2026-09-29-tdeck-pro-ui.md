@@ -3,6 +3,7 @@ title: T-Deck Pro UI on Meshtastic
 date: 2026-09-29
 description: My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.
 categories: [Hardware, Open Source, ESP32]
+project: tdeck-pro-ui
 ---
 
 Source: [github.com/elishajkmiller/tdeck-pro-nav](https://github.com/elishajkmiller/tdeck-pro-nav). It pairs with my [Watchy firmware](/blog/posts/2026-09-29-watchy-firmware.html).

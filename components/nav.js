@@ -5,20 +5,19 @@
   var path = window.location.pathname;
 
   var TABS = [
-    ['/', 'Card'],
-    ['/projects/', 'Projects'],
-    ['/blog/', 'Writing'],
-    ['/about', 'About'],
-    ['/data-policy/', 'Data policy']
+    ['/', 'Card', ['/']],
+    ['/projects/', 'Projects', ['/projects', '/blog']],
+    ['/about', 'About', ['/about']],
+    ['/data-policy/', 'Data policy', ['/data-policy']]
   ];
 
-  function isActive(href) {
-    if (href === '/') return path === '/' || path === '/index.html';
-    return path.indexOf(href.replace(/\/$/, '')) === 0;
+  function isActive(t) {
+    if (t[0] === '/') return path === '/' || path === '/index.html';
+    return t[2].some(function (p) { return path.indexOf(p) === 0; });
   }
 
   var tabs = TABS.map(function (t) {
-    var on = isActive(t[0]);
+    var on = isActive(t);
     return '<a href="' + t[0] + '" class="tab' + (on ? ' active' : '') + '"' +
       (on ? ' aria-current="page"' : '') + '>' + t[1] + '</a>';
   }).join('');

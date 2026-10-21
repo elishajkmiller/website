@@ -3,6 +3,7 @@ title: Watchy firmware with a T-Deck link
 date: 2026-09-29
 description: A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.
 categories: [Hardware, Open Source, ESP32]
+project: watchy-firmware
 ---
 
 Source: [github.com/elishajkmiller/watchy-firmware](https://github.com/elishajkmiller/watchy-firmware). The other half is the [T-Deck Pro UI](/blog/posts/2026-09-29-tdeck-pro-ui.html).

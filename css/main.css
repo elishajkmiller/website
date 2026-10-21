@@ -614,6 +614,14 @@ a.proj:hover { border-color: var(--red); transform: translateY(-2px); }
 
 .back-link:hover { color: var(--red-soft); }
 
+.post-cat.of-proj { color: var(--fg); }
+.post-project { margin-top: 14px; transition: border-color 0.15s; }
+.post-project:hover { border-color: var(--red); }
+.proj-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.proj-links { margin: 1.5rem 0 0; }
+.proj-links .btn { gap: 6px; }
+.main > .back-link { display: inline-block; margin-bottom: 1.25rem; }
+
 /* MOBILE */
 @media (max-width: 900px) {
   .home-hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }

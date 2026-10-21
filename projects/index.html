@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects / Elisha JK Miller</title>
-  <meta name="description" content="Open source software, hardware and firmware, and community projects by Elisha JK Miller.">
+  <meta name="description" content="Open source software, hardware and firmware, and community projects by Elisha JK Miller, with the writing about them.">
   <link rel="alternate" type="application/rss+xml" title="Elisha JK Miller" href="/blog/rss.xml">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -12,51 +12,105 @@
 <body>
 <header id="topbar"></header>
 
-<main class="main">
+  <main class="main ">
   <div class="page-title">Projects</div>
-  <p class="page-desc">Software, hardware and community work. Most of it is open source.</p>
+  <p class="page-desc">Software, hardware and community work, and what I write about it. Most of it is open source.</p>
 
   <div class="divider"></div>
 
   <div class="proj-grid">
-    <a class="proj" href="https://github.com/elishajkmiller/ROBIN" target="_blank" rel="noopener">
+    <a class="proj" href="/projects/robin/">
       <div class="proj-top"><div class="proj-cats"><span class="chip">open source</span><span class="chip">civic tech</span></div><span class="pill">active</span></div>
       <div class="proj-title">Robin</div>
       <div class="proj-tag">Open-source EHR for human services nonprofits</div>
       <p class="proj-desc">Built because existing software is bad and the people using it deserve better. Node.js, PostgreSQL, vanilla JS.</p>
-      <span class="proj-go">View on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></span>
+      <span class="proj-go">Details<i class="ti ti-arrow-right" aria-hidden="true"></i></span>
     </a>
-    <a class="proj" href="https://pow417.com" target="_blank" rel="noopener">
+    <a class="proj" href="/projects/pow417/">
       <div class="proj-top"><div class="proj-cats"><span class="chip">community</span><span class="chip">filmmaking</span></div><span class="pill">live</span></div>
       <div class="proj-title">POW417</div>
       <div class="proj-tag">48-hour human-only filmmaking competition</div>
       <p class="proj-desc">Springfield, MO. No AI-generated content. The work comes first.</p>
-      <span class="proj-go">Visit pow417.com<i class="ti ti-arrow-up-right" aria-hidden="true"></i></span>
+      <span class="proj-go">Details<i class="ti ti-arrow-right" aria-hidden="true"></i></span>
     </a>
-    <a class="proj" href="https://github.com/elishajkmiller/tdeck-pro-nav" target="_blank" rel="noopener">
+    <a class="proj" href="/projects/tdeck-pro-ui/">
       <div class="proj-top"><div class="proj-cats"><span class="chip">open source</span><span class="chip">hardware</span></div><span class="pill">active</span></div>
       <div class="proj-title">T-Deck Pro UI</div>
       <div class="proj-tag">My own launcher on Meshtastic</div>
       <p class="proj-desc">Home screen, texting app, turn-by-turn navigation with street maps, and a radio finder for a LilyGO T-Deck Pro. An overlay on official Meshtastic that survives updates.</p>
-      <span class="proj-go">View on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></span>
+      <span class="proj-go">1 post<i class="ti ti-arrow-right" aria-hidden="true"></i></span>
     </a>
-    <a class="proj" href="https://github.com/elishajkmiller/watchy-firmware" target="_blank" rel="noopener">
+    <a class="proj" href="/projects/watchy-firmware/">
       <div class="proj-top"><div class="proj-cats"><span class="chip">open source</span><span class="chip">hardware</span></div><span class="pill">active</span></div>
       <div class="proj-title">Watchy firmware</div>
       <div class="proj-tag">Solar ring face and T-Deck link</div>
       <p class="proj-desc">Custom e-paper watch face for the Watchy v3 showing the day as a sun ring, with texts forwarded from the T-Deck over encrypted ESP-NOW.</p>
-      <span class="proj-go">View on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></span>
+      <span class="proj-go">1 post<i class="ti ti-arrow-right" aria-hidden="true"></i></span>
     </a>
-    <div class="proj">
+    <a class="proj" href="/projects/whitehouse-recon/">
       <div class="proj-top"><div class="proj-cats"><span class="chip">security</span><span class="chip">civic</span></div><span class="pill warn">disclosed</span></div>
       <div class="proj-title">whitehouse.gov passive recon</div>
       <div class="proj-tag">CISA VDP submission</div>
       <p class="proj-desc">Undisclosed Intuit trackers on federal infrastructure. VU#622727, public 2026-07-16.</p>
-    </div>
+      <span class="proj-go">1 post<i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>
   </div>
-</main>
 
+  <div class="section-head" id="writing">Writing <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a></div>
+    <div class="cat-filters">
+    <button class="cat-filter active" data-cat="all">all</button>
+    <button class="cat-filter" data-cat="Hardware">Hardware</button>
+    <button class="cat-filter" data-cat="Open Source">Open Source</button>
+    <button class="cat-filter" data-cat="ESP32">ESP32</button>
+    <button class="cat-filter" data-cat="Email">Email</button>
+    <button class="cat-filter" data-cat="Security">Security</button>
+    <button class="cat-filter" data-cat="Civic">Civic</button>
+    </div>
+
+    <a href="/blog/posts/2026-09-29-tdeck-pro-ui.html" class="post-item" data-cats="Hardware,Open Source,ESP32">
+      <div class="post-date">Sep 29, 2026</div>
+      <div class="post-right">
+        <div class="post-cats"><span class="post-cat of-proj">T-Deck Pro UI</span>
+          <span class="post-cat">Hardware</span>
+          <span class="post-cat">Open Source</span>
+          <span class="post-cat">ESP32</span></div>
+        <div class="post-title">T-Deck Pro UI on Meshtastic</div>
+        <div class="post-excerpt">My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.</div>
+      </div>
+    </a>
+    <a href="/blog/posts/2026-09-29-watchy-firmware.html" class="post-item" data-cats="Hardware,Open Source,ESP32">
+      <div class="post-date">Sep 29, 2026</div>
+      <div class="post-right">
+        <div class="post-cats"><span class="post-cat of-proj">Watchy firmware</span>
+          <span class="post-cat">Hardware</span>
+          <span class="post-cat">Open Source</span>
+          <span class="post-cat">ESP32</span></div>
+        <div class="post-title">Watchy firmware with a T-Deck link</div>
+        <div class="post-excerpt">A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.</div>
+      </div>
+    </a>
+    <a href="/blog/posts/2026-06-12.html" class="post-item" data-cats="Email,Security">
+      <div class="post-date">Jun 12, 2026</div>
+      <div class="post-right">
+        <div class="post-cats"><span class="post-cat">Email</span>
+          <span class="post-cat">Security</span></div>
+        <div class="post-title">Inbox Recon</div>
+        <div class="post-excerpt"></div>
+      </div>
+    </a>
+    <a href="/blog/posts/2026-06-08.html" class="post-item" data-cats="Security,Civic">
+      <div class="post-date">Jun 08, 2026</div>
+      <div class="post-right">
+        <div class="post-cats"><span class="post-cat of-proj">whitehouse.gov passive recon</span>
+          <span class="post-cat">Security</span>
+          <span class="post-cat">Civic</span></div>
+        <div class="post-title">White House Recon</div>
+        <div class="post-excerpt"></div>
+      </div>
+    </a>
+  </main>
 <footer id="foot"></footer>
 <script src="/components/nav.js"></script>
+<script src="/js/filter.js"></script>
 </body>
 </html>
