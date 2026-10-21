@@ -4,295 +4,479 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elisha JK Miller</title>
-  <meta name="description" content="DSP turned builder. Open source, decentralized, human-first, accessible.">
+  <meta name="description" content="Elisha JK Miller, Technologist and Systems Builder in Joplin, MO. Flip the card, save the contact.">
+  <meta property="og:title" content="Elisha JK Miller">
+  <meta property="og:description" content="Technologist and Systems Builder. Joplin, MO.">
+  <meta property="og:image" content="https://elishajkmiller.com/card/card-front.png">
+  <link rel="canonical" href="https://elishajkmiller.com/">
   <link rel="alternate" type="application/rss+xml" title="Elisha JK Miller" href="/blog/rss.xml">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stage{width:100%;max-width:560px;perspective:1400px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+    .float,.sway{transform-style:preserve-3d}
+    .float{animation:bob 6s ease-in-out infinite}
+    .sway{animation:sway 9s ease-in-out infinite alternate}
+    @keyframes sway{0%{transform:rotateY(-6deg) rotateX(0.8deg) rotateZ(-0.6deg)}100%{transform:rotateY(6deg) rotateX(-0.8deg) rotateZ(0.6deg)}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .card3d{position:relative;width:100%;aspect-ratio:7/4;transform-style:preserve-3d;cursor:grab;outline:none;transition:transform .8s cubic-bezier(.2,.8,.2,1);border-radius:14px}
+    .card3d.drag{transition:none;cursor:grabbing}
+    .card3d:focus-visible{box-shadow:0 0 0 3px var(--red-soft)}
+    .face{position:absolute;inset:0;border-radius:14px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 18px 44px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.5)}
+    .face img{width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
+    /* paper feel, very light: a fine grain over the face and a soft matte fall-off toward the edges */
+    .face::after{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;
+      background:
+        radial-gradient(ellipse at 50% 40%,rgba(255,250,240,.035),rgba(255,250,240,0) 62%),
+        radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 62%,rgba(0,0,0,.12)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.98 0 0 0 0 0.92 0 0 0 0.375 -0.19'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E") 0 0/180px 180px;
+      opacity:1}
+    .face.front{transform:translateZ(4px)}
+    .face.back{transform:rotateY(180deg) translateZ(4px)}
+    .slab{position:absolute;inset:0;border-radius:14px;backface-visibility:visible;background:#8c877c}
+    .slab:nth-child(odd){background:#7d786e}
+    .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.08),rgba(255,255,255,0) 55%);opacity:0;transition:opacity .3s}
+    .card3d.live .shine{opacity:1}
+    .bits{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:radial-gradient(circle at var(--sx,50%) var(--sy,30%),#000 calc(var(--rv,0)*115% - 15%),transparent calc(var(--rv,0)*115%));mask-image:radial-gradient(circle at var(--sx,50%) var(--sy,30%),#000 calc(var(--rv,0)*115% - 15%),transparent calc(var(--rv,0)*115%))}
+    .hintrow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;margin:22px 0 22px}
+    .hint{color:#9d9a96;font-size:.9rem;text-align:center;white-space:nowrap}
+    .flipbtn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Source Sans 3',sans-serif;padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:#d8d5d1;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s}
+    .flipbtn:hover{border-color:var(--red);color:var(--red-soft)}
+    @media(prefers-reduced-motion:reduce){.float,.sway{animation:none}.card3d{transition:none}}
+  </style>
 </head>
 <body>
-<div class="layout">
-  <aside id="sidebar"></aside>
+<header id="topbar"></header>
 
-  <main class="main">
-    <div class="page-title">Elisha JK Miller</div>
-    <div class="hero-intro">
-      I refuse to lose. I reject the status quo. I always push ahead.
+<main class="main">
+  <section class="home-hero">
+    <div class="home-card">
+<div class="stage" id="stage">
+  <div class="float">
+   <div class="sway">
+    <div class="card3d" id="card" tabindex="0" role="button" aria-pressed="false" aria-label="Business card. Press Enter to flip it.">
+      <div class="face front"><img src="/card/card-front.png" alt="Front of the card: Elisha JK Miller, Technologist, Systems Builder, Joplin, MO"><canvas class="bits" aria-hidden="true"></canvas><div class="shine"></div></div>
+      <div class="face back"><img src="/card/card-back.png" alt="Back of the card: email elishajkmiller@proton.me, web elishajkmiller.com, GitHub elishajkmiller, text 417-317-3051, and a QR code to this page"><canvas class="bits" aria-hidden="true"></canvas><div class="shine"></div></div>
     </div>
-
-    <div class="divider"></div>
-
-    <div class="section-head"><a href="/blog">writing</a> <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a></div>
-        <div class="cat-filters">
-    <button class="cat-filter active" data-cat="all">all</button>
-    <button class="cat-filter" data-cat="Hardware">Hardware</button>
-    <button class="cat-filter" data-cat="Open Source">Open Source</button>
-    <button class="cat-filter" data-cat="ESP32">ESP32</button>
-    <button class="cat-filter" data-cat="Email">Email</button>
-    <button class="cat-filter" data-cat="Security">Security</button>
-    </div>
-    <a href="/blog/posts/2026-09-29-tdeck-pro-ui.html" class="post-item" data-cats="Hardware,Open Source,ESP32">
-      <div class="post-date">Sep 29, 2026</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">Hardware</span>
-          <span class="post-cat">Open Source</span>
-          <span class="post-cat">ESP32</span></div>
-        <div class="post-title">T-Deck Pro UI on Meshtastic</div>
-        <div class="post-excerpt">My own launcher, texting app, navigation and radio finder for the LilyGO T-Deck Pro, built as an overlay on official Meshtastic.</div>
-      </div>
-    </a>
-    <a href="/blog/posts/2026-09-29-watchy-firmware.html" class="post-item" data-cats="Hardware,Open Source,ESP32">
-      <div class="post-date">Sep 29, 2026</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">Hardware</span>
-          <span class="post-cat">Open Source</span>
-          <span class="post-cat">ESP32</span></div>
-        <div class="post-title">Watchy firmware with a T-Deck link</div>
-        <div class="post-excerpt">A solar ring watch face for the Watchy v3, with texts forwarded from a T-Deck Pro over encrypted ESP-NOW.</div>
-      </div>
-    </a>
-    <a href="/blog/posts/2026-06-12.html" class="post-item" data-cats="Email,Security">
-      <div class="post-date">Jun 12, 2026</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">Email</span>
-          <span class="post-cat">Security</span></div>
-        <div class="post-title">Inbox Recon</div>
-        <div class="post-excerpt"></div>
-      </div>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="section-head">projects</div>
-
-    <a href="https://github.com/elishajkmiller/ROBIN" class="post-item" target="_blank">
-      <div class="post-date">active</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">open source</span><span class="post-cat">civic tech</span></div>
-        <div class="post-title">Robin — open-source EHR for human services nonprofits</div>
-        <div class="post-excerpt">Built because existing software is bad and the people using it deserve better. Node.js, PostgreSQL, vanilla JS.</div>
-      </div>
-    </a>
-
-    <a href="https://pow417.com" class="post-item" target="_blank">
-      <div class="post-date">live</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">community</span><span class="post-cat">filmmaking</span></div>
-        <div class="post-title">POW417 — 48-hour human-only filmmaking competition</div>
-        <div class="post-excerpt">Springfield, MO. No AI-generated content. The work comes first.</div>
-      </div>
-    </a>
-
-    <a href="https://github.com/elishajkmiller/tdeck-pro-nav" class="post-item" target="_blank">
-      <div class="post-date">active</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">open source</span><span class="post-cat">hardware</span></div>
-        <div class="post-title">T-Deck Pro UI: my own launcher on Meshtastic</div>
-        <div class="post-excerpt">Home screen, texting app, turn-by-turn navigation with street maps, and a radio finder for a LilyGO T-Deck Pro. An overlay on official Meshtastic that survives updates.</div>
-      </div>
-    </a>
-
-    <a href="https://github.com/elishajkmiller/watchy-firmware" class="post-item" target="_blank">
-      <div class="post-date">active</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">open source</span><span class="post-cat">hardware</span></div>
-        <div class="post-title">Watchy firmware: solar ring face and T-Deck link</div>
-        <div class="post-excerpt">Custom e-paper watch face for the Watchy v3 showing the day as a sun ring, with texts forwarded from the T-Deck over encrypted ESP-NOW.</div>
-      </div>
-    </a>
-
-    <a href="#" class="post-item">
-      <div class="post-date">disclosed</div>
-      <div class="post-right">
-        <div class="post-cats"><span class="post-cat">security</span><span class="post-cat">civic</span></div>
-        <div class="post-title">whitehouse.gov passive recon — CISA VDP submission</div>
-        <div class="post-excerpt">Undisclosed Intuit trackers on federal infrastructure. VU#622727, public 2026-07-16.</div>
-      </div>
-    </a>
-
-  </main>
+   </div>
+  </div>
 </div>
-<script src="/components/sidebar.js"></script>
-<script src="/js/filter.js"></script>
+
+<div class="hintrow">
+  <span class="hint">Drag the card, or tap it to flip.</span>
+  <button class="flipbtn" id="flip" type="button"><i class="ti ti-rotate-360" aria-hidden="true"></i>Flip card</button>
+</div>
+    </div>
+
+    <div class="home-side">
+      <div class="eyebrow">Joplin, MO</div>
+      <h1 class="home-name">Elisha JK Miller</h1>
+      <p class="lede">Technologist and systems builder. I build operational frameworks for organizations: systems that walk people through their work, and the software that runs them.</p>
+
+      <div class="copyrows">
+        <div class="crow"><span class="cval">elishajkmiller@proton.me</span><button class="btn alt copy" type="button" data-copy="elishajkmiller@proton.me" data-label="Copy email"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy email</span></button></div>
+        <div class="crow"><span class="cval">elishajkmiller.com</span><button class="btn alt copy" type="button" data-copy="https://elishajkmiller.com" data-label="Copy website"><i class="ti ti-copy" aria-hidden="true"></i><span>Copy website</span></button></div>
+        <div class="crow"><span class="cval">417-317-3051</span><a class="btn alt" href="sms:+14173173051"><i class="ti ti-message" aria-hidden="true"></i><span>Message me</span></a></div>
+      </div>
+
+      <a class="btn" href="/card/elisha-jk-miller.vcf" download="elisha-jk-miller.vcf"><i class="ti ti-download" aria-hidden="true"></i>Save contact</a>
+
+      <details class="dl">
+        <summary>Download the card</summary>
+        <div class="dl-cols">
+          <div class="dl-col">
+            <div class="dl-sub">Card<br><small>3.5 x 2 in, 300 dpi</small></div>
+            <a class="btn alt" href="/card/card-front.png" download="elisha-jk-miller-card-front.png"><i class="ti ti-download" aria-hidden="true"></i>Front</a>
+            <a class="btn alt" href="/card/card-back.png" download="elisha-jk-miller-card-back.png"><i class="ti ti-download" aria-hidden="true"></i>Back</a>
+          </div>
+          <div class="dl-col">
+            <div class="dl-sub">Printing<br><small>0.125 in bleed</small></div>
+            <a class="btn alt" href="/card/card-front-bleed.png" download="elisha-jk-miller-card-front-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Front</a>
+            <a class="btn alt" href="/card/card-back-bleed.png" download="elisha-jk-miller-card-back-print.png"><i class="ti ti-printer" aria-hidden="true"></i>Back</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="help" aria-labelledby="help-title">
+    <div>
+      <h2 id="help-title">Free help for Joplin-area nonprofits</h2>
+      <p>I do a lot of free work for nonprofits in the Joplin area. If you are part of a nonprofit working on a project that needs organization, such as sorting and keeping track of hundreds of submissions, collecting information from forms, or getting everything into one clean place, I would be glad to help.</p>
+      <p>Please don't hesitate to contact me by email or shoot me a text.</p>
+    </div>
+    <div>
+      <p class="help-sub">What I'm good at</p>
+      <ul>
+        <li><strong>Data intake and organization.</strong> Turning hundreds of messy submissions into one clear, searchable record.</li>
+        <li><strong>Websites.</strong> WordPress and Divi pages your team can edit on its own.</li>
+        <li><strong>Automation.</strong> Google Sheets and Apps Script for billing, reports and routine tasks that run themselves.</li>
+        <li><strong>Step-by-step procedures.</strong> Clear operating guides that walk people through their jobs.</li>
+        <li><strong>Charts and dashboards.</strong> Data you can read at a glance.</li>
+        <li><strong>Route planning.</strong> Optimizing routes with live data.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer id="foot"></footer>
+<script src="/components/nav.js"></script>
+
+<script>
+(function(){
+  var card=document.getElementById('card');
+  var stage=document.getElementById('stage');
+  var angle=0;            /* where the card is heading to rest, always a multiple of 180 */
+  var curY=0,curX=0;      /* what is drawn right now (degrees) */
+  var vY=0,vX=0;          /* how fast it is turning (degrees per second) */
+  var raf=0,last=0,samples=[];
+  var dragging=false,moved=false,sx=0,sy=0,startAngle=0,dirX=1,dirY=1;
+  var calm=false;
+  try{calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+
+  /* the card's edge: a stack of thin slabs between the two faces gives it thickness */
+  (function(){
+    var k;
+    for(k=-3;k<=3;k++){
+      var sl=document.createElement('div');
+      sl.className='slab';
+      sl.style.transform='translateZ('+k+'px)';
+      card.insertBefore(sl,card.querySelector('.face'));
+    }
+  })();
+
+  /* Hover turns the whole card into ASCII art, spreading outward from the pointer over about five seconds
+     and clearing in about one. Text is set in monospace so it stays readable, the photo becomes ASCII
+     art, the QR code becomes characters, and the flat black fills with flickering zeros and ones.
+     Everything is drawn in the card image's own 1050 x 600 coordinates. */
+  var bitEls=card.querySelectorAll('.bits'),faceImgs=card.querySelectorAll('.face img');
+  var CW=1050,CH=600,BGC='#111110',MONO='monospace',RAMP=' .:-=+*#%@';
+  var FACES=[
+    {boxes:[[66,140,610,175],[66,322,400,140],[66,482,240,60],[714,160,280,280],[0,574,1050,26]]},
+    {boxes:[[66,92,460,400],[683,100,300,360]]}
+  ];
+  /* the text regions of each card image: [x, y, width, height, character width, character height].
+     The ASCII is built from the image's own pixels, so it keeps the card's real fonts and positions. */
+  var ELS=[
+    [[70,144,110,22,3,4.5],[70,185,620,140,3.7,6.2],[70,330,420,135,3,5],[70,485,190,55,2.5,4.2],[0,584,1050,16,3,5]],
+    [[690,408,285,30,1.9,3.1]]
+  ];
+  var k0;
+  for(k0=0;k0<4;k0++){ELS[1].push([70,98+98*k0,200,29,1.9,3.1]);ELS[1].push([70,128+98*k0,470,50,2.8,4.8]);}
+  var extra=[null,null],digs=[[],[]],geo={sc:1,dpr:1,w:560,h:320};
+  function rnd(){return Math.random()<0.5?'0':'1';}
+  function hit(i,x,y,w,h){
+    var bx=FACES[i].boxes,q;
+    for(q=0;q<bx.length;q++){
+      if(x<bx[q][0]+bx[q][2]&&x+w>bx[q][0]&&y<bx[q][1]+bx[q][3]&&y+h>bx[q][1]){return true;}
+    }
+    return false;
+  }
+  function makeDigits(i){
+    var list=[],x,y;
+    for(y=0;y<CH;y+=20){for(x=0;x<CW;x+=16){if(!hit(i,x,y,16,20)){list.push({x:x,y:y,ch:rnd()});}}}
+    digs[i]=list;
+  }
+  function analyse(i){
+    var im=faceImgs[i];
+    function go(){
+      try{
+        var c=document.createElement('canvas');
+        c.width=im.naturalWidth;c.height=im.naturalHeight;
+        var cx=c.getContext('2d');
+        cx.drawImage(im,0,0);
+        var W=c.width,H=c.height,d=cx.getImageData(0,0,W,H).data,sx=W/CW,sy=H/CH;
+        function lum(x,y,w,h){
+          var a=0,n=0,xx,yy,x0=Math.floor(x*sx),y0=Math.floor(y*sy),x1=Math.max(x0+1,Math.floor((x+w)*sx)),y1=Math.max(y0+1,Math.floor((y+h)*sy));
+          for(yy=y0;yy<y1;yy++){for(xx=x0;xx<x1;xx++){var o=(yy*W+xx)*4;a+=0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2];n++;}}
+          return a/n;
+        }
+        /* zeros and ones everywhere the image is flat black, keeping one cell clear of any ink */
+        function isDark(x,y,w,h){
+          var a2,b2,px,py,o;
+          for(a2=0;a2<=4;a2++){
+            for(b2=0;b2<=4;b2++){
+              px=Math.floor((x+w*a2/4)*sx);py=Math.floor((y+h*b2/4)*sy);
+              if(px<0||py<0||px>=W||py>=H){continue;}
+              o=(py*W+px)*4;
+              if(Math.abs(d[o]-17)>6||Math.abs(d[o+1]-17)>6||Math.abs(d[o+2]-16)>6){return false;}
+            }
+          }
+          return true;
+        }
+        var dl=[],dx,dy;
+        for(dy=0;dy<CH;dy+=20){for(dx=0;dx<CW;dx+=16){if(isDark(dx-6,dy-6,28,32)){dl.push({x:dx,y:dy,ch:rnd()});}}}
+        digs[i]=dl;
+        /* text and stripes: ink amount per cell, from the image's own pixels */
+        var tcs=[],ee,els=ELS[i];
+        for(ee=0;ee<els.length;ee++){
+          var ex0=els[ee][0],ey0=els[ee][1],ew=els[ee][2],eh=els[ee][3],ecw=els[ee][4],ech=els[ee][5],mxl=1,yy2,xx2,o2,l2;
+          for(yy2=Math.floor(ey0*sy);yy2<Math.min(H,Math.floor((ey0+eh)*sy));yy2++){
+            for(xx2=Math.floor(ex0*sx);xx2<Math.min(W,Math.floor((ex0+ew)*sx));xx2++){
+              o2=(yy2*W+xx2)*4;l2=0.2126*d[o2]+0.7152*d[o2+1]+0.0722*d[o2+2];if(l2>mxl){mxl=l2;}
+            }
+          }
+          var ej,ek;
+          for(ej=0;ej*ech<eh;ej++){
+            for(ek=0;ek*ecw<ew;ek++){
+              var bx0=Math.floor((ex0+ek*ecw)*sx),by0=Math.floor((ey0+ej*ech)*sy),bx1=Math.max(bx0+1,Math.floor((ex0+(ek+1)*ecw)*sx)),by1=Math.max(by0+1,Math.floor((ey0+(ej+1)*ech)*sy));
+              var sum=0,cnt=0,br=0,bg=0,bb=0,bl=-1,mxv=0,nv;
+              for(yy2=by0;yy2<by1&&yy2<H;yy2++){
+                for(xx2=bx0;xx2<bx1&&xx2<W;xx2++){
+                  o2=(yy2*W+xx2)*4;l2=0.2126*d[o2]+0.7152*d[o2+1]+0.0722*d[o2+2];
+                  nv=Math.max(0,(l2-17)/Math.max(1,mxl-17));sum+=nv;cnt++;if(nv>mxv){mxv=nv;}
+                  if(l2>bl){bl=l2;br=d[o2];bg=d[o2+1];bb=d[o2+2];}
+                }
+              }
+              var cov=cnt?Math.max(sum/cnt,mxv*0.7):0;   /* the max term keeps thin strokes from vanishing */
+              if(cov<=0.12){
+                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:rnd(),col:'rgba(255,255,255,0.04)',fs:ech});
+              }else{
+                var scl=Math.min(1.35,255/Math.max(br,bg,bb,1));
+                tcs.push({x:ex0+ek*ecw+ecw/2,y:ey0+ej*ech+ech/2,ch:RAMP.charAt(Math.min(9,Math.floor(cov*10))),col:'rgb('+Math.round(br*scl)+','+Math.round(bg*scl)+','+Math.round(bb*scl)+')',fs:ech});
+              }
+            }
+          }
+        }
+        textCells[i]=tcs;
+        function avgc(x,y,w,h){
+          var r=0,g=0,b=0,n=0,xx,yy,o,x0=Math.floor(x*sx),y0=Math.floor(y*sy),x1=Math.max(x0+1,Math.floor((x+w)*sx)),y1=Math.max(y0+1,Math.floor((y+h)*sy));
+          for(yy=y0;yy<y1&&yy<H;yy++){for(xx=x0;xx<x1&&xx<W;xx++){o=(yy*W+xx)*4;r+=d[o];g+=d[o+1];b+=d[o+2];n++;}}
+          return n?[r/n,g/n,b/n]:[0,0,0];
+        }
+        if(i===0){
+          /* the photo: a circle centred at (854,300) with a red ring */
+          var cells=[],pcx=854,pcy=300,R=118,RO=127,cw=5,ch=9,x,y,Ls=[];
+          for(y=pcy-RO;y<pcy+RO;y+=ch){
+            for(x=pcx-RO;x<pcx+RO;x+=cw){
+              var mx=x+cw/2,my=y+ch/2,dist=Math.sqrt((mx-pcx)*(mx-pcx)+(my-pcy)*(my-pcy));
+              if(dist>RO){continue;}
+              if(dist>R){cells.push({x:mx,y:my,ring:true});continue;}
+              var L=lum(x,y,cw,ch);
+              cells.push({x:mx,y:my,L:L,rgb:avgc(x,y,cw,ch)});Ls.push(L);
+            }
+          }
+          Ls.sort(function(p,q){return p-q;});
+          var lo=Ls[Math.floor(Ls.length*0.42)],hi=Ls[Math.floor(Ls.length*0.985)],t;
+          for(t=0;t<cells.length;t++){
+            if(cells[t].ring){cells[t].ch='#';continue;}
+            var v=Math.pow(Math.max(0,Math.min(1,(cells[t].L-lo)/Math.max(1,hi-lo))),0.7);
+            cells[t].ch=RAMP.charAt(Math.round(v*9));
+            /* colour: the pixel's own hue, brightened so the characters stay visible on the dark card */
+            var cr=cells[t].rgb[0],cg=cells[t].rgb[1],cb=cells[t].rgb[2],cm=Math.max(cr,cg,cb,1),csc=Math.min(255/cm,(150+(cm/255)*105)/cm);
+            var cc=[Math.round(cr*csc),Math.round(cg*csc),Math.round(cb*csc)];
+            if(cells[t].ch===' '){cells[t].ch=rnd();cells[t].dim=true;cells[t].col='rgba('+cc[0]+','+cc[1]+','+cc[2]+',0.3)';}
+            else{cells[t].col='rgb('+cc[0]+','+cc[1]+','+cc[2]+')';}
+          }
+          extra[0]=cells;
+        }else{
+          /* the QR code: 31 x 31 modules of 9 px starting at (693,110) */
+          var mods=[],r,q2;
+          for(r=0;r<31;r++){for(q2=0;q2<31;q2++){mods.push({x:693+q2*9+4.5,y:110+r*9+4.5,dark:lum(693+q2*9+3,110+r*9+3,3,3)<128});}}
+          extra[1]=mods;
+        }
+      }catch(er){extra[i]=null;digs[i]=[];}
+      if(!digs[i].length){makeDigits(i);}
+      layout();
+    }
+    if(im.complete&&im.naturalWidth){go();}else{im.addEventListener('load',go);}
+  }
+  var textCells=[[],[]];
+  function drawDigit(cx,c){
+    cx.fillStyle=BGC;cx.fillRect(c.x,c.y,16,20);
+    cx.fillStyle='rgba(255,255,255,0.28)';cx.font='15px '+MONO;cx.textAlign='center';cx.textBaseline='middle';
+    cx.fillText(c.ch,c.x+8,c.y+10);
+  }
+  function paintAll(i){
+    var cv=bitEls[i],cx=cv.getContext('2d');
+    if(!cx){return;}
+    cx.setTransform(geo.sc*geo.dpr,0,0,geo.sc*geo.dpr,0,0);
+    cx.fillStyle=BGC;cx.fillRect(0,0,CW,CH);
+    var j,list=digs[i];
+    for(j=0;j<list.length;j++){drawDigit(cx,list[j]);}
+    var tc=textCells[i],lastFs=0;
+    cx.textBaseline='middle';cx.textAlign='center';
+    for(j=0;j<tc.length;j++){
+      if(tc[j].fs!==lastFs){cx.font='bold '+tc[j].fs.toFixed(1)+'px '+MONO;lastFs=tc[j].fs;}
+      cx.fillStyle=tc[j].col;
+      cx.fillText(tc[j].ch,tc[j].x,tc[j].y);
+    }
+    var ex=extra[i];
+    if(ex){
+      cx.textAlign='center';
+      if(i===0){
+        cx.font='bold 8.5px '+MONO;
+        for(j=0;j<ex.length;j++){
+          cx.fillStyle=ex[j].ring?'#e53e3e':(ex[j].col||'#e8e6e3');
+          cx.fillText(ex[j].ch,ex[j].x,ex[j].y);
+        }
+      }else{
+        cx.font='bold 10px '+MONO;
+        for(j=0;j<ex.length;j++){
+          cx.fillStyle=ex[j].dark?'#f2f0ec':'rgba(255,255,255,0.18)';
+          cx.fillText(ex[j].dark?'#':'.',ex[j].x,ex[j].y);
+        }
+      }
+    }
+  }
+  function layout(){
+    /* offsetWidth is the card's real size, not skewed by the sway or a flip in progress */
+    var w=card.offsetWidth||560,h=card.offsetHeight||320,i;
+    geo={sc:w/CW,dpr:Math.min(2,window.devicePixelRatio||1),w:w,h:h};
+    for(i=0;i<bitEls.length;i++){
+      bitEls[i].width=Math.round(w*geo.dpr);
+      bitEls[i].height=Math.round(h*geo.dpr);
+      paintAll(i);
+    }
+  }
+  analyse(0);analyse(1);
+  window.addEventListener('resize',layout);
+
+  /* the takeover: rv grows from 0 to 1 while the pointer is on the card (about 5 s) and shrinks back in about 1 s */
+  var hovering=false,rv=0,rp=0,rvLast=0,rvRaf=0;
+  function setRv(){
+    var e=rp*rp*(3-2*rp);
+    rv=e;
+    card.style.setProperty('--rv',e.toFixed(4));
+  }
+  function wantAscii(){return hovering||dragging;}
+  function rvLoop(t){
+    var dt=Math.min(0.05,(t-rvLast)/1000);
+    if(!(dt>0)){dt=0.016;}
+    rvLast=t;
+    var target=wantAscii()?1:0;
+    if(target>rp){rp=Math.min(1,rp+dt/5);}
+    else if(target<rp){rp=Math.max(0,rp-dt/1);}
+    setRv();
+    if(rp!==target){rvRaf=requestAnimationFrame(rvLoop);}else{rvRaf=0;}
+  }
+  function kick(){
+    if(calm||!window.requestAnimationFrame){rp=wantAscii()?1:0;setRv();return;}
+    if(!rvRaf){rvLast=now();rvRaf=requestAnimationFrame(rvLoop);}
+  }
+  stage.addEventListener('pointerenter',function(e){hovering=true;shine(e);kick();});
+  stage.addEventListener('pointerleave',function(){hovering=false;kick();});
+  if(!calm){
+    setInterval(function(){
+      if(rv<=0.01){return;}
+      var i,n,list;
+      for(i=0;i<bitEls.length;i++){
+        list=digs[i];
+        if(!list.length){continue;}
+        var cx=bitEls[i].getContext('2d');
+        cx.setTransform(geo.sc*geo.dpr,0,0,geo.sc*geo.dpr,0,0);
+        for(n=0;n<60;n++){var c=list[Math.floor(Math.random()*list.length)];c.ch=rnd();drawDigit(cx,c);}
+      }
+    },140);
+  }
+
+  function apply(rx,ry){card.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';}
+  function showing(){return Math.abs(Math.round(angle/180))%2===1;}   /* true when the back faces you */
+  function now(){return (window.performance&&performance.now)?performance.now():Date.now();}
+
+  /* gravity: a spring pulls the card toward its resting face. It is a little under-damped, so a
+     fast swipe carries it past the face and it rocks back and settles, instead of clicking into place */
+  var STIFF=80,DAMP=12;
+  function finish(){
+    raf=0;curY=angle;curX=0;vY=0;vX=0;
+    card.className='card3d';
+    apply(0,angle);
+    card.setAttribute('aria-pressed',showing()?'true':'false');
+  }
+  function loop(t){
+    var dt=Math.min(0.032,(t-last)/1000);
+    if(!(dt>0)){dt=0.016;}
+    last=t;
+    vY+=(STIFF*(angle-curY)-DAMP*vY)*dt;
+    curY+=vY*dt;
+    vX+=(STIFF*(0-curX)-DAMP*vX)*dt;
+    curX+=vX*dt;
+    apply(curX,curY);
+    if(Math.abs(vY)<2&&Math.abs(angle-curY)<0.15&&Math.abs(vX)<2&&Math.abs(curX)<0.15){finish();return;}
+    raf=requestAnimationFrame(loop);
+  }
+  function go(){
+    if(calm||!window.requestAnimationFrame){finish();return;}
+    card.className='card3d drag live';
+    card.setAttribute('aria-pressed',showing()?'true':'false');
+    if(!raf){last=now();raf=requestAnimationFrame(loop);}
+  }
+  function flip(){
+    angle=Math.round(angle/180)*180+180;
+    go();
+  }
+  function shine(e){
+    var r=card.getBoundingClientRect();
+    card.style.setProperty('--sx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--sy',((e.clientY-r.top)/r.height*100)+'%');
+  }
+  function release(vel){
+    vY=vel;vX=0;
+    angle=Math.round((curY+vel*0.28)/180)*180;   /* a hard swipe can carry it past more than one face */
+    go();
+  }
+
+  stage.addEventListener('pointerdown',function(e){
+    if(raf){cancelAnimationFrame(raf);raf=0;}
+    vY=0;vX=0;
+    dragging=true;moved=false;sx=e.clientX;sy=e.clientY;startAngle=curY;
+    samples=[{t:now(),y:curY}];
+    /* pull the edge you grabbed toward the middle and it comes toward you; push it outward and it goes back.
+       That is the same on both halves, so grabbing the left half or the right half feels the same. */
+    dirX=1;dirY=-1;
+    card.className='card3d drag live';
+    kick();
+    try{stage.setPointerCapture(e.pointerId);}catch(er){}
+  });
+  stage.addEventListener('pointermove',function(e){
+    shine(e);
+    var r=card.getBoundingClientRect();
+    if(dragging){
+      var dx=e.clientX-sx,dy=e.clientY-sy;
+      if(Math.abs(dx)>4||Math.abs(dy)>4){moved=true;}
+      curY=startAngle+dirX*dx*0.5;
+      curX=Math.max(-25,Math.min(25,dirY*dy*0.2));
+      apply(curX,curY);
+      samples.push({t:now(),y:curY});
+      if(samples.length>8){samples.shift();}
+    }else if(!calm&&!raf&&e.pointerType==='mouse'){
+      card.className='card3d drag live';
+      var px=(e.clientX-r.left)/r.width-0.5,py=(e.clientY-r.top)/r.height-0.5;
+      curX=-py*14;curY=angle+px*18;
+      apply(curX,curY);
+    }
+  });
+  stage.addEventListener('pointerup',function(e){
+    if(!dragging){return;}
+    dragging=false;
+    kick();
+    if(!moved){angle=Math.round(curY/180)*180;flip();return;}
+    /* speed of the last ~100 ms of the swipe */
+    var n=samples.length,t1=samples[n-1].t,k=n-1;
+    while(k>0&&t1-samples[k-1].t<100){k--;}
+    var dtt=(t1-samples[k].t)/1000,vel=dtt>0?(samples[n-1].y-samples[k].y)/dtt:0;
+    if(now()-t1>120){vel=0;}   /* held still before letting go: no throw */
+    release(Math.max(-2600,Math.min(2600,vel)));
+  });
+  stage.addEventListener('pointercancel',function(){if(dragging){dragging=false;release(0);}});
+  stage.addEventListener('pointerleave',function(){if(!dragging&&!raf){curX=0;curY=angle;card.className='card3d';apply(0,angle);}});
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+  document.getElementById('flip').onclick=flip;
+
+  var copies=document.querySelectorAll('.copy'),ci;
+  function wire(btn){
+    var lab=btn.querySelector('span');
+    btn.onclick=function(){
+      var text=btn.getAttribute('data-copy'),orig=btn.getAttribute('data-label');
+      var done=function(){lab.textContent='Copied!';setTimeout(function(){lab.textContent=orig;},1800);};
+      if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,function(){lab.textContent='Press and hold the text';});}
+      else{lab.textContent='Press and hold the text';}
+    };
+  }
+  for(ci=0;ci<copies.length;ci++){wire(copies[ci]);}
+  finish();
+})();
+</script>
 </body>
 </html>

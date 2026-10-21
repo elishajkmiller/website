@@ -8,7 +8,6 @@ const matter = require('gray-matter');
 const ROOT = path.resolve(__dirname);
 const POSTS_DIR = path.join(ROOT, 'blog', 'posts');
 const BLOG_INDEX = path.join(ROOT, 'blog', 'index.html');
-const MAIN_INDEX = path.join(ROOT, 'index.html');
 const RSS_FILE = path.join(ROOT, 'blog', 'rss.xml');
 
 const MONTHS_LONG  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -62,10 +61,9 @@ function buildPostHTML(fm, bodyHTML) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
-<div class="layout">
-  <aside id="sidebar"></aside>
+<header id="topbar"></header>
 
-  <main class="main">
+  <main class="main read">
     <div class="post-meta-block">
       <div class="post-meta-date">${fmtLong(d)}</div>
       <h1 class="post-meta-title">${esc(fm.title)}</h1>
@@ -82,8 +80,8 @@ ${bodyHTML}    </div>
       <a href="/blog/rss.xml" class="rss-pill"><span class="rss-dot"></span>RSS</a>
     </div>
   </main>
-</div>
-<script src="/components/sidebar.js"></script>
+<footer id="foot"></footer>
+<script src="/components/nav.js"></script>
 </body>
 </html>`;
 }
@@ -137,30 +135,6 @@ function updateIndex(posts) {
   html = html.replace(/<div class="divider"><\/div>[\s\S]*<\/main>/, replacement);
   fs.writeFileSync(BLOG_INDEX, html);
   console.log('  updated blog/index.html');
-}
-
-function updateMainIndex(posts) {
-  let html = fs.readFileSync(MAIN_INDEX, 'utf8');
-
-  let postsBlock;
-  if (posts.length === 0) {
-    postsBlock = `<div class="empty-block">
-      <div class="empty-title">Nothing yet.</div>
-      <div class="empty-sub">Subscribe to the RSS feed to get notified when something drops.</div>
-    </div>`;
-  } else {
-    const subset = posts.slice(0, 3);
-    const filters = buildCatFilters(subset);
-    postsBlock = filters + subset.map(buildPostItem).join('\n');
-  }
-
-  html = html.replace(
-    /(<div class="section-head">(?:<a[^>]*>)?writing[\s\S]*?<\/div>)\s*[\s\S]*?(\s*<div class="section-head">projects[\s\S]*?<\/div>)/,
-    `$1\n    ${postsBlock}\n$2`
-  );
-
-  fs.writeFileSync(MAIN_INDEX, html);
-  console.log('  updated index.html');
 }
 
 function updateRSS(posts) {
@@ -239,7 +213,6 @@ function main() {
   posts.sort((a, b) => b.date - a.date);
   cleanOrphans(posts.map(p => p.slug));
   updateIndex(posts);
-  updateMainIndex(posts);
   updateRSS(posts);
 }
 
