@@ -8,7 +8,8 @@
     ['/', 'Card'],
     ['/projects/', 'Projects'],
     ['/blog/', 'Writing'],
-    ['/about', 'About']
+    ['/about', 'About'],
+    ['/data-policy/', 'Data policy']
   ];
 
   function isActive(href) {
@@ -45,7 +46,6 @@
             '<a href="https://github.com/elishajkmiller" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>' +
             '<a href="mailto:elishajkmiller@proton.me"><i class="ti ti-mail" aria-hidden="true"></i>Email</a>' +
             '<a href="/blog/rss.xml"><i class="ti ti-rss" aria-hidden="true"></i>RSS</a>' +
-            '<a href="/data-policy/"><i class="ti ti-shield-check" aria-hidden="true"></i>Data policy</a>' +
           '</div>' +
           '<div class="foot-note">Joplin, MO &middot; no trackers &middot; no ads</div>' +
         '</div>' +
