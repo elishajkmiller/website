@@ -642,6 +642,8 @@
   var root=document.getElementById('dja-art');
   if(!root){return;}
   var base=root.getAttribute('data-base')||'';
+  function wide(){root.style.marginLeft='0';root.style.width='auto';var r=root.getBoundingClientRect();root.style.marginLeft=(-r.left)+'px';root.style.width=document.documentElement.clientWidth+'px';}
+  wide();window.addEventListener('resize',wide);window.addEventListener('load',wide);
   var Q=String.fromCharCode(39);
   function url(v){
     if(!v||v.indexOf('HERE')>-1){return '';}
