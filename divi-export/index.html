@@ -670,12 +670,12 @@
     var ls=c.querySelectorAll('.dja-links a');
     for(j=0;j<ls.length;j++){d.links.push({href:ls[j].getAttribute('href'),text:ls[j].textContent});}
     people.push(d);
-    var one=d.pieces.length===1?d.pieces[0].title:'';
+    var t0=d.pieces.length?d.pieces[0].title:'';
     var media;
     if(d.pieces.length){
       media='<div class="dja-media'+(d.pieces.length>1?' dja-multi':'')+'" style="--u:url('+Q+thumb(d.pieces[0].src)+Q+')">';
       for(j=0;j<d.pieces.length;j++){
-        media+='<img loading="lazy" data-u="'+esc(thumb(d.pieces[j].src))+'" data-full="'+esc(d.pieces[j].src)+'" onerror="this.onerror=null;this.src=this.dataset.full;this.dataset.u=this.src"'+(j?'':' class="dja-on"')+' alt="'+esc((d.pieces[j].title||'Artwork')+' by '+d.name)+'" src="'+esc(thumb(d.pieces[j].src))+'">';
+        media+='<img loading="lazy" data-u="'+esc(thumb(d.pieces[j].src))+'" data-full="'+esc(d.pieces[j].src)+'" onerror="this.onerror=null;this.src=this.dataset.full;this.dataset.u=this.src"'+(j?'':' class="dja-on"')+' data-ti="'+esc(d.pieces[j].title)+'" alt="'+esc((d.pieces[j].title||'Artwork')+' by '+d.name)+'" src="'+esc(thumb(d.pieces[j].src))+'">';
       }
       if(d.pieces.length>1){
         media+='<button type="button" class="dja-nav dja-prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="dja-nav dja-next" aria-label="Next piece">&rsaquo;</button><span class="dja-dots">';
@@ -698,7 +698,7 @@
     c.setAttribute('role','button');
     c.setAttribute('aria-label',d.name+', open artist details');
     c.innerHTML=media+'<div class="dja-body"><div class="dja-top"><span class="dja-more">'+more+' &rsaquo;</span>'+(d.street?'<div class="dja-box">'+esc(d.street)+'</div>':'')+'</div>'+
-      (one?'<h3>'+esc(one)+'</h3>':'')+'<p class="dja-by">by <b>'+esc(d.name)+'</b></p>'+lk+'</div>';
+      (t0?'<h3'+(d.pieces.length>1?' class="dja-ct"':'')+'>'+esc(t0)+'</h3>':'')+'<p class="dja-by">by <b>'+esc(d.name)+'</b></p>'+lk+'</div>';
   }
   var pool=[];
   for(i=0;i<people.length;i++){
@@ -791,6 +791,9 @@
     ims[b].className='dja-on';
     dots[b].className='dja-on';
     m.style.setProperty('--u','url("'+ims[b].getAttribute('data-u')+'")');
+    var ct=m.closest('[data-n]');
+    ct=ct&&ct.querySelector('.dja-ct');
+    if(ct){ct.textContent=ims[b].getAttribute('data-ti')||'';}
   }
   function onClick(e){
     var nb=e.target.closest('.dja-nav');
