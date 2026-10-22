@@ -578,14 +578,16 @@
   var root=document.getElementById('dja-art');
   if(!root){return;}
   var base=root.getAttribute('data-base')||'';
+  var Q=String.fromCharCode(39);
   function url(v){
     if(!v||v.indexOf('HERE')>-1){return '';}
-    if(/^(https?:)?\/\//.test(v)||v.charAt(0)==='/'){return v;}
+    if(/^(https?:)?[/][/]/.test(v)||v.charAt(0)==='/'){return v;}
     return base+v;
   }
-  function thumb(u){return u.replace(/\.jpg$/i,'-s.jpg');}
+  function thumb(u){return u.replace(/[.]jpg$/i,'-s.jpg');}
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
-  function txt(el){return el?el.textContent.replace(/\s+/g,' ').replace(/^ | $/g,''):'';}
+  function txt(el){return el?sq(el.textContent):'';}
+  function sq(t){var o='',sp=true,c,i;for(i=0;i<t.length;i++){c=t.charCodeAt(i);if(c<=32){if(!sp){o+=' ';sp=true;}}else{o+=t.charAt(i);sp=false;}}return sp&&o?o.slice(0,-1):o;}
   var cards=root.querySelectorAll('.dja-card');
   var people=[];
   var i,j;
@@ -605,9 +607,9 @@
     var one=d.pieces.length===1?d.pieces[0].title:'';
     var media;
     if(d.pieces.length){
-      media='<div class="dja-media'+(d.pieces.length>1?' dja-multi':'')+'" style="--u:url(\''+thumb(d.pieces[0].src)+'\')">';
+      media='<div class="dja-media'+(d.pieces.length>1?' dja-multi':'')+'" style="--u:url('+Q+thumb(d.pieces[0].src)+Q+')">';
       for(j=0;j<d.pieces.length;j++){
-        media+='<img loading="lazy" data-u="'+esc(thumb(d.pieces[j].src))+'" data-full="'+esc(d.pieces[j].src)+'" onerror="this.onerror=null;this.src=this.getAttribute(\'data-full\');this.setAttribute(\'data-u\',this.src)"'+(j?'':' class="dja-on"')+' alt="'+esc((d.pieces[j].title||'Artwork')+' by '+d.name)+'" src="'+esc(thumb(d.pieces[j].src))+'">';
+        media+='<img loading="lazy" data-u="'+esc(thumb(d.pieces[j].src))+'" data-full="'+esc(d.pieces[j].src)+'" onerror="this.onerror=null;this.src=this.dataset.full;this.dataset.u=this.src"'+(j?'':' class="dja-on"')+' alt="'+esc((d.pieces[j].title||'Artwork')+' by '+d.name)+'" src="'+esc(thumb(d.pieces[j].src))+'">';
       }
       if(d.pieces.length>1){
         media+='<button type="button" class="dja-nav dja-prev" aria-label="Previous piece">&lsaquo;</button><button type="button" class="dja-nav dja-next" aria-label="Next piece">&rsaquo;</button><span class="dja-dots">';
