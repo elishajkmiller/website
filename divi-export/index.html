@@ -606,24 +606,27 @@
 #dja-art .dja-by{margin:0;font-size:14px}
 #dja-art .dja-by b{font-weight:700}
 #dja-art .dja-cl{margin-top:6px}
-#dja-art .dja-cl a,#dja-art .dja-lbbio .dja-lnks a{display:inline-block;margin:0 12px 2px 0;font-size:13px;font-weight:700;color:#62c8c9}
+#dja-art .dja-cl a,#dja-lbhost .dja-lbbio .dja-lnks a{display:inline-block;margin:0 12px 2px 0;font-size:13px;font-weight:700;color:#62c8c9}
 #dja-art .dja-cl a:hover{opacity:.7}
 @media(max-width:560px){#dja-art .dja-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px}#dja-art .dja-body{padding:40px 12px 10px;min-height:88px}#dja-art .dja-more{top:9px;right:9px;font-size:11px;padding:2px 8px}#dja-art .dja-body h3{font-size:15px}#dja-art .dja-by{font-size:12px}#dja-art .dja-cl a{font-size:12px;margin-right:10px}}
 @media(hover:none){#dja-art .dja-more{background:#62c8c9;color:#111}}
-#dja-art .dja-lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000000;background:rgba(0,0,0,.92);overflow-y:auto;padding:24px 16px;cursor:zoom-out}
-#dja-art .dja-lb[hidden]{display:none}
-#dja-art .dja-x{position:fixed;top:12px;right:14px;z-index:2;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:#fff;color:#111;font:400 30px/44px Arial,sans-serif;text-align:center;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.5)}
-#dja-art .dja-x:hover,#dja-art .dja-x:focus-visible{background:#62c8c9}
-#dja-art .dja-lbp{max-width:860px;margin:0 auto;position:relative;cursor:default}
-#dja-art .dja-lbart{text-align:center}
-#dja-art .dja-lbart figure{margin:0 0 18px}
-#dja-art .dja-lbart img{display:block;max-width:100%;max-height:72vh;margin:0 auto;object-fit:contain}
-#dja-art .dja-lbart figcaption{display:table;color:#fff;margin:12px auto 0;font-weight:600}
-#dja-art .dja-lbbio{display:flex;gap:20px;align-items:flex-start;background:#fff;margin-top:18px;padding:20px}
-#dja-art .dja-lbbio img{flex:none;width:150px;height:190px;object-fit:cover;object-position:center 20%}
-#dja-art .dja-lbbio h3{font:700 20px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 8px}
-#dja-art .dja-lbbio p{margin:0 0 10px;line-height:1.5}
-@media(max-width:560px){#dja-art .dja-lbbio{flex-direction:column;padding:16px}#dja-art .dja-lbbio img{width:120px;height:150px}}
+#dja-lbhost{font-family:'Open Sans',Arial,sans-serif;font-size:14px;line-height:1.7em;font-weight:500;color:#666}
+#dja-lbhost *{box-sizing:border-box}
+#dja-lbhost a{text-decoration:none}
+#dja-lbhost .dja-lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483000;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:rgba(0,0,0,.92);overflow-y:auto;padding:24px 16px;cursor:zoom-out}
+#dja-lbhost .dja-lb[hidden]{display:none}
+#dja-lbhost .dja-x{position:fixed;top:12px;right:14px;z-index:2;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:#fff;color:#111;font:400 30px/44px Arial,sans-serif;text-align:center;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.5)}
+#dja-lbhost .dja-x:hover,#dja-lbhost .dja-x:focus-visible{background:#62c8c9}
+#dja-lbhost .dja-lbp{max-width:860px;margin:0 auto;position:relative;cursor:default}
+#dja-lbhost .dja-lbart{text-align:center}
+#dja-lbhost .dja-lbart figure{margin:0 0 18px}
+#dja-lbhost .dja-lbart img{display:block;max-width:100%;max-height:72vh;margin:0 auto;object-fit:contain}
+#dja-lbhost .dja-lbart figcaption{display:table;color:#fff;margin:12px auto 0;font-weight:600}
+#dja-lbhost .dja-lbbio{display:flex;gap:20px;align-items:flex-start;background:#fff;margin-top:18px;padding:20px}
+#dja-lbhost .dja-lbbio img{flex:none;width:150px;height:190px;object-fit:cover;object-position:center 20%}
+#dja-lbhost .dja-lbbio h3{font:700 20px/1.2 'Open Sans',Arial,sans-serif;color:#333;margin:0;padding:0 0 8px}
+#dja-lbhost .dja-lbbio p{margin:0 0 10px;line-height:1.5}
+@media(max-width:560px){#dja-lbhost .dja-lbbio{flex-direction:column;padding:16px}#dja-lbhost .dja-lbbio img{width:120px;height:150px}}
 #dja-art .dja-story{background:#fff;padding:44px 20px 6px}
 #dja-art .dja-story-in{max-width:760px;margin:0 auto}
 #dja-art .dja-story p{margin:0 0 16px;font-size:16px;line-height:1.7em;color:#444}
@@ -742,7 +745,10 @@
   lb.className='dja-lb';
   lb.hidden=true;
   lb.innerHTML='<button type="button" class="dja-x" aria-label="Close">&times;</button><div class="dja-lbp"><div class="dja-lbart"></div><div class="dja-lbbio"><img alt=""><div><h3></h3><p></p><div class="dja-lnks"></div></div></div></div>';
-  root.appendChild(lb);
+  var host=document.createElement('div');
+  host.id='dja-lbhost';
+  host.appendChild(lb);
+  document.body.appendChild(host);
   function openLb(n){
     var d=people[n];
     var art=lb.querySelector('.dja-lbart');
@@ -786,7 +792,7 @@
     dots[b].className='dja-on';
     m.style.setProperty('--u','url("'+ims[b].getAttribute('data-u')+'")');
   }
-  root.addEventListener('click',function(e){
+  function onClick(e){
     var nb=e.target.closest('.dja-nav');
     if(nb){flip(nb.parentNode,nb.className.indexOf('dja-next')>-1?1:-1);return;}
     if(e.target.closest('a')){return;}
@@ -796,7 +802,9 @@
     }
     var t=e.target.closest('[data-n]');
     if(t){openLb(+t.getAttribute('data-n'));}
-  });
+  }
+  root.addEventListener('click',onClick);
+  host.addEventListener('click',onClick);
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'){lb.hidden=true;}
     else if((e.key==='Enter'||e.key===' ')&&lb.hidden&&e.target.className&&String(e.target.className).indexOf('dja-card')>-1){
