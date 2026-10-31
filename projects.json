@@ -44,6 +44,17 @@
     "repo": "elishajkmiller/watchy-firmware"
   },
   {
+    "slug": "formula-heist",
+    "title": "Formula Heist",
+    "tagline": "A jetpack runner about stealing physics back",
+    "desc": "An evil company stole every formula, so you break into its lab and take them back. Android, free software, no ads or network. The pixel art, sound effects and the music are all made in code, and the music changes key as you run.",
+    "status": "active",
+    "cats": ["open source", "games"],
+    "url": "https://github.com/elishajkmiller/formula-heist",
+    "go": "View on GitHub",
+    "repo": "elishajkmiller/formula-heist"
+  },
+  {
     "slug": "whitehouse-recon",
     "title": "whitehouse.gov passive recon",
     "tagline": "CISA VDP submission",
