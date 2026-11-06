@@ -25,21 +25,22 @@
     .team-body { padding: 5rem 3rem 7rem; max-width: 1100px; }
     .section-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.6; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
     .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 4rem; }
-    .member { background: var(--warm); padding: 2rem 2rem 2.25rem; transition: background 0.2s; }
-    .member:hover { background: var(--dust-dark); }
-    .member-role { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem; line-height: 1.7; }
-    .member-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.01em; }
-    .member-name + .member-name { margin-top: 0.4rem; }
-    .member-name.open { opacity: 0.3; }
-    .crew-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .crew-chip { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 1.25rem; border: 1.5px solid var(--ink); }
+    .credits { margin: 0; }
+    .credit { display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: 1rem 3rem; padding: 1.75rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .credit:last-child { border-bottom: 1px solid var(--border); }
+    .credit-role { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); line-height: 1.7; }
+    .credit-names { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1; text-transform: uppercase; }
+    .credit-names span { display: block; }
+    .credit-names span + span { margin-top: 0.3rem; }
+    .credit-names .open { opacity: 0.3; }
+    .credit-names.plain { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 1.15rem; text-transform: none; line-height: 1.7; }
     footer { background: var(--ink); color: var(--dust); padding: 2rem 3rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; }
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
       .page-header { padding: 7rem 1.25rem 3rem; }
       .team-body { padding: 3rem 1.25rem 5rem; }
       footer { padding: 1.5rem 1.25rem; }
+      .credit { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.25rem 0; }
     }
   </style>
 </head>
@@ -55,45 +56,15 @@
   </header>
 
   <main class="team-body">
-    <div class="grid">
-      <div class="member">
-        <div class="member-role">Festival Directors / Co-Founders</div>
-        <div class="member-name">Kaleb Fobair</div>
-        <div class="member-name">Ksiah Wansley</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Head of Promotion</div>
-        <div class="member-name">Parker Link</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Media &amp; Press</div>
-        <div class="member-name">Jacob Lenhardt</div>
-        <div class="member-name">Trevor Huck</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Outreach Director</div>
-        <div class="member-name">Ksiah Wansley</div>
-        <div class="member-name">Evalee Lowrey</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Administrative Director</div>
-        <div class="member-name">Evalee Lowrey</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Administrative Assistant</div>
-        <div class="member-name open">Open</div>
-      </div>
-      <div class="member">
-        <div class="member-role">Technology Manager</div>
-        <div class="member-name">Elisha Miller</div>
-      </div>
-    </div>
-
-    <div class="section-label">Additional Crew</div>
-    <div class="crew-list">
-      <span class="crew-chip">Taylor Robinson</span>
-      <span class="crew-chip">Kait Hernandez</span>
-      <span class="crew-chip">Zac Cox</span>
+    <div class="credits">
+      <div class="credit"><div class="credit-role">Festival Directors / Co-Founders</div><div class="credit-names"><span>Kaleb Fobair</span><span>Ksiah Wansley</span></div></div>
+      <div class="credit"><div class="credit-role">Head of Promotion</div><div class="credit-names"><span>Parker Link</span></div></div>
+      <div class="credit"><div class="credit-role">Media &amp; Press</div><div class="credit-names"><span>Jacob Lenhardt</span><span>Trevor Huck</span></div></div>
+      <div class="credit"><div class="credit-role">Outreach Director</div><div class="credit-names"><span>Ksiah Wansley</span><span>Evalee Lowrey</span></div></div>
+      <div class="credit"><div class="credit-role">Administrative Director</div><div class="credit-names"><span>Evalee Lowrey</span></div></div>
+      <div class="credit"><div class="credit-role">Administrative Assistant</div><div class="credit-names"><span class=open>Open</span></div></div>
+      <div class="credit"><div class="credit-role">Technology Manager</div><div class="credit-names"><span>Elisha Miller</span></div></div>
+      <div class="credit"><div class="credit-role">Additional Crew</div><div class="credit-names"><span>Taylor Robinson</span><span>Kait Hernandez</span><span>Zac Cox</span></div></div>
     </div>
   </main>
 
