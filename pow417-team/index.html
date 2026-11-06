@@ -1,75 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow">
-  <title>POW417 meet the team / Elisha JK Miller</title>
-  <meta name="description" content="Draft of the POW417 Meet the Team section.">
-  <link rel="stylesheet" href="/css/main.css">
+  <title>Meet the Team - POW417</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    .team h2 { font-size: 1.05rem; margin: 2.25rem 0 .25rem; letter-spacing: .08em; text-transform: uppercase; }
-    .team .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .75rem; margin: .75rem 0 0; }
-    .team .card { border: 1px solid rgba(127,127,127,.35); border-radius: 6px; padding: .85rem 1rem; }
-    .team .role { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin: 0 0 .35rem; }
-    .team .name { font-size: 1.1rem; margin: 0; }
-    .team .name + .name { margin-top: .15rem; }
-    .team .open { opacity: .55; font-style: italic; }
-    .team .crew { margin: .75rem 0 0; }
-    .team .draft { font-size: .85rem; opacity: .75; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --dust: #DFD0CE; --dust-dark: #C9B8B5; --ink: #111008; --ink-mid: #2C2618; --red: #8C1F0E; --red-light: #C43D28; --warm: #E8DADA; --border: rgba(17,16,8,0.15); }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dust); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.72; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(223,208,206,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-note { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; }
+    .page-header { padding: 10rem 3rem 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .page-header-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.55; margin-bottom: 0.75rem; display: block; }
+    .page-header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(4rem, 14vw, 11rem); line-height: 0.85; letter-spacing: -0.02em; text-transform: uppercase; }
+    .page-header-title span { color: var(--red); }
+    .page-header-sub { margin-top: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 300; font-size: clamp(1rem, 2vw, 1.4rem); letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; max-width: 580px; line-height: 1.4; }
+    .page-header-bg { position: absolute; top: 50%; right: -1rem; transform: translateY(-50%); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18vw; text-transform: uppercase; opacity: 0.04; letter-spacing: -0.04em; pointer-events: none; user-select: none; white-space: nowrap; line-height: 1; }
+    .team-body { padding: 5rem 3rem 7rem; max-width: 1100px; }
+    .section-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.6; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 4rem; }
+    .member { background: var(--warm); padding: 2rem 2rem 2.25rem; transition: background 0.2s; }
+    .member:hover { background: var(--dust-dark); }
+    .member-num { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; opacity: 0.35; display: block; margin-bottom: 1.25rem; }
+    .member-role { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem; line-height: 1.7; }
+    .member-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.01em; }
+    .member-name + .member-name { margin-top: 0.4rem; }
+    .member-name.open { opacity: 0.3; }
+    .crew-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .crew-chip { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 1.25rem; border: 1.5px solid var(--ink); }
+    footer { background: var(--ink); color: var(--dust); padding: 2rem 3rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .page-header { padding: 7rem 1.25rem 3rem; }
+      .team-body { padding: 3rem 1.25rem 5rem; }
+      footer { padding: 1.5rem 1.25rem; }
+    }
   </style>
 </head>
 <body>
-<header id="topbar"></header>
+  <nav>
+    <a class="nav-logo" href="#">POW<span style="color:var(--red)">4</span>17</a>
+    <span class="nav-note">Draft</span>
+  </nav>
 
-  <main class="main read">
-    <div class="page-title">Meet the team</div>
-    <div class="divider"></div>
+  <header class="page-header">
+    <span class="page-header-eyebrow">The people behind the clock</span>
+    <h1 class="page-header-title">Meet the<br><span>Team</span></h1>
+    <p class="page-header-sub">Crew &amp; Board. Everything here is made by human hands.</p>
+    <div class="page-header-bg" aria-hidden="true">Crew</div>
+  </header>
 
-    <div class="post-body team">
-      <p class="draft">Rough draft. Not on pow417.com yet.</p>
-
-      <h2>Crew &amp; Board</h2>
-      <div class="grid">
-        <div class="card">
-          <p class="role">Festival Directors / Co-Founders</p>
-          <p class="name">Kaleb Fobair</p>
-          <p class="name">Ksiah Wansley</p>
-        </div>
-        <div class="card">
-          <p class="role">Head of Promotion</p>
-          <p class="name">Parker Link</p>
-        </div>
-        <div class="card">
-          <p class="role">Media &amp; Press</p>
-          <p class="name">Jacob Lenhardt</p>
-          <p class="name">Trevor Huck</p>
-        </div>
-        <div class="card">
-          <p class="role">Outreach Director</p>
-          <p class="name">Ksiah Wansley</p>
-          <p class="name">Evalee Lowrey</p>
-        </div>
-        <div class="card">
-          <p class="role">Administrative Director</p>
-          <p class="name">Evalee Lowrey</p>
-        </div>
-        <div class="card">
-          <p class="role">Administrative Assistant</p>
-          <p class="name open">Open</p>
-        </div>
-        <div class="card">
-          <p class="role">Technology Manager</p>
-          <p class="name">Elisha Miller</p>
-        </div>
+  <main class="team-body">
+    <div class="section-label">Crew &amp; Board</div>
+    <div class="grid">
+      <div class="member">
+        <span class="member-num">01</span>
+        <div class="member-role">Festival Directors / Co-Founders</div>
+        <div class="member-name">Kaleb Fobair</div>
+        <div class="member-name">Ksiah Wansley</div>
       </div>
+      <div class="member">
+        <span class="member-num">02</span>
+        <div class="member-role">Head of Promotion</div>
+        <div class="member-name">Parker Link</div>
+      </div>
+      <div class="member">
+        <span class="member-num">03</span>
+        <div class="member-role">Media &amp; Press</div>
+        <div class="member-name">Jacob Lenhardt</div>
+        <div class="member-name">Trevor Huck</div>
+      </div>
+      <div class="member">
+        <span class="member-num">04</span>
+        <div class="member-role">Outreach Director</div>
+        <div class="member-name">Ksiah Wansley</div>
+        <div class="member-name">Evalee Lowrey</div>
+      </div>
+      <div class="member">
+        <span class="member-num">05</span>
+        <div class="member-role">Administrative Director</div>
+        <div class="member-name">Evalee Lowrey</div>
+      </div>
+      <div class="member">
+        <span class="member-num">06</span>
+        <div class="member-role">Administrative Assistant</div>
+        <div class="member-name open">Open</div>
+      </div>
+      <div class="member">
+        <span class="member-num">07</span>
+        <div class="member-role">Technology Manager</div>
+        <div class="member-name">Elisha Miller</div>
+      </div>
+    </div>
 
-      <h2>Additional Crew</h2>
-      <p class="crew">Taylor Robinson, Kait Hernandez, Zac Cox</p>
+    <div class="section-label">Additional Crew</div>
+    <div class="crew-list">
+      <span class="crew-chip">Taylor Robinson</span>
+      <span class="crew-chip">Kait Hernandez</span>
+      <span class="crew-chip">Zac Cox</span>
     </div>
   </main>
 
-<footer id="foot"></footer>
-<script src="/components/nav.js"></script>
+  <footer>POW417 &middot; Proof of Work &middot; Springfield, MO</footer>
 </body>
 </html>
