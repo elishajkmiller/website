@@ -148,11 +148,30 @@ body.v-main .marquee span::after{background:#fff}
 .js-slide .film:nth-child(even){transform:translateX(48px)}
 .js-slide .film.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.js-slide .film{opacity:1;transform:none;transition:none}}
+/* Guidelines and Releases tabs, from pow417.com */
+body.v-doc main{display:none}
+.doc{position:relative;z-index:1;width:100%;max-width:900px;margin:0 auto;padding-block:28px 48px;display:flex;flex-direction:column;gap:22px}
+.doc h2{font-family:var(--big);font-weight:400;font-size:clamp(40px,7vw,80px);line-height:1;margin:0;transform:skewX(-10deg);transform-origin:left bottom}
+.doc h2 span{color:var(--accent)}
+.doc .eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.doc .intro{font-size:clamp(17px,2vw,21px);margin:0;color:var(--muted);max-width:60ch}
+.doc .g{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding-top:18px;border-top:1px solid var(--rule)}
+.doc .g .n{font-family:var(--big);font-size:30px;color:var(--accent);transform:skewX(-10deg)}
+.doc h3{font-family:var(--big);font-weight:400;font-size:24px;margin:0 0 8px;letter-spacing:.01em}
+.doc ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:var(--ink)}
+.doc .fine{font-size:14px;line-height:1.6;color:var(--muted);margin:0;max-width:70ch}
+.doc .fine a{color:var(--accent)}
+.doc .req{margin:0;font-size:16px}
+.doc .relcard{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;border:1.5px solid var(--ink);padding:20px}
+.doc .relcard p{margin:4px 0 0;color:var(--muted)}
+.doc .relbtns{display:flex;gap:10px;flex-wrap:wrap}
+.doc .relbtns a{font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);padding:10px 16px}
+.doc .relbtns a:hover,.doc .relbtns a:focus-visible{background:var(--ink);color:var(--bg)}
 </style>
 </head>
 <body>
 <canvas id="sparks" aria-hidden="true"></canvas>
-<div class="top"><b>POW417</b><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#spark" id="tab-spark">Spark</a><a href="#countdown" id="tab-countdown">Countdown</a></nav></div>
+<div class="top"><b>POW417</b><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#guidelines" id="tab-guidelines">Guidelines</a><a href="#releases" id="tab-releases">Releases</a><a href="#spark" id="tab-spark">Spark</a><a href="#countdown" id="tab-countdown">Countdown</a></nav></div>
 
 <main>
   <img class="burst27" src="27-burst.svg" alt="">
@@ -172,6 +191,24 @@ body.v-main .marquee span::after{background:#fff}
   <section id="showcase" class="rows" aria-label="March 19 to 21, location to be decided"><div class="row a" aria-hidden="true"><div><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span></div></div><div class="row b" aria-hidden="true"><div><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span></div></div></section>
   <section id="films"><h2>The 2026 <span>films</span></h2><div class="films"><a class="film" href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/sgbPR0M-kUU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>01</span><span>Nate :)</span></span><span class="title">Going Outside</span></a><a class="film" href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/rvxGsUAnCqI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>02</span><span>House of Keeling</span></span><span class="title">The Inbetween</span></a><a class="film" href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/BDqQNr-fyKU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>03</span><span>03 Media</span></span><span class="title">Darkness That Follows</span></a><a class="film" href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/4VEIHduw8F8/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>04</span><span>SweetBogsTv &amp; CIDERHOUSE</span></span><span class="title">Clogged Up</span></a><a class="film" href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/f0_jPYrHwec/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>05</span><span>Yellow Bike Films</span></span><span class="title">Seeing Double</span></a><a class="film" href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/-wuu1kRZHEI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>06</span><span>BearView Films</span></span><span class="title">What's Eating You</span></a></div></section>
   <footer class="foot"><b><img src="lockup.svg" alt="POW417" style="height:64px;width:auto;display:block"></b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
+</div>
+
+<div id="guidelines" class="doc" hidden>
+  <span class="eyebrow">POW417 2027</span>
+  <h2>Challenge <span>guidelines</span></h2>
+  <p class="intro">Everything you need to know before the clock starts.</p>
+  <section class="g"><span class="n">01</span><div><h3>Registration</h3><ul><li>Teams must be registered before the event. The registration deadline will be posted on Instagram (@pow417films).</li><li>Only one member from each team needs to register.</li></ul></div></section><section class="g"><span class="n">02</span><div><h3>Opening ceremonies</h3><ul><li>The 2027 event begins March 19, 2027. Opening ceremony time and location will be posted on Instagram (@pow417films).</li><li>The allotted 48 hours begin when the ceremonies are dismissed.</li><li>It is highly recommended that at least one member of each team attends the opening ceremonies.</li><li>The submission deadline will be posted on Instagram (@pow417films) and emailed to registered participants after the ceremonies for those unable to attend.</li></ul></div></section><section class="g"><span class="n">03</span><div><h3>Participants</h3><ul><li>POW417 is open to any and all filmmakers, from amateurs to professionals.</li><li>Any person who contributes to the film in any way is considered a participant. If participants are added after registration, their names and roles must be listed in the submission.</li><li>Participants must volunteer their time. There may be no paid participants.</li><li>All participants must complete a Cast Release Form and/or Crew Release Form and submit it before the 48-hour deadline. (Included in the POW417 Release Form.)</li><li>Parental or guardian consent is required for participants under the age of 18. (Included in the POW417 Release Form.)</li></ul></div></section><section class="g"><span class="n">04</span><div><h3>Pre-challenge prep</h3><ul><li>Prior to the opening ceremonies, teams may organize team members (cast and crew), secure locations, and source music, sound effects, LUTs, equipment, props, costumes, and set pieces.</li></ul></div></section><section class="g"><span class="n">05</span><div><h3>Film requirements</h3><ul><li>Must be entirely created during the allotted 48 hours.</li><li>Total runtime of five minutes (00:05:00:00) or less, including credits and OCC.</li><li>Must include an Opening Credit Card (OCC) at the beginning of the film showing your team name, completion date and film title.</li></ul></div></section><section class="g"><span class="n">06</span><div><h3>Poster requirements</h3><ul><li>Poster must be made entirely during the allotted 48 hours.</li><li>Must include the film title and your team name.</li><li>Must be submitted as a JPEG or PNG.</li><li>Resolution should be 1080 × 1920 pixels.</li></ul></div></section><section class="g"><span class="n">07</span><div><h3>Equipment</h3><ul><li>Any type, brand, and number of video, film, or still cameras and sound equipment may be used.</li></ul></div></section><section class="g"><span class="n">08</span><div><h3>Submissions</h3><ul><li>Films and posters must be submitted within the 48-hour time frame to be considered part of the challenge.</li><li>Films submitted late will still be screened following on-time entries but will not be considered official entries to POW417 2027.</li><li>To submit: upload your film to YouTube (Unlisted) and post the link along with your poster (JPEG or PNG) and release form (JPEG or PNG) to the submission portal at pow417.com.</li><li>If additional participants were added after registration, their names and roles must be listed in the submission.</li><li>Your release form must be completed prior to the deadline.</li></ul></div></section><section class="g"><span class="n">09</span><div><h3>Screenings</h3><ul><li>Submitted films will be shown at a public screening, the POW417 Showcase in Springfield, MO. Date, time, and venue coming soon.</li><li>Films will be screened in the order that submission emails are received.</li><li>All completed films will be screened, but films submitted after the deadline will not be considered official entries.</li><li>Participants may not post their film in its entirety until after the public screening.</li><li>Posters, trailers, and other promotional materials may be posted prior to the screening.</li></ul></div></section><section class="g"><span class="n">10</span><div><h3>Prohibited actions</h3><ul><li>No audio or visual content may be recorded prior to the beginning of the allotted 48 hours.</li><li>No stock footage, pre-existing content, or A.I.-generated material may be used.</li><li>No paid participation. All team members must be volunteers.</li><li>A.I. may not be used in any capacity at any time during the production of your film.</li><li>No local, state, or federal laws may be broken during the production of your film.</li></ul></div></section>
+  <p class="fine">Breaking a prohibited action or not following these guidelines means disqualification, and your film will not be screened. By submitting your film, you consent to it being played at the POW417 2027 public screening, uploaded to the POW417 website, and used in POW417 promotional material. The rights and ownership of your film stay with you.</p>
+</div>
+<div id="releases" class="doc" hidden>
+  <span class="eyebrow">Release forms</span>
+  <h2>Releases</h2>
+  <p class="intro">Every person, place, and track in your film needs a release. Fill these out during production, not at the deadline.</p>
+  <p class="req"><b>Required.</b> All applicable releases must be completed before your film is eligible for screening.</p>
+  <div class="relcard"><div><span class="eyebrow">Release document</span><h3>POW417 release forms</h3><p>A 10-page document with every release type included.</p></div>
+    <div class="relbtns"><a href="https://docs.google.com/document/d/1m7KfIYO1F0_3N1vhROMBRVzrAUXd6cxuUMqlSafCick/preview" target="_blank" rel="noopener">View</a><a href="https://docs.google.com/document/d/1m7KfIYO1F0_3N1vhROMBRVzrAUXd6cxuUMqlSafCick/export?format=pdf" target="_blank" rel="noopener">Download PDF</a></div></div>
+  <section class="g"><span class="n">?</span><div><h3>Not sure which ones you need?</h3><ul><li>Shot on someone's property: location release.</li><li>Someone is on screen: cast release.</li><li>Anyone under 18: minor release.</li><li>There's music: music release.</li><li>Everyone on your crew: crew release.</li><li>When in doubt, fill it out.</li></ul></div></section>
+  <p class="fine">Turn in your completed releases through the upload form on <a href="https://pow417.com/releases.html" target="_blank" rel="noopener">pow417.com/releases</a>.</p>
 </div>
 
 <div class="bottom"></div>
@@ -271,12 +308,12 @@ function tick(){
   if(mode==="countdown"&&!reduce)requestAnimationFrame(tick);
 }
 function route(){
-  mode=location.hash==="#countdown"?"countdown":location.hash==="#spark"?"spark":"main";
-  for(const v of ["main","spark","countdown"]){const t=document.getElementById("tab-"+v);if(v===mode)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current")}
+  const h=location.hash.slice(1);mode=["countdown","spark","guidelines","releases"].includes(h)?h:"main";
+  for(const v of ["main","guidelines","releases","spark","countdown"]){const t=document.getElementById("tab-"+v);if(v===mode)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current")}
   clearInterval(timer);
   const cd=mode==="countdown";
   document.body.classList.toggle("cd",cd);document.body.classList.toggle("v-spark",mode==="spark");document.body.classList.toggle("v-main",mode==="main");
-  document.getElementById("site").hidden=mode!=="main";document.querySelector(".bottom").hidden=mode==="main";
+  document.getElementById("site").hidden=mode!=="main";document.getElementById("guidelines").hidden=mode!=="guidelines";document.getElementById("releases").hidden=mode!=="releases";document.body.classList.toggle("v-doc",mode==="guidelines"||mode==="releases");document.querySelector(".bottom").hidden=mode!=="spark"&&mode!=="countdown";
   lead.textContent="Your spark is";word.hidden=cd;film.hidden=!cd;
   COLS=BLUE;dark=false;
   if(cd){tick();if(reduce)timer=setInterval(tick,1000)}
