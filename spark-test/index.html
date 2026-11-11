@@ -54,7 +54,6 @@ body.cd .lead{display:none}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
 .leader .big{font-size:min(28vh,24vw);font-weight:200}
 .leader .small{font-size:clamp(20px,4vw,42px);letter-spacing:.08em;background:rgba(20,18,28,.8);padding:.1em .4em}
-.leader .lab{position:absolute;left:0;right:0;top:calc(50% + min(46vh,46vw)*.62);text-align:center;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:400;font-size:clamp(12px,1.8vw,18px);letter-spacing:.24em;text-transform:uppercase;color:#b9b2e6}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
 </style>
 </head>
@@ -68,7 +67,6 @@ body.cd .lead{display:none}
   <div class="leader" id="film" hidden role="timer" aria-label="Time until March 19, 2027">
     <div class="rings"></div><div class="cross"></div><div class="sweep"></div>
     <div class="num"><span class="big" id="cdDays">0</span><span class="small" id="cdRest">00:00:00</span></div>
-    <span class="lab">Days to go</span>
   </div>
 </main>
 
