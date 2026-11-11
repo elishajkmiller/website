@@ -36,13 +36,12 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 /* Countdown: an old film leader filling the screen, on dark grey with a cool purple acid wash and film grain.
-   Two rings, a full-screen crosshair, a sweep that goes round once a second, the days left in a thin face on a pale disc so it reads easily. */
+   Two rings, a full-screen crosshair, a sweep that goes round once a second, the days left in a thin face. */
 .leader{--lav:#d9d4f5;--lav-dim:rgba(217,212,245,.32);--violet:#8f7cf0;position:fixed;inset:0;z-index:0;overflow:hidden;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0045' numOctaves='4' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .95 0 0 0 1.1 -.58'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23w)'/%3E%3C/svg%3E") center/cover,
-    radial-gradient(ellipse 70% 55% at 22% 18%,rgba(124,104,240,.1),rgba(0,0,0,0) 70%),
-    radial-gradient(ellipse 60% 50% at 82% 78%,rgba(98,72,214,.09),rgba(0,0,0,0) 70%),
-    radial-gradient(circle,#2a2833 0%,#1b1a21 58%,#0f0e14 100%);
-  animation:flick .9s steps(1) infinite}
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0045' numOctaves='4' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .95 0 0 0 .7 -.42'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23w)'/%3E%3C/svg%3E") center/cover,
+    radial-gradient(ellipse 70% 55% at 22% 18%,rgba(124,104,240,.05),rgba(0,0,0,0) 70%),
+    radial-gradient(ellipse 60% 50% at 82% 78%,rgba(98,72,214,.045),rgba(0,0,0,0) 70%),
+    radial-gradient(circle,#2a2833 0%,#1b1a21 58%,#0f0e14 100%);}
 /* film grain over the whole page, moving */
 body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .9 0 0 0 0 1 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;animation:grain .6s steps(6) infinite}
 body.cd::after{opacity:.1}
@@ -51,15 +50,14 @@ body.cd .top,body.cd .bottom,body.cd .top b,body.cd .tabs a{color:#b9b2e6}
 body.cd .tabs a[aria-current="page"]{color:#ece8ff;border-color:#ece8ff}
 body.cd .lead{display:none}
 .leader .rings{position:absolute;inset:0;margin:auto;height:min(92vh,92vw);aspect-ratio:1;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:0 0 18px rgba(143,124,240,.25)}
-.leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);background:radial-gradient(circle,#dcd8ec 0%,#cdc8e0 70%,#bdb7d6 100%)}
-.leader .cross{position:absolute;inset:0;background:linear-gradient(rgba(150,140,200,.4),rgba(150,140,200,.4)) 50% 0/2px 100% no-repeat,linear-gradient(rgba(150,140,200,.4),rgba(150,140,200,.4)) 0 50%/100% 2px no-repeat}
-.leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(20,16,40,.16) 100deg,rgba(0,0,0,0) 100deg)}
-.leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#1d1a2b;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
+.leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:inset 0 0 18px rgba(143,124,240,.2)}
+.leader .cross{position:absolute;inset:0;background:linear-gradient(var(--lav-dim),var(--lav-dim)) 50% 0/2px 100% no-repeat,linear-gradient(var(--lav-dim),var(--lav-dim)) 0 50%/100% 2px no-repeat}
+.leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(8,6,16,.3) 100deg,rgba(0,0,0,0) 100deg)}
+.leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
 .leader .big{font-size:min(28vh,24vw);font-weight:200}
-.leader .small{font-size:clamp(20px,4vw,42px);letter-spacing:.08em}
-.leader .lab{position:absolute;left:0;right:0;top:calc(50% + min(92vh,92vw)*.27);text-align:center;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:400;font-size:clamp(12px,1.8vw,18px);letter-spacing:.24em;text-transform:uppercase;color:#4a4560}
-@keyframes flick{0%{filter:brightness(1)}23%{filter:brightness(1.06)}47%{filter:brightness(.95)}71%{filter:brightness(1.03)}}
-@media (prefers-reduced-motion: reduce){.leader,body::after{animation:none}}
+.leader .small{font-size:clamp(20px,4vw,42px);letter-spacing:.08em;background:rgba(20,18,28,.8);padding:.1em .4em}
+.leader .lab{position:absolute;left:0;right:0;top:calc(50% + min(46vh,46vw)*.62);text-align:center;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:400;font-size:clamp(12px,1.8vw,18px);letter-spacing:.24em;text-transform:uppercase;color:#b9b2e6}
+@media (prefers-reduced-motion: reduce){body::after{animation:none}}
 </style>
 </head>
 <body>
