@@ -30,15 +30,22 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .word{font-family:var(--display);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
   font-size:clamp(64px,15vw,200px);letter-spacing:.01em;max-width:100%;overflow-wrap:anywhere;
   transform:skewX(-10deg);color:var(--ink)}
+.tabs{display:flex;gap:18px}
+.tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+.tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
+.tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.word.count{font-size:clamp(48px,11vw,170px);font-variant-numeric:tabular-nums;white-space:nowrap;overflow-wrap:normal}
+.units{font-family:var(--display);font-size:clamp(16px,2.4vw,24px);letter-spacing:.12em;color:var(--muted);margin:0;position:relative;z-index:1;display:flex;gap:clamp(18px,5vw,64px)}
 </style>
 </head>
 <body>
 <canvas id="sparks" aria-hidden="true"></canvas>
-<div class="top"><b>POW417</b><span>A no AI 48-hour film challenge</span></div>
+<div class="top"><b>POW417</b><nav class="tabs" aria-label="Views"><a href="#spark" id="tab-spark">Spark</a><a href="#countdown" id="tab-countdown">Countdown</a></nav><span>A no AI 48-hour film challenge</span></div>
 
 <main>
-  <p class="lead">Your spark is</p>
+  <p class="lead" id="lead">Your spark is</p>
   <h1 class="word" id="word">Humanity</h1>
+  <p class="units" id="units" hidden><span>Days</span><span>Hours</span><span>Minutes</span><span>Seconds</span></p>
 </main>
 
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
@@ -122,9 +129,34 @@ function still(){
   ctx.globalAlpha=1;
 }
 
+
+// two views: #spark shows the word, #countdown counts down to the start of the challenge
+// start time: Friday March 19, 2027, 6:00 PM Central (change START to move it)
+const START=new Date("2027-03-19T18:00:00-05:00").getTime();
+const lead=document.getElementById("lead"),units=document.getElementById("units");
+let mode="spark",timer=0;
+const pad2=n=>String(n).padStart(2,"0");
+function countText(){
+  let ms=START-Date.now();if(ms<=0)return "Now";
+  const s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sec=s%60;
+  return `${d}:${pad2(h)}:${pad2(m)}:${pad2(sec)}`;
+}
+function tick(){const t=countText();if(word.textContent!==t){word.textContent=t;sampleWord()}}
+function route(){
+  mode=location.hash==="#countdown"?"countdown":"spark";
+  document.getElementById("tab-spark").toggleAttribute("aria-current",mode==="spark");
+  document.getElementById("tab-countdown").toggleAttribute("aria-current",mode==="countdown");
+  if(mode==="spark")document.getElementById("tab-spark").setAttribute("aria-current","page");
+  else document.getElementById("tab-countdown").setAttribute("aria-current","page");
+  clearInterval(timer);
+  if(mode==="countdown"){lead.textContent="Your spark lights up in";word.classList.add("count");units.hidden=false;word.textContent=countText();timer=setInterval(tick,1000)}
+  else{lead.textContent="Your spark is";word.classList.remove("count");units.hidden=true;word.textContent="Humanity"}
+  sparks=[];sampleWord();if(reduce)still();
+}
+addEventListener("hashchange",route);
 addEventListener("resize",()=>{resize();if(reduce)still()});
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{dark=isDark()});
-(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();if(reduce)still();else requestAnimationFrame(frame)});
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();route();if(!reduce)requestAnimationFrame(frame)});
 </script>
 </body>
 </html>
