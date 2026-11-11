@@ -59,7 +59,20 @@ function makePoints(seed){
   for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+(r()-.5)*.25;const axis=Math.abs(Math.sin(ang*2))<.35;
     pts.push({a:ang,l:(axis?1:.45+r()*.3),f:.6+r()*1.6,ph:r()*6.3,f2:2+r()*3,ph2:r()*6.3})}
 }
-function beat(t){const x=(t%1.15)/1.15;return Math.exp(-Math.pow((x-.08)/.05,2))+.6*Math.exp(-Math.pow((x-.26)/.06,2))}
+// random pulse: beats come at uneven gaps with uneven strength, sometimes a double or a flutter
+let beats=[],nextBeat=0;
+function beat(t){
+  if(t>=nextBeat){
+    const amp=.35+Math.random()*.9;beats.push({t0:t,amp,w:.05+Math.random()*.07});
+    const r=Math.random();
+    if(r<.3)beats.push({t0:t+.14+Math.random()*.1,amp:amp*(.4+Math.random()*.4),w:.06});
+    else if(r<.4)for(let k=1;k<4;k++)beats.push({t0:t+k*(.09+Math.random()*.05),amp:amp*.5,w:.04});
+    nextBeat=t+.35+Math.random()*Math.random()*2.4;
+  }
+  beats=beats.filter(b=>t-b.t0<1);
+  let v=0;for(const b of beats)v+=b.amp*Math.exp(-Math.pow((t-b.t0)/b.w,2))*(t>=b.t0-.2?1:0);
+  return Math.min(v,1.6);
+}
 function facets(list,R,ir,rot,light,t,flick){
   let g="";const n=list.length;
   for(let i=0;i<n;i++){
