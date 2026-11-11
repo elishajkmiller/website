@@ -6,10 +6,11 @@
 <meta name="robots" content="noindex, nofollow">
 <title>POW417 Spark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@200;300;400&display=swap">
 <style>
-/* One look for the whole page: dark painted texture (paint.jpg), moving film grain, lavender type in Josefin Sans.
-   Spark tab: "Your spark is Humanity" over the POW417 27 burst, sparks flying off the word. */
+/* Three views. Main (default) and Countdown share the dark painted look: paint.jpg, moving film grain, lavender
+   Josefin Sans. Main is "Your spark is Humanity" over the POW417 27 burst. Spark (#spark) keeps the original
+   light Bebas look with the slanted word and blue sparks. */
 :root{
   --bg:#1c1b22; --ink:#ece8ff; --muted:#b9b2e6;
   --display:"Josefin Sans",system-ui,sans-serif;
@@ -55,11 +56,19 @@ body.cd .lead{display:none}
 .leader .line b{font-weight:200;font-size:1.9em;vertical-align:-.12em;margin:0 .12em 0 .35em}
 .leader .line b:first-child{margin-left:0}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
+/* Spark tab: the original light look */
+body.v-spark{--bg:#e0e6e8;--ink:#18181c;--muted:#5a5e6b;--display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;color-scheme:light;background:var(--bg)}
+@media (prefers-color-scheme: dark){body.v-spark{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;color-scheme:dark}}
+body.v-spark .top,body.v-spark .bottom{font-size:20px;letter-spacing:.06em;text-transform:none}
+body.v-spark .lead{font-weight:400;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;text-transform:none;color:var(--ink)}
+body.v-spark .word{font-weight:400;transform:skewX(-10deg)}
+body.v-spark .burst27{display:none}
+body.v-spark::after{opacity:.07}
 </style>
 </head>
 <body>
 <canvas id="sparks" aria-hidden="true"></canvas>
-<div class="top"><b>POW417</b><nav class="tabs" aria-label="Views"><a href="#spark" id="tab-spark">Spark</a><a href="#countdown" id="tab-countdown">Countdown</a></nav><span>A no AI 48-hour film challenge</span></div>
+<div class="top"><b>POW417</b><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#spark" id="tab-spark">Spark</a><a href="#countdown" id="tab-countdown">Countdown</a></nav><span>A no AI 48-hour film challenge</span></div>
 
 <main>
   <img class="burst27" src="27-burst.svg" alt="">
@@ -79,11 +88,11 @@ body.cd .lead{display:none}
 const cv=document.getElementById("sparks"),ctx=cv.getContext("2d"),word=document.getElementById("word");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isDark=()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/);return m&&+m[0]<100};
-const COLS=["#ece8ff","#d9d4f5","#b9b2e6","#9f9cef"];
+const LAV=["#ece8ff","#d9d4f5","#b9b2e6","#9f9cef"],BLUE=["#9f9cef","#7d79ea","#5d59e6","#4a45e0"];let COLS=LAV;
 let W=0,H=0,dpr=1,edges=[],center=[0,0],sparks=[],last=0,owed=0,dark=false;
 
 function resize(){
-  dark=true;
+  dark=mode!=="spark"||isDark();
   dpr=Math.min(1.5,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;
   cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
   sampleWord();
@@ -97,7 +106,7 @@ function sampleWord(){
   const oc=document.createElement("canvas");oc.width=w;oc.height=h;const o=oc.getContext("2d");
   o.font=`${cs.fontWeight} ${fs}px ${cs.fontFamily}`;o.textAlign="center";o.textBaseline="alphabetic";o.fillStyle="#000";
   const text=word.textContent.trim(),m=o.measureText(text);
-  const k=0,cy=h/2;
+  const k=mode==="spark"?Math.tan(-10*Math.PI/180):0,cy=h/2;
   // skewX(-10deg) around the vertical centre, like the CSS transform
   o.setTransform(1,0,k,1,-k*cy,0);
   const base=cy+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent)/2;
@@ -139,7 +148,7 @@ function frame(now){
   const dt=Math.min(.05,(now-last)/1000||0);last=now;
   ctx.clearRect(0,0,W,H);
   ctx.globalCompositeOperation=dark?"lighter":"source-over";
-  if(mode==='spark'){owed+=dt*70;while(owed>=1&&sparks.length<110){spawn();owed--}}
+  if(mode!=='countdown'){owed+=dt*70;while(owed>=1&&sparks.length<110){spawn();owed--}}
   sparks=sparks.filter(s=>{s.life+=dt;const dr=Math.exp(-1.1*dt);s.vx*=dr;s.vy=s.vy*dr+30*dt;s.x+=s.vx*dt;s.y+=s.vy*dt;return s.life<s.max});
   for(const s of sparks)drawSpark(s,true);
   ctx.globalAlpha=1;
@@ -168,17 +177,18 @@ function tick(){
   if(mode==="countdown"&&!reduce)requestAnimationFrame(tick);
 }
 function route(){
-  mode=location.hash==="#countdown"?"countdown":"spark";
-  const ts=document.getElementById("tab-spark"),tc=document.getElementById("tab-countdown");
-  ts.removeAttribute("aria-current");tc.removeAttribute("aria-current");(mode==="spark"?ts:tc).setAttribute("aria-current","page");
+  mode=location.hash==="#countdown"?"countdown":location.hash==="#spark"?"spark":"main";
+  for(const v of ["main","spark","countdown"]){const t=document.getElementById("tab-"+v);if(v===mode)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current")}
   clearInterval(timer);
   const cd=mode==="countdown";
-  document.body.classList.toggle("cd",cd);lead.textContent="Your spark is";word.hidden=cd;film.hidden=!cd;
+  document.body.classList.toggle("cd",cd);document.body.classList.toggle("v-spark",mode==="spark");
+  lead.textContent="Your spark is";word.hidden=cd;film.hidden=!cd;
+  COLS=mode==="spark"?BLUE:LAV;dark=mode!=="spark"||isDark();
   if(cd){tick();if(reduce)timer=setInterval(tick,1000)}
   sparks=[];ctx.clearRect(0,0,W,H);if(!cd){sampleWord();if(reduce)still()}
 }
 addEventListener("hashchange",route);
-addEventListener("resize",()=>{resize();if(reduce&&mode==="spark")still()});
+addEventListener("resize",()=>{resize();if(reduce&&mode!=="countdown")still()});
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();route();if(!reduce)requestAnimationFrame(frame)});
 </script>
 </body>
