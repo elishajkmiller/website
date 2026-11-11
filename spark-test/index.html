@@ -28,16 +28,9 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 #sparks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .lead{font-family:var(--display);font-size:clamp(28px,5vw,44px);letter-spacing:.04em;margin:0;position:relative;z-index:1}
 .tag{font-family:var(--display);font-size:clamp(20px,3vw,28px);letter-spacing:.08em;color:var(--muted);margin:0;position:relative;z-index:1}
-/* the word: a band of heat sweeps through the letters and the word glows softly */
 .word{font-family:var(--display);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
   font-size:clamp(64px,15vw,200px);letter-spacing:.01em;max-width:100%;overflow-wrap:anywhere;
-  transform:skewX(-10deg);color:var(--ink);
-  background:linear-gradient(100deg,var(--ink) 0%,var(--ink) 38%,var(--heat) 47%,#ffffff 50%,var(--heat) 53%,var(--ink) 62%,var(--ink) 100%);
-  background-size:300% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 0 .12em var(--heat-soft));
-  animation:sweep 3.6s cubic-bezier(.45,0,.25,1) infinite}
-@keyframes sweep{0%{background-position:100% 0}70%,100%{background-position:0% 0}}
-@media (prefers-reduced-motion: reduce){.word{animation:none;background:none;-webkit-text-fill-color:var(--ink)}}
+  transform:skewX(-10deg);color:var(--ink)}
 </style>
 </head>
 <body>
