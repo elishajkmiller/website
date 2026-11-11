@@ -107,6 +107,28 @@ body.v-main main{display:none}
 .foot b{font-weight:300;font-size:22px;letter-spacing:.04em;color:var(--ink);margin-right:auto}
 @media (max-width:720px){.split{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion: reduce){.marquee div{animation:none}}
+/* Main tab, light: the look of the announcement video (pale blue-grey, black condensed type, the blue 27,
+   black panels with stacked outline dates, a lavender band) */
+body.v-main{--bg:#e0e6e8;--ink:#18181c;--muted:#4f5462;--accent:#4a45e0;--rule:rgba(24,24,28,.16);color-scheme:light;background:var(--bg)}
+body.v-main::after{opacity:.06}
+body.v-main .top,body.v-main .top b,body.v-main .tabs a{color:var(--ink)}
+.hero .mark{width:min(100%,760px)!important;margin:0 auto!important}
+.hero{align-items:center;text-align:center}
+.hero .date{justify-content:center}
+body.v-main .marquee{background:#8f8cea;border:0}
+body.v-main .marquee span{color:#fff}
+body.v-main .marquee span::after{background:#fff}
+.statement{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;line-height:.92;font-size:clamp(56px,13vw,170px);letter-spacing:-.005em}
+.statement span:nth-child(2){font-size:.78em}.statement span:nth-child(3){font-size:.52em;letter-spacing:.01em}
+.dates{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:#18181c;color:#fff;padding:clamp(24px,5vw,56px);margin-inline:calc(-1*clamp(0px,2vw,24px));overflow:hidden}
+.dates .stack{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;font-size:clamp(30px,5.4vw,64px);line-height:1.02;transform:rotate(-8deg) skewX(-10deg);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+.dates .stack .on{color:#fff;-webkit-text-stroke:0}
+.dates .dates-copy{display:flex;flex-direction:column;gap:16px}
+.dates h2{color:#fff}.dates h2 span{color:#9f9cef!important}
+.dates p{color:#c9cbd6!important}
+.dates .eyebrow{color:#9f9cef!important}
+.mission{display:flex;flex-wrap:wrap;gap:0 .35em;font-family:var(--big);text-transform:uppercase;font-size:clamp(44px,9vw,120px);line-height:1;justify-content:center;transform:skewX(-10deg)}
+@media (max-width:720px){.dates{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -125,21 +147,24 @@ body.v-main main{display:none}
 
 <div id="site" hidden>
   <section class="hero">
-    <span class="eyebrow">Welcome to</span>
-    <h1><img class="mark" src="lockup-light.svg" alt="POW417"></h1>
+    <span class="eyebrow">Coming March 2027</span>
+    <h1><img class="mark" src="lockup.svg" alt="POW417 2027"></h1>
     <div class="tag">Proof of Work<br>A 48-hour human film gathering<br>Springfield, MO</div>
     <div class="date"><b>March 19, 2027</b><span>Springfield, MO · details soon</span></div>
   </section>
   <div class="marquee" aria-hidden="true"><div><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span></div></div>
   <section id="films"><span class="eyebrow">Watch</span><h2>The 2026 <span>films</span></h2><div class="films"><div class="film"><div class="meta"><span>01</span><span>Necrotic Studios</span></div><div class="title">Heading Home</div><a href="https://youtu.be/byEvRLZ9Flo" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>02</span><span>Nate :)</span></div><div class="title">Going Outside</div><a href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>03</span><span>House of Keeling</span></div><div class="title">The Inbetween</div><a href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>04</span><span>03 Media</span></div><div class="title">Darkness That Follows</div><a href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>05</span><span>SweetBogsTv &amp; CIDERHOUSE</span></div><div class="title">Clogged Up</div><a href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>06</span><span>A1 &amp; A2 Productions</span></div><div class="title">Podcast Pete</div><a href="https://youtu.be/AU_pT_WoedQ" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>07</span><span>Yellow Bike Films</span></div><div class="title">Seeing Double</div><a href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>08</span><span>BearView Films</span></div><div class="title">What's Eating You</div><a href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener">Watch on YouTube</a></div></div></section>
-  <section id="showcase"><span class="eyebrow">Next</span><h2>POW417 <span>2027</span></h2><p style="margin-top:18px">The clock starts March 19, 2027. Location and showcase details coming soon.</p></section>
+  <section class="statement" aria-label="A no AI 48-hour film challenge"><span>A no AI</span><span>48-hour</span><span>film challenge</span></section>
+  <section id="showcase" class="dates"><div class="stack" aria-hidden="true"><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span class="on">March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span></div>
+    <div class="dates-copy"><span class="eyebrow">Next</span><h2>POW417 <span>2027</span></h2><p>The clock starts March 19, 2027. Location and showcase details coming soon.</p></div></section>
+  <section class="mission"><span>New year.</span><span>Same mission.</span></section>
   <section id="the48"><h2>48 hours.<br>No prompt.<br><span>Make a film.</span></h2><div class="hours"><div><span class="when">Hour 00 · Kickoff</span><span class="what">Opening ceremonies</span><p>Gather with your crew. The clock starts when ceremonies close. No prompt, just your vision, your team, and 48 hours.</p></div><div><span class="when">Hours 01 to 12 · Pre-pro</span><span class="what">Write and prep</span><p>Develop your concept, write your script, scout locations, cast your crew. This is where your film starts to exist.</p></div><div><span class="when">Hours 12 to 36 · Production</span><span class="what">Shoot it</span><p>Roll camera. Everything is practical: real locations, real light, real performances. No AI-generated anything.</p></div><div><span class="when">Hours 36 to 48 · Post</span><span class="what">Cut and deliver</span><p>Edit, mix, color, and deliver. Human hands on every frame. Submission is final. The clock is the great equalizer.</p></div><div><span class="when">The showcase · Date TBA</span><span class="what">We watch together</span><p>Every film screens publicly at the showcase. Every crew gets seen. No winners, no losers, just filmmakers in the same room.</p></div></div></section>
   <section id="about" class="split"><h2>Not a <em>competition.</em><br>A coming together.</h2><div class="body">
     <p>POW417 is a 48-hour film gathering built around one simple idea: what happens when people actually show up and make something real, together, by hand?</p>
     <p>No rankings. No trophies. No algorithm. Just crews, cameras, and the clock. Every team gets the same deadline and the same constraints. What you do with it is entirely yours.</p>
     <p>We built this because the 417 deserves a film event that respects the craft. One that says the human eye, the human hand, and the human story still matter, maybe more than ever.</p></div></section>
   <section id="rules" class="split"><div><h2>The only <span>rules</span> that matter</h2><p style="margin-top:18px">These aren't restrictions. They're the whole point.</p></div><div class="rules"><div class="rule"><span class="n">01</span><div><div class="t">No AI. Not even a little.<i>Non-negotiable</i></div><p>No AI-generated images, voice, scripts, music, visual effects, or any tool that uses generative AI in any part of your pipeline.</p></div></div><div class="rule"><span class="n">02</span><div><div class="t">All footage shot in the 48<i>Hard rule</i></div><p>Every frame of your film must be captured during the official 48-hour window. Stock footage is not permitted.</p></div></div><div class="rule"><span class="n">03</span><div><div class="t">5 minutes maximum<i>Core</i></div><p>Your finished film, credits included, must not exceed 5 minutes.</p></div></div><div class="rule"><span class="n">04</span><div><div class="t">Show up for the screening<i>Expected</i></div><p>This isn't a drop-box event. Being present at the screening is part of the deal.</p></div></div></div></section>
-  <footer class="foot"><b><img src="lockup-light.svg" alt="POW417" style="height:64px;width:auto;display:block"></b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
+  <footer class="foot"><b><img src="lockup.svg" alt="POW417" style="height:64px;width:auto;display:block"></b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
 </div>
 
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
