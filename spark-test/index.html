@@ -126,6 +126,8 @@ body.v-main .marquee span::after{background:#fff}
 .dates .eyebrow{color:#9f9cef!important}
 .mission{display:flex;flex-wrap:wrap;gap:0 .35em;font-family:var(--big);text-transform:uppercase;font-size:clamp(44px,9vw,120px);line-height:1;justify-content:center;transform:skewX(-10deg)}
 @media (max-width:720px){.dates{grid-template-columns:minmax(0,1fr)}}
+.bg27{display:none}
+body.v-main .bg27{display:block;position:fixed;left:50%;top:50%;width:min(130vw,1200px);transform:translate(-50%,-50%);opacity:.14;z-index:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -142,6 +144,7 @@ body.v-main .marquee span::after{background:#fff}
   </div>
 </main>
 
+<img class="bg27" src="27-burst.svg" alt="">
 <div id="site" hidden>
   <section class="hero">
     <h1><img class="mark" src="lockup.svg" alt="POW417 2027"></h1>
