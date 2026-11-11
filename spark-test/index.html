@@ -189,11 +189,49 @@ body:not(.v-main):not(.cd) .mini{display:inline-block}
 .bigclock b{font-family:var(--big);font-weight:400;font-size:clamp(48px,11vw,130px);line-height:.9;transform:skewX(-10deg);transform-origin:left bottom;display:block}
 .bigclock i{font-style:normal;font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
 .bigcap{font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:22px}
+/* Forms (Register, Submit Film) in the doc style */
+.doc form{display:flex;flex-direction:column;gap:26px}
+.doc .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.doc .fld>label,.doc .lbl{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.doc .fld>label i{color:var(--accent);font-style:normal}
+.doc input[type=text],.doc input[type=url],.doc input[type=email],.doc textarea{width:100%;background:transparent;border:0;border-bottom:1.5px solid var(--ink);border-radius:0;color:var(--ink);font-family:var(--body);font-size:18px;font-weight:400;padding:8px 0;outline:none}
+.doc textarea{min-height:96px;resize:vertical}
+.doc input::placeholder,.doc textarea::placeholder{color:var(--muted);opacity:.55}
+.doc input:focus,.doc textarea:focus{border-bottom-color:var(--accent)}
+.doc .bad{border-bottom-color:#b3261e!important}
+.doc .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+@media (max-width:640px){.doc .two{grid-template-columns:minmax(0,1fr)}}
+.doc .chk{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;font-size:15px;line-height:1.55;color:var(--ink);cursor:pointer}
+.doc .chk input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent)}
+.doc .chk small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.doc .btn{align-self:flex-start;font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--ink);border:1.5px solid var(--ink);padding:14px 28px;cursor:pointer}
+.doc .btn:hover:not(:disabled),.doc .btn:focus-visible{background:var(--accent);border-color:var(--accent)}
+.doc .btn:disabled{opacity:.4;cursor:not-allowed}
+.doc .btn.ghost{background:transparent;color:var(--ink)}
+.doc .btn.ghost:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.doc .status{font-size:14px;font-weight:700;letter-spacing:.06em;min-height:1.4em;margin:0}
+.doc .status.err{color:#b3261e}.doc .status.ok{color:#2f6b45}
+.doc .zone{display:flex;flex-direction:column;align-items:center;gap:4px;padding:30px 16px;border:1.5px dashed var(--ink);text-align:center;cursor:pointer;position:relative}
+.doc .zone:hover,.doc .zone.drag{background:rgba(24,24,28,.05)}
+.doc .zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.doc .zone b{font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.doc .zone span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.doc .pfile{display:none;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1.5px solid var(--rule);padding-bottom:12px;font-size:15px}
+.doc .pfile.on{display:flex}
+.doc .pfile img{width:52px;height:74px;object-fit:cover;border:1px solid var(--rule)}
+.doc .prow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:16px;align-items:end;padding:12px 0;border-bottom:1px solid var(--rule)}
+@media (max-width:640px){.doc .prow{grid-template-columns:minmax(0,1fr) auto}.doc .prow .fld:first-child{grid-column:1/-1}}
+.doc .x{background:none;border:0;color:var(--ink);font-size:24px;line-height:1;padding:6px;cursor:pointer;opacity:.5}
+.doc .x:hover{opacity:1;color:#b3261e}.doc .x:disabled{opacity:.15;cursor:default}
+.doc .done{display:none;flex-direction:column;gap:14px;padding:30px 0}
+.doc .done h2{font-size:clamp(48px,9vw,96px)}
+.doc .done p{margin:0;font-size:17px;line-height:1.6;color:var(--muted)}
+.doc .ban{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;background:var(--ink);color:var(--bg);padding:12px 16px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 </style>
 </head>
 <body>
 <canvas id="sparks" aria-hidden="true"></canvas>
-<div class="top"><a href="#main" class="toplogo"><img src="lockup.svg" alt="POW417"></a><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#guidelines" id="tab-guidelines">Guidelines</a><a href="#releases" id="tab-releases">Releases</a><span class="br" aria-hidden="true"></span><a href="#countdown" id="tab-countdown">Countdown</a><a href="#spark" id="tab-spark">Spark</a></nav></div>
+<div class="top"><a href="#main" class="toplogo"><img src="lockup.svg" alt="POW417"></a><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#guidelines" id="tab-guidelines">Guidelines</a><a href="#register" id="tab-register">Register</a><a href="#releases" id="tab-releases">Releases</a><a href="#submit" id="tab-submit">Submit Film</a><span class="br" aria-hidden="true"></span><a href="#countdown" id="tab-countdown">Countdown</a><a href="#spark" id="tab-spark">Spark</a></nav></div>
 <a class="mini" id="mini" href="#countdown" aria-label="Countdown to March 19, 2027"></a>
 
 <main>
@@ -234,6 +272,48 @@ body:not(.v-main):not(.cd) .mini{display:inline-block}
     <div class="relbtns"><a href="https://docs.google.com/document/d/1m7KfIYO1F0_3N1vhROMBRVzrAUXd6cxuUMqlSafCick/preview" target="_blank" rel="noopener">View</a><a href="https://docs.google.com/document/d/1m7KfIYO1F0_3N1vhROMBRVzrAUXd6cxuUMqlSafCick/export?format=pdf" target="_blank" rel="noopener">Download PDF</a></div></div>
   <section class="g"><span class="n">?</span><div><h3>Not sure which ones you need?</h3><ul><li>Shot on someone's property: location release.</li><li>Someone is on screen: cast release.</li><li>Anyone under 18: minor release.</li><li>There's music: music release.</li><li>Everyone on your crew: crew release.</li><li>When in doubt, fill it out.</li></ul></div></section>
   <p class="fine">Turn in your completed releases through the upload form on <a href="https://pow417.com/releases.html" target="_blank" rel="noopener">pow417.com/releases</a>.</p>
+</div>
+
+<div id="register" class="doc" hidden>
+  <div id="regWrap">
+    <span class="eyebrow">Registration</span>
+    <h2>POW417 <span>2027</span></h2>
+    <p class="intro">A no-AI, 48-hour human film gathering in Springfield, MO. The 2027 event starts March 19, 2027. Location and showcase details coming soon.</p>
+    <p class="fine">Read the <a href="#guidelines">guidelines</a> and follow <a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a> on Instagram. Only one member per team needs to register. Registration closes before the event, date to be announced.</p>
+    <form id="regForm" novalidate>
+      <div class="fld"><label for="rNameRole">Your name and role <i>*</i></label><input type="text" id="rNameRole" placeholder="e.g. Jane Doe, Director"></div>
+      <div class="fld"><label for="rEmail">Your email <i>*</i></label><input type="email" id="rEmail" placeholder="e.g. yourname@email.com"></div>
+      <div class="fld"><label for="rMates">Your teammates' names and roles <i>*</i></label><textarea id="rMates" placeholder="e.g. John Smith, Cinematographer&#10;Alex Lee, Editor"></textarea></div>
+      <div class="fld"><label for="rTeam">Your team name <i>*</i></label><input type="text" id="rTeam" placeholder="e.g. Midnight Crew"></div>
+      <span class="lbl">Acknowledgements</span>
+      <label class="chk"><input type="checkbox" id="rAI"><span><b>I acknowledge that no AI may be used in any capacity</b> in the production of my film, including scripts, images, voice, music, visual effects, or any generative AI tool at any stage of production.</span></label>
+      <label class="chk"><input type="checkbox" id="rSub"><span><b>I acknowledge that I must submit my film via the POW417 website within the 48-hour time frame</b> to be considered an official entry in POW417 2027.<small>Films submitted late will still be screened but are not official entries.</small></span></label>
+      <label class="chk"><input type="checkbox" id="rPur"><span><b>I acknowledge that the purpose of this challenge is to foster human creativity, connect local artists, and have fun.</b><small>By submitting your film you consent to it being played at the POW417 2027 public screening event.</small></span></label>
+      <button class="btn" type="submit" id="regBtn">Register your team</button>
+      <p class="status" id="regStatus" role="status"></p>
+    </form>
+  </div>
+  <div class="done" id="regDone"><h2>You're <span>in.</span></h2><p>Registration received for <b id="regTeam"></b>. Watch Instagram <a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a> for opening ceremony details.</p></div>
+</div>
+<div id="submit" class="doc" hidden>
+  <div id="subWrap">
+    <span class="eyebrow">Final submission</span>
+    <h2>Deliver <span>your film</span></h2>
+    <p class="intro">You made it. Now get it in. Fill out everything below before the clock hits zero.</p>
+    <div class="ban"><span>Submission deadline</span><span>Sunday, 48 hours after kickoff</span><span>Late films are screened but not official entries</span></div>
+    <form id="subForm" novalidate>
+      <section class="g"><span class="n">01</span><div class="two"><div class="fld"><label for="sTeam">Team name <i>*</i></label><input type="text" id="sTeam" placeholder="Your crew's name"></div><div class="fld"><label for="sTitle">Film title <i>*</i></label><input type="text" id="sTitle" placeholder="What did you call it?"></div></div></section>
+      <section class="g"><span class="n">02</span><div class="fld"><label for="sYt">Film link <i>*</i></label><input type="url" id="sYt" placeholder="https://youtu.be/..."><p class="fine">Must be set to <b>Unlisted</b> on YouTube before submitting. Public links will not be accepted. Private links cannot be screened.</p></div></section>
+      <section class="g"><span class="n">03</span><div class="fld"><span class="lbl">Film poster</span>
+        <div class="zone" id="sZone"><input type="file" id="sFile" accept="image/png,image/jpeg" aria-label="Film poster"><b>Drop poster here or click to browse</b><span>PNG or JPEG, max 10 MB</span></div>
+        <div class="pfile" id="sPrev"><img id="sThumb" alt="Poster preview"><span id="sFname"></span><button class="btn ghost" type="button" id="sRemove">Remove</button></div></div></section>
+      <section class="g"><span class="n">04</span><div class="fld"><span class="lbl">Late additions</span><p class="fine">Only list participants who joined after registration closed. Staff will review these before the screening.</p><div id="sPeople"></div><button class="btn ghost" type="button" id="sAdd">+ Add another participant</button></div></section>
+      <p class="fine">By submitting you confirm all content is original, made within the 48-hour window, and free of AI-generated material, per POW417 rules.</p>
+      <button class="btn" type="submit" id="subBtn">Submit film</button>
+      <p class="status" id="subStatus" role="status"></p>
+    </form>
+  </div>
+  <div class="done" id="subDone"><h2>That's <span>a wrap.</span></h2><p>Submission received. See you at the screening.</p></div>
 </div>
 
 <div class="bottom"></div>
@@ -342,18 +422,78 @@ function tick(){
   film.style.setProperty("--a",reduce?"0deg":(((4000-ms%4000)%4000)*.09).toFixed(1)+"deg");
   if(mode==="countdown"&&!reduce)requestAnimationFrame(tick);
 }
+const DOCS=["guidelines","register","releases","submit"];
 function route(){
-  const h=location.hash.slice(1);mode=["countdown","spark","guidelines","releases"].includes(h)?h:"main";
-  for(const v of ["main","guidelines","releases","spark","countdown"]){const t=document.getElementById("tab-"+v);if(v===mode)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current")}
+  const h=location.hash.slice(1);mode=["countdown","spark","guidelines","register","releases","submit"].includes(h)?h:"main";
+  for(const v of ["main","guidelines","register","releases","submit","spark","countdown"]){const t=document.getElementById("tab-"+v);if(v===mode)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current")}
   clearInterval(timer);
   const cd=mode==="countdown";
   document.body.classList.toggle("cd",cd);document.body.classList.toggle("v-spark",mode==="spark");document.body.classList.toggle("v-main",mode==="main");
-  document.getElementById("site").hidden=mode!=="main";document.getElementById("guidelines").hidden=mode!=="guidelines";document.getElementById("releases").hidden=mode!=="releases";document.body.classList.toggle("v-doc",mode==="guidelines"||mode==="releases");document.querySelector(".bottom").hidden=mode!=="spark"&&mode!=="countdown";
+  document.getElementById("site").hidden=mode!=="main";for(const d of DOCS)document.getElementById(d).hidden=mode!==d;document.body.classList.toggle("v-doc",DOCS.includes(mode));document.querySelector(".bottom").hidden=mode!=="spark"&&mode!=="countdown";
   lead.textContent="Your spark is";word.hidden=cd;film.hidden=!cd;
   COLS=BLUE;dark=false;
   if(cd){tick();if(reduce)timer=setInterval(tick,1000)}
   sparks=[];ctx.clearRect(0,0,W,H);if(mode==='spark'){sampleWord();if(reduce)still()}
 }
+
+// Register and Submit Film forms: same Apps Script endpoint and fields as pow417.com
+const APPS="https://script.google.com/macros/s/AKfycbzqGDWFOvgN0QHVDj0BF0HejPAIIDY9S-VE2uVp26mwTNI9JnP3cTlDv4yoJheF7UFk/exec";
+const $=id=>document.getElementById(id);
+function bad(el){el.classList.add("bad");el.addEventListener("input",()=>el.classList.remove("bad"),{once:true})}
+$("regForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f={nameRole:$("rNameRole"),email:$("rEmail"),teammates:$("rMates"),teamName:$("rTeam")},st=$("regStatus"),btn=$("regBtn");
+  let miss=false;for(const k in f){if(!f[k].value.trim()){bad(f[k]);miss=true}}
+  if(miss){st.className="status err";st.textContent="Please fill in all fields.";return}
+  if(!($("rAI").checked&&$("rSub").checked&&$("rPur").checked)){st.className="status err";st.textContent="Please check all acknowledgements.";return}
+  btn.disabled=true;btn.textContent="Sending...";st.textContent="";
+  try{
+    const q=new URLSearchParams({nameRole:f.nameRole.value.trim(),email:f.email.value.trim(),teammates:f.teammates.value.trim(),teamName:f.teamName.value.trim(),ackNoAI:true,ackSubmission:true,ackPurpose:true});
+    await fetch(APPS+"?"+q,{method:"GET",mode:"no-cors"});
+    $("regWrap").hidden=true;$("regDone").style.display="flex";$("regTeam").textContent=f.teamName.value.trim();
+  }catch(err){btn.disabled=false;btn.textContent="Register your team";st.className="status err";st.textContent="Something went wrong. Try again or email pow417films@gmail.com."}
+});
+let poster=null;
+function setPoster(file){
+  const st=$("subStatus");
+  if(!file||!["image/png","image/jpeg"].includes(file.type))return;
+  if(file.size>10*1024*1024){st.className="status err";st.textContent="Poster must be under 10 MB.";return}
+  poster=file;st.textContent="";
+  $("sThumb").src=URL.createObjectURL(file);$("sFname").textContent=file.name+" ("+(file.size/1024).toFixed(1)+" KB)";
+  $("sZone").style.display="none";$("sPrev").classList.add("on");
+}
+$("sFile").addEventListener("change",e=>setPoster(e.target.files[0]));
+const zn=$("sZone");
+zn.addEventListener("dragover",e=>{e.preventDefault();zn.classList.add("drag")});
+zn.addEventListener("dragleave",()=>zn.classList.remove("drag"));
+zn.addEventListener("drop",e=>{e.preventDefault();zn.classList.remove("drag");setPoster(e.dataTransfer.files[0])});
+$("sRemove").addEventListener("click",()=>{poster=null;$("sFile").value="";$("sThumb").removeAttribute("src");$("sPrev").classList.remove("on");zn.style.display=""});
+function personRows(){const r=document.querySelectorAll("#sPeople .prow");r.forEach(x=>x.querySelector(".x").disabled=r.length===1)}
+function addPerson(){
+  const row=document.createElement("div");row.className="prow";
+  row.innerHTML='<div class="fld"><span class="lbl">Full name</span><input type="text" placeholder="Jane Doe" aria-label="Full name"></div><div class="fld"><span class="lbl">Role</span><input type="text" placeholder="Director, Editor, DP" aria-label="Role"></div><button class="x" type="button" title="Remove" aria-label="Remove participant">&times;</button>';
+  row.querySelector(".x").addEventListener("click",()=>{row.remove();personRows()});
+  $("sPeople").appendChild(row);personRows();
+}
+$("sAdd").addEventListener("click",addPerson);addPerson();
+$("subForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const t=$("sTeam"),ti=$("sTitle"),y=$("sYt"),st=$("subStatus"),btn=$("subBtn");
+  let miss=false;for(const el of [t,ti,y]){if(!el.value.trim()){bad(el);miss=true}}
+  if(miss){st.className="status err";st.textContent="Fill in all required fields before submitting.";return}
+  const late=[];
+  document.querySelectorAll("#sPeople .prow").forEach(r=>{const i=r.querySelectorAll("input"),name=i[0].value.trim(),role=i[1].value.trim();if(name||role)late.push({name,role})});
+  let posterBase64="",posterName="";
+  if(poster){
+    posterBase64=await new Promise(res=>{const rd=new FileReader();rd.onload=ev=>res(ev.target.result.split(",")[1]);rd.readAsDataURL(poster)});
+    posterName=poster.name;
+  }
+  btn.disabled=true;btn.textContent="Sending...";st.textContent="";
+  try{
+    await fetch(APPS,{method:"POST",mode:"no-cors",body:JSON.stringify({teamName:t.value.trim(),filmTitle:ti.value.trim(),ytLink:y.value.trim(),posterBase64,posterName,lateParticipants:late})});
+    $("subWrap").hidden=true;$("subDone").style.display="flex";
+  }catch(err){btn.disabled=false;btn.textContent="Submit film";st.className="status err";st.textContent="Something went wrong. Try again or email pow417films@gmail.com"}
+});
 addEventListener("hashchange",route);
 addEventListener("resize",()=>{resize();if(reduce&&mode==="spark")still()});
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();route();if(!reduce)requestAnimationFrame(frame)});
