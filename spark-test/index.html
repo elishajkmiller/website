@@ -38,7 +38,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 /* Countdown: the old film leader circle on its own. Grey disc, two rings, a crosshair, a sweep that goes round once a second,
    the days left as the big number and hours, minutes and seconds under it. */
 .leader{position:relative;z-index:1;width:min(100%,560px);aspect-ratio:1;overflow:hidden;border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(20,20,24,.5) var(--a,0deg),rgba(0,0,0,0) 0),radial-gradient(circle,#a9a9a4 0%,#8d8d88 60%,#7a7a75 100%);
+  background:conic-gradient(from calc(var(--a,0deg) - 100deg),rgba(20,20,24,0) 0deg,rgba(20,20,24,.2) 100deg,rgba(0,0,0,0) 100deg),radial-gradient(circle,#a9a9a4 0%,#8d8d88 60%,#7a7a75 100%);
   animation:flick .9s steps(1) infinite}
 .leader .rings{position:absolute;inset:0;margin:auto;height:100%;aspect-ratio:1;border-radius:50%;border:clamp(3px,.6vw,5px) solid #f2f1ec;box-shadow:0 0 0 2px #1a1a1a}
 .leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(3px,.6vw,5px) solid #f2f1ec;box-shadow:inset 0 0 0 2px #1a1a1a}
@@ -157,8 +157,8 @@ function tick(){
   const ms=Math.max(0,START-Date.now()),t=Math.floor(ms/1000),p=n=>String(n).padStart(2,"0");
   const d=String(Math.floor(t/86400)),rest=`${p(Math.floor(t%86400/3600))}:${p(Math.floor(t%3600/60))}:${p(t%60)}`;
   if(cdDays.textContent!==d)cdDays.textContent=d;if(cdRest.textContent!==rest)cdRest.textContent=rest;
-  // the sweep goes round once a second
-  film.style.setProperty("--a",reduce?"0deg":(360-(ms%1000)*.36).toFixed(1)+"deg");
+  // the sweep goes round once a second: a soft shadow trailing a hand, so there is no jump when it comes round
+  film.style.setProperty("--a",reduce?"0deg":(((1000-ms%1000)%1000)*.36).toFixed(1)+"deg");
   if(mode==="countdown"&&!reduce)requestAnimationFrame(tick);
 }
 function route(){
