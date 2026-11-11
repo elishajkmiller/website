@@ -6,15 +6,16 @@
 <meta name="robots" content="noindex, nofollow">
 <title>POW417 Spark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Josefin+Sans:wght@200;300;400&display=swap">
 <style>
 /* Three views. Main (default) and Countdown share the dark look: plain dark grey, moving film grain, lavender
    Josefin Sans. Main is the pow417.com home page in that theme. Spark (#spark) keeps the original
-   light look with the slanted word and blue sparks. All tabs use Josefin Sans. */
+   light look with the slanted word and blue sparks. Big type is Anton (the font of the 27), small type is Josefin Sans. */
 :root{
   --bg:#1c1b22; --ink:#ece8ff; --muted:#b9b2e6; --accent:#9f9cef; --rule:rgba(217,212,245,.16);
   --display:"Josefin Sans",system-ui,sans-serif;
   --body:"Josefin Sans",system-ui,sans-serif;
+  --big:"Anton",Impact,"Arial Narrow",sans-serif; /* the font of the 27 */
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -28,7 +29,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center;position:relative;min-height:420px}
 #sparks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .lead{font-family:var(--display);font-weight:300;font-size:clamp(18px,3vw,30px);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0;position:relative;z-index:1}
-.word{font-family:var(--display);font-weight:200;line-height:.9;margin:0;position:relative;z-index:1;
+.word{font-family:var(--big);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
   font-size:clamp(64px,15vw,200px);letter-spacing:.01em;max-width:100%;overflow-wrap:anywhere;
   color:var(--ink)}
 .burst27{position:absolute;left:50%;top:50%;width:min(78vw,620px);transform:translate(-50%,-50%);opacity:.2;z-index:0;pointer-events:none}
@@ -54,20 +55,20 @@ body.cd .lead{display:none}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
 .leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:#b9b2e6;background:rgba(20,18,28,.8);padding:.3em .8em}
 .leader .line{font-size:min(3.8vh,3.6vw);letter-spacing:.06em;white-space:nowrap;background:rgba(20,18,28,.8);padding:.15em .5em}
-.leader .line b{font-weight:200;font-size:1.9em;vertical-align:-.12em;margin:0 .12em 0 .35em}
+.leader .line b{font-family:var(--big);font-weight:400;font-size:1.9em;display:inline-block;transform:skewX(-10deg);vertical-align:-.12em;margin:0 .14em 0 .4em}
 .leader .line b:first-child{margin-left:0}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
 /* Spark tab: the original light look */
 body.v-spark{--bg:#e0e6e8;--ink:#18181c;--muted:#5a5e6b;color-scheme:light;background:var(--bg)}
 @media (prefers-color-scheme: dark){body.v-spark{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;color-scheme:dark}}
 body.v-spark .lead{color:var(--ink)}
-body.v-spark .word{font-weight:300;transform:skewX(-10deg)}
+body.v-spark .word{transform:skewX(-10deg)}
 body.v-spark .burst27{display:none}
 body.v-spark::after{opacity:.07}
 /* Main tab: the pow417.com home page, in the dark lavender theme */
 #site{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding-block:24px 40px;display:flex;flex-direction:column;gap:clamp(56px,9vw,110px);color:var(--ink)}
 body.v-main main{display:none}
-#site h2{font-family:var(--display);font-weight:200;font-size:clamp(40px,7vw,84px);line-height:.95;margin:0;letter-spacing:.01em}
+#site h2{font-family:var(--big);font-weight:400;font-size:clamp(36px,6vw,72px);line-height:1;transform:skewX(-10deg);transform-origin:left bottom;margin:0;letter-spacing:.01em}
 #site h2 em,#site h2 span{font-style:normal;color:var(--accent)}
 #site .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 #site p{font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:var(--muted);max-width:62ch;margin:0}
@@ -85,19 +86,19 @@ body.v-main main{display:none}
 .films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
 .film{background:var(--bg);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .film .meta{display:flex;justify-content:space-between;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.film .title{font-size:24px;font-weight:300}
+.film .title{font-family:var(--big);font-size:24px;letter-spacing:.01em}
 .film a{color:var(--accent);text-decoration:none;font-size:14px;letter-spacing:.08em;margin-top:auto}
 .film a:hover,.film a:focus-visible{text-decoration:underline}
 .hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px;margin-top:32px}
 .hours div{border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:8px}
 .hours .when{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-.hours .what{font-size:22px;font-weight:300}
+.hours .what{font-family:var(--big);font-size:22px;letter-spacing:.01em}
 .hours p{font-size:15px!important}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,5vw,64px);align-items:start}
 .split .body{display:flex;flex-direction:column;gap:16px}
 .rules{display:flex;flex-direction:column}
 .rule{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid var(--rule)}
-.rule .n{font-size:28px;font-weight:200;color:var(--accent)}
+.rule .n{font-family:var(--big);font-size:28px;color:var(--accent);transform:skewX(-10deg)}
 .rule .t{font-size:21px;font-weight:300;display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
 .rule .t i{font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:3px 8px}
 .rule p{font-size:15px!important;margin-top:6px!important}
