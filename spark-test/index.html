@@ -4,184 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
-<title>POW417 Spark Generator</title>
+<title>POW417 Spark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&display=swap">
 <style>
-/* Layout: stage left, control rail right; stacks to one column on phones */
+/* One screen: eyebrow, "Your spark is", the drawn word, draw button, recent draws */
 :root{
-  --bg:#e0e6e8; --panel:#eef2f3; --ink:#18181c; --muted:#5a5e6b; --line:#c6ced2; --accent:#4a45e0;
+  --bg:#e0e6e8; --ink:#18181c; --muted:#5a5e6b; --line:#c6ced2;
+  --blue:#4a45e0; --blue2:#5d59e6; --lav:#9f9cef; --pale:#d3d1f8; --deep:#2b2690;
   --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
   --body:"Barlow",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16161b;--panel:#1f1f26;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;--accent:#8f8cff;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#16161b;--panel:#1f1f26;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;--accent:#8f8cff;color-scheme:dark}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px}
-.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px}
-header{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-h1{font-family:var(--display);font-weight:400;font-size:44px;letter-spacing:.02em;line-height:1;margin:0}
-h1 span{color:var(--accent)}
-.seed{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.stage{position:relative;min-width:0;aspect-ratio:1/1;max-width:100%;border:1px solid var(--line);background:var(--panel);overflow:hidden}
-.stage svg{width:100%;height:100%;display:block}
-.stage .tag{position:absolute;left:12px;bottom:10px;font-family:var(--display);font-size:20px;letter-spacing:.06em;color:var(--muted)}
-aside{display:flex;flex-direction:column;gap:14px;min-width:0}
-.row{display:flex;flex-direction:column;gap:6px}
-.row label{display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.row output{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
-input[type=range]{width:100%;accent-color:var(--accent)}
-.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button,select{font-family:var(--display);font-size:20px;letter-spacing:.05em;padding:10px 12px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
-select{font-family:var(--body);font-size:15px;padding:8px}
-button.primary{background:var(--accent);border-color:var(--accent);color:#fff;grid-column:1/-1}
-button:hover{background:var(--ink);color:var(--bg)}
-button.primary:hover{background:var(--ink);border-color:var(--ink)}
-button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.note{font-size:13px;color:var(--muted);min-height:1.2em}
-@media (max-width:820px){.wrap{grid-template-columns:minmax(0,1fr)}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px;
+  display:flex;flex-direction:column;overflow-x:hidden}
+.top,.bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--display);font-size:20px;letter-spacing:.06em;color:var(--muted)}
+.top b{color:var(--ink);font-weight:400}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center;position:relative;min-height:420px}
+#burst{position:absolute;inset:0;margin:auto;width:min(80vw,620px);height:min(80vw,620px);pointer-events:none;opacity:.9;z-index:0}
+.lead{font-family:var(--display);font-size:clamp(28px,5vw,44px);letter-spacing:.04em;margin:0;position:relative;z-index:1}
+.word{font-family:var(--display);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
+  font-size:clamp(64px,15vw,200px);letter-spacing:.01em;text-wrap:balance;max-width:100%;overflow-wrap:anywhere;
+  transform:skewX(-10deg)}
+.word.rolling{color:var(--blue)}
+.tag{font-family:var(--display);font-size:clamp(20px,3vw,28px);letter-spacing:.08em;color:var(--muted);margin:0;position:relative;z-index:1}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+button{font-family:var(--display);font-size:24px;letter-spacing:.06em;padding:12px 26px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+button.primary{background:var(--ink);color:var(--bg)}
+button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.recent{position:relative;z-index:1;display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;font-family:var(--display);font-size:20px;letter-spacing:.05em;color:var(--muted);min-height:1.4em}
+.recent span:first-child{color:var(--ink)}
+.note{font-size:14px;color:var(--muted);min-height:1.2em;position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){.word{transition:none}}
 </style>
 </head>
 <body>
+<div class="top"><b>POW417</b><span>A no AI 48-hour film challenge</span></div>
 
-<div class="wrap">
-  <header>
-    <h1>POW<span>417</span> Spark Generator</h1>
-    <div class="seed" id="seedLabel">seed —</div>
-  </header>
-
-  <div class="stage" id="stage">
-    <svg id="svg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated spark"></svg>
-    <div class="tag">March 19–21 · 2027</div>
+<main>
+  <svg id="burst" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
+  <p class="lead">Your spark is</p>
+  <h1 class="word" id="word" aria-live="polite">Humanity</h1>
+  <p class="tag">No prompt required.</p>
+  <div class="actions">
+    <button class="primary" id="draw">Draw a spark</button>
+    <button id="copy">Copy</button>
   </div>
+  <div class="recent" id="recent" aria-label="Recent sparks"></div>
+  <div class="note" id="note"></div>
+</main>
 
-  <aside>
-    <div class="btns">
-      <button class="primary" id="newBtn">New spark</button>
-      <button id="modeBtn">Field</button>
-      <button id="pauseBtn">Pause</button>
-    </div>
-    <div class="row"><label for="pts">Points <output id="ptsO"></output></label><input id="pts" type="range" min="4" max="14" value="9"></div>
-    <div class="row"><label for="spike">Spikiness <output id="spikeO"></output></label><input id="spike" type="range" min="0" max="100" value="60"></div>
-    <div class="row"><label for="fat">Body <output id="fatO"></output></label><input id="fat" type="range" min="5" max="40" value="15"></div>
-    <div class="row"><label for="slant">Slant <output id="slantO"></output></label><input id="slant" type="range" min="-20" max="20" value="10"></div>
-    <div class="row"><label for="spin">Spin <output id="spinO"></output></label><input id="spin" type="range" min="0" max="100" value="15"></div>
-    <div class="row"><label for="shim">Shimmer <output id="shimO"></output></label><input id="shim" type="range" min="0" max="100" value="45"></div>
-    <div class="row"><label for="pal">Colours</label>
-      <select id="pal">
-        <option value="blue">POW417 blue</option>
-        <option value="ink">Ink</option>
-        <option value="lav">Lavender</option>
-      </select>
-    </div>
-    <div class="btns">
-      <button id="copyBtn" style="grid-column:1/-1">Copy SVG</button>
-    </div>
-    <div class="note" id="note">Copies the current frame as a vector you can paste into Illustrator, Figma or a .svg file.</div>
-  </aside>
-</div>
+<div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
 
 <script>
-const PALS={
-  blue:["#d3d1f8","#9f9cef","#5d59e6","#2b2690"],
-  ink:["#eceef0","#9aa0a8","#3a3d45","#18181c"],
-  lav:["#f1f0fd","#c9c7f5","#9f9cef","#5d59e6"]
-};
+// Hand-picked spark words. Edit this list to change what can be drawn.
+const SPARKS=["Humanity","Home","Inheritance","Second chances","Borrowed time","Wrong number","Lost and found","First light","The last day","Strangers","Homecoming","Small hours","Leaving","Debt","Neighbours","The promise","Hands","Static","Low tide","Overtime","Night shift","Hometown","The receipt","Echo","Room for one more","Unfinished","Spare key","Rust","Out of season","Kindness"];
 const $=id=>document.getElementById(id);
-const svg=$("svg");
-const ctl=["pts","spike","fat","slant","spin","shim"];
-let seed=0,mode="single",paused=matchMedia("(prefers-reduced-motion: reduce)").matches,sparks=[],t0=performance.now();
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let current="Humanity",recent=[],rolling=false;
 
-function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-const v=id=>+$(id).value;
-
-function makeSpark(s,cx,cy,size,delay){
-  const r=rng(s),n=v("pts"),sp=v("spike")/100,pts=[];
-  const off=r()*0.3-0.15;
+// faceted spark shape behind the word (same style as spark-v1)
+const COLS=["#d3d1f8","#9f9cef","#5d59e6","#2b2690"];
+function sparkSVG(seed,scale,rot,light){
+  let a=seed|0;const r=()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+  const n=9,pts=[];
+  for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+(r()-.5)*.25;const axis=Math.abs(Math.sin(ang*2))<.35;pts.push({a:ang,l:(axis?1:.45+r()*.3)})}
+  const R=460*scale,ir=R*.15;let g="";
   for(let i=0;i<n;i++){
-    const a=(i/n)*Math.PI*2+off+(r()-.5)*(Math.PI*2/n)*0.35;
-    // main axes stay long, the rest vary with spikiness
-    const axis=Math.abs(Math.sin(a*2))<0.35;
-    const base=axis?1:0.55+r()*0.25;
-    const len=base*(1-sp*0.6*r()*(axis?0.4:1));
-    pts.push({a,len:Math.max(.18,len)});
-  }
-  pts.sort((p,q)=>p.a-q.a);
-  return {pts,cx,cy,size,delay,phase:r()*Math.PI*2,born:performance.now()};
-}
-
-function build(){
-  sparks=[];
-  const r=rng(seed);
-  if(mode==="single"){sparks.push(makeSpark(seed,500,500,430,0))}
-  else{
-    const cnt=7;
-    for(let i=0;i<cnt;i++){
-      sparks.push(makeSpark(seed+i*977,120+r()*760,120+r()*760,70+r()*170,i*160));
+    const p=pts[i],pv=pts[(i-1+n)%n],nx=pts[(i+1)%n];let ap=pv.a,an=nx.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
+    const A=p.a+rot,tip=[Math.sin(A)*R*p.l,-Math.cos(A)*R*p.l];
+    const vL=[Math.sin((ap+p.a)/2+rot)*ir,-Math.cos((ap+p.a)/2+rot)*ir],vR=[Math.sin((p.a+an)/2+rot)*ir,-Math.cos((p.a+an)/2+rot)*ir];
+    for(const [side,v] of [[-1,vL],[1,vR]]){
+      const lit=Math.cos(A+side*Math.PI/2-light),ray=Math.cos(A-light);
+      const c=lit>0?(ray>-.2?COLS[0]:COLS[1]):(ray>-.2?COLS[2]:COLS[3]);
+      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${v[0].toFixed(1)},${v[1].toFixed(1)}" fill="${c}" stroke="${c}" stroke-width="1"/>`;
     }
   }
-  $("seedLabel").textContent="seed "+seed.toString(36).toUpperCase();
+  return `<g transform="skewX(-10)">${g}</g>`;
+}
+let sparkSeed=417,popStart=0;
+function drawBurst(now){
+  const t=now/1000,age=(now-popStart)/500,pop=Math.min(1,age);
+  const s=reduce?1:(1-Math.pow(1-pop,3))*(1+(pop<1?Math.sin(pop*Math.PI)*.1:0))*(1+Math.sin(t*2)*.02);
+  $("burst").innerHTML=sparkSVG(sparkSeed,s,reduce?0:t*.12,reduce?-.7:-.7+Math.sin(t*.8)*1.4);
+  if(!reduce)requestAnimationFrame(drawBurst);
 }
 
-function facetColor(sideNormal,rayAng,light,pal){
-  const lit=Math.cos(sideNormal-light),ray=Math.cos(rayAng-light);
-  if(lit>0)return ray>-.2?pal[0]:pal[1];
-  return ray>-.2?pal[2]:pal[3];
+function pick(){let w;do{w=SPARKS[Math.floor(Math.random()*SPARKS.length)]}while(w===current&&SPARKS.length>1);return w}
+function showRecent(){$("recent").innerHTML=recent.slice(0,6).map(w=>`<span>${w}</span>`).join("")}
+function land(w){
+  current=w;const el=$("word");el.classList.remove("rolling");el.textContent=w;
+  recent.unshift(w);showRecent();rolling=false;
+  sparkSeed=Math.floor(Math.random()*1e9);popStart=performance.now();
+  if(reduce)drawBurst(performance.now());
 }
-
-function render(now){
-  const T=(now-t0)/1000,pal=PALS[$("pal").value];
-  const spin=v("spin")/100*0.6,shim=v("shim")/100*1.4,inner=v("fat")/100,slant=v("slant");
-  const light=-0.7+(paused?0:Math.sin(T*shim)*1.6);
-  let out="";
-  for(const s of sparks){
-    const age=paused?1e9:now-s.born-s.delay;
-    if(age<0)continue;
-    const pop=Math.min(1,age/420),ease=1-Math.pow(1-pop,3)*(1-0)+(pop<1?Math.sin(pop*Math.PI)*0.12:0);
-    const tw=paused?1:1+Math.sin(T*2.2+s.phase)*0.04;
-    const rot=paused?0:T*spin*(s.phase>Math.PI?1:-1);
-    const R=s.size*ease*tw,ir=R*inner,n=s.pts.length;
-    let g="";
-    for(let i=0;i<n;i++){
-      const p=s.pts[i],prev=s.pts[(i-1+n)%n],next=s.pts[(i+1)%n];
-      let ap=prev.a,an=next.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
-      const a=p.a+rot,tip=[Math.sin(a)*R*p.len,-Math.cos(a)*R*p.len];
-      const vL=[Math.sin((ap+p.a)/2+rot)*ir,-Math.cos((ap+p.a)/2+rot)*ir];
-      const vR=[Math.sin((p.a+an)/2+rot)*ir,-Math.cos((p.a+an)/2+rot)*ir];
-      const cL=facetColor(a-Math.PI/2,a,light,pal),cR=facetColor(a+Math.PI/2,a,light,pal);
-      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${vL[0].toFixed(1)},${vL[1].toFixed(1)}" fill="${cL}" stroke="${cL}" stroke-width="0.8"/>`;
-      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${vR[0].toFixed(1)},${vR[1].toFixed(1)}" fill="${cR}" stroke="${cR}" stroke-width="0.8"/>`;
-    }
-    out+=`<g transform="translate(${s.cx} ${s.cy}) skewX(${-slant})" stroke-linejoin="round">${g}</g>`;
-  }
-  svg.innerHTML=out;
+function draw(){
+  if(rolling)return;rolling=true;$("note").textContent="";
+  const final=pick(),el=$("word");
+  if(reduce){land(final);return}
+  el.classList.add("rolling");let n=0;const steps=14;
+  (function tick(){
+    el.textContent=SPARKS[Math.floor(Math.random()*SPARKS.length)];n++;
+    if(n<steps)setTimeout(tick,40+n*n*1.6);else land(final);
+  })();
 }
-
-function loop(now){render(now);if(!paused)requestAnimationFrame(loop)}
-function restart(){t0=performance.now();build();if(paused)render(performance.now());else requestAnimationFrame(loop)}
-
-function syncOutputs(){
-  $("ptsO").textContent=v("pts");$("spikeO").textContent=v("spike")+"%";$("fatO").textContent=v("fat")+"%";
-  $("slantO").textContent=v("slant")+"°";$("spinO").textContent=v("spin");$("shimO").textContent=v("shim");
-}
-ctl.forEach(id=>$(id).addEventListener("input",()=>{syncOutputs();if(id==="pts"||id==="spike")build();if(paused)render(performance.now())}));
-$("pal").addEventListener("change",()=>{if(paused)render(performance.now())});
-$("newBtn").addEventListener("click",()=>{seed=Math.floor(Math.random()*1e9);restart()});
-$("modeBtn").addEventListener("click",()=>{mode=mode==="single"?"field":"single";$("modeBtn").textContent=mode==="single"?"Field":"Single";restart()});
-$("pauseBtn").addEventListener("click",()=>{paused=!paused;$("pauseBtn").textContent=paused?"Play":"Pause";if(!paused){for(const s of sparks)s.born=performance.now()-1e5;requestAnimationFrame(loop)}else render(performance.now())});
-$("copyBtn").addEventListener("click",()=>{
-  const markup=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">${svg.innerHTML}</svg>`;
-  const ok=()=>{$("note").textContent="Copied. Paste into a .svg file or straight into your design app."};
-  const fail=()=>{$("note").textContent="This browser blocked copying. Try again in a desktop browser."};
-  try{navigator.clipboard.writeText(markup).then(ok,fail)}catch(e){fail()}
+$("draw").addEventListener("click",draw);
+$("copy").addEventListener("click",()=>{
+  const text=`Your spark is ${current}. No prompt required.`;
+  try{navigator.clipboard.writeText(text).then(()=>{$("note").textContent="Copied: "+text},()=>{$("note").textContent=text})}catch(e){$("note").textContent=text}
 });
-
-seed=0x417027;
-$("pauseBtn").textContent=paused?"Play":"Pause";
-syncOutputs();restart();
+document.addEventListener("keydown",e=>{if(e.code==="Space"&&e.target===document.body){e.preventDefault();draw()}});
+popStart=performance.now();requestAnimationFrame(drawBurst);
 </script>
 </body>
 </html>
