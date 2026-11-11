@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@200;300;400&display=swap">
 <style>
-/* Three views. Main (default) and Countdown share the dark painted look: paint.jpg, moving film grain, lavender
+/* Three views. Main (default) and Countdown share the dark look: plain dark grey, moving film grain, lavender
    Josefin Sans. Main is "Your spark is Humanity" over the POW417 27 burst. Spark (#spark) keeps the original
    light Bebas look with the slanted word and blue sparks. */
 :root{
@@ -20,7 +20,7 @@
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
-body{margin:0;background:var(--bg) url("paint.jpg") center/cover fixed;color:var(--ink);font-family:var(--body);
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px;
   display:flex;flex-direction:column;overflow-x:hidden}
 .top,.bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--display);font-weight:400;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);position:relative;z-index:3}
@@ -37,7 +37,7 @@ body.cd .burst27{display:none}
 .tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-/* Countdown: an old film leader filling the screen, on a dark grey painted texture (paint.jpg) with film grain.
+/* Countdown: an old film leader filling the screen, on plain dark grey with film grain.
    Two rings, a vertical line, a sweep that goes round once a second, the days left in a thin face. */
 .leader{--lav:#d9d4f5;--lav-dim:rgba(217,212,245,.32);--violet:#8f7cf0;position:fixed;inset:0;z-index:0;overflow:hidden}
 /* film grain over the whole page, moving */
