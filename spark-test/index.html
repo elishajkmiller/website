@@ -52,6 +52,7 @@ body.cd .lead{display:none}
 .leader .cross{position:absolute;inset:0;background:linear-gradient(var(--lav-dim),var(--lav-dim)) 50% 0/2px 100% no-repeat}
 .leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(8,6,16,.3) 100deg,rgba(0,0,0,0) 100deg)}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
+.leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:#b9b2e6;background:rgba(20,18,28,.8);padding:.3em .8em}
 .leader .line{font-size:min(3.8vh,3.6vw);letter-spacing:.06em;white-space:nowrap;background:rgba(20,18,28,.8);padding:.15em .5em}
 .leader .line b{font-weight:200;font-size:1.9em;vertical-align:-.12em;margin:0 .12em 0 .35em}
 .leader .line b:first-child{margin-left:0}
@@ -121,7 +122,7 @@ body.v-main main{display:none}
   <h1 class="word" id="word">Humanity</h1>
   <div class="leader" id="film" hidden role="timer" aria-label="Time until March 19, 2027">
     <div class="rings"></div><div class="cross"></div><div class="sweep"></div>
-    <div class="num"><span class="line" id="cdLine"></span></div>
+    <div class="num"><span class="pre">Your Spark Ignites In</span><span class="line" id="cdLine"></span></div>
   </div>
 </main>
 
