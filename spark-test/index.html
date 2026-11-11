@@ -18,6 +18,7 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;--heat:#9f9cef;--heat-soft:rgba(143,140,255,.55);color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;--heat:#9f9cef;--heat-soft:rgba(143,140,255,.55);color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px;
@@ -34,8 +35,38 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.word.count{font-size:clamp(48px,11vw,170px);font-variant-numeric:tabular-nums;white-space:nowrap;overflow-wrap:normal}
-.units{font-family:var(--display);font-size:clamp(16px,2.4vw,24px);letter-spacing:.12em;color:var(--muted);margin:0;position:relative;z-index:1;display:flex;gap:clamp(18px,5vw,64px)}
+/* Countdown: a strip of film (same film base and sprocket holes as the Bairview Films stills strip), four frames,
+   each frame a split-flap counter. The film jumps one sprocket hole forward every second, like a camera advancing. */
+.film{position:relative;z-index:1;width:min(100%,1080px);box-sizing:border-box;padding:22px 0;border-radius:2px;background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='252'%3E%3Cfilter id='d' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .78 0 0 0 0 .74 0 0 0 10 -8.3'/%3E%3C/filter%3E%3Crect width='320' height='252' filter='url%28%23d%29' opacity='.5'/%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath d='M47 0 L48.5 252' stroke-width='.6' opacity='.13'/%3E%3Cpath d='M201 30 Q203 110 200 190' stroke-width='.5' opacity='.11'/%3E%3Cpath d='M273 120 L274 252' stroke-width='.7' opacity='.09'/%3E%3Cpath d='M118 60 L121 82' stroke-width='.8' opacity='.18'/%3E%3Cpath d='M236 214 L242 220' stroke-width='1.1' opacity='.2'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 320px 252px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 .18'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url%28%23n%29'/%3E%3C/svg%3E") 0 0 / 160px 160px,
+    linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,0) 14%, rgba(255,255,255,0) 86%, rgba(255,255,255,.07)),
+    #222120;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.08),0 10px 30px rgba(0,0,0,.35);
+  animation:advance 1s infinite}
+.film::before,.film::after{content:"";position:absolute;left:0;width:100%;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='22'%3E%3Crect x='8.6' y='5.6' width='14.8' height='10.8' rx='3' fill='%23e9e4da' fill-opacity='.05'/%3E%3Crect x='9' y='6' width='14' height='10' rx='2.6' fill='%23050505'/%3E%3Crect x='9.6' y='6.6' width='12.8' height='8.8' rx='2.2' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M11 16.9 H21' stroke='%23fff' stroke-opacity='.16' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;animation:advance 1s infinite}
+.film::before{top:0}.film::after{bottom:0}
+.film .sheen{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 44%,rgba(255,255,255,0) 58%),linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%,rgba(0,0,0,0) 90%,rgba(0,0,0,.25))}
+@keyframes advance{0%{background-position-x:0}14%,100%{background-position-x:-32px}}
+.frames{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:clamp(4px,1vw,10px);padding:0 clamp(4px,1vw,10px)}
+.frame{background:#0d0d10;box-shadow:0 0 0 1px rgba(0,0,0,.65);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(4px,1vw,10px);min-width:0}
+.frame .lab{font-family:var(--display);font-size:clamp(11px,1.6vw,18px);letter-spacing:.14em;color:#9a9ab0}
+.flaps{display:flex;gap:clamp(2px,.5vw,6px)}
+.flap{--h:clamp(38px,8vw,112px);position:relative;width:calc(var(--h)*.62);height:var(--h);perspective:400px;font-family:var(--display);font-size:calc(var(--h)*.86);color:#ecebf7}
+.flap .half,.flap .leaf{position:absolute;left:0;width:100%;height:50%;overflow:hidden;background:#24242c;border-radius:4px}
+.flap .top,.flap .ltop{top:0;border-bottom:1px solid #0d0d10;border-radius:4px 4px 0 0}
+.flap .bot,.flap .lbot{bottom:0;border-radius:0 0 4px 4px;background:#1e1e25}
+.flap b{position:absolute;left:0;width:100%;height:200%;display:flex;align-items:center;justify-content:center;font-weight:400;line-height:1}
+.flap .top b,.flap .ltop b{top:0}.flap .bot b,.flap .lbot b{bottom:0}
+.flap .ltop{transform-origin:50% 100%;z-index:2;backface-visibility:hidden}
+.flap .lbot{transform-origin:50% 0;z-index:2;transform:rotateX(90deg);backface-visibility:hidden}
+.flap.go .ltop{animation:fall .22s ease-in forwards}
+.flap.go .lbot{animation:land .22s .22s ease-out forwards}
+@keyframes fall{to{transform:rotateX(-90deg)}}
+@keyframes land{from{transform:rotateX(90deg)}to{transform:rotateX(0)}}
+.frame.sec .flap{color:#9f9cef}
+@media (max-width:600px){.frames{grid-template-columns:1fr 1fr}.film{padding:22px 0}}
+@media (prefers-reduced-motion: reduce){.film,.film::before,.film::after,.flap.go .ltop,.flap.go .lbot{animation:none}}
 </style>
 </head>
 <body>
@@ -45,7 +76,15 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 <main>
   <p class="lead" id="lead">Your spark is</p>
   <h1 class="word" id="word">Humanity</h1>
-  <p class="units" id="units" hidden><span>Days</span><span>Hours</span><span>Minutes</span><span>Seconds</span></p>
+  <div class="film" id="film" hidden role="timer" aria-label="Time until March 19, 2027">
+    <div class="frames">
+      <div class="frame"><div class="flaps" data-u="d"></div><span class="lab">Days</span></div>
+      <div class="frame"><div class="flaps" data-u="h"></div><span class="lab">Hours</span></div>
+      <div class="frame"><div class="flaps" data-u="m"></div><span class="lab">Minutes</span></div>
+      <div class="frame sec"><div class="flaps" data-u="s"></div><span class="lab">Seconds</span></div>
+    </div>
+    <div class="sheen"></div>
+  </div>
 </main>
 
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
@@ -116,7 +155,7 @@ function frame(now){
   const dt=Math.min(.05,(now-last)/1000||0);last=now;
   ctx.clearRect(0,0,W,H);
   ctx.globalCompositeOperation=dark?"lighter":"source-over";
-  owed+=dt*70;while(owed>=1&&sparks.length<110){spawn();owed--}
+  if(mode==='spark'){owed+=dt*70;while(owed>=1&&sparks.length<110){spawn();owed--}}
   sparks=sparks.filter(s=>{s.life+=dt;const dr=Math.exp(-1.1*dt);s.vx*=dr;s.vy=s.vy*dr+30*dt;s.x+=s.vx*dt;s.y+=s.vy*dt;return s.life<s.max});
   for(const s of sparks)drawSpark(s,true);
   ctx.globalAlpha=1;
@@ -130,31 +169,49 @@ function still(){
 }
 
 
-// two views: #spark shows the word, #countdown counts down to the start of the challenge
+// two views: #spark shows the word with sparks, #countdown shows the film strip of split-flap counters
 // start time: Friday March 19, 2027, 6:00 PM Central (change START to move it)
 const START=new Date("2027-03-19T18:00:00-05:00").getTime();
-const lead=document.getElementById("lead"),units=document.getElementById("units");
+const lead=document.getElementById("lead"),film=document.getElementById("film");
 let mode="spark",timer=0;
-const pad2=n=>String(n).padStart(2,"0");
-function countText(){
-  let ms=START-Date.now();if(ms<=0)return "Now";
-  const s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sec=s%60;
-  return `${d}:${pad2(h)}:${pad2(m)}:${pad2(sec)}`;
+const flapSets={};
+for(const el of film.querySelectorAll(".flaps"))flapSets[el.dataset.u]={el,cards:[]};
+function makeCard(ch){
+  const f=document.createElement("span");f.className="flap";
+  f.innerHTML=`<span class="half top"><b>${ch}</b></span><span class="half bot"><b>${ch}</b></span><span class="leaf ltop"><b>${ch}</b></span><span class="leaf lbot"><b>${ch}</b></span>`;
+  f.v=ch;return f;
 }
-function tick(){const t=countText();if(word.textContent!==t){word.textContent=t;sampleWord()}}
+function flipTo(f,ch){
+  if(f.v===ch)return;const old=f.v;f.v=ch;
+  const [top,bot,lt,lb]=f.querySelectorAll("b");
+  top.textContent=ch;bot.textContent=old;lt.textContent=old;lb.textContent=ch;
+  f.classList.remove("go");void f.offsetWidth;if(!reduce)f.classList.add("go");
+  clearTimeout(f.t);f.t=setTimeout(()=>{bot.textContent=ch;lt.textContent=ch;f.classList.remove("go")},reduce?0:460);
+}
+function setUnit(u,str){
+  const set=flapSets[u];
+  while(set.cards.length<str.length){const c=makeCard(str[set.cards.length]);set.el.appendChild(c);set.cards.push(c)}
+  while(set.cards.length>str.length)set.el.removeChild(set.cards.pop());
+  [...str].forEach((ch,k)=>flipTo(set.cards[k],ch));
+}
+function tick(){
+  const s=Math.max(0,Math.floor((START-Date.now())/1000));
+  const p=n=>String(n).padStart(2,"0");
+  setUnit("d",String(Math.floor(s/86400)).padStart(3,"0"));setUnit("h",p(Math.floor(s%86400/3600)));
+  setUnit("m",p(Math.floor(s%3600/60)));setUnit("s",p(s%60));
+}
 function route(){
   mode=location.hash==="#countdown"?"countdown":"spark";
-  document.getElementById("tab-spark").toggleAttribute("aria-current",mode==="spark");
-  document.getElementById("tab-countdown").toggleAttribute("aria-current",mode==="countdown");
-  if(mode==="spark")document.getElementById("tab-spark").setAttribute("aria-current","page");
-  else document.getElementById("tab-countdown").setAttribute("aria-current","page");
+  const ts=document.getElementById("tab-spark"),tc=document.getElementById("tab-countdown");
+  ts.removeAttribute("aria-current");tc.removeAttribute("aria-current");(mode==="spark"?ts:tc).setAttribute("aria-current","page");
   clearInterval(timer);
-  if(mode==="countdown"){lead.textContent="Your spark lights up in";word.classList.add("count");units.hidden=false;word.textContent=countText();timer=setInterval(tick,1000)}
-  else{lead.textContent="Your spark is";word.classList.remove("count");units.hidden=true;word.textContent="Humanity"}
-  sparks=[];sampleWord();if(reduce)still();
+  const cd=mode==="countdown";
+  lead.textContent=cd?"Your spark lights up in":"Your spark is";word.hidden=cd;film.hidden=!cd;
+  if(cd){tick();timer=setInterval(tick,250)}
+  sparks=[];ctx.clearRect(0,0,W,H);if(!cd){sampleWord();if(reduce)still()}
 }
 addEventListener("hashchange",route);
-addEventListener("resize",()=>{resize();if(reduce)still()});
+addEventListener("resize",()=>{resize();if(reduce&&mode==="spark")still()});
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{dark=isDark()});
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();route();if(!reduce)requestAnimationFrame(frame)});
 </script>
