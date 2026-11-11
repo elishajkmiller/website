@@ -35,19 +35,18 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-/* Countdown: one old film leader frame. Grey frame, two rings, a crosshair, a sweep that goes round once a second,
+/* Countdown: the old film leader circle on its own. Grey disc, two rings, a crosshair, a sweep that goes round once a second,
    the days left as the big number and hours, minutes and seconds under it. */
-.leader{position:relative;z-index:1;width:min(100%,640px);aspect-ratio:4/3;overflow:hidden;border-radius:6px;
-  box-shadow:0 0 0 1px rgba(0,0,0,.6),0 14px 40px rgba(0,0,0,.35);
-  background:conic-gradient(from 0deg,rgba(20,20,24,.5) var(--a,0deg),rgba(0,0,0,0) 0),radial-gradient(circle,#a9a9a4 0%,#8d8d88 55%,#5a5a56 100%);
+.leader{position:relative;z-index:1;width:min(100%,560px);aspect-ratio:1;overflow:hidden;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(20,20,24,.5) var(--a,0deg),rgba(0,0,0,0) 0),radial-gradient(circle,#a9a9a4 0%,#8d8d88 60%,#7a7a75 100%);
   animation:flick .9s steps(1) infinite}
-.leader .rings{position:absolute;inset:0;margin:auto;height:86%;aspect-ratio:1;border-radius:50%;border:clamp(3px,.6vw,5px) solid #f2f1ec;box-shadow:0 0 0 2px #1a1a1a}
+.leader .rings{position:absolute;inset:0;margin:auto;height:100%;aspect-ratio:1;border-radius:50%;border:clamp(3px,.6vw,5px) solid #f2f1ec;box-shadow:0 0 0 2px #1a1a1a}
 .leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(3px,.6vw,5px) solid #f2f1ec;box-shadow:inset 0 0 0 2px #1a1a1a}
 .leader .cross{position:absolute;inset:0;background:linear-gradient(#1a1a1a,#1a1a1a) 50% 0/2px 100% no-repeat,linear-gradient(#1a1a1a,#1a1a1a) 0 50%/100% 2px no-repeat;opacity:.75}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5em;color:#111;font-family:var(--display);line-height:.85;font-variant-numeric:tabular-nums}
 .leader .big{font-size:clamp(96px,26vw,300px)}
 .leader .small{font-size:clamp(20px,4.6vw,48px);letter-spacing:.06em;background:#8d8d88;padding:0 .3em}
-.leader .lab{position:absolute;left:0;right:0;bottom:4%;text-align:center;font-family:var(--display);font-size:clamp(12px,2vw,20px);letter-spacing:.2em;color:#1a1a1a}
+.leader .lab{position:absolute;left:0;right:0;bottom:17%;text-align:center;font-family:var(--display);font-size:clamp(12px,2vw,20px);letter-spacing:.2em;color:#1a1a1a}
 @keyframes flick{0%{filter:brightness(1)}23%{filter:brightness(1.06)}47%{filter:brightness(.95)}71%{filter:brightness(1.03)}}
 @media (prefers-reduced-motion: reduce){.leader{animation:none}}
 </style>
