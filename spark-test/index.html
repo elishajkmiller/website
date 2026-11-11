@@ -6,11 +6,11 @@
 <meta name="robots" content="noindex, nofollow">
 <title>POW417 Spark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@200;300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&display=swap">
 <style>
 /* Three views. Main (default) and Countdown share the dark look: plain dark grey, moving film grain, lavender
    Josefin Sans. Main is the pow417.com home page in that theme. Spark (#spark) keeps the original
-   light Bebas look with the slanted word and blue sparks. */
+   light look with the slanted word and blue sparks. All tabs use Josefin Sans. */
 :root{
   --bg:#1c1b22; --ink:#ece8ff; --muted:#b9b2e6; --accent:#9f9cef; --rule:rgba(217,212,245,.16);
   --display:"Josefin Sans",system-ui,sans-serif;
@@ -57,11 +57,10 @@ body.cd .lead{display:none}
 .leader .line b:first-child{margin-left:0}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
 /* Spark tab: the original light look */
-body.v-spark{--bg:#e0e6e8;--ink:#18181c;--muted:#5a5e6b;--display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;color-scheme:light;background:var(--bg)}
+body.v-spark{--bg:#e0e6e8;--ink:#18181c;--muted:#5a5e6b;color-scheme:light;background:var(--bg)}
 @media (prefers-color-scheme: dark){body.v-spark{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;color-scheme:dark}}
-body.v-spark .top,body.v-spark .bottom{font-size:20px;letter-spacing:.06em;text-transform:none}
-body.v-spark .lead{font-weight:400;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;text-transform:none;color:var(--ink)}
-body.v-spark .word{font-weight:400;transform:skewX(-10deg)}
+body.v-spark .lead{color:var(--ink)}
+body.v-spark .word{font-weight:300;transform:skewX(-10deg)}
 body.v-spark .burst27{display:none}
 body.v-spark::after{opacity:.07}
 /* Main tab: the pow417.com home page, in the dark lavender theme */
@@ -69,10 +68,10 @@ body.v-spark::after{opacity:.07}
 body.v-main main{display:none}
 #site h2{font-family:var(--display);font-weight:200;font-size:clamp(40px,7vw,84px);line-height:.95;margin:0;letter-spacing:.01em}
 #site h2 em,#site h2 span{font-style:normal;color:var(--accent)}
-#site .eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+#site .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 #site p{font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:var(--muted);max-width:62ch;margin:0}
 .hero{position:relative;min-height:min(78vh,720px);display:flex;flex-direction:column;justify-content:center;gap:18px}
-.hero img{position:absolute;right:-4%;top:50%;width:min(70vw,640px);transform:translateY(-50%);opacity:.32;pointer-events:none}
+.hero .mark{display:block;width:min(100%,620px);height:auto;margin-left:-2%}
 .hero h1{position:relative;font-family:var(--display);font-weight:200;font-size:clamp(84px,20vw,240px);line-height:.85;margin:0;letter-spacing:.01em}
 .hero .tag{position:relative;font-size:clamp(15px,2vw,20px);letter-spacing:.18em;text-transform:uppercase;line-height:1.7;color:var(--muted)}
 .hero .date{position:relative;display:flex;gap:18px;flex-wrap:wrap;align-items:baseline;font-size:clamp(18px,2.4vw,26px);font-weight:300}
@@ -80,7 +79,7 @@ body.v-main main{display:none}
 .marquee{overflow:hidden;border-block:1px solid var(--rule);padding:14px 0;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)))}
 .marquee div{display:flex;width:max-content;animation:marquee 32s linear infinite}
 .marquee span{padding:0 28px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.marquee span::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin-left:56px;vertical-align:middle}
+.marquee span::after{content:"";display:inline-block;width:14px;height:14px;background:url("spark.svg") center/contain no-repeat;margin-left:56px;vertical-align:middle}
 @keyframes marquee{to{transform:translateX(-50%)}}
 .films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
 .film{background:var(--bg);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -104,7 +103,11 @@ body.v-main main{display:none}
 .foot{border-top:1px solid var(--rule);padding-top:24px;display:flex;flex-wrap:wrap;gap:14px 26px;align-items:baseline;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover,.foot a:focus-visible{color:var(--ink)}
 .foot b{font-weight:300;font-size:22px;letter-spacing:.04em;color:var(--ink);margin-right:auto}
-@media (max-width:720px){.split{grid-template-columns:minmax(0,1fr)}.hero img{right:-20%;opacity:.22}}
+#site .ico{width:18px;height:18px}
+.sparked{position:relative}
+.sparked::before{content:"";position:absolute;right:-6%;top:-14%;width:min(46vw,420px);aspect-ratio:1;background:url("spark.svg") center/contain no-repeat;opacity:.14;pointer-events:none}
+.sparked>*{position:relative}
+@media (max-width:720px){.split{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion: reduce){.marquee div{animation:none}}
 </style>
 </head>
@@ -124,22 +127,21 @@ body.v-main main{display:none}
 
 <div id="site" hidden>
   <section class="hero">
-    <img src="27-burst.svg" alt="">
-    <span class="eyebrow">Welcome to</span>
-    <h1>POW417</h1>
+    <span class="eyebrow"><img class="ico" src="spark.svg" alt="">Welcome to</span>
+    <h1><img class="mark" src="lockup-light.svg" alt="POW417"></h1>
     <div class="tag">Proof of Work<br>A 48-hour human film gathering<br>Springfield, MO</div>
     <div class="date"><b>March 19, 2027</b><span>Springfield, MO · details soon</span></div>
   </section>
   <div class="marquee" aria-hidden="true"><div><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span></div></div>
-  <section id="films"><span class="eyebrow">Watch</span><h2>The 2026 <span>films</span></h2><div class="films"><div class="film"><div class="meta"><span>01</span><span>Necrotic Studios</span></div><div class="title">Heading Home</div><a href="https://youtu.be/byEvRLZ9Flo" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>02</span><span>Nate :)</span></div><div class="title">Going Outside</div><a href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>03</span><span>House of Keeling</span></div><div class="title">The Inbetween</div><a href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>04</span><span>03 Media</span></div><div class="title">Darkness That Follows</div><a href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>05</span><span>SweetBogsTv &amp; CIDERHOUSE</span></div><div class="title">Clogged Up</div><a href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>06</span><span>A1 &amp; A2 Productions</span></div><div class="title">Podcast Pete</div><a href="https://youtu.be/AU_pT_WoedQ" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>07</span><span>Yellow Bike Films</span></div><div class="title">Seeing Double</div><a href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>08</span><span>BearView Films</span></div><div class="title">What's Eating You</div><a href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener">Watch on YouTube</a></div></div></section>
-  <section id="showcase"><span class="eyebrow">Next</span><h2>POW417 <span>2027</span></h2><p style="margin-top:18px">The clock starts March 19, 2027. Location and showcase details coming soon.</p></section>
-  <section id="the48"><h2>48 hours.<br>No prompt.<br><span>Make a film.</span></h2><div class="hours"><div><span class="when">Hour 00 · Kickoff</span><span class="what">Opening ceremonies</span><p>Gather with your crew. The clock starts when ceremonies close. No prompt, just your vision, your team, and 48 hours.</p></div><div><span class="when">Hours 01 to 12 · Pre-pro</span><span class="what">Write and prep</span><p>Develop your concept, write your script, scout locations, cast your crew. This is where your film starts to exist.</p></div><div><span class="when">Hours 12 to 36 · Production</span><span class="what">Shoot it</span><p>Roll camera. Everything is practical: real locations, real light, real performances. No AI-generated anything.</p></div><div><span class="when">Hours 36 to 48 · Post</span><span class="what">Cut and deliver</span><p>Edit, mix, color, and deliver. Human hands on every frame. Submission is final. The clock is the great equalizer.</p></div><div><span class="when">The showcase · Date TBA</span><span class="what">We watch together</span><p>Every film screens publicly at the showcase. Every crew gets seen. No winners, no losers, just filmmakers in the same room.</p></div></div></section>
+  <section id="films"><span class="eyebrow"><img class="ico" src="spark.svg" alt="">Watch</span><h2>The 2026 <span>films</span></h2><div class="films"><div class="film"><div class="meta"><span>01</span><span>Necrotic Studios</span></div><div class="title">Heading Home</div><a href="https://youtu.be/byEvRLZ9Flo" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>02</span><span>Nate :)</span></div><div class="title">Going Outside</div><a href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>03</span><span>House of Keeling</span></div><div class="title">The Inbetween</div><a href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>04</span><span>03 Media</span></div><div class="title">Darkness That Follows</div><a href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>05</span><span>SweetBogsTv &amp; CIDERHOUSE</span></div><div class="title">Clogged Up</div><a href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>06</span><span>A1 &amp; A2 Productions</span></div><div class="title">Podcast Pete</div><a href="https://youtu.be/AU_pT_WoedQ" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>07</span><span>Yellow Bike Films</span></div><div class="title">Seeing Double</div><a href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>08</span><span>BearView Films</span></div><div class="title">What's Eating You</div><a href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener">Watch on YouTube</a></div></div></section>
+  <section id="showcase"><span class="eyebrow"><img class="ico" src="spark.svg" alt="">Next</span><h2>POW417 <span>2027</span></h2><p style="margin-top:18px">The clock starts March 19, 2027. Location and showcase details coming soon.</p></section>
+  <section id="the48" class="sparked"><h2>48 hours.<br>No prompt.<br><span>Make a film.</span></h2><div class="hours"><div><span class="when">Hour 00 · Kickoff</span><span class="what">Opening ceremonies</span><p>Gather with your crew. The clock starts when ceremonies close. No prompt, just your vision, your team, and 48 hours.</p></div><div><span class="when">Hours 01 to 12 · Pre-pro</span><span class="what">Write and prep</span><p>Develop your concept, write your script, scout locations, cast your crew. This is where your film starts to exist.</p></div><div><span class="when">Hours 12 to 36 · Production</span><span class="what">Shoot it</span><p>Roll camera. Everything is practical: real locations, real light, real performances. No AI-generated anything.</p></div><div><span class="when">Hours 36 to 48 · Post</span><span class="what">Cut and deliver</span><p>Edit, mix, color, and deliver. Human hands on every frame. Submission is final. The clock is the great equalizer.</p></div><div><span class="when">The showcase · Date TBA</span><span class="what">We watch together</span><p>Every film screens publicly at the showcase. Every crew gets seen. No winners, no losers, just filmmakers in the same room.</p></div></div></section>
   <section id="about" class="split"><h2>Not a <em>competition.</em><br>A coming together.</h2><div class="body">
     <p>POW417 is a 48-hour film gathering built around one simple idea: what happens when people actually show up and make something real, together, by hand?</p>
     <p>No rankings. No trophies. No algorithm. Just crews, cameras, and the clock. Every team gets the same deadline and the same constraints. What you do with it is entirely yours.</p>
     <p>We built this because the 417 deserves a film event that respects the craft. One that says the human eye, the human hand, and the human story still matter, maybe more than ever.</p></div></section>
   <section id="rules" class="split"><div><h2>The only <span>rules</span> that matter</h2><p style="margin-top:18px">These aren't restrictions. They're the whole point.</p></div><div class="rules"><div class="rule"><span class="n">01</span><div><div class="t">No AI. Not even a little.<i>Non-negotiable</i></div><p>No AI-generated images, voice, scripts, music, visual effects, or any tool that uses generative AI in any part of your pipeline.</p></div></div><div class="rule"><span class="n">02</span><div><div class="t">All footage shot in the 48<i>Hard rule</i></div><p>Every frame of your film must be captured during the official 48-hour window. Stock footage is not permitted.</p></div></div><div class="rule"><span class="n">03</span><div><div class="t">5 minutes maximum<i>Core</i></div><p>Your finished film, credits included, must not exceed 5 minutes.</p></div></div><div class="rule"><span class="n">04</span><div><div class="t">Show up for the screening<i>Expected</i></div><p>This isn't a drop-box event. Being present at the screening is part of the deal.</p></div></div></div></section>
-  <footer class="foot"><b>POW417</b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
+  <footer class="foot"><b><img src="lockup-light.svg" alt="POW417" style="height:64px;width:auto;display:block"></b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
 </div>
 
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
