@@ -84,8 +84,8 @@ body.v-main main{display:none}
 .marquee span{padding:0 28px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .marquee span::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin-left:56px;vertical-align:middle}
 @keyframes marquee{to{transform:translateX(-50%)}}
-.films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
-.film{background:var(--bg);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0;margin-top:28px}
+.film{padding:22px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:10px;min-width:0}
 .film .meta{display:flex;justify-content:space-between;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .film .title{font-family:var(--big);font-size:24px;letter-spacing:.01em}
 .film a{color:var(--accent);text-decoration:none;font-size:14px;letter-spacing:.08em;margin-top:auto}
