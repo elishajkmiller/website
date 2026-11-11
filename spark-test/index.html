@@ -12,11 +12,11 @@
    Josefin Sans. Main is the pow417.com home page in that theme. Spark (#spark) keeps the original
    light look with the slanted word and blue sparks. Big type is Anton (the font of the 27), small type is Josefin Sans. */
 :root{
-  --bg:#1c1b22; --ink:#ece8ff; --muted:#b9b2e6; --accent:#9f9cef; --rule:rgba(217,212,245,.16);
+  --bg:#e0e6e8; --ink:#18181c; --muted:#4f5462; --accent:#4a45e0; --rule:rgba(24,24,28,.16);
   --display:"Josefin Sans",system-ui,sans-serif;
   --body:"Josefin Sans",system-ui,sans-serif;
   --big:"Anton",Impact,"Arial Narrow",sans-serif; /* the font of the 27 */
-  color-scheme:dark;
+  color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -40,27 +40,26 @@ body.cd .burst27{display:none}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 /* Countdown: an old film leader filling the screen, on plain dark grey with film grain.
    Two rings, a full-screen crosshair, a sweep that goes round once a second, the days left in a thin face. */
-.leader{--lav:#d9d4f5;--lav-dim:rgba(217,212,245,.32);--violet:#8f7cf0;position:fixed;inset:0;z-index:0;overflow:hidden}
+.leader{--lav:#18181c;--lav-dim:rgba(24,24,28,.22);--violet:#4a45e0;position:fixed;inset:0;z-index:0;overflow:hidden}
 /* film grain over the whole page, moving */
 body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .9 0 0 0 0 1 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.09;animation:grain .6s steps(6) infinite}
-body.cd::after{opacity:.1}
+body.cd::after{opacity:.06}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-2%)}80%{transform:translate(3%,3%)}}
-body.cd .top,body.cd .bottom,body.cd .top b,body.cd .tabs a{color:#b9b2e6}
-body.cd .tabs a[aria-current="page"]{color:#ece8ff;border-color:#ece8ff}
+body.cd .top,body.cd .bottom,body.cd .top b,body.cd .tabs a{color:var(--ink)}
+body.cd .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 body.cd .lead{display:none}
-.leader .rings{position:absolute;inset:0;margin:auto;height:min(92vh,92vw);aspect-ratio:1;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:0 0 18px rgba(143,124,240,.25)}
-.leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:inset 0 0 18px rgba(143,124,240,.2)}
+.leader .rings{position:absolute;inset:0;margin:auto;height:min(92vh,92vw);aspect-ratio:1;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:none}
+.leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:none}
 .leader .cross{position:absolute;inset:0;background:linear-gradient(var(--lav-dim),var(--lav-dim)) 50% 0/2px 100% no-repeat,linear-gradient(var(--lav-dim),var(--lav-dim)) 0 50%/100% 2px no-repeat}
-.leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(8,6,16,.3) 100deg,rgba(0,0,0,0) 100deg)}
-.leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
-.leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:#b9b2e6;background:rgba(20,18,28,.8);padding:.3em .8em}
-.leader .line{font-size:min(3.8vh,3.6vw);letter-spacing:.06em;white-space:nowrap;background:rgba(20,18,28,.8);padding:.15em .5em}
+.leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(74,69,224,.14) 100deg,rgba(0,0,0,0) 100deg)}
+.leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#18181c;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
+.leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);background:rgba(224,230,232,.92);padding:.3em .8em}
+.leader .line{font-size:min(3.8vh,3.6vw);letter-spacing:.06em;white-space:nowrap;background:rgba(224,230,232,.92);padding:.15em .5em}
 .leader .line b{font-family:var(--big);font-weight:400;font-size:1.9em;display:inline-block;transform:skewX(-10deg);vertical-align:-.12em;margin:0 .14em 0 .4em}
 .leader .line b:first-child{margin-left:0}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
 /* Spark tab: the original light look */
 body.v-spark{--bg:#e0e6e8;--ink:#18181c;--muted:#5a5e6b;color-scheme:light;background:var(--bg)}
-@media (prefers-color-scheme: dark){body.v-spark{--bg:#16161b;--ink:#ecebf7;--muted:#9a9ab0;color-scheme:dark}}
 body.v-spark .lead{color:var(--ink)}
 body.v-spark .word{transform:skewX(-10deg)}
 body.v-spark .burst27{display:none}
@@ -118,8 +117,6 @@ body.v-main .top,body.v-main .top b,body.v-main .tabs a{color:var(--ink)}
 body.v-main .marquee{background:#8f8cea;border:0}
 body.v-main .marquee span{color:#fff}
 body.v-main .marquee span::after{background:#fff}
-.statement{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;line-height:.92;font-size:clamp(56px,13vw,170px);letter-spacing:-.005em}
-.statement span:nth-child(2){font-size:.78em}.statement span:nth-child(3){font-size:.52em;letter-spacing:.01em}
 .dates{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:#18181c;color:#fff;padding:clamp(24px,5vw,56px);margin-inline:calc(-1*clamp(0px,2vw,24px));overflow:hidden}
 .dates .stack{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;font-size:clamp(30px,5.4vw,64px);line-height:1.02;transform:rotate(-8deg) skewX(-10deg);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
 .dates .stack .on{color:#fff;-webkit-text-stroke:0}
@@ -147,14 +144,12 @@ body.v-main .marquee span::after{background:#fff}
 
 <div id="site" hidden>
   <section class="hero">
-    <span class="eyebrow">Coming March 2027</span>
     <h1><img class="mark" src="lockup.svg" alt="POW417 2027"></h1>
     <div class="tag">Proof of Work<br>A 48-hour human film gathering<br>Springfield, MO</div>
     <div class="date"><b>March 19, 2027</b><span>Springfield, MO · details soon</span></div>
   </section>
   <div class="marquee" aria-hidden="true"><div><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span><span>March 19, 2027</span><span>Details coming soon</span><span>48 hours</span><span>No AI</span><span>Real craft</span><span>Human stories</span><span>Proof of work</span><span>Springfield MO</span><span>Not a competition</span><span>Just filmmakers</span></div></div>
   <section id="films"><span class="eyebrow">Watch</span><h2>The 2026 <span>films</span></h2><div class="films"><div class="film"><div class="meta"><span>01</span><span>Necrotic Studios</span></div><div class="title">Heading Home</div><a href="https://youtu.be/byEvRLZ9Flo" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>02</span><span>Nate :)</span></div><div class="title">Going Outside</div><a href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>03</span><span>House of Keeling</span></div><div class="title">The Inbetween</div><a href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>04</span><span>03 Media</span></div><div class="title">Darkness That Follows</div><a href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>05</span><span>SweetBogsTv &amp; CIDERHOUSE</span></div><div class="title">Clogged Up</div><a href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>06</span><span>A1 &amp; A2 Productions</span></div><div class="title">Podcast Pete</div><a href="https://youtu.be/AU_pT_WoedQ" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>07</span><span>Yellow Bike Films</span></div><div class="title">Seeing Double</div><a href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener">Watch on YouTube</a></div><div class="film"><div class="meta"><span>08</span><span>BearView Films</span></div><div class="title">What's Eating You</div><a href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener">Watch on YouTube</a></div></div></section>
-  <section class="statement" aria-label="A no AI 48-hour film challenge"><span>A no AI</span><span>48-hour</span><span>film challenge</span></section>
   <section id="showcase" class="dates"><div class="stack" aria-hidden="true"><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span class="on">March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span></div>
     <div class="dates-copy"><span class="eyebrow">Next</span><h2>POW417 <span>2027</span></h2><p>The clock starts March 19, 2027. Location and showcase details coming soon.</p></div></section>
   <section class="mission"><span>New year.</span><span>Same mission.</span></section>
@@ -175,11 +170,11 @@ body.v-main .marquee span::after{background:#fff}
 const cv=document.getElementById("sparks"),ctx=cv.getContext("2d"),word=document.getElementById("word");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isDark=()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/);return m&&+m[0]<100};
-const LAV=["#ece8ff","#d9d4f5","#b9b2e6","#9f9cef"],BLUE=["#9f9cef","#7d79ea","#5d59e6","#4a45e0"];let COLS=LAV;
+const LAV=["#ece8ff","#d9d4f5","#b9b2e6","#9f9cef"],BLUE=["#9f9cef","#7d79ea","#5d59e6","#4a45e0"];let COLS=BLUE;
 let W=0,H=0,dpr=1,edges=[],center=[0,0],sparks=[],last=0,owed=0,dark=false;
 
 function resize(){
-  dark=mode!=="spark"||isDark();
+  dark=false;
   dpr=Math.min(1.5,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;
   cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
   sampleWord();
@@ -271,7 +266,7 @@ function route(){
   document.body.classList.toggle("cd",cd);document.body.classList.toggle("v-spark",mode==="spark");document.body.classList.toggle("v-main",mode==="main");
   document.getElementById("site").hidden=mode!=="main";document.querySelector(".bottom").hidden=mode==="main";
   lead.textContent="Your spark is";word.hidden=cd;film.hidden=!cd;
-  COLS=mode==="spark"?BLUE:LAV;dark=mode!=="spark"||isDark();
+  COLS=BLUE;dark=false;
   if(cd){tick();if(reduce)timer=setInterval(tick,1000)}
   sparks=[];ctx.clearRect(0,0,W,H);if(mode==='spark'){sampleWord();if(reduce)still()}
 }
