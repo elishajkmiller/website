@@ -39,7 +39,7 @@ body.cd .burst27{display:none}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 /* Countdown: an old film leader filling the screen, on plain dark grey with film grain.
-   Two rings, a vertical line, a sweep that goes round once a second, the days left in a thin face. */
+   Two rings, a full-screen crosshair, a sweep that goes round once a second, the days left in a thin face. */
 .leader{--lav:#d9d4f5;--lav-dim:rgba(217,212,245,.32);--violet:#8f7cf0;position:fixed;inset:0;z-index:0;overflow:hidden}
 /* film grain over the whole page, moving */
 body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .9 0 0 0 0 1 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.09;animation:grain .6s steps(6) infinite}
@@ -50,7 +50,7 @@ body.cd .tabs a[aria-current="page"]{color:#ece8ff;border-color:#ece8ff}
 body.cd .lead{display:none}
 .leader .rings{position:absolute;inset:0;margin:auto;height:min(92vh,92vw);aspect-ratio:1;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:0 0 18px rgba(143,124,240,.25)}
 .leader .rings::after{content:"";position:absolute;inset:8%;border-radius:50%;border:clamp(2px,.45vw,4px) solid var(--lav);box-shadow:inset 0 0 18px rgba(143,124,240,.2)}
-.leader .cross{position:absolute;inset:0;background:linear-gradient(var(--lav-dim),var(--lav-dim)) 50% 0/2px 100% no-repeat}
+.leader .cross{position:absolute;inset:0;background:linear-gradient(var(--lav-dim),var(--lav-dim)) 50% 0/2px 100% no-repeat,linear-gradient(var(--lav-dim),var(--lav-dim)) 0 50%/100% 2px no-repeat}
 .leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(8,6,16,.3) 100deg,rgba(0,0,0,0) 100deg)}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#ece8ff;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
 .leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:#b9b2e6;background:rgba(20,18,28,.8);padding:.3em .8em}
