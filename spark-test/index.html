@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+<title>POW417 Spark Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: stage left, control rail right; stacks to one column on phones */
+:root{
+  --bg:#e0e6e8; --panel:#eef2f3; --ink:#18181c; --muted:#5a5e6b; --line:#c6ced2; --accent:#4a45e0;
+  --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --body:"Barlow",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16161b;--panel:#1f1f26;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;--accent:#8f8cff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16161b;--panel:#1f1f26;--ink:#ecebf7;--muted:#9a9ab0;--line:#33333f;--accent:#8f8cff;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px}
+header{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-family:var(--display);font-weight:400;font-size:44px;letter-spacing:.02em;line-height:1;margin:0}
+h1 span{color:var(--accent)}
+.seed{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.stage{position:relative;min-width:0;aspect-ratio:1/1;max-width:100%;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+.stage svg{width:100%;height:100%;display:block}
+.stage .tag{position:absolute;left:12px;bottom:10px;font-family:var(--display);font-size:20px;letter-spacing:.06em;color:var(--muted)}
+aside{display:flex;flex-direction:column;gap:14px;min-width:0}
+.row{display:flex;flex-direction:column;gap:6px}
+.row label{display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.row output{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button,select{font-family:var(--display);font-size:20px;letter-spacing:.05em;padding:10px 12px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+select{font-family:var(--body);font-size:15px;padding:8px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff;grid-column:1/-1}
+button:hover{background:var(--ink);color:var(--bg)}
+button.primary:hover{background:var(--ink);border-color:var(--ink)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{font-size:13px;color:var(--muted);min-height:1.2em}
+@media (max-width:820px){.wrap{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>POW<span>417</span> Spark Generator</h1>
+    <div class="seed" id="seedLabel">seed —</div>
+  </header>
+
+  <div class="stage" id="stage">
+    <svg id="svg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated spark"></svg>
+    <div class="tag">March 19–21 · 2027</div>
+  </div>
+
+  <aside>
+    <div class="btns">
+      <button class="primary" id="newBtn">New spark</button>
+      <button id="modeBtn">Field</button>
+      <button id="pauseBtn">Pause</button>
+    </div>
+    <div class="row"><label for="pts">Points <output id="ptsO"></output></label><input id="pts" type="range" min="4" max="14" value="9"></div>
+    <div class="row"><label for="spike">Spikiness <output id="spikeO"></output></label><input id="spike" type="range" min="0" max="100" value="60"></div>
+    <div class="row"><label for="fat">Body <output id="fatO"></output></label><input id="fat" type="range" min="5" max="40" value="15"></div>
+    <div class="row"><label for="slant">Slant <output id="slantO"></output></label><input id="slant" type="range" min="-20" max="20" value="10"></div>
+    <div class="row"><label for="spin">Spin <output id="spinO"></output></label><input id="spin" type="range" min="0" max="100" value="15"></div>
+    <div class="row"><label for="shim">Shimmer <output id="shimO"></output></label><input id="shim" type="range" min="0" max="100" value="45"></div>
+    <div class="row"><label for="pal">Colours</label>
+      <select id="pal">
+        <option value="blue">POW417 blue</option>
+        <option value="ink">Ink</option>
+        <option value="lav">Lavender</option>
+      </select>
+    </div>
+    <div class="btns">
+      <button id="copyBtn" style="grid-column:1/-1">Copy SVG</button>
+    </div>
+    <div class="note" id="note">Copies the current frame as a vector you can paste into Illustrator, Figma or a .svg file.</div>
+  </aside>
+</div>
+
+<script>
+const PALS={
+  blue:["#d3d1f8","#9f9cef","#5d59e6","#2b2690"],
+  ink:["#eceef0","#9aa0a8","#3a3d45","#18181c"],
+  lav:["#f1f0fd","#c9c7f5","#9f9cef","#5d59e6"]
+};
+const $=id=>document.getElementById(id);
+const svg=$("svg");
+const ctl=["pts","spike","fat","slant","spin","shim"];
+let seed=0,mode="single",paused=matchMedia("(prefers-reduced-motion: reduce)").matches,sparks=[],t0=performance.now();
+
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const v=id=>+$(id).value;
+
+function makeSpark(s,cx,cy,size,delay){
+  const r=rng(s),n=v("pts"),sp=v("spike")/100,pts=[];
+  const off=r()*0.3-0.15;
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2+off+(r()-.5)*(Math.PI*2/n)*0.35;
+    // main axes stay long, the rest vary with spikiness
+    const axis=Math.abs(Math.sin(a*2))<0.35;
+    const base=axis?1:0.55+r()*0.25;
+    const len=base*(1-sp*0.6*r()*(axis?0.4:1));
+    pts.push({a,len:Math.max(.18,len)});
+  }
+  pts.sort((p,q)=>p.a-q.a);
+  return {pts,cx,cy,size,delay,phase:r()*Math.PI*2,born:performance.now()};
+}
+
+function build(){
+  sparks=[];
+  const r=rng(seed);
+  if(mode==="single"){sparks.push(makeSpark(seed,500,500,430,0))}
+  else{
+    const cnt=7;
+    for(let i=0;i<cnt;i++){
+      sparks.push(makeSpark(seed+i*977,120+r()*760,120+r()*760,70+r()*170,i*160));
+    }
+  }
+  $("seedLabel").textContent="seed "+seed.toString(36).toUpperCase();
+}
+
+function facetColor(sideNormal,rayAng,light,pal){
+  const lit=Math.cos(sideNormal-light),ray=Math.cos(rayAng-light);
+  if(lit>0)return ray>-.2?pal[0]:pal[1];
+  return ray>-.2?pal[2]:pal[3];
+}
+
+function render(now){
+  const T=(now-t0)/1000,pal=PALS[$("pal").value];
+  const spin=v("spin")/100*0.6,shim=v("shim")/100*1.4,inner=v("fat")/100,slant=v("slant");
+  const light=-0.7+(paused?0:Math.sin(T*shim)*1.6);
+  let out="";
+  for(const s of sparks){
+    const age=paused?1e9:now-s.born-s.delay;
+    if(age<0)continue;
+    const pop=Math.min(1,age/420),ease=1-Math.pow(1-pop,3)*(1-0)+(pop<1?Math.sin(pop*Math.PI)*0.12:0);
+    const tw=paused?1:1+Math.sin(T*2.2+s.phase)*0.04;
+    const rot=paused?0:T*spin*(s.phase>Math.PI?1:-1);
+    const R=s.size*ease*tw,ir=R*inner,n=s.pts.length;
+    let g="";
+    for(let i=0;i<n;i++){
+      const p=s.pts[i],prev=s.pts[(i-1+n)%n],next=s.pts[(i+1)%n];
+      let ap=prev.a,an=next.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
+      const a=p.a+rot,tip=[Math.sin(a)*R*p.len,-Math.cos(a)*R*p.len];
+      const vL=[Math.sin((ap+p.a)/2+rot)*ir,-Math.cos((ap+p.a)/2+rot)*ir];
+      const vR=[Math.sin((p.a+an)/2+rot)*ir,-Math.cos((p.a+an)/2+rot)*ir];
+      const cL=facetColor(a-Math.PI/2,a,light,pal),cR=facetColor(a+Math.PI/2,a,light,pal);
+      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${vL[0].toFixed(1)},${vL[1].toFixed(1)}" fill="${cL}" stroke="${cL}" stroke-width="0.8"/>`;
+      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${vR[0].toFixed(1)},${vR[1].toFixed(1)}" fill="${cR}" stroke="${cR}" stroke-width="0.8"/>`;
+    }
+    out+=`<g transform="translate(${s.cx} ${s.cy}) skewX(${-slant})" stroke-linejoin="round">${g}</g>`;
+  }
+  svg.innerHTML=out;
+}
+
+function loop(now){render(now);if(!paused)requestAnimationFrame(loop)}
+function restart(){t0=performance.now();build();if(paused)render(performance.now());else requestAnimationFrame(loop)}
+
+function syncOutputs(){
+  $("ptsO").textContent=v("pts");$("spikeO").textContent=v("spike")+"%";$("fatO").textContent=v("fat")+"%";
+  $("slantO").textContent=v("slant")+"°";$("spinO").textContent=v("spin");$("shimO").textContent=v("shim");
+}
+ctl.forEach(id=>$(id).addEventListener("input",()=>{syncOutputs();if(id==="pts"||id==="spike")build();if(paused)render(performance.now())}));
+$("pal").addEventListener("change",()=>{if(paused)render(performance.now())});
+$("newBtn").addEventListener("click",()=>{seed=Math.floor(Math.random()*1e9);restart()});
+$("modeBtn").addEventListener("click",()=>{mode=mode==="single"?"field":"single";$("modeBtn").textContent=mode==="single"?"Field":"Single";restart()});
+$("pauseBtn").addEventListener("click",()=>{paused=!paused;$("pauseBtn").textContent=paused?"Play":"Pause";if(!paused){for(const s of sparks)s.born=performance.now()-1e5;requestAnimationFrame(loop)}else render(performance.now())});
+$("copyBtn").addEventListener("click",()=>{
+  const markup=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">${svg.innerHTML}</svg>`;
+  const ok=()=>{$("note").textContent="Copied. Paste into a .svg file or straight into your design app."};
+  const fail=()=>{$("note").textContent="This browser blocked copying. Try again in a desktop browser."};
+  try{navigator.clipboard.writeText(markup).then(ok,fail)}catch(e){fail()}
+});
+
+seed=0x417027;
+$("pauseBtn").textContent=paused?"Play":"Pause";
+syncOutputs();restart();
+</script>
+</body>
+</html>
