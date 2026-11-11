@@ -59,7 +59,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .frame .lab{position:absolute;left:0;right:0;bottom:5%;text-align:center;font-family:var(--display);font-size:clamp(10px,1.4vw,16px);letter-spacing:.16em;color:#1a1a1a}
 .film.flicker .frame{animation:flick .9s steps(1) infinite}
 @keyframes flick{0%{filter:brightness(1)}23%{filter:brightness(1.06)}47%{filter:brightness(.95)}71%{filter:brightness(1.03)}}
-@media (max-width:600px){.frames{grid-template-columns:1fr 1fr}}
+
 @media (prefers-reduced-motion: reduce){.film,.film::before,.film::after,.film .frame{animation:none!important}}
 </style>
 </head>
