@@ -177,11 +177,24 @@ body.v-doc main{display:none}
 .top .tabs{min-width:0}
 .top .tabs{font-size:15px;font-weight:700;letter-spacing:.18em}
 @media (max-width:520px){.top .tabs{font-size:12.5px;letter-spacing:.12em;gap:6px 12px}.toplogo img{height:40px}}
+/* The clock follows you: slim line under the top bar on every view but Main and Countdown, big on Main */
+.mini{display:none;align-self:flex-start;margin-top:10px;position:relative;z-index:3;color:var(--ink);text-decoration:none;font-family:var(--big);font-size:20px;letter-spacing:.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini small{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-right:12px;vertical-align:.2em}
+.mini i{font-style:normal;font-family:var(--display);font-size:.55em;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:0 .7em 0 .15em}
+.mini b{font-weight:400}
+body:not(.v-main):not(.cd) .mini{display:inline-block}
+.mini:focus-visible,.bigclock:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.bigclock{display:flex;flex-wrap:wrap;gap:6px clamp(18px,4vw,44px);margin-top:18px;color:var(--ink);text-decoration:none;font-variant-numeric:tabular-nums}
+.bigclock span{display:flex;flex-direction:column;gap:4px}
+.bigclock b{font-family:var(--big);font-weight:400;font-size:clamp(48px,11vw,130px);line-height:.9;transform:skewX(-10deg);transform-origin:left bottom;display:block}
+.bigclock i{font-style:normal;font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.bigcap{font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:22px}
 </style>
 </head>
 <body>
 <canvas id="sparks" aria-hidden="true"></canvas>
 <div class="top"><a href="#main" class="toplogo"><img src="lockup.svg" alt="POW417"></a><nav class="tabs" aria-label="Views"><a href="#main" id="tab-main">Main</a><a href="#guidelines" id="tab-guidelines">Guidelines</a><a href="#releases" id="tab-releases">Releases</a><span class="br" aria-hidden="true"></span><a href="#countdown" id="tab-countdown">Countdown</a><a href="#spark" id="tab-spark">Spark</a></nav></div>
+<a class="mini" id="mini" href="#countdown" aria-label="Countdown to March 19, 2027"></a>
 
 <main>
   <img class="burst27" src="27-burst.svg" alt="">
@@ -197,9 +210,11 @@ body.v-doc main{display:none}
   <section class="hero">
     <div class="lock"><img class="b27" src="27-burst.svg" alt=""><h1>POW417</h1></div>
     <div class="date"><span class="tag">Proof of Work</span></div>
+    <div class="bigcap">Your spark ignites in</div>
+    <a class="bigclock" id="bigclock" href="#countdown" aria-label="Countdown to March 19, 2027"></a>
   </section>
   <section id="showcase" class="rows" aria-label="March 19 to 21, location to be decided"><div class="row a" aria-hidden="true"><div><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span><span>March 19–21</span></div></div><div class="row b" aria-hidden="true"><div><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span><span>Location TBD</span></div></div></section>
-  <section id="films"><h2>The 2026 <span>films</span></h2><div class="films"><a class="film" href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/sgbPR0M-kUU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>01</span><span>Nate :)</span></span><span class="title">Going Outside</span></a><a class="film" href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/rvxGsUAnCqI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>02</span><span>House of Keeling</span></span><span class="title">The Inbetween</span></a><a class="film" href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/BDqQNr-fyKU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>03</span><span>03 Media</span></span><span class="title">Darkness That Follows</span></a><a class="film" href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/4VEIHduw8F8/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>04</span><span>SweetBogsTv &amp; CIDERHOUSE</span></span><span class="title">Clogged Up</span></a><a class="film" href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/f0_jPYrHwec/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>05</span><span>Yellow Bike Films</span></span><span class="title">Seeing Double</span></a><a class="film" href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/-wuu1kRZHEI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>06</span><span>BearView Films</span></span><span class="title">What's Eating You</span></a></div></section>
+  <section id="films"><h2>The 2026 <span>films</span></h2><div class="films"><a class="film" href="https://youtu.be/sgbPR0M-kUU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/sgbPR0M-kUU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>01</span><span>Nate :)</span></span><span class="title">Going Outside</span></a><a class="film" href="https://youtu.be/rvxGsUAnCqI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/rvxGsUAnCqI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>02</span><span>House of Keeling</span></span><span class="title">The Inbetween</span></a><a class="film" href="https://youtu.be/BDqQNr-fyKU" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/BDqQNr-fyKU/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>03</span><span>03 Media</span></span><span class="title">Darkness That Follows</span></a><a class="film" href="https://youtu.be/4VEIHduw8F8" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/4VEIHduw8F8/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>04</span><span>SweetBogsTv &amp; CIDERHOUSE</span></span><span class="title">Clogged Up</span></a><a class="film" href="https://youtu.be/f0_jPYrHwec" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/f0_jPYrHwec/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>05</span><span>Yellow Bike Films</span></span><span class="title">Seeing Double</span></a><a class="film" href="https://youtu.be/-wuu1kRZHEI" target="_blank" rel="noopener"><span class="thumb"><img src="https://i.ytimg.com/vi/-wuu1kRZHEI/hqdefault.jpg" alt="" loading="lazy"></span><span class="meta"><span>06</span><span>BairView Films &amp; Four Face Studios</span></span><span class="title">What's Eating You</span></a></div></section>
   <footer class="foot"><b><img src="lockup.svg" alt="POW417" style="height:64px;width:auto;display:block"></b><a href="https://pow417.com/guidelines.html">Guidelines</a><a href="https://pow417.com/releases.html">Releases</a><a href="https://instagram.com/pow417films" target="_blank" rel="noopener">@pow417films</a><span style="color:var(--muted);width:100%">Proof of Work · Springfield, MO · Human films only</span></footer>
 </div>
 
@@ -308,7 +323,17 @@ function still(){
 const START=new Date("2027-03-19T18:00:00-05:00").getTime();
 const lead=document.getElementById("lead"),film=document.getElementById("film");
 let mode="spark",timer=0;
-const cdLine=document.getElementById("cdLine");
+const cdLine=document.getElementById("cdLine"),mini=document.getElementById("mini"),big=document.getElementById("bigclock");
+const pad=n=>String(n).padStart(2,"0");
+// the text clocks (slim bar and Main) tick once a second on every view; only the Countdown sweep needs animation frames
+function clocks(){
+  const t=Math.floor(Math.max(0,START-Date.now())/1000),d=Math.floor(t/86400),h=Math.floor(t%86400/3600),m=Math.floor(t%3600/60),s=t%60;
+  const a=`<small>Ignites in</small><b>${d}</b><i>D</i><b>${pad(h)}</b><i>H</i><b>${pad(m)}</b><i>M</i><b>${pad(s)}</b><i>S</i>`;
+  if(mini.innerHTML!==a)mini.innerHTML=a;
+  const b=`<span><b>${d}</b><i>Days</i></span><span><b>${pad(h)}</b><i>Hours</i></span><span><b>${pad(m)}</b><i>Mins</i></span><span><b>${pad(s)}</b><i>Sec</i></span>`;
+  if(big.innerHTML!==b)big.innerHTML=b;
+}
+clocks();setInterval(clocks,1000);
 function tick(){
   const ms=Math.max(0,START-Date.now()),t=Math.floor(ms/1000),p=n=>String(n).padStart(2,"0");
   const html=`<span class="r"><b>${Math.floor(t/86400)}</b>Days<b>${p(Math.floor(t%86400/3600))}</b>Hours</span><span class="r"><b>${p(Math.floor(t%3600/60))}</b>Mins<b>${p(t%60)}</b>Sec</span>`;
