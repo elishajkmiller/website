@@ -84,8 +84,8 @@ body.v-main main{display:none}
 .marquee span{padding:0 28px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .marquee span::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin-left:56px;vertical-align:middle}
 @keyframes marquee{to{transform:translateX(-50%)}}
-.films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0;margin-top:28px}
-.film{padding:22px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:10px;min-width:0}
+.films{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
+.film{background:var(--bg);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .film .meta{display:flex;justify-content:space-between;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .film .title{font-family:var(--big);font-size:24px;letter-spacing:.01em}
 .film a{color:var(--accent);text-decoration:none;font-size:14px;letter-spacing:.08em;margin-top:auto}
@@ -119,9 +119,9 @@ body.v-main .top,body.v-main .top b,body.v-main .tabs a{color:var(--ink)}
 body.v-main .marquee{background:#8f8cea;border:0}
 body.v-main .marquee span{color:#fff}
 body.v-main .marquee span::after{background:#fff}
-.dates{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:#18181c;color:#fff;padding:clamp(24px,5vw,56px);margin-inline:calc(-1*clamp(0px,2vw,24px));overflow:hidden}
-.dates .stack{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;font-size:clamp(30px,5.4vw,64px);line-height:1.02;transform:rotate(-8deg) skewX(-10deg);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
-.dates .stack .on{color:#fff;-webkit-text-stroke:0}
+.dates{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;color:var(--ink);padding:clamp(24px,5vw,56px);margin-inline:calc(-1*clamp(0px,2vw,24px));overflow:hidden}
+.dates .stack{display:flex;flex-direction:column;font-family:var(--big);text-transform:uppercase;font-size:clamp(30px,5.4vw,64px);line-height:1.02;transform:rotate(-8deg) skewX(-10deg);color:transparent;-webkit-text-stroke:1px rgba(24,24,28,.5)}
+.dates .stack .on{color:var(--ink);-webkit-text-stroke:0}
 .dates .dates-copy{display:flex;flex-direction:column;gap:16px}
 .dates h2{color:#fff}.dates h2 span{color:#9f9cef!important}
 .dates p{color:#c9cbd6!important}
