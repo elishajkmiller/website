@@ -109,10 +109,14 @@ function drawBurst(now){
     embers=embers.filter(e=>{e.life+=dt;const drag=Math.exp(-.9*dt);e.vx*=drag;e.vy*=drag;e.x+=e.vx*dt;e.y+=e.vy*dt;e.rot+=e.spin*dt;return e.life<e.max&&Math.abs(e.x)<500&&Math.abs(e.y)<500});
     $("word").style.transform=`skewX(-10deg) scale(${(1+.012*b).toFixed(4)})`;
   }
-  let em="";
-  for(const e of embers){const x=e.life/e.max,k=Math.min(1,x*6)*(1-x);
-    em+=`<g transform="translate(${e.x.toFixed(1)} ${e.y.toFixed(1)}) scale(${Math.max(.01,Math.min(1,x*5)*(1-x*.6)).toFixed(3)})" opacity="${Math.min(1,k*1.6).toFixed(2)}">${facets(mini,e.s,e.s*.18,e.rot,light,t,false)}</g>`}
-  $("burst").innerHTML=`<g transform="skewX(-10)">${em}</g>`;
+  let em="";const SC=["#7d79ea","#4a45e0","#2b2690","#161245"];
+  for(const e of embers){
+    const x=e.life/e.max,fade=Math.min(1,x*8)*(1-x);
+    const c=SC[(e.s|0)%SC.length],w=Math.max(.6,e.s/9*(1-x*.5));
+    const tail=reduce?.2:.17, tx=e.x-(reduce?e.x*tail:e.vx*tail), ty=e.y-(reduce?e.y*tail:e.vy*tail);
+    em+=`<g opacity="${Math.min(1,fade*1.5).toFixed(2)}"><line x1="${tx.toFixed(1)}" y1="${ty.toFixed(1)}" x2="${e.x.toFixed(1)}" y2="${e.y.toFixed(1)}" stroke="${c}" stroke-width="${w.toFixed(1)}" stroke-linecap="round"/><circle cx="${e.x.toFixed(1)}" cy="${e.y.toFixed(1)}" r="${(w*.9+1).toFixed(1)}" fill="${c}"/></g>`;
+  }
+  $("burst").innerHTML=em;
   if(!reduce)requestAnimationFrame(drawBurst);
 }
 makePoints(sparkSeed);
