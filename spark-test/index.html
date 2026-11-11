@@ -54,7 +54,9 @@ body.cd .lead{display:none}
 .leader .sweep{position:absolute;inset:0;background:conic-gradient(from calc(var(--a,0deg) - 100deg) at 50% 50%,rgba(20,16,40,0) 0deg,rgba(74,69,224,.14) 100deg,rgba(0,0,0,0) 100deg)}
 .leader .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;color:#18181c;font-family:"Josefin Sans",system-ui,sans-serif;font-weight:300;line-height:.9;font-variant-numeric:tabular-nums}
 .leader .pre{font-weight:300;font-size:min(2.6vh,2.6vw);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);background:rgba(224,230,232,.92);padding:.3em .8em}
-.leader .line{font-size:min(3.8vh,3.6vw);letter-spacing:.06em;white-space:nowrap;background:rgba(224,230,232,.92);padding:.15em .5em}
+.leader .line .r{display:block;text-align:center}
+.leader .line .r b:first-child{margin-left:0}
+.leader .line{font-size:min(4.4vh,4.6vw);text-align:center;letter-spacing:.06em;white-space:nowrap;background:rgba(224,230,232,.92);padding:.15em .5em}
 .leader .line b{font-family:var(--big);font-weight:400;font-size:1.9em;display:inline-block;transform:skewX(-10deg);vertical-align:-.12em;margin:0 .14em 0 .4em}
 .leader .line b:first-child{margin-left:0}
 @media (prefers-reduced-motion: reduce){body::after{animation:none}}
@@ -255,7 +257,7 @@ let mode="spark",timer=0;
 const cdLine=document.getElementById("cdLine");
 function tick(){
   const ms=Math.max(0,START-Date.now()),t=Math.floor(ms/1000),p=n=>String(n).padStart(2,"0");
-  const html=`<b>${Math.floor(t/86400)}</b>Days<b>${p(Math.floor(t%86400/3600))}</b>Hours<b>${p(Math.floor(t%3600/60))}</b>Mins<b>${p(t%60)}</b>Sec`;
+  const html=`<span class="r"><b>${Math.floor(t/86400)}</b>Days<b>${p(Math.floor(t%86400/3600))}</b>Hours</span><span class="r"><b>${p(Math.floor(t%3600/60))}</b>Mins<b>${p(t%60)}</b>Sec</span>`;
   if(cdLine.innerHTML!==html)cdLine.innerHTML=html;
   // the sweep goes round once a second: a soft shadow trailing a hand, so there is no jump when it comes round
   film.style.setProperty("--a",reduce?"0deg":(((1000-ms%1000)%1000)*.36).toFixed(1)+"deg");
