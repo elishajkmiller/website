@@ -95,7 +95,7 @@ const mini=[0,Math.PI/2,Math.PI,Math.PI*1.5].map((a,i)=>({a,l:i%2?.55:1,f:3,ph:i
 function spawn(power){
   const a=Math.random()*Math.PI*2,r0=10+Math.random()*40,sp=(140+Math.random()*300)*(.7+power*.5);
   embers.push({x:Math.cos(a)*r0,y:Math.sin(a)*r0,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:0,max:.9+Math.random()*1,
-    kind:Math.random()<.5?'line':'dot',s:16+Math.random()*30*(.6+power*.6),rot:Math.random()*6,spin:(Math.random()-.5)*6});
+    s:16+Math.random()*30*(.6+power*.6),rot:Math.random()*6,spin:(Math.random()-.5)*6});
 }
 function drawBurst(now){
   const t=now/1000,dt=Math.min(.05,t-lastT||0);lastT=t;
@@ -113,12 +113,12 @@ function drawBurst(now){
   for(const e of embers){
     const x=e.life/e.max,fade=Math.min(1,x*8)*(1-x);
     const c=SC[(e.s|0)%SC.length],w=Math.max(.6,e.s/9*(1-x*.5));
-    const line=e.kind==='line',tail=(reduce?.2:.17)*(line?1.9:1);
+    const tail=(reduce?.2:.17)*1.9;
     const dx=reduce?e.x*tail:e.vx*tail, dy=reduce?e.y*tail:e.vy*tail, len=Math.hypot(dx,dy)||1;
-    const hw=(line?w*.45:w*.5), nx=-dy/len*hw, ny=dx/len*hw, tx=e.x-dx, ty=e.y-dy;
-    // tapered streak: a point at the tail, full width at the head
+    const hw=w*.45, nx=-dy/len*hw, ny=dx/len*hw, tx=e.x-dx, ty=e.y-dy;
+    // tapered line: a point at the tail, a rounded front
     em+=`<g opacity="${Math.min(1,fade*1.5).toFixed(2)}"><polygon points="${tx.toFixed(1)},${ty.toFixed(1)} ${(e.x+nx).toFixed(1)},${(e.y+ny).toFixed(1)} ${(e.x-nx).toFixed(1)},${(e.y-ny).toFixed(1)}" fill="${c}"/>`
-      +`<circle cx="${e.x.toFixed(1)}" cy="${e.y.toFixed(1)}" r="${(line?hw:w*.9+1).toFixed(1)}" fill="${c}"/></g>`;
+      +`<circle cx="${e.x.toFixed(1)}" cy="${e.y.toFixed(1)}" r="${hw.toFixed(1)}" fill="${c}"/></g>`;
   }
   $("burst").innerHTML=em;
   if(!reduce)requestAnimationFrame(drawBurst);
