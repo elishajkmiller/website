@@ -78,7 +78,7 @@ function facets(list,R,ir,rot,light,t,flick){
   let g="";const n=list.length;
   for(let i=0;i<n;i++){
     const p=list[i],pv=list[(i-1+n)%n],nx=list[(i+1)%n];let ap=pv.a,an=nx.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
-    const L=p.l*(1+.2*Math.sin(t*p.f+p.ph)+.07*Math.sin(t*p.f2+p.ph2));
+    const L=p.l*(1+.12*Math.sin(t*p.f+p.ph)+.05*Math.sin(t*p.f2+p.ph2));
     const A=p.a+rot+.04*Math.sin(t*p.f*.7+p.ph),tip=[Math.sin(A)*R*L,-Math.cos(A)*R*L];
     const vL=[Math.sin((ap+p.a)/2+rot)*ir,-Math.cos((ap+p.a)/2+rot)*ir],vR=[Math.sin((p.a+an)/2+rot)*ir,-Math.cos((p.a+an)/2+rot)*ir];
     for(const [side,v] of [[-1,vL],[1,vR]]){
@@ -90,14 +90,14 @@ function facets(list,R,ir,rot,light,t,flick){
   }
   return g;
 }
-function tipOf(i,R,rot,t){const p=pts[i];const L=p.l*(1+.2*Math.sin(t*p.f+p.ph));const A=p.a+rot;return[Math.sin(A)*R*L,-Math.cos(A)*R*L,A]}
+function tipOf(i,R,rot,t){const p=pts[i];const L=p.l*(1+.12*Math.sin(t*p.f+p.ph));const A=p.a+rot;return[Math.sin(A)*R*L,-Math.cos(A)*R*L,A]}
 const mini=[0,Math.PI/2,Math.PI,Math.PI*1.5].map((a,i)=>({a,l:i%2?.55:1,f:3,ph:i,f2:5,ph2:i}));
 function drawBurst(now){
   const t=now/1000,dt=Math.min(.05,t-lastT||0);lastT=t;
   const age=(now-popStart)/500,pop=Math.min(1,age);
   const grow=reduce?1:(1-Math.pow(1-pop,3))*(1+(pop<1?Math.sin(pop*Math.PI)*.15:0));
   const b=reduce?0:beat(t);
-  const R=430*grow*(1+.09*b),rot=reduce?0:t*.1+.03*Math.sin(t*1.3),light=reduce?-.7:-.7+Math.sin(t*.9)*1.5;
+  const R=320*grow*(1+.07*b),rot=reduce?0:t*.1+.03*Math.sin(t*1.3),light=reduce?-.7:-.7+Math.sin(t*.9)*1.5;
   const body=facets(pts,R,R*(.15+.05*b),rot,light,reduce?0:t,!reduce);
   // embers
   if(!reduce&&now-lastEmber>110&&pop>=1){lastEmber=now;const i=Math.floor(Math.random()*pts.length);const [x,y,A]=tipOf(i,R,rot,t);
