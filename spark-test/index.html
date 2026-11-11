@@ -35,32 +35,25 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-/* Countdown: a strip of film (same film base and sprocket holes as the Bairview Films stills strip) with four
-   old-style film leader frames. The film jumps one sprocket hole forward every second, like a camera advancing. */
-.film{position:relative;z-index:1;width:min(100%,1080px);box-sizing:border-box;padding:22px 0;border-radius:2px;background:
+/* Countdown: a strip of film (same film base and sprocket holes as the Bairview Films stills strip). Each frame
+   carries the time left at one second, and the film pulls one frame along every second, so the count runs with the film. */
+.film{position:relative;z-index:1;width:100%;max-width:1200px;overflow:hidden;--fw:320px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.track{position:relative;display:flex;width:max-content;padding:22px 0;background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='252'%3E%3Cfilter id='d' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .78 0 0 0 0 .74 0 0 0 10 -8.3'/%3E%3C/filter%3E%3Crect width='320' height='252' filter='url%28%23d%29' opacity='.5'/%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath d='M47 0 L48.5 252' stroke-width='.6' opacity='.13'/%3E%3Cpath d='M201 30 Q203 110 200 190' stroke-width='.5' opacity='.11'/%3E%3Cpath d='M273 120 L274 252' stroke-width='.7' opacity='.09'/%3E%3Cpath d='M118 60 L121 82' stroke-width='.8' opacity='.18'/%3E%3Cpath d='M236 214 L242 220' stroke-width='1.1' opacity='.2'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 320px 252px,
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 .18'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url%28%23n%29'/%3E%3C/svg%3E") 0 0 / 160px 160px,
     linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,0) 14%, rgba(255,255,255,0) 86%, rgba(255,255,255,.07)),
     #222120;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.08),0 10px 30px rgba(0,0,0,.35);
-  animation:advance 1s infinite}
-.film::before,.film::after{content:"";position:absolute;left:0;width:100%;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='22'%3E%3Crect x='8.6' y='5.6' width='14.8' height='10.8' rx='3' fill='%23e9e4da' fill-opacity='.05'/%3E%3Crect x='9' y='6' width='14' height='10' rx='2.6' fill='%23050505'/%3E%3Crect x='9.6' y='6.6' width='12.8' height='8.8' rx='2.2' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M11 16.9 H21' stroke='%23fff' stroke-opacity='.16' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;animation:advance 1s infinite}
-.film::before{top:0}.film::after{bottom:0}
-.film .sheen{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 44%,rgba(255,255,255,0) 58%),linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%,rgba(0,0,0,0) 90%,rgba(0,0,0,.25))}
-@keyframes advance{0%{background-position-x:0}14%,100%{background-position-x:-32px}}
-.frames{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(4px,1vw,10px);padding:0 clamp(4px,1vw,10px)}
-/* each frame is an old film leader frame: grey, two rings, a crosshair, a sweep going round, a big number */
-.frame{position:relative;aspect-ratio:4/3;min-width:0;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.65);
-  background:conic-gradient(from 0deg,rgba(20,20,24,.55) var(--a,0deg),rgba(0,0,0,0) 0),radial-gradient(circle,#a7a7a2 0%,#8c8c87 55%,#5d5d59 100%)}
-.frame .rings{position:absolute;inset:0;margin:auto;height:84%;aspect-ratio:1;border-radius:50%;border:clamp(2px,.35vw,4px) solid #f2f1ec;box-shadow:0 0 0 clamp(1px,.2vw,2px) #1a1a1a}
-.frame .rings::after{content:"";position:absolute;inset:9%;border-radius:50%;border:clamp(2px,.35vw,4px) solid #f2f1ec;box-shadow:inset 0 0 0 clamp(1px,.2vw,2px) #1a1a1a}
-.frame .cross{position:absolute;inset:0;background:linear-gradient(#1a1a1a,#1a1a1a) 50% 0/2px 100% no-repeat,linear-gradient(#1a1a1a,#1a1a1a) 0 50%/100% 2px no-repeat;opacity:.8}
-.frame .num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(34px,8.5vw,120px);line-height:1;color:#111;letter-spacing:.02em;font-variant-numeric:tabular-nums}
-.frame .lab{position:absolute;left:0;right:0;bottom:5%;text-align:center;font-family:var(--display);font-size:clamp(10px,1.4vw,16px);letter-spacing:.16em;color:#1a1a1a}
-.film.flicker .frame{animation:flick .9s steps(1) infinite}
-@keyframes flick{0%{filter:brightness(1)}23%{filter:brightness(1.06)}47%{filter:brightness(.95)}71%{filter:brightness(1.03)}}
-
-@media (prefers-reduced-motion: reduce){.film,.film::before,.film::after,.film .frame{animation:none!important}}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.08)}
+.track::before,.track::after{content:"";position:absolute;left:0;width:100%;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='22'%3E%3Crect x='8.6' y='5.6' width='14.8' height='10.8' rx='3' fill='%23e9e4da' fill-opacity='.05'/%3E%3Crect x='9' y='6' width='14' height='10' rx='2.6' fill='%23050505'/%3E%3Crect x='9.6' y='6.6' width='12.8' height='8.8' rx='2.2' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M11 16.9 H21' stroke='%23fff' stroke-opacity='.16' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x}
+.track::before{top:0}.track::after{bottom:0}
+.track.pull{transition:transform .32s cubic-bezier(.3,0,.2,1)}
+.film .sheen{position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%,rgba(0,0,0,0) 90%,rgba(0,0,0,.25)),linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 44%,rgba(255,255,255,0) 58%)}
+.cell{flex:none;width:var(--fw);padding:0 5px;box-sizing:border-box}
+.cell div{aspect-ratio:4/3;background:#0d0d10;box-shadow:0 0 0 1px rgba(0,0,0,.65);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4%;
+  font-family:var(--display);color:#ecebf7;font-size:calc(var(--fw)*.19);line-height:1;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.cell small{font-size:calc(var(--fw)*.05);letter-spacing:.2em;color:#9a9ab0}
+@media (max-width:700px){.film{--fw:192px}}
 </style>
 </head>
 <body>
@@ -70,13 +63,8 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 <main>
   <p class="lead" id="lead">Your spark is</p>
   <h1 class="word" id="word">Humanity</h1>
-  <div class="film flicker" id="film" hidden role="timer" aria-label="Time until March 19, 2027">
-    <div class="frames">
-      <div class="frame" data-u="d"><div class="rings"></div><div class="cross"></div><div class="num">0</div><span class="lab">Days</span></div>
-      <div class="frame" data-u="h"><div class="rings"></div><div class="cross"></div><div class="num">0</div><span class="lab">Hours</span></div>
-      <div class="frame" data-u="m"><div class="rings"></div><div class="cross"></div><div class="num">0</div><span class="lab">Minutes</span></div>
-      <div class="frame" data-u="s"><div class="rings"></div><div class="cross"></div><div class="num">0</div><span class="lab">Seconds</span></div>
-    </div>
+  <div class="film" id="film" hidden role="timer" aria-label="Time until March 19, 2027">
+    <div class="track" id="track"></div>
     <div class="sheen"></div>
   </div>
 </main>
@@ -163,20 +151,28 @@ function still(){
 }
 
 
-// two views: #spark shows the word with sparks, #countdown shows a film strip of old film leader frames
+// two views: #spark shows the word with sparks, #countdown shows the countdown running along a film strip
 // start time: Friday March 19, 2027, 6:00 PM Central (change START to move it)
 const START=new Date("2027-03-19T18:00:00-05:00").getTime();
 const lead=document.getElementById("lead"),film=document.getElementById("film");
 let mode="spark",timer=0;
-const F={};for(const el of film.querySelectorAll(".frame"))F[el.dataset.u]={el,num:el.querySelector(".num")};
-// numbers change once a second; each sweep goes round once per unit (seconds sweep once a second, and so on)
+// the frame in the middle shows the time left now; frames to the right are the seconds still to come
+const track=document.getElementById("track"),N=9,C=4,cells=[];
+for(let i=0;i<N;i++){const c=document.createElement("div");c.className="cell";c.innerHTML="<div><span></span><small>Days · Hrs · Min · Sec</small></div>";track.appendChild(c);cells.push(c.querySelector("span"))}
+const fmt=s=>{s=Math.max(0,s);const p=n=>String(n).padStart(2,"0");return `${Math.floor(s/86400)}:${p(Math.floor(s%86400/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`};
+let shown=-1;
+function place(x){const fw=parseFloat(getComputedStyle(film).getPropertyValue("--fw"));track.style.transform=`translateX(${(film.clientWidth/2-fw*(C+.5)-x*fw).toFixed(1)}px)`}
+function label(base){cells.forEach((el,i)=>el.textContent=fmt(base-(i-C)))}
 function tick(){
-  const ms=Math.max(0,START-Date.now()),s=Math.floor(ms/1000);
-  const vals={d:String(Math.floor(s/86400)),h:String(Math.floor(s%86400/3600)).padStart(2,"0"),m:String(Math.floor(s%3600/60)).padStart(2,"0"),s:String(s%60).padStart(2,"0")};
-  for(const u in vals)if(F[u].num.textContent!==vals[u])F[u].num.textContent=vals[u];
-  const frac={s:(ms%1000)/1000,m:(ms%60000)/60000,h:(ms%3600000)/3600000,d:(ms%86400000)/86400000};
-  for(const u in frac)F[u].el.style.setProperty("--a",reduce?"0deg":(360-frac[u]*360).toFixed(1)+"deg");
+  const s=Math.max(0,Math.floor((START-Date.now())/1000));
+  if(s===shown)return;
+  const first=shown<0;shown=s;
+  // put the previous second in the middle, then pull the film one frame to bring this second in
+  track.classList.remove("pull");label(s+1);place(0);
+  if(first||reduce){label(s);place(0);return}
+  void track.offsetWidth;track.classList.add("pull");place(1);
 }
+addEventListener("resize",()=>{if(mode==="countdown"){shown=-1;tick()}});
 function route(){
   mode=location.hash==="#countdown"?"countdown":"spark";
   const ts=document.getElementById("tab-spark"),tc=document.getElementById("tab-countdown");
@@ -184,7 +180,7 @@ function route(){
   clearInterval(timer);
   const cd=mode==="countdown";
   lead.textContent=cd?"Your spark lights up in":"Your spark is";word.hidden=cd;film.hidden=!cd;
-  if(cd){tick();timer=setInterval(tick,reduce?1000:33)}
+  if(cd){shown=-1;tick();timer=setInterval(tick,100)}
   sparks=[];ctx.clearRect(0,0,W,H);if(!cd){sampleWord();if(reduce)still()}
 }
 addEventListener("hashchange",route);
