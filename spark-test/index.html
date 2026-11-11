@@ -25,7 +25,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
 .top,.bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--display);font-size:20px;letter-spacing:.06em;color:var(--muted)}
 .top b{color:var(--ink);font-weight:400}
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center;position:relative;min-height:420px}
-#burst{position:absolute;inset:0;margin:auto;width:min(80vw,620px);height:min(80vw,620px);pointer-events:none;opacity:.9;z-index:0}
+#burst{position:absolute;inset:0;margin:auto;width:min(90vw,700px);height:min(90vw,700px);overflow:visible;pointer-events:none;opacity:.9;z-index:0}
 .lead{font-family:var(--display);font-size:clamp(28px,5vw,44px);letter-spacing:.04em;margin:0;position:relative;z-index:1}
 .word{font-family:var(--display);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
   font-size:clamp(64px,15vw,200px);letter-spacing:.01em;text-wrap:balance;max-width:100%;overflow-wrap:anywhere;
@@ -68,39 +68,62 @@ const $=id=>document.getElementById(id);
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let current="Humanity",recent=[],rolling=false;
 
-// faceted spark shape behind the word (same style as spark-v1)
+// living spark behind the word: points grow and shrink on their own, the body beats like a heart,
+// facets flicker, and embers bud off the tips and drift away
 const COLS=["#d3d1f8","#9f9cef","#5d59e6","#2b2690"];
-function sparkSVG(seed,scale,rot,light){
-  let a=seed|0;const r=()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
-  const n=9,pts=[];
-  for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+(r()-.5)*.25;const axis=Math.abs(Math.sin(ang*2))<.35;pts.push({a:ang,l:(axis?1:.45+r()*.3)})}
-  const R=460*scale,ir=R*.15;let g="";
+function rngOf(seed){let a=seed|0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+let sparkSeed=417,popStart=0,pts=[],embers=[],lastEmber=0,lastT=0;
+function makePoints(seed){
+  const r=rngOf(seed),n=9;pts=[];
+  for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+(r()-.5)*.25;const axis=Math.abs(Math.sin(ang*2))<.35;
+    pts.push({a:ang,l:(axis?1:.45+r()*.3),f:.6+r()*1.6,ph:r()*6.3,f2:2+r()*3,ph2:r()*6.3})}
+}
+function beat(t){const x=(t%1.15)/1.15;return Math.exp(-Math.pow((x-.08)/.05,2))+.6*Math.exp(-Math.pow((x-.26)/.06,2))}
+function facets(list,R,ir,rot,light,t,flick){
+  let g="";const n=list.length;
   for(let i=0;i<n;i++){
-    const p=pts[i],pv=pts[(i-1+n)%n],nx=pts[(i+1)%n];let ap=pv.a,an=nx.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
-    const A=p.a+rot,tip=[Math.sin(A)*R*p.l,-Math.cos(A)*R*p.l];
+    const p=list[i],pv=list[(i-1+n)%n],nx=list[(i+1)%n];let ap=pv.a,an=nx.a;if(an<p.a)an+=Math.PI*2;if(ap>p.a)ap-=Math.PI*2;
+    const L=p.l*(1+.2*Math.sin(t*p.f+p.ph)+.07*Math.sin(t*p.f2+p.ph2));
+    const A=p.a+rot+.04*Math.sin(t*p.f*.7+p.ph),tip=[Math.sin(A)*R*L,-Math.cos(A)*R*L];
     const vL=[Math.sin((ap+p.a)/2+rot)*ir,-Math.cos((ap+p.a)/2+rot)*ir],vR=[Math.sin((p.a+an)/2+rot)*ir,-Math.cos((p.a+an)/2+rot)*ir];
     for(const [side,v] of [[-1,vL],[1,vR]]){
       const lit=Math.cos(A+side*Math.PI/2-light),ray=Math.cos(A-light);
-      const c=lit>0?(ray>-.2?COLS[0]:COLS[1]):(ray>-.2?COLS[2]:COLS[3]);
-      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${v[0].toFixed(1)},${v[1].toFixed(1)}" fill="${c}" stroke="${c}" stroke-width="1"/>`;
+      let k=lit>0?(ray>-.2?0:1):(ray>-.2?2:3);
+      if(flick&&Math.sin(t*9+i*1.7+side)>.97)k=Math.max(0,k-2);
+      g+=`<polygon points="0,0 ${tip[0].toFixed(1)},${tip[1].toFixed(1)} ${v[0].toFixed(1)},${v[1].toFixed(1)}" fill="${COLS[k]}" stroke="${COLS[k]}" stroke-width="1"/>`;
     }
   }
-  return `<g transform="skewX(-10)">${g}</g>`;
+  return g;
 }
-let sparkSeed=417,popStart=0;
+function tipOf(i,R,rot,t){const p=pts[i];const L=p.l*(1+.2*Math.sin(t*p.f+p.ph));const A=p.a+rot;return[Math.sin(A)*R*L,-Math.cos(A)*R*L,A]}
+const mini=[0,Math.PI/2,Math.PI,Math.PI*1.5].map((a,i)=>({a,l:i%2?.55:1,f:3,ph:i,f2:5,ph2:i}));
 function drawBurst(now){
-  const t=now/1000,age=(now-popStart)/500,pop=Math.min(1,age);
-  const s=reduce?1:(1-Math.pow(1-pop,3))*(1+(pop<1?Math.sin(pop*Math.PI)*.1:0))*(1+Math.sin(t*2)*.02);
-  $("burst").innerHTML=sparkSVG(sparkSeed,s,reduce?0:t*.12,reduce?-.7:-.7+Math.sin(t*.8)*1.4);
+  const t=now/1000,dt=Math.min(.05,t-lastT||0);lastT=t;
+  const age=(now-popStart)/500,pop=Math.min(1,age);
+  const grow=reduce?1:(1-Math.pow(1-pop,3))*(1+(pop<1?Math.sin(pop*Math.PI)*.15:0));
+  const b=reduce?0:beat(t);
+  const R=430*grow*(1+.09*b),rot=reduce?0:t*.1+.03*Math.sin(t*1.3),light=reduce?-.7:-.7+Math.sin(t*.9)*1.5;
+  const body=facets(pts,R,R*(.15+.05*b),rot,light,reduce?0:t,!reduce);
+  // embers
+  if(!reduce&&now-lastEmber>110&&pop>=1){lastEmber=now;const i=Math.floor(Math.random()*pts.length);const [x,y,A]=tipOf(i,R,rot,t);
+    embers.push({x,y,vx:Math.sin(A)*(60+Math.random()*90)+(Math.random()-.5)*40,vy:-Math.cos(A)*(60+Math.random()*90)-20,life:0,max:1+Math.random()*.8,s:14+Math.random()*26,rot:Math.random()*6})}
+  let em="";
+  embers=embers.filter(e=>{e.life+=dt;e.x+=e.vx*dt;e.y+=e.vy*dt;e.vy-=12*dt;e.rot+=dt*2;return e.life<e.max});
+  for(const e of embers){const k=1-e.life/e.max;
+    em+=`<g transform="translate(${e.x.toFixed(1)} ${e.y.toFixed(1)}) scale(${(k*1).toFixed(3)})" opacity="${k.toFixed(2)}">${facets(mini,e.s,e.s*.18,e.rot,light,t,false)}</g>`}
+  $("burst").innerHTML=`<defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${(22+18*b).toFixed(1)}"/></filter></defs>
+    <g transform="skewX(-10)"><g filter="url(#glow)" opacity="${(.35+.4*b).toFixed(2)}">${body}</g>${body}${em}</g>`;
+  $("word").style.transform=`skewX(-10deg) scale(${(1+.015*b).toFixed(4)})`;
   if(!reduce)requestAnimationFrame(drawBurst);
 }
+makePoints(sparkSeed);
 
 function pick(){let w;do{w=SPARKS[Math.floor(Math.random()*SPARKS.length)]}while(w===current&&SPARKS.length>1);return w}
 function showRecent(){$("recent").innerHTML=recent.slice(0,6).map(w=>`<span>${w}</span>`).join("")}
 function land(w){
   current=w;const el=$("word");el.classList.remove("rolling");el.textContent=w;
   recent.unshift(w);showRecent();rolling=false;
-  sparkSeed=Math.floor(Math.random()*1e9);popStart=performance.now();
+  sparkSeed=Math.floor(Math.random()*1e9);makePoints(sparkSeed);embers=[];popStart=performance.now();
   if(reduce)drawBurst(performance.now());
 }
 function draw(){
