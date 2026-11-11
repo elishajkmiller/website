@@ -35,13 +35,11 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-/* Countdown: an old film leader filling the screen, on dark grey with a cool purple acid wash and film grain.
+/* Countdown: an old film leader filling the screen, on a dark grey painted texture (paint.jpg) with film grain.
    Two rings, a full-screen crosshair, a sweep that goes round once a second, the days left in a thin face. */
 .leader{--lav:#d9d4f5;--lav-dim:rgba(217,212,245,.32);--violet:#8f7cf0;position:fixed;inset:0;z-index:0;overflow:hidden;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0045' numOctaves='4' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .95 0 0 0 .7 -.42'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23w)'/%3E%3C/svg%3E") center/cover,
-    radial-gradient(ellipse 70% 55% at 22% 18%,rgba(124,104,240,.05),rgba(0,0,0,0) 70%),
-    radial-gradient(ellipse 60% 50% at 82% 78%,rgba(98,72,214,.045),rgba(0,0,0,0) 70%),
-    radial-gradient(circle,#2a2833 0%,#1b1a21 58%,#0f0e14 100%);}
+  /* painted texture: brush strokes over a canvas weave, made once as an image (paint.jpg) */
+  background:#1c1b22 url("paint.jpg") center/cover no-repeat}
 /* film grain over the whole page, moving */
 body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .9 0 0 0 0 1 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;animation:grain .6s steps(6) infinite}
 body.cd::after{opacity:.1}
