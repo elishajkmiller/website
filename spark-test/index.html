@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&display=swap">
 <style>
-/* One screen: eyebrow, "Your spark is", the drawn word, draw button, recent draws */
+/* One screen: "Your spark is Humanity" over the living spark */
 :root{
   --bg:#e0e6e8; --ink:#18181c; --muted:#5a5e6b; --line:#c6ced2;
   --blue:#4a45e0; --blue2:#5d59e6; --lav:#9f9cef; --pale:#d3d1f8; --deep:#2b2690;
@@ -30,16 +30,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .word{font-family:var(--display);font-weight:400;line-height:.9;margin:0;position:relative;z-index:1;
   font-size:clamp(64px,15vw,200px);letter-spacing:.01em;text-wrap:balance;max-width:100%;overflow-wrap:anywhere;
   transform:skewX(-10deg)}
-.word.rolling{color:var(--blue)}
 .tag{font-family:var(--display);font-size:clamp(20px,3vw,28px);letter-spacing:.08em;color:var(--muted);margin:0;position:relative;z-index:1}
-.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
-button{font-family:var(--display);font-size:24px;letter-spacing:.06em;padding:12px 26px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
-button.primary{background:var(--ink);color:var(--bg)}
-button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-.recent{position:relative;z-index:1;display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;font-family:var(--display);font-size:20px;letter-spacing:.05em;color:var(--muted);min-height:1.4em}
-.recent span:first-child{color:var(--ink)}
-.note{font-size:14px;color:var(--muted);min-height:1.2em;position:relative;z-index:1}
 @media (prefers-reduced-motion: reduce){.word{transition:none}}
 </style>
 </head>
@@ -49,25 +40,15 @@ button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 <main>
   <svg id="burst" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
   <p class="lead">Your spark is</p>
-  <h1 class="word" id="word" aria-live="polite">Humanity</h1>
+  <h1 class="word" id="word">Humanity</h1>
   <p class="tag">No prompt required.</p>
-  <div class="actions">
-    <button class="primary" id="draw">Draw a spark</button>
-    <button id="copy">Copy</button>
-  </div>
-  <div class="recent" id="recent" aria-label="Recent sparks"></div>
-  <div class="note" id="note"></div>
 </main>
 
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
 
 <script>
-// Hand-picked spark words. Edit this list to change what can be drawn.
-const SPARKS=["Humanity","Home","Inheritance","Second chances","Borrowed time","Wrong number","Lost and found","First light","The last day","Strangers","Homecoming","Small hours","Leaving","Debt","Neighbours","The promise","Hands","Static","Low tide","Overtime","Night shift","Hometown","The receipt","Echo","Room for one more","Unfinished","Spare key","Rust","Out of season","Kindness"];
 const $=id=>document.getElementById(id);
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-let current="Humanity",recent=[],rolling=false;
-
 // living spark behind the word: points grow and shrink on their own, the body beats like a heart,
 // facets flicker, and embers bud off the tips and drift away
 const COLS=["#d3d1f8","#9f9cef","#5d59e6","#2b2690"];
@@ -118,31 +99,7 @@ function drawBurst(now){
 }
 makePoints(sparkSeed);
 
-function pick(){let w;do{w=SPARKS[Math.floor(Math.random()*SPARKS.length)]}while(w===current&&SPARKS.length>1);return w}
-function showRecent(){$("recent").innerHTML=recent.slice(0,6).map(w=>`<span>${w}</span>`).join("")}
-function land(w){
-  current=w;const el=$("word");el.classList.remove("rolling");el.textContent=w;
-  recent.unshift(w);showRecent();rolling=false;
-  sparkSeed=Math.floor(Math.random()*1e9);makePoints(sparkSeed);embers=[];popStart=performance.now();
-  if(reduce)drawBurst(performance.now());
-}
-function draw(){
-  if(rolling)return;rolling=true;$("note").textContent="";
-  const final=pick(),el=$("word");
-  if(reduce){land(final);return}
-  el.classList.add("rolling");let n=0;const steps=14;
-  (function tick(){
-    el.textContent=SPARKS[Math.floor(Math.random()*SPARKS.length)];n++;
-    if(n<steps)setTimeout(tick,40+n*n*1.6);else land(final);
-  })();
-}
-$("draw").addEventListener("click",draw);
-$("copy").addEventListener("click",()=>{
-  const text=`Your spark is ${current}. No prompt required.`;
-  try{navigator.clipboard.writeText(text).then(()=>{$("note").textContent="Copied: "+text},()=>{$("note").textContent=text})}catch(e){$("note").textContent=text}
-});
-document.addEventListener("keydown",e=>{if(e.code==="Space"&&e.target===document.body){e.preventDefault();draw()}});
-popStart=performance.now();requestAnimationFrame(drawBurst);
+popStart=performance.now();if(reduce)drawBurst(performance.now());else requestAnimationFrame(drawBurst);
 </script>
 </body>
 </html>
