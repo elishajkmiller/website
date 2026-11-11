@@ -128,8 +128,9 @@ body.v-main .marquee span::after{background:#fff}
 .dates .eyebrow{color:#9f9cef!important}
 .mission{display:flex;flex-wrap:wrap;gap:0 .35em;font-family:var(--big);text-transform:uppercase;font-size:clamp(44px,9vw,120px);line-height:1;justify-content:center;transform:skewX(-10deg)}
 @media (max-width:720px){.dates{grid-template-columns:minmax(0,1fr)}}
-.bg27{display:none}
-body.v-main .bg27{display:block;position:fixed;left:50%;top:50%;width:min(130vw,1200px);transform:translate(-50%,-50%);opacity:.14;z-index:0;pointer-events:none}
+.hero .lock{position:relative;display:grid;place-items:center;width:100%;min-height:clamp(280px,62vw,680px)}
+.hero .b27{position:absolute;left:50%;top:50%;width:min(100%,760px);height:auto;transform:translate(-50%,-50%);pointer-events:none}
+.hero .lock h1{position:relative;font-family:var(--big);font-weight:400;font-size:clamp(64px,15vw,190px);line-height:1;margin:0;color:var(--ink);letter-spacing:.01em}
 </style>
 </head>
 <body>
@@ -146,10 +147,9 @@ body.v-main .bg27{display:block;position:fixed;left:50%;top:50%;width:min(130vw,
   </div>
 </main>
 
-<img class="bg27" src="27-burst.svg" alt="">
 <div id="site" hidden>
   <section class="hero">
-    <h1><img class="mark" src="lockup.svg" alt="POW417 2027"></h1>
+    <div class="lock"><img class="b27" src="27-burst.svg" alt=""><h1>POW417</h1></div>
     <div class="tag">Proof of Work</div>
     <div class="date"><b>March 19, 2027</b><span>Details soon</span></div>
   </section>
