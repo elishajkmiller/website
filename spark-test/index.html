@@ -46,16 +46,17 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 <div class="bottom"><span>March 19–21, 2027</span><span>New year. Same mission.</span></div>
 
 <script>
-// Sparks fly off the edges of the letters in "Humanity": tapered lines with a rounded front,
-// a bright core and a glow.
+// Sparks fly off the edges of the letters in "Humanity": tapered lines with a rounded front
+// and a bright core. No canvas blur, it was too slow on phones.
 const cv=document.getElementById("sparks"),ctx=cv.getContext("2d"),word=document.getElementById("word");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isDark=()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/);return m&&+m[0]<100};
 const COLS=["#9f9cef","#7d79ea","#5d59e6","#4a45e0"];
-let W=0,H=0,dpr=1,edges=[],center=[0,0],sparks=[],last=0;
+let W=0,H=0,dpr=1,edges=[],center=[0,0],sparks=[],last=0,owed=0,dark=false;
 
 function resize(){
-  dpr=Math.min(2,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;
+  dark=isDark();
+  dpr=Math.min(1.5,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;
   cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
   sampleWord();
 }
@@ -89,7 +90,7 @@ function spawn(){
   const a=Math.atan2(dy,dx)+(Math.random()-.5)*1.4;
   const sp=120+Math.random()*320;
   sparks.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-40,life:0,max:.6+Math.random()*1.1,
-    w:2+Math.random()*4,c:COLS[Math.floor(Math.random()*COLS.length)]});
+    w:1.2+Math.random()*2.3,c:COLS[Math.floor(Math.random()*COLS.length)]});
 }
 
 function drawSpark(s,glow){
@@ -98,19 +99,19 @@ function drawSpark(s,glow){
   const ux=s.vx/speed,uy=s.vy/speed,hw=s.w*(1-x*.4),nx=-uy*hw,ny=ux*hw;
   const tx=s.x-ux*tail,ty=s.y-uy*tail;
   ctx.globalAlpha=Math.min(1,fade*1.4);
-  ctx.shadowBlur=glow?14:0;ctx.shadowColor=s.c;ctx.fillStyle=s.c;
+  ctx.fillStyle=s.c;
   // tapered line: a point at the tail, a rounded front
   ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(s.x+nx,s.y+ny);ctx.arc(s.x,s.y,hw,Math.atan2(ny,nx),Math.atan2(-ny,-nx),true);ctx.closePath();ctx.fill();
   // bright core
-  ctx.shadowBlur=0;ctx.fillStyle="#eceafd";
+  ctx.fillStyle="#eceafd";
   ctx.beginPath();ctx.moveTo(s.x-ux*tail*.55,s.y-uy*tail*.55);ctx.lineTo(s.x+nx*.4,s.y+ny*.4);ctx.lineTo(s.x-nx*.4,s.y-ny*.4);ctx.closePath();ctx.fill();
 }
 
 function frame(now){
   const dt=Math.min(.05,(now-last)/1000||0);last=now;
   ctx.clearRect(0,0,W,H);
-  ctx.globalCompositeOperation=isDark()?"lighter":"source-over";
-  for(let k=0;k<3;k++)if(Math.random()<.8)spawn();
+  ctx.globalCompositeOperation=dark?"lighter":"source-over";
+  owed+=dt*70;while(owed>=1&&sparks.length<110){spawn();owed--}
   sparks=sparks.filter(s=>{s.life+=dt;const dr=Math.exp(-1.1*dt);s.vx*=dr;s.vy=s.vy*dr+30*dt;s.x+=s.vx*dt;s.y+=s.vy*dt;return s.life<s.max});
   for(const s of sparks)drawSpark(s,true);
   ctx.globalAlpha=1;
@@ -124,6 +125,7 @@ function still(){
 }
 
 addEventListener("resize",()=>{resize();if(reduce)still()});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{dark=isDark()});
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{resize();if(reduce)still();else requestAnimationFrame(frame)});
 </script>
 </body>
