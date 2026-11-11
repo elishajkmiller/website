@@ -36,18 +36,17 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
 .tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 /* Countdown: a strip of film (same film base and sprocket holes as the Bairview Films stills strip). Each frame
-   carries the time left at one second, and the film pulls one frame along every second, so the count runs with the film. */
+   carries the time left at one second, and the film runs at a steady one frame per second, so the count runs with the film. */
 .film{position:relative;z-index:1;width:100%;max-width:1200px;overflow:hidden;--fw:320px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
 .track{position:relative;display:flex;width:max-content;padding:22px 0;background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='252'%3E%3Cfilter id='d' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .78 0 0 0 0 .74 0 0 0 10 -8.3'/%3E%3C/filter%3E%3Crect width='320' height='252' filter='url%28%23d%29' opacity='.5'/%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath d='M47 0 L48.5 252' stroke-width='.6' opacity='.13'/%3E%3Cpath d='M201 30 Q203 110 200 190' stroke-width='.5' opacity='.11'/%3E%3Cpath d='M273 120 L274 252' stroke-width='.7' opacity='.09'/%3E%3Cpath d='M118 60 L121 82' stroke-width='.8' opacity='.18'/%3E%3Cpath d='M236 214 L242 220' stroke-width='1.1' opacity='.2'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 320px 252px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='252'%3E%3Cfilter id='d' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .78 0 0 0 0 .74 0 0 0 10 -8.3'/%3E%3C/filter%3E%3Crect width='320' height='252' filter='url%28%23d%29' opacity='.5'/%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath d='M47 0 L48.5 252' stroke-width='.6' opacity='.13'/%3E%3Cpath d='M201 30 Q203 110 200 190' stroke-width='.5' opacity='.11'/%3E%3Cpath d='M273 120 L274 252' stroke-width='.7' opacity='.09'/%3E%3Cpath d='M118 60 L121 82' stroke-width='.8' opacity='.18'/%3E%3Cpath d='M236 214 L242 220' stroke-width='1.1' opacity='.2'/%3E%3C/g%3E%3C/svg%3E") 0 0 / var(--fw) 252px,
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 .18'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url%28%23n%29'/%3E%3C/svg%3E") 0 0 / 160px 160px,
     linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,0) 14%, rgba(255,255,255,0) 86%, rgba(255,255,255,.07)),
     #222120;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.08)}
 .track::before,.track::after{content:"";position:absolute;left:0;width:100%;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='22'%3E%3Crect x='8.6' y='5.6' width='14.8' height='10.8' rx='3' fill='%23e9e4da' fill-opacity='.05'/%3E%3Crect x='9' y='6' width='14' height='10' rx='2.6' fill='%23050505'/%3E%3Crect x='9.6' y='6.6' width='12.8' height='8.8' rx='2.2' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M11 16.9 H21' stroke='%23fff' stroke-opacity='.16' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x}
 .track::before{top:0}.track::after{bottom:0}
-.track.pull{transition:transform .32s cubic-bezier(.3,0,.2,1)}
 .film .sheen{position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%,rgba(0,0,0,0) 90%,rgba(0,0,0,.25)),linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 44%,rgba(255,255,255,0) 58%)}
 .cell{flex:none;width:var(--fw);padding:0 5px;box-sizing:border-box}
 .cell div{aspect-ratio:4/3;background:#0d0d10;box-shadow:0 0 0 1px rgba(0,0,0,.65);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4%;
@@ -160,19 +159,17 @@ let mode="spark",timer=0;
 const track=document.getElementById("track"),N=9,C=4,cells=[];
 for(let i=0;i<N;i++){const c=document.createElement("div");c.className="cell";c.innerHTML="<div><span></span><small>Days · Hrs · Min · Sec</small></div>";track.appendChild(c);cells.push(c.querySelector("span"))}
 const fmt=s=>{s=Math.max(0,s);const p=n=>String(n).padStart(2,"0");return `${Math.floor(s/86400)}:${p(Math.floor(s%86400/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`};
-let shown=-1;
-function place(x){const fw=parseFloat(getComputedStyle(film).getPropertyValue("--fw"));track.style.transform=`translateX(${(film.clientWidth/2-fw*(C+.5)-x*fw).toFixed(1)}px)`}
+let shown=-1,fwNow=320;
+function place(x){track.style.transform=`translateX(${(film.clientWidth/2-fwNow*(C+.5)-x*fwNow).toFixed(2)}px)`}
 function label(base){cells.forEach((el,i)=>el.textContent=fmt(base-(i-C)))}
+// the film runs at a steady one frame per second: the frame for a second is centred exactly when that second arrives
 function tick(){
-  const s=Math.max(0,Math.floor((START-Date.now())/1000));
-  if(s===shown)return;
-  const first=shown<0;shown=s;
-  // put the previous second in the middle, then pull the film one frame to bring this second in
-  track.classList.remove("pull");label(s+1);place(0);
-  if(first||reduce){label(s);place(0);return}
-  void track.offsetWidth;track.classList.add("pull");place(1);
+  const ms=Math.max(0,START-Date.now()),base=Math.ceil(ms/1000);
+  if(base!==shown){shown=base;label(base)}
+  place(reduce||ms===0?0:(base*1000-ms)/1000);
+  if(mode==="countdown"&&!reduce)requestAnimationFrame(tick);
 }
-addEventListener("resize",()=>{if(mode==="countdown"){shown=-1;tick()}});
+addEventListener("resize",()=>{fwNow=parseFloat(getComputedStyle(film).getPropertyValue("--fw"))||320});
 function route(){
   mode=location.hash==="#countdown"?"countdown":"spark";
   const ts=document.getElementById("tab-spark"),tc=document.getElementById("tab-countdown");
@@ -180,7 +177,7 @@ function route(){
   clearInterval(timer);
   const cd=mode==="countdown";
   lead.textContent=cd?"Your spark lights up in":"Your spark is";word.hidden=cd;film.hidden=!cd;
-  if(cd){shown=-1;tick();timer=setInterval(tick,100)}
+  if(cd){fwNow=parseFloat(getComputedStyle(film).getPropertyValue("--fw"))||320;shown=-1;tick();if(reduce)timer=setInterval(tick,1000)}
   sparks=[];ctx.clearRect(0,0,W,H);if(!cd){sampleWord();if(reduce)still()}
 }
 addEventListener("hashchange",route);
